@@ -1,0 +1,1804 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="PR_Line02" Id="{2dc75e33-5ac2-4910-8eea-9cc09e619b82}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM PR_Line02
+VAR PERSISTENT
+//----------------VAR SETTING--------------------
+	timerCheckCylinder_Up			: REAL;//CupSupply
+	timerCheckCylinder_Dw			: REAL;
+	timerCheckEmpty					: REAL;
+	timerCheckStuck					: REAL;
+	timerCylinder_Up_extend 		: REAL;
+	timerCylinder_Suction_Cup_extend: REAL;
+	timerCylinder_Suction_Cup		: REAL;
+	timerCylinder_Suction_Val		: REAL;
+	timerCylinder_Suction_pick		: REAL;
+	fSpeed_motor_mixer				: REAL;//FoodMixer
+	fTimer_Reverse					: REAL;
+	fFast_Speed						: REAL;//FoodWeight
+	fSlow_Speed_1					: REAL;
+	fSlow_Speed_2					: REAL;
+	fDerisedWeight_Food				: REAL;
+	fChangeMode_Food_1				: REAL;
+	fChangeMode_Food_2				: REAL;
+	fMaxWeight_Food					: REAL;
+	fPerStop_Food					: REAL;
+	fTimer_Food						: REAL;
+	fTimer_Alarm_Food				: REAL;
+	fTimer_Check_Food				: REAL;
+	fDelta_Food						: REAL;
+	fTimer_rever_food				: REAL;
+	fTimer_Error_Food				: REAL;
+	fFast_Speed_vibrating_funnel	: REAL;//WormWeight
+	fSlow_Speed_vibrating_funnel_1	: REAL;
+	fSlow_Speed_vibrating_funnel_2	: REAL;
+	fDerisedWeight_Worm				: REAL;
+	fChangeMode_Worm_1				: REAL;
+	fChangeMode_Worm_2				: REAL;
+	fMaxWeight_Worm					: REAL;
+	fPerStop_Worm					: REAL;
+	fTimer_Worm						: REAL;
+	fTimer_Alarm_Worm				: REAL;
+	fTimer_Check_Worm				: REAL;
+	fTimer_Check_Cylinder			: REAL;
+	fDelta_Worm						: REAL;
+	fTimer_Error_Worm				: REAL;
+	timerCylinder_Suction			: REAL;//LidSupply
+	timerCheckLidRelease			: REAL;
+	timerLidBlow					: REAL;
+	timerCheckLidEmpty				: REAL;
+	timerCheckLidSuck				: REAL;
+	timerCylinder_Stopper			: REAL;
+	timer_Check_Cylinder_extend		: REAL;//LidClose
+	timer_Check_Cylinder_retract	: REAL;
+	timer_CloseLid					: REAL;
+	fTimer_Comb						: REAL;//Transfer
+	fTimer_Clip						: REAL;
+	fTimer_Move_Comb				: REAL;
+//-----------------VAR HMI-------------------
+	fProductLog						: ARRAY [1..2] OF ARRAY  [1..5] OF REAL;
+END_VAR
+
+VAR
+	bStatus_Food					: BOOL;
+	bStatus_Worm					: BOOL;
+//----------------VAR MANUAL---------------------
+	bCylinder_up_extend 			: BOOL;//CupSupply
+	bCylinder_up_retract 			: BOOL;
+	bCylinder_dw_extend 			: BOOL;
+	bCylinder_dw_retract 			: BOOL;
+	bCylinder_Suction_cup_extend	: BOOL;
+	bCylinder_Suction_cup_retract	: BOOL;
+	bUp_Motor_Mixer					: BOOL;//FoodMixer
+	bDown_Motor_Mixer				: BOOL;
+	bMotor_mixer_Manual				: BOOL;
+	bMotor_mixer_reverse			: BOOL;
+	bUp_Food_Motor					: BOOL;//FoodWeight
+	bDown_Food_Motor				: BOOL;
+	bZero_Loadcell_Food				: BOOL;
+	bMotor_Food						: BOOL;
+	bMotor_Food_reverse				: BOOL;
+	bUp_vibrating_funnel			: BOOL;//WormWeight
+	bDown_vibrating_funnel			: BOOL;
+	bZero_Loadcell_Worm				: BOOL;
+	bCylinder_Block_Worm_Extend		: BOOL;
+	bCylinder_Block_Worm_Retract	: BOOL;
+	bMotor_vibrating_funnel			: BOOL;	
+	bCylinder_LidStopper_extend 	: BOOL;//LidSupply
+	bCylinder_LidStopper_retract 	: BOOL;
+	bCylinder_Suction_extend		: BOOL;
+	bCylinder_Suction_retract		: BOOL;
+	bLidSuctionValve				: BOOL;
+	bCupSuctionValve				: BOOL;
+	bBlowValve						: BOOL;
+	bCylinder_CloseLid_Extend		: BOOL;//LidClose
+	bCylinder_CloseLid_Retract		: BOOL;
+	bCylinder_Comb_Extend			: BOOL;//Transfer
+	bCylinder_Comb_Retract			: BOOL;
+	bCylinder_Clip_Extend			: BOOL;
+	bCylinder_Clip_Retract			: BOOL;
+	bCylinder_Move_Comb_Extend		: BOOL;
+	bCylinder_Move_Comb_Retract		: BOOL;
+//------------------fbmodule----------------
+	fb_CupSupply	: FB_CupSupplyModule;
+	fb_FoodMixer	: FB_FoodMixerModule;
+	fb_FoodWeight	: FB_FoodWeightModule;
+	fb_WormWeight	: FB_WormWeightModule;
+	fb_LidSupply	: FB_LidSupplyModule;
+	fb_LidClose		: FB_LidCloseModule;
+	fb_Transfer		: FB_Transfer;
+//---------------- VAR Method ---------------
+	nState				: INT;
+	nState_Dropcup		: INT;
+	nState_Transfer		: INT;
+	nState_FoodWeight	: INT;
+	nState_WormWeight	: INT;
+	nState_LidClose		: INT;
+	nState_LidSupply	: INT;
+	nDoneTransfer		: INT;
+	nDoneTransferStop	: INT;
+	tmp					: INT;
+	bDoneTakeLid		: BOOL;
+	bDoneTransfer		: BOOL;
+	bDoneCupSupply		: BOOL;
+	bDoneFoodWeight		: BOOL;
+	bDoneWormWeight		: BOOL;
+	bDoneLidSupply		: BOOL;
+	bDoneLidClose		: BOOL;
+	bEnable				: BOOL;
+	bFinishCupSupply	: BOOL;
+	bFinishFoodWeight	: BOOL;
+	bFinishWormWeight	: BOOL;
+	bFinishLidSupply	: BOOL;
+	bFinishLidClose		: BOOL;
+	bFinishTransfer		: BOOL;
+	//-------VAR--------------
+	nStateConveyor		: INT;
+	fbtimertransfer		: TON;
+	fbTimer				: TON;
+	nStateStop			: INT;
+	fbtimerStop			: ton;
+	fbTimerCycle		: ton;
+	timeCycle			: REAL :=1;
+	fproduct			: INT;
+	nstateCycle			: INT;
+	bDone				: R_TRIG;
+	fbDelay				: TON;
+	bStatus_Food_order	: ARRAY [1..3] OF BOOL;
+	bStatus_Worm_order	: ARRAY [1..3] OF BOOL;
+	bStatus_Lid_order	: ARRAY [1..3] OF BOOL;
+	i1,i2,i3			: INT := 0;
+	xathucan			: BOOL;
+	xasau				: BOOL;
+	daothucan			: BOOL;
+	nstatetest1			: INT;
+	nstatetest2			: INT;
+	nstatetest3			: INT;
+	bxa					: BOOL;
+	bCheck				: BOOL;
+	bypassFood			: BOOL;
+	bypassWorm			: BOOL;
+	bypassLid			: BOOL;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[fb_CupSupply(
+	nLine:= 2 , 
+	timerCheckCylinder_Up:= timerCheckCylinder_Up, 
+	timerCheckCylinder_Dw:= timerCheckCylinder_Dw, 
+	timerCheckEmpty:= timerCheckEmpty, 
+	timerCheckStuck:= timerCheckStuck,
+	timerCylinder_Up_extend := timerCylinder_Up_extend,
+	timerCylinder_Suction:= timerCylinder_Suction_Cup,
+	timerCylinder_Suction_extend:= timerCylinder_Suction_Cup_extend,
+	ttimerCylinder_val:=timerCylinder_Suction_Val,
+	timerCylinder_Suction_pick:=timerCylinder_Suction_pick);
+
+fb_FoodMixer(
+	nLine:= 2,
+	UnitID:= 1, 
+	fSpeed_motor_mixer:= fSpeed_motor_mixer,
+	fTimer_Reverse:= fTimer_Reverse);
+		
+fb_FoodWeight(
+	nLine:= 2, 
+	UnitID:= 6, 
+	fFast_Speed:= fFast_Speed, 
+	fSlow_Speed_1:= fSlow_Speed_1, 
+	fSlow_Speed_2:= fSlow_Speed_2, 
+	fDerisedWeight_Food:= fDerisedWeight_Food, 
+	fChangeMode_Food_1:= fChangeMode_Food_1, 
+	fChangeMode_Food_2:= fChangeMode_Food_2, 
+	fMaxWeight_Food:= fMaxWeight_Food, 
+	fPerStop_Food:= fPerStop_Food, 
+	fTimer_Food:= fTimer_Food, 
+	fTimer_Alarm_Food:= fTimer_Alarm_Food, 
+	fTimer_Check_Food:= fTimer_Check_Food, 
+	fDelta_Food:= fDelta_Food,
+	fTimer_Reverse := fTimer_rever_food,
+	fTimer_Error_Food := fTimer_Error_Food, 
+	fProductLogF=> fProductLog[1],
+	bStatus_Food=> bStatus_Food,
+	Time_start=>Time_Start_Food_line2,
+	Time_Stop=>Time_Stop_Food_line2,
+	status=>bStatus_Food_line2,
+	fweight_iot =>fWeight_Food_line2);
+
+fb_LidClose(
+	nLine:= 2, 
+	timer_Check_Cylinder_extend:= timer_Check_Cylinder_extend, 
+	timer_Check_Cylinder_retract:= timer_Check_Cylinder_retract, 
+	timer_CloseLid:= timer_CloseLid);
+	
+fb_LidSupply(
+	nLine:= 2, 
+	timerCylinder_Suction:= timerCylinder_Suction, 
+	timerCheckLidRelease:= timerCheckLidRelease, 
+	timerLidBlow:= timerLidBlow, 
+	timerCheckLidEmpty:= timerCheckLidEmpty, 
+	timerCheckLidSuck:= timerCheckLidSuck, 
+	timerCylinder_Stopper:= timerCylinder_Stopper);
+
+fb_Transfer(
+	nLine:= 2, 
+	fTimer_Comb:= fTimer_Comb, 
+	fTimer_Clip:= fTimer_Clip, 
+	fTimer_Move_Comb:= fTimer_Move_Comb, 
+	nDoneTransfer=> nDoneTransfer,
+	bDoneTransfer=> bDoneTransfer);
+
+fb_WormWeight(
+	nLine:= 2, 
+	UnitID:= 2, 
+	fFast_Speed_vibrating_funnel:= fFast_Speed_vibrating_funnel, 
+	fSlow_Speed_vibrating_funnel_1:= fSlow_Speed_vibrating_funnel_1, 
+	fSlow_Speed_vibrating_funnel_2:= fSlow_Speed_vibrating_funnel_2, 
+	fDerisedWeight_Worm:= fDerisedWeight_Worm, 
+	fChangeMode_Worm_1:= fChangeMode_Worm_1, 
+	fChangeMode_Worm_2:= fChangeMode_Worm_2, 
+	fMaxWeight_Worm:= fMaxWeight_Worm, 
+	fPerStop_Worm:= fPerStop_Worm, 
+	fTimer_Worm:= fTimer_Worm, 
+	fTimer_Alarm_Worm:= fTimer_Alarm_Worm, 
+	fTimer_Check_Worm:= fTimer_Check_Worm, 
+	fTimer_Check_Cylinder:= fTimer_Check_Cylinder, 
+	fDelta_Worm:= fDelta_Worm, 
+	fTimer_Error_Worm := fTimer_Error_Worm,
+	fProductLog=> fProductLog[2],
+	bStatus_Worm=>bStatus_Worm,
+	Time_start=>Time_Start_Worm_line2,
+	Time_Stop=>Time_Stop_Worm_line2,
+	status=>bStatus_Worm_line2,
+	fweight_iot =>fWeight_Worm_line2);
+
+IF bClear2 THEN
+	nResult_false2 := 0;
+	nResult_true2 := 0;
+	nCount2 := 0;
+	bClear2 := FALSE;
+END_IF
+
+
+fDerisedWeight_Food_line2	:= fDerisedWeight_Food;
+fDerisedWeight_Worm_line2	:= fDerisedWeight_Worm;
+fActDelta_Food_line2		:= fb_FoodWeight.fActDelta_Food;
+fActDelta_Worm_line2		:= fb_WormWeight.fActDelta_Worm;
+fDelta_Food_line2			:= fb_FoodWeight.fDelta_Food;
+fDelta_Worm_line2			:= fb_WormWeight.fDelta_Worm;
+
+IF getuser = 'Operator' THEN
+	bypassFood := FALSE;
+	bypassWorm := FALSE;
+END_IF]]></ST>
+    </Implementation>
+    <Action Name="Auto" Id="{22ab1da6-672d-4330-abaa-14d782aa4251}">
+      <Implementation>
+        <ST><![CDATA[CASE nState OF
+	0:// int
+		bStatus_Food_order[1] := FALSE;
+		bStatus_Worm_order[1] := FALSE;
+		bStatus_Lid_order[1]  := FALSE;
+		nDoneTransferStop	  := 0;
+		fb_FoodWeight.SetZero();
+		fb_WormWeight.SetZero();
+		fb_Transfer.Init();
+		i1 		:= 0;
+		i2 		:= 0;
+		i3 		:= 0;
+		bfinish2:= TRUE;
+		nState 	:= 1;
+		
+	1: // Start
+		nState_FoodWeight := 0;
+		nState_WormWeight := 0;
+		nState_LidSupply := 0;
+		nState_LidClose := 0;
+		fb_FoodWeight.SetZero();
+		fb_WormWeight.SetZero();
+		bDoneCupSupply 		:= FALSE;
+		bDoneFoodWeight 	:= FALSE;
+		bDoneWormWeight 	:= FALSE;
+		bDoneLidSupply 		:= FALSE;
+		bDoneLidClose 		:= FALSE;
+		bResetAuto2			:= FALSE;
+		nState := 11;
+	11:
+		bStop2 := FALSE;
+		bShift_is_over2 := FALSE;
+		bStatusStart2 := FALSE;
+		fb_FoodMixer.Stop();
+		nStatus2	:= 'STOP';
+		nState_Dropcup := 0;
+		nState_Transfer := 0;
+		bResetAuto2			:= FALSE;
+		bFinishCupSupply 	:= FALSE;
+		bFinishFoodWeight 	:= FALSE;
+		bFinishWormWeight	:= FALSE;
+		bFinishLidSupply	:= FALSE;
+		bFinishLidClose		:= FALSE;
+		bFinishTransfer		:= FALSE;
+		bfinish2 := TRUE;
+		nState := 22;
+	22:
+		IF bStart2 THEN
+			bfinish2		:= FALSE;
+			bStatusStart2	:= TRUE;
+			bToDropcup2 	:= FALSE;
+			bResetAuto2		:= TRUE;
+			status			:= 'RUN';
+			nState := 2;
+		END_IF
+			
+	2: // start mode auto
+		nStatus2	:= 'RUN';
+		bResetAuto2		:= TRUE;
+		bStart2		:= FALSE;
+		bfinish2		:= FALSE;
+		IF bypassfood THEN
+			fb_FoodMixer.Stop();
+		ELSE
+			fb_FoodMixer.Auto();
+		END_IF
+		fb_CupSupply.CheckCup();
+		fb_LidSupply.CheckLid();
+		bDone(CLK := bDoneTransfer);
+		CASE nstateCycle OF 
+			0:
+				fbTimerCycle(IN := TRUE, PT := T#100S);
+				IF bDone.Q THEN
+					nstateCycle := 1;
+				END_IF
+			1:
+				timeCycle := TIME_TO_REAL(fbTimerCycle.ET)/1000;
+				nstateCycle := 2;
+			2: 
+				fproduct := REAL_TO_INT(3600/(timeCycle+0.001));
+				fbTimerCycle(IN := FALSE);
+				nstateCycle := 0;
+		END_CASE
+		CASE nState_Dropcup OF
+			0:// waiting for transfer
+				fbDelay(IN := FALSE);
+				fb_CupSupply.HoldCup();
+				IF bToDropcup2 THEN
+					nState_Dropcup := 1;
+				END_IF
+			1:// dropcup
+				IF fb_CupSupply.DropCup() THEN
+					bDoneCupSupply := TRUE;
+					bToDropcup2 := FALSE;
+					nState_Dropcup := 2;
+				END_IF
+			2:
+				fbDelay(IN := TRUE, PT := T#300MS);
+				IF fbDelay.Q THEN
+					nState_Dropcup := 0;
+				END_IF
+		END_CASE
+		
+		CASE nState_FoodWeight OF
+			0:// waiting for transfer
+				IF bDoneTransfer THEN
+					fbTimer(IN := FALSE);
+					i1 := i1 + 1;
+					nState_FoodWeight := 1;	
+				END_IF
+			1:// Check cup present
+				IF NOT fb_FoodWeight.bIsCupPresent THEN
+					IF bypassFood THEN
+						nState_FoodWeight := 3;
+						bStatus_Food_order[i1] := TRUE;
+					ELSE
+						nState_FoodWeight := 2;
+					END_IF
+				ELSE
+					bStatus_Food_order[i1] := FALSE;
+					nState_FoodWeight := 3;
+				END_IF
+			2:// FoodWeight
+				IF NOT fb_FoodWeight.bIsCupPresent THEN
+					IF fb_FoodWeight.Auto() THEN
+						bStatus_Food_order[i1] := bStatus_Food;
+						nState_FoodWeight := 3;
+					END_IF
+				ELSE
+					nState_FoodWeight := 22;
+				END_IF
+			22:
+				fbTimer(IN := TRUE, PT := T#0.3S);
+				fb_FoodWeight.Auto();
+				IF fbTimer.Q THEN
+					fb_FoodWeight.Init();
+					nState_FoodWeight := 0;
+				END_IF
+			3:// check i
+				IF i1 < 3 THEN
+					nState_FoodWeight := 5;
+				ELSE 
+					i1 := 2;
+					nState_FoodWeight := 4;
+				END_IF
+			4:// dao vi tri
+				bStatus_Food_order[1] := bStatus_Food_order[2];
+				bStatus_Food_order[2] := bStatus_Food_order[3];
+				nState_FoodWeight := 5;
+			5:// Done
+				bDoneFoodWeight := TRUE;
+				nState_FoodWeight := 10;
+		END_CASE
+		
+		CASE nState_WormWeight OF
+			0: // waiting for transfer
+				IF bDoneTransfer THEN
+					fbTimer(IN := FALSE);
+					i2 := i2 + 1;;
+					nState_WormWeight := 1;
+				END_IF
+			1:
+				IF NOT fb_WormWeight.bIsCupPresent THEN
+					nCount2 := nCount2 + 1;
+					nState_WormWeight := 11;
+				ELSE
+					bStatus_Worm_order[i2] := FALSE;
+					nState_WormWeight := 3;
+				END_IF
+			11: // check food
+				IF bStatus_Food_order[1] THEN
+					IF bypassWorm THEN
+						bStatus_Worm_order[i2] := TRUE;
+						nState_WormWeight := 3;
+					ELSE
+						nState_WormWeight := 2;
+					END_IF
+				ELSE
+					bStatus_Worm_order[i2] := FALSE;
+					nState_WormWeight := 3;
+				END_IF	
+			2:// WormWeight
+				IF NOT fb_WormWeight.bIsCupPresent THEN
+					IF fb_WormWeight.Auto() THEN
+						bStatus_Worm_order[i2] := bStatus_Worm;
+						nState_WormWeight := 3;
+					END_IF
+				ELSE
+					nState_WormWeight := 22;
+				END_IF
+			22:
+				fbTimer(IN := TRUE, PT := T#0.3S);
+				fb_WormWeight.Auto();
+				IF fbTimer.Q THEN
+					fb_WormWeight.Init();
+					nState_WormWeight := 0;
+				END_IF
+			3:// check i
+				IF bStatus_Worm_order[i2] THEN
+					nResult_true2 := nResult_true2 + 1;
+				END_IF
+				IF i2 < 3 THEN
+					nState_WormWeight := 5;
+				ELSE
+					i2 := 2;
+					nState_WormWeight := 4;
+				END_IF
+			4:// dao vi tri				
+				nResult_false2	:= nCount2 - nResult_true2;
+				bStatus_Worm_order[1] := bStatus_Worm_order[2];
+				bStatus_Worm_order[2] := bStatus_Worm_order[3];
+				nState_WormWeight 	  := 5;
+			5:// Done 
+				bDoneWormWeight       := TRUE;
+				nState_WormWeight	  := 10;
+		END_CASE
+		
+		CASE nState_LidSupply OF
+			0:// waiting for transfer
+				IF bDoneTransfer THEN
+					i3 := i3 + 1;
+					nState_LidSupply := 1;
+				END_IF
+			1:// check worm
+				IF bStatus_Worm_order[1] THEN
+					IF bypassLid THEN
+						bStatus_Lid_order[i3] := FALSE;
+						nState_LidSupply := 4;
+					ELSE
+						nState_LidSupply := 2;
+					END_IF
+				ELSE
+					bStatus_Lid_order[i3] := FALSE;
+					nState_LidSupply := 4;
+				END_IF
+			2:// take lid
+				IF fb_LidSupply.TakeLid() THEN
+					nState_LidSupply := 3;
+				END_IF
+			3:// drop lid
+				IF fb_LidSupply.DropLid() THEN
+					bStatus_Lid_order[i3] := TRUE;
+					nState_LidSupply := 4;
+				END_IF
+			4:// check i
+				IF i3 < 3 THEN
+					nState_LidSupply := 6;
+				ELSE
+					i3 := 2;
+					nState_LidSupply := 5;
+				END_IF
+			5:// dao vi tri
+				bStatus_Lid_order[1] := bStatus_Lid_order[2];
+				bStatus_Lid_order[2] := bStatus_Lid_order[3];
+				nState_LidSupply 	 := 6;
+			6:// Done
+				bDoneLidSupply 		 := TRUE;
+				nState_LidSupply 	 := 10;
+		END_CASE
+		
+		CASE nState_LidClose OF
+			0: // waiting for transfer
+				IF bDoneTransfer THEN
+					nState_LidClose := 1;
+				END_IF
+			1:// Check lid supply
+				IF  bStatus_Lid_order[1] THEN
+					nState_LidClose := 2;
+				ELSE
+					nState_LidClose := 3;
+				END_IF
+			2:// Close lid
+				IF fb_LidClose.CloseLid() THEN
+					nState_LidClose := 3;
+				END_IF
+			3://Done
+				bDoneLidClose := TRUE;
+				nState_LidClose := 10;
+		END_CASE
+		
+		CASE nState_Transfer OF
+			0:// waiting for Done module
+				IF nDoneTransfer = 0 THEN
+						nState_Transfer := 1;
+				ELSIF nDoneTransfer > 0 THEN
+					IF bDoneCupSupply AND bDoneFoodWeight AND bDoneWormWeight AND bDoneLidSupply AND bDoneLidClose THEN
+						nState_Transfer := 1;
+					END_IF
+				END_IF
+			1:	
+				IF fb_CupSupply.isCupDrop THEN
+					bDoneCupSupply 	:= FALSE;
+					bDoneFoodWeight := FALSE;
+					bDoneWormWeight := FALSE;
+					bDoneLidSupply 	:= FALSE;
+					bDoneLidClose 	:= FALSE;
+					nState_Transfer := 11;
+				ELSE
+					F_SetError(24,nLine := 2);
+				END_IF
+			11:// transfer
+				IF fb_Transfer.Auto() THEN
+					nShoot2 := nShoot2 + 1;
+					nState_Transfer:= 2;
+				END_IF
+			2:
+				nState_FoodWeight := 0;
+				nState_WormWeight := 0;
+				nState_LidSupply  := 0;
+				nState_LidClose	  := 0;
+				nState_Transfer	  := 0;
+		END_CASE
+		//Stop button
+		IF bStop2 THEN
+			nState := 3;
+			bStartLine2 := FALSE;
+		ELSIF bShift_is_over2 THEN
+			nState := 4;
+		END_IF
+	3://Stop
+		bResetAuto2		:= TRUE;
+		nStatus2		:= 'RUN';
+		bfinish2		:= FALSE;
+		IF bypassfood THEN
+			fb_FoodMixer.Stop();
+		ELSE
+			fb_FoodMixer.Auto();
+		END_IF
+		CASE nState_Dropcup OF
+			0:// waiting for transfer
+				fbDelay(IN := FALSE);
+				fb_CupSupply.HoldCup();
+				IF bToDropcup2 THEN
+					nState_Dropcup := 1;
+				END_IF
+				IF bFinishTransfer THEN
+					nState_Dropcup := 10;
+				END_IF
+			1:// dropcup
+				IF fb_CupSupply.DropCup() THEN
+					bDoneCupSupply := TRUE;
+					bToDropcup2 := FALSE;
+					nState_Dropcup := 2;
+				END_IF
+			2:
+				fbDelay(IN := TRUE, PT := T#300MS);
+				IF fbDelay.Q THEN
+					nState_Dropcup := 0;
+				END_IF
+			10:// finish
+				bDoneCupSupply := TRUE;
+				bFinishCupSupply := TRUE;
+		END_CASE
+		
+		CASE nState_FoodWeight OF
+			0:// waiting for transfer
+				IF bDoneTransfer THEN
+					i1 := i1 + 1;
+					fbTimer(IN := FALSE);
+					nState_FoodWeight := 1;	
+				END_IF
+			1:// Check cup present
+				IF NOT fb_FoodWeight.bIsCupPresent THEN
+					IF bypassFood THEN
+						nState_FoodWeight := 3;
+						bStatus_Food_order[i1] := TRUE;
+					ELSE
+						nState_FoodWeight := 2;
+					END_IF
+				ELSE
+					bStatus_Food_order[i1] := FALSE;
+					nState_FoodWeight := 3;
+				END_IF
+			2:// FoodWeight
+				IF NOT fb_FoodWeight.bIsCupPresent THEN
+					IF fb_FoodWeight.Auto() THEN
+						bStatus_Food_order[i1] := bStatus_Food;
+						nState_FoodWeight := 3;
+					END_IF
+				ELSE
+					nState_FoodWeight := 22;
+				END_IF
+			22:
+				fbTimer(IN := TRUE, PT := T#0.3S);
+				fb_FoodWeight.Auto();
+				IF fbTimer.Q THEN
+					fb_FoodWeight.Init();
+					nState_FoodWeight := 0;
+				END_IF
+			3:// check i
+				IF i1 < 3 THEN
+					nState_FoodWeight := 5;
+				ELSE 
+					i1 := 2;
+					nState_FoodWeight := 4;
+				END_IF
+			4:// dao vi tri
+				bStatus_Food_order[1] := bStatus_Food_order[2];
+				bStatus_Food_order[2] := bStatus_Food_order[3];
+				nState_FoodWeight := 5;
+			5:// Done
+				bDoneFoodWeight := TRUE;
+				nState_FoodWeight := 10;
+			10:// finish
+				bFinishFoodWeight := TRUE;
+		END_CASE
+		
+		CASE nState_WormWeight OF
+			0: // waiting for transfer
+				IF bDoneTransfer THEN
+					fbTimer(IN := FALSE);
+					i2 := i2 + 1;;
+					nState_WormWeight := 1;
+				END_IF
+			1:
+				IF NOT fb_WormWeight.bIsCupPresent THEN
+					nCount2 := nCount2 + 1;
+					nState_WormWeight := 11;
+				ELSE
+					bStatus_Worm_order[i2] := FALSE;
+					nState_WormWeight := 3;
+				END_IF
+			11: // check food
+				IF bStatus_Food_order[1] THEN
+					IF bypassWorm THEN
+						bStatus_Worm_order[i2] := TRUE;
+						nState_WormWeight := 3;
+					ELSE
+						nState_WormWeight := 2;
+					END_IF
+				ELSE
+					bStatus_Worm_order[i2] := FALSE;
+					nState_WormWeight := 3;
+				END_IF	
+			2:// WormWeight
+				IF NOT fb_WormWeight.bIsCupPresent THEN
+					IF fb_WormWeight.Auto() THEN
+						bStatus_Worm_order[i2] := bStatus_Worm;
+						nState_WormWeight := 3;
+					END_IF
+				ELSE
+					nState_WormWeight := 22;
+				END_IF
+			22:
+				fbTimer(IN := TRUE, PT := T#0.3S);
+				fb_WormWeight.Auto();
+				IF fbTimer.Q THEN
+					fb_WormWeight.Init();
+					nState_WormWeight := 0;
+				END_IF
+			3:// check i
+				IF bStatus_Worm_order[i2] THEN
+					nResult_true2 := nResult_true2 + 1;
+				END_IF
+				IF i2 < 3 THEN
+					nState_WormWeight := 5;
+				ELSE
+					i2 := 2;
+					nState_WormWeight := 4;
+				END_IF
+			4:// dao vi tri
+				nResult_false2 := nCount2 - nResult_true2;
+				bStatus_Worm_order[1] := bStatus_Worm_order[2];
+				bStatus_Worm_order[2] := bStatus_Worm_order[3];
+				nState_WormWeight 	  := 5;
+			5:// Done 
+				bDoneWormWeight       := TRUE;
+				nState_WormWeight	  := 10;
+			10:// finish
+				bFinishWormWeight	  := TRUE;
+		END_CASE
+		
+		CASE nState_LidSupply OF
+			0:// waiting for transfer
+				IF bDoneTransfer THEN
+					i3 := i3 + 1;
+					nState_LidSupply := 1;
+				END_IF
+			1:// check worm
+				IF bStatus_Worm_order[1] THEN
+					IF bypassLid THEN
+						bStatus_Lid_order[i3] := FALSE;
+						nState_LidSupply := 4;
+					ELSE
+						nState_LidSupply := 2;
+					END_IF
+				ELSE
+					bStatus_Lid_order[i3] := FALSE;
+					nState_LidSupply := 4;
+				END_IF
+			2:// take lid
+				IF fb_LidSupply.TakeLid() THEN
+					nState_LidSupply := 3;
+				END_IF
+			3:// drop lid
+				IF fb_LidSupply.DropLid() THEN
+					bStatus_Lid_order[i3] := TRUE;
+					nState_LidSupply := 4;
+				END_IF
+			4:// check i
+				IF i3 < 3 THEN
+					nState_LidSupply := 6;
+				ELSE
+					i3 := 2;
+					nState_LidSupply := 5;
+				END_IF
+			5:// dao vi tri
+				bStatus_Lid_order[1] := bStatus_Lid_order[2];
+				bStatus_Lid_order[2] := bStatus_Lid_order[3];
+				nState_LidSupply 	 := 6;
+			6:// Done
+				bDoneLidSupply 		 := TRUE;
+				nState_LidSupply 	 := 10;
+			10:// finish
+				bFinishLidSupply	 := TRUE;
+		END_CASE
+		
+		CASE nState_LidClose OF
+			0: // waiting for transfer
+				IF bDoneTransfer THEN
+					nState_LidClose := 1;
+				END_IF
+			1:// Check lid supply
+				IF  bStatus_Lid_order[1] THEN
+					nState_LidClose := 2;
+				ELSE
+					nState_LidClose := 3;
+				END_IF
+			2:// Close lid
+				IF fb_LidClose.CloseLid() THEN
+					nState_LidClose := 3;
+				END_IF
+			3://Done
+				bDoneLidClose   := TRUE;
+				nState_LidClose := 10;
+			10:// finish
+				bFinishLidClose := TRUE;
+		END_CASE
+		
+		CASE nState_Transfer OF
+			0:// waiting for Done module
+				IF nDoneTransfer = 0 THEN
+						nState_Transfer := 10;
+				ELSIF nDoneTransfer > 0 THEN
+					IF bDoneCupSupply AND bDoneFoodWeight AND bDoneWormWeight AND bDoneLidSupply AND bDoneLidClose THEN
+						nState_Transfer := 10;
+					END_IF
+				END_IF
+			1:
+				IF fb_CupSupply.isCupDrop THEN
+					bDoneCupSupply 	:= FALSE;
+					bDoneFoodWeight := FALSE;
+					bDoneWormWeight := FALSE;
+					bDoneLidSupply 	:= FALSE;
+					bDoneLidClose 	:= FALSE;
+					nState_Transfer := 11;
+				ELSE 
+					F_SetError(24,nLine:=2);
+				END_IF
+			11:// transfer
+				IF fb_Transfer.Auto() THEN
+					nShoot2 := nShoot2 + 1;
+					nState_Transfer:= 2;
+				END_IF
+			2:	
+				nState_FoodWeight := 0;
+				nState_WormWeight := 0;
+				nState_LidSupply  := 0;
+				nState_LidClose	  := 0;
+				nState_Dropcup 	  := 0;
+				nState_Transfer := 0;
+			10:// finish
+				bFinishTransfer		:= TRUE;
+		END_CASE
+		
+		IF bFinishCupSupply AND bFinishFoodWeight AND bFinishWormWeight AND bFinishLidSupply AND bFinishLidClose AND bFinishTransfer THEN
+			bfinish2 := TRUE;
+			nState := 11;
+		END_IF
+	4:// shift is over
+		bResetAuto2		:= TRUE;
+		IF bypassfood THEN
+			fb_FoodMixer.Stop();
+		ELSE
+			fb_FoodMixer.Auto();
+		END_IF
+		fb_CupSupply.CheckCup();
+		fb_LidSupply.CheckLid();
+		bStatusStart2 := FALSE;
+		bfinish2		:= FALSE;
+		bStart2		:= FALSE;
+		nStatus2	:= 'RUN';
+		bDone(CLK := bDoneTransfer);
+		CASE nstateCycle OF 
+			0:
+				fbTimerCycle(IN := TRUE, PT := T#100S);
+				IF bDone.Q THEN
+					nstateCycle := 1;
+				END_IF
+			1:
+				timeCycle := TIME_TO_REAL(fbTimerCycle.ET)/1000;
+				nstateCycle := 2;
+			2: 
+				fproduct := REAL_TO_INT(3600/(timeCycle+0.001));
+				fbTimerCycle(IN := FALSE);
+				nstateCycle := 0;
+		END_CASE
+		CASE nState_Dropcup OF
+			0:// waiting for transfer
+				fbDelay(IN := FALSE);
+				fb_CupSupply.HoldCup();
+				IF bToDropcup2 THEN
+					nState_Dropcup := 10;
+				END_IF
+			1:// dropcup
+				IF fb_CupSupply.DropCup() THEN
+					bDoneCupSupply := TRUE;
+					bToDropcup2 := FALSE;
+					nState_Dropcup := 2;
+				END_IF
+			2:
+				fbDelay(IN := TRUE, PT := T#300MS);
+				IF fbDelay.Q THEN
+					nState_Dropcup := 0;
+				END_IF
+			10:// finish
+				bDoneCupSupply := TRUE;
+				bFinishCupSupply := TRUE;
+		END_CASE
+		
+		CASE nState_FoodWeight OF
+			0:// waiting for transfer
+				IF bDoneTransfer AND nDoneTransferStop < 4 THEN
+					fbTimer(IN := FALSE);
+					i1 := i1 + 1;
+					nState_FoodWeight := 1;	
+				ELSIF bDoneTransfer AND nDoneTransferStop >= 4 THEN
+					fbTimer(IN := FALSE);
+					i1 := i1 + 1;
+					nState_FoodWeight := 33;	
+				END_IF
+			1:// Check cup present
+				IF NOT fb_FoodWeight.bIsCupPresent THEN
+					IF bypassFood THEN
+						nState_FoodWeight := 3;
+						bStatus_Food_order[i1] := TRUE;
+					ELSE
+						nState_FoodWeight := 2;
+					END_IF
+				ELSE
+					bStatus_Food_order[i1] := FALSE;
+					nState_FoodWeight := 3;
+				END_IF
+			2:// FoodWeight
+				IF NOT fb_FoodWeight.bIsCupPresent THEN
+					IF fb_FoodWeight.Auto() THEN
+						bStatus_Food_order[i1] := bStatus_Food;
+						nState_FoodWeight := 3;
+					END_IF
+				ELSE
+					nState_FoodWeight := 22;
+				END_IF
+			22:
+				fbTimer(IN := TRUE, PT := T#0.3S);
+				fb_FoodWeight.Auto();
+				IF fbTimer.Q THEN
+					fb_FoodWeight.Init();
+					nState_FoodWeight := 0;
+				END_IF
+			33:
+				bStatus_Food_order[i1] := FALSE;
+				nState_FoodWeight := 3;
+			3:// check i
+				IF i1 < 3 THEN
+					nState_FoodWeight := 5;
+				ELSE 
+					i1 := 2;
+					nState_FoodWeight := 4;
+				END_IF
+			4:// dao vi tri
+				bStatus_Food_order[1] := bStatus_Food_order[2];
+				bStatus_Food_order[2] := bStatus_Food_order[3];
+				nState_FoodWeight := 5;
+			5:// Done
+				bDoneFoodWeight := TRUE;
+				nState_FoodWeight := 10;
+			10:// finish
+				bFinishFoodWeight := TRUE;
+		END_CASE
+		
+		CASE nState_WormWeight OF
+			0: // waiting for transfer
+				IF bDoneTransfer AND nDoneTransferStop < 6 THEN
+					fbTimer(IN := FALSE);
+					i2 := i2 + 1;;
+					nState_WormWeight := 1;
+				ELSIF bDoneTransfer AND nDoneTransferStop >= 6 THEN
+					fbTimer(IN := FALSE);
+					i2 := i2 + 1;
+					nState_WormWeight := 33;
+				END_IF
+			1:
+				IF NOT fb_WormWeight.bIsCupPresent THEN
+					nCount2 := nCount2 + 1;
+					nState_WormWeight := 11;
+				ELSE
+					bStatus_Worm_order[i2] := FALSE;
+					nState_WormWeight := 3;
+				END_IF
+			11: // check food
+				IF bStatus_Food_order[1] THEN
+					IF bypassWorm THEN
+						bStatus_Worm_order[i2] := TRUE;
+						nState_WormWeight := 3;
+					ELSE
+						nState_WormWeight := 2;
+					END_IF
+				ELSE
+					bStatus_Worm_order[i2] := FALSE;
+					nState_WormWeight := 3;
+				END_IF	
+			2:// WormWeight
+				IF NOT fb_WormWeight.bIsCupPresent THEN
+					IF fb_WormWeight.Auto() THEN
+						bStatus_Worm_order[i2] := bStatus_Worm;
+						nState_WormWeight := 3;
+					END_IF
+				ELSE
+					nState_WormWeight := 22;
+				END_IF
+			22:
+				fbTimer(IN := TRUE, PT := T#0.3S);
+				fb_WormWeight.Auto();
+				IF fbTimer.Q THEN
+					fb_WormWeight.Init();
+					nState_WormWeight := 0;
+				END_IF
+			33:
+				bStatus_Worm_order[i2] := FALSE;
+				nState_WormWeight := 3;
+			3:// check i
+				IF bStatus_Worm_order[i2] THEN
+					nResult_true2 := nResult_true2 + 1;
+				END_IF
+				IF i2 < 3 THEN
+					nState_WormWeight := 5;
+				ELSE
+					i2 := 2;
+					nState_WormWeight := 4;
+				END_IF
+			4:// dao vi tri
+				nResult_false2 := nCount2 - nResult_true2;
+				bStatus_Worm_order[1] := bStatus_Worm_order[2];
+				bStatus_Worm_order[2] := bStatus_Worm_order[3];
+				nState_WormWeight 	  := 5;
+			5:// Done 
+				bDoneWormWeight       := TRUE;
+				nState_WormWeight	  := 10;
+			10:// finish
+				bFinishWormWeight	  := TRUE;
+		END_CASE
+		
+		CASE nState_LidSupply OF
+			0:// waiting for transfer
+				IF bDoneTransfer THEN
+					i3 := i3 + 1;
+					nState_LidSupply := 1;
+				END_IF
+			1:// check worm
+				IF bStatus_Worm_order[1] THEN
+					IF bypassLid THEN
+						bStatus_Lid_order[i3] := FALSE;
+						nState_LidSupply := 4;
+					ELSE
+						nState_LidSupply := 2;
+					END_IF
+				ELSE
+					bStatus_Lid_order[i3] := FALSE;
+					nState_LidSupply := 4;
+				END_IF
+			2:// take lid
+				IF fb_LidSupply.TakeLid() THEN
+					nState_LidSupply := 3;
+				END_IF
+			3:// drop lid
+				IF fb_LidSupply.DropLid() THEN
+					bStatus_Lid_order[i3] := TRUE;
+					nState_LidSupply := 4;
+				END_IF
+			4:// check i
+				IF i3 < 3 THEN
+					nState_LidSupply := 6;
+				ELSE
+					i3 := 2;
+					nState_LidSupply := 5;
+				END_IF
+			5:// dao vi tri
+				bStatus_Lid_order[1] := bStatus_Lid_order[2];
+				bStatus_Lid_order[2] := bStatus_Lid_order[3];
+				nState_LidSupply 	 := 6;
+			6:// Done
+				bDoneLidSupply 		 := TRUE;
+				nState_LidSupply 	 := 10;
+			10:// finish
+				bFinishLidSupply	 := TRUE;
+		END_CASE
+		
+		CASE nState_LidClose OF
+			0: // waiting for transfer
+				IF bDoneTransfer THEN
+					nState_LidClose := 1;
+				END_IF
+			1:// Check lid supply
+				IF  bStatus_Lid_order[1] THEN
+					nState_LidClose := 2;
+				ELSE
+					nState_LidClose := 3;
+				END_IF
+			2:// Close lid
+				IF fb_LidClose.CloseLid() THEN
+					nState_LidClose := 3;
+				END_IF
+			3://Done
+				bDoneLidClose   := TRUE;
+				nState_LidClose := 10;
+			10:// finish
+				bFinishLidClose := TRUE;
+		END_CASE
+		
+		CASE nState_Transfer OF
+			0:// waiting for Done module
+				IF bDoneCupSupply AND bDoneFoodWeight AND bDoneWormWeight AND bDoneLidSupply AND bDoneLidClose THEN
+					nState_Transfer := 1;
+				END_IF
+			1:
+				IF fb_CupSupply.isCupDrop THEN
+					bDoneCupSupply 	:= FALSE;
+					bDoneFoodWeight := FALSE;
+					bDoneWormWeight := FALSE;
+					bDoneLidSupply 	:= FALSE;
+					bDoneLidClose 	:= FALSE;
+					nState_Transfer := 11;
+				ELSE
+					F_SetError(24,nLine := 2);
+				END_IF
+			11:// transfer
+				IF fb_Transfer.Auto() THEN
+					nShoot2 := nShoot2 + 1;
+					nState_Transfer:= 2;
+				END_IF
+			2:
+				nState_FoodWeight := 0;
+				nState_WormWeight := 0;
+				nState_LidSupply  := 0;
+				nState_LidClose	  := 0;
+				nDoneTransferStop := nDoneTransferStop + 1;
+				nState_Transfer   := 3;
+			3:
+				IF nDoneTransferStop < 11 THEN
+					nState_Transfer   := 0;
+				ELSE
+					nState_Transfer   := 10;
+				END_IF
+			10:// finish
+				bFinishTransfer		:= TRUE;
+		END_CASE
+		IF bFinishCupSupply AND bFinishFoodWeight AND bFinishWormWeight AND bFinishLidSupply AND bFinishLidClose AND bFinishTransfer THEN
+			bfinish2	:= TRUE;
+			nState := 0;
+		END_IF
+END_CASE
+]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="check" Id="{f38e76e8-e179-46a8-a457-055adeb18827}">
+      <Implementation>
+        <ST><![CDATA[IF fb_CupSupply.fbCylinder_Up.bIsRetract THEN
+	bCylinder_up_retract 	:= TRUE;
+	bCylinder_up_extend		:= FALSE;
+ELSE
+	bCylinder_up_retract 	:= FALSE;
+	bCylinder_up_extend		:= TRUE;
+END_IF
+
+IF fb_CupSupply.fbCylinder_Dw.bIsExtend THEN
+	bCylinder_dw_extend 	:= TRUE;
+	bCylinder_dw_retract 	:= FALSE;
+ELSIF fb_CupSupply.fbCylinder_Dw.bIsRetract THEN
+	bCylinder_dw_extend 	:= FALSE;
+	bCylinder_dw_retract 	:= TRUE;
+ELSE
+	bCylinder_dw_extend 	:= FALSE;
+	bCylinder_dw_retract 	:= FALSE;
+END_IF
+
+IF fb_CupSupply.fbCylinder_Suction.bIsExtend THEN
+	bCylinder_Suction_cup_extend 	:= TRUE;
+	bCylinder_Suction_cup_retract	:= FALSE;
+ELSE
+	bCylinder_Suction_cup_extend 	:= FALSE;
+	bCylinder_Suction_cup_retract	:= TRUE;
+END_IF
+
+IF fb_WormWeight.fbCylinder.bIsRetract THEN
+	bCylinder_Block_Worm_Extend	 := FALSE;
+	bCylinder_Block_Worm_Retract := TRUE;
+ELSE
+	bCylinder_Block_Worm_Extend	 := TRUE;
+	bCylinder_Block_Worm_Retract := FALSE;
+END_IF
+
+IF fb_LidSupply.fbCylinder_LidStopper.bIsExtend THEN
+	bCylinder_LidStopper_extend 	:= TRUE;
+	bCylinder_LidStopper_retract 	:= FALSE;
+ELSIF fb_LidSupply.fbCylinder_LidStopper.bIsRetract THEN
+	bCylinder_LidStopper_extend 	:= FALSE;
+	bCylinder_LidStopper_retract 	:= TRUE;
+ELSE
+	bCylinder_LidStopper_extend 	:= FALSE;
+	bCylinder_LidStopper_retract 	:= FALSE;
+END_IF
+
+IF fb_LidSupply.fbCylinder_Suction.bIsExtend THEN
+	bCylinder_Suction_extend		:= TRUE;
+	bCylinder_Suction_retract		:= FALSE;
+ELSIF fb_LidSupply.fbCylinder_Suction.bIsRetract THEN
+	bCylinder_Suction_extend		:= FALSE;
+	bCylinder_Suction_retract		:= TRUE;
+ELSE
+	bCylinder_Suction_extend		:= FALSE;
+	bCylinder_Suction_retract		:= FALSE;
+END_IF
+
+IF fb_LidClose.fbCylinder_LidClose.bIsExtend THEN
+	bCylinder_CloseLid_Extend		:= TRUE;
+	bCylinder_CloseLid_Retract		:= FALSE;
+ELSIF fb_LidClose.fbCylinder_LidClose.bIsRetract THEN
+	bCylinder_CloseLid_Extend		:= FALSE;
+	bCylinder_CloseLid_Retract		:= TRUE;
+ELSE
+	bCylinder_CloseLid_Extend		:= FALSE;
+	bCylinder_CloseLid_Retract		:= FALSE;
+END_IF
+
+IF fb_Transfer.fbCylinder_Comb.bIsExtend THEN
+	bCylinder_Comb_Extend			:= TRUE;
+	bCylinder_Comb_Retract			:= FALSE;
+ELSIF fb_Transfer.fbCylinder_Comb.bIsRetract THEN
+	bCylinder_Comb_Extend			:= FALSE;
+	bCylinder_Comb_Retract			:= TRUE;
+ELSE
+	bCylinder_Comb_Extend			:= FALSE;
+	bCylinder_Comb_Retract			:= FALSE;
+END_IF
+
+IF fb_Transfer.fbCylinder_Clip.bIsExtend THEN
+	bCylinder_Clip_Extend			:= TRUE;
+	bCylinder_Clip_Retract			:= FALSE;
+ELSIF fb_Transfer.fbCylinder_Clip.bIsRetract THEN
+	bCylinder_Clip_Extend			:= FALSE;
+	bCylinder_Clip_Retract			:= TRUE;
+ELSE
+	bCylinder_Clip_Extend			:= FALSE;
+	bCylinder_Clip_Retract			:= FALSE;
+END_IF
+
+IF fb_Transfer.fbCylinder_Move_Comb.bIsExtend THEN
+	bCylinder_Move_Comb_Extend		:= TRUE;
+	bCylinder_Move_Comb_Retract		:= FALSE;
+ELSIF fb_Transfer.fbCylinder_Move_Comb.bIsRetract THEN
+	bCylinder_Move_Comb_Extend		:= FALSE;
+	bCylinder_Move_Comb_Retract		:= TRUE;
+ELSE
+	bCylinder_Move_Comb_Extend		:= FALSE;
+	bCylinder_Move_Comb_Retract		:= FALSE;
+END_IF
+
+bMotor_mixer_Manual				:= FALSE;
+bMotor_mixer_reverse			:= FALSE;
+bMotor_Food						:= FALSE;
+bMotor_Food_reverse				:= FALSE;
+bMotor_vibrating_funnel			:= FALSE;]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="Check_reset" Id="{b8dae0fe-6635-4a5a-90b7-cbcc4b7faf0e}">
+      <Implementation>
+        <ST><![CDATA[IF fb_CupSupply.fbCylinder_Up.bIsRetract AND fb_CupSupply.fbCylinder_Dw.bIsExtend 
+	AND NOT fb_WormWeight.fbCylinder.bIsRetract AND fb_LidSupply.fbCylinder_Suction.bIsRetract 
+	AND fb_LidClose.fbCylinder_LidClose.bIsRetract AND fb_Transfer.fbCylinder_Comb.bIsRetract 
+	AND fb_Transfer.fbCylinder_Clip.bIsRetract AND fb_Transfer.fbCylinder_Move_Comb.bIsRetract
+	AND fb_CupSupply.fbCylinder_Suction.bIsExtend THEN
+		bResetmanual2 := TRUE;
+ELSE 
+		bResetmanual2 := FALSE;
+END_IF
+IF bReset THEN
+	bCylinder_up_retract 	:= true;
+	bCylinder_up_extend		:= FALSE;
+	bCylinder_dw_extend 	:= TRUE;
+	bCylinder_dw_retract 	:= FALSE;
+	bCylinder_Suction_cup_retract := FALSE;
+	bCylinder_Suction_cup_extend 	:= TRUE;
+	bCylinder_Block_Worm_Extend	 := TRUE;
+	bCylinder_Block_Worm_Retract := FALSE;
+	bCylinder_Suction_extend		:= FALSE;
+	bCylinder_Suction_retract		:= TRUE;
+	bCylinder_CloseLid_Extend		:= FALSE;
+	bCylinder_CloseLid_Retract		:= TRUE;
+	bCylinder_Comb_Extend			:= FALSE;
+	bCylinder_Comb_Retract			:= TRUE;
+	bCylinder_Clip_Extend			:= FALSE;
+	bCylinder_Clip_Retract			:= TRUE;
+	IF fb_Transfer.fbCylinder_Comb.bIsRetract THEN
+		bCylinder_Move_Comb_Extend		:= FALSE;
+		bCylinder_Move_Comb_Retract		:= TRUE;
+	END_IF
+	bxa := FALSE;
+END_IF
+]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="Init" Id="{6809e716-bd1f-4218-8083-a71365600460}">
+      <Implementation>
+        <ST><![CDATA[fb_CupSupply.Init();
+fb_FoodWeight.Init();
+fb_WormWeight.Init();
+fb_LidSupply.Init();
+fb_LidClose.Init();
+fb_Transfer.Init();
+
+nState := 0;
+nState_Dropcup := 0;
+nState_FoodWeight := 0;
+nState_WormWeight := 0;
+nState_LidSupply := 0;
+nState_LidClose := 0;
+nState_Transfer := 0;
+
+bFinishCupSupply 	:= FALSE;
+bFinishFoodWeight 	:= FALSE;
+bFinishWormWeight	:= FALSE;
+bFinishLidSupply	:= FALSE;
+bFinishLidClose		:= FALSE;
+bFinishTransfer		:= FALSE;
+
+bDoneCupSupply 		:= FALSE;
+bDoneFoodWeight 	:= FALSE;
+bDoneWormWeight 	:= FALSE;
+bDoneLidSupply 		:= FALSE;
+bDoneLidClose 		:= FALSE;
+bDoneTransfer		:= false;
+nDoneTransferStop	  := 0;
+
+bStatus_Food_order[1] := FALSE;
+bStatus_Worm_order[1] := FALSE;
+bStatus_Lid_order[1]  := FALSE;
+		
+i1 		:= 0;
+i2 		:= 0;
+i3 		:= 0;
+
+]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="Manual" Id="{738cc87c-628a-42d9-bba5-1b75cb084c92}">
+      <Implementation>
+        <ST><![CDATA[fb_CupSupply.Manual(bCylinder_dw_extend := bCylinder_dw_extend, bCylinder_dw_retract := bCylinder_dw_retract,
+					bCylinder_up_extend := bCylinder_up_extend, bCylinder_up_retract := bCylinder_up_retract,
+					bCylinder_suction_extend:= bCylinder_Suction_cup_extend, bCylinder_suction_retract := bCylinder_Suction_cup_retract);
+
+IF bxa THEN
+	IF daothucan THEN
+		fb_FoodMixer.Auto();
+	ELSE
+		fb_FoodMixer.Stop();
+	END_IF
+ELSE	
+	daothucan := FALSE;
+	fb_FoodMixer.Manual(bDown_Motor_Mixer := bDown_Motor_Mixer, bUp_Motor_Mixer := bUp_Motor_Mixer,
+					bMotor_mixer_Manual := bMotor_mixer_Manual,bMotor_mixer_reverse := bMotor_mixer_reverse);
+
+	IF bUp_Motor_Mixer THEN
+		bUp_Motor_Mixer := FALSE;
+	END_IF
+	
+	IF bDown_Motor_Mixer THEN
+		bDown_Motor_Mixer := FALSE;
+	END_IF
+END_IF
+
+
+IF bxa THEN
+	CASE nstatetest1 OF 
+	0:
+		IF xathucan THEN
+			nstatetest1 := 1;			
+		END_IF
+	1:
+		IF fb_FoodWeight.Auto() THEN
+			nstatetest1 := 2;
+		END_IF
+	2: 
+		xathucan := FALSE;
+		nstatetest1 := 3;
+	3:
+		nstatetest1 := 0;
+	END_CASE
+ELSE
+	nstatetest1 := 0;
+	xathucan := FALSE;
+	fb_FoodWeight.Manual(bDown_Food_Motor := bDown_Food_Motor, bUp_Food_Motor := bUp_Food_Motor,
+									bMotor_Food := bMotor_Food, bZero_Loadcell_Food := bZero_Loadcell_Food, bMotor_Food_Reverse := bMotor_Food_reverse);
+				
+	IF bUp_Food_Motor THEN
+		bUp_Food_Motor := FALSE;
+	END_IF
+				
+	IF bDown_Food_Motor THEN
+		bDown_Food_Motor := FALSE;
+	END_IF
+				
+	IF bZero_Loadcell_Food THEN
+		bZero_Loadcell_Food := FALSE;
+	END_IF
+END_IF
+
+IF bxa THEN
+	CASE nstatetest2 OF 
+	0:
+		IF xasau THEN
+			nstatetest2 := 1;
+		END_IF
+	1:
+		IF fb_WormWeight.Auto() THEN
+			nstatetest2 := 2;
+		END_IF
+	2: 
+		xasau := FALSE;
+		nstatetest2 := 3;
+	3:
+		nstatetest2 := 0;
+	END_CASE
+ELSE
+	xasau := FALSE;
+	nstatetest2 := 0;
+	fb_WormWeight.Manual(bCylinder_Block_Worm_Extend := bCylinder_Block_Worm_Extend, bCylinder_Block_Worm_Retract := bCylinder_Block_Worm_Retract,
+					bDown_vibrating_funnel := bDown_vibrating_funnel, bUp_vibrating_funnel := bUp_vibrating_funnel,
+					bMotor_vibrating_funnel := bMotor_vibrating_funnel, bZero_Loadcell_Worm := bZero_Loadcell_Worm);
+	
+	IF bUp_vibrating_funnel THEN
+		bUp_vibrating_funnel := FALSE;
+	END_IF
+	
+	IF bDown_vibrating_funnel THEN
+		bDown_vibrating_funnel := FALSE;
+	END_IF
+	
+	IF bZero_Loadcell_Worm THEN
+		bZero_Loadcell_Worm := FALSE;
+	END_IF
+END_IF
+
+fb_LidSupply.Manual(bCylinder_LidStopper_extend := bCylinder_LidStopper_extend, bCylinder_LidStopper_retract := bCylinder_LidStopper_retract,
+					bCylinder_Suction_extend := bCylinder_Suction_extend, bCylinder_Suction_retract := bCylinder_Suction_retract,
+					bCupSuctionValve := bCupSuctionValve, bLidSuctionValve := bLidSuctionValve, bBlowValve := bBlowValve);
+
+fb_LidClose.Manual(bCylinder_CloseLid_Extend := bCylinder_CloseLid_Extend, bCylinder_CloseLid_Retract := bCylinder_CloseLid_Retract);
+
+
+fb_Transfer.Manual(bCylinder_Clip_Extend := bCylinder_Clip_Extend, bCylinder_Clip_Retract := bCylinder_Clip_Retract,
+				   bCylinder_Comb_Extend := bCylinder_Comb_Extend, bCylinder_Comb_Retract := bCylinder_Comb_Retract,
+				   bCylinder_Move_Comb_Extend := bCylinder_Move_Comb_Extend, bCylinder_Move_Comb_Retract := bCylinder_Move_Comb_Retract);
+
+IF fb_CupSupply.fbCylinder_Suction.bIsExtend AND fb_LidSupply.fbCylinder_Suction.bIsRetract AND fb_LidClose.fbCylinder_LidClose.bIsRetract THEN
+	bCheck := TRUE;
+ELSE
+	bCheck := FALSE;
+END_IF]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="Reset" Id="{da9caf39-17db-48c4-802c-12a0a74a8be5}">
+      <Implementation>
+        <ST><![CDATA[fb_CupSupply.Reset();
+fb_FoodMixer.Reset();
+fb_FoodWeight.Reset();
+fb_WormWeight.Reset();
+fb_LidSupply.Reset();
+fb_LidClose.Reset();
+fb_Transfer.Reset();
+nState := 22;]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="Stop" Id="{f0f46ddb-e060-4ece-9fef-629bafb58410}">
+      <Implementation>
+        <ST><![CDATA[fb_FoodWeight.Stop();
+fb_WormWeight.Stop();
+fb_LidSupply.Stop();
+fb_LidClose.Stop();
+fb_Transfer.Stop();
+fb_CupSupply.Stop();
+bLidSuctionValve		:= FALSE;
+bCupSuctionValve		:= FALSE;
+bResetAuto2		:= FALSE;
+fb_FoodMixer.Stop();
+]]></ST>
+      </Implementation>
+    </Action>
+    <LineIds Name="PR_Line02">
+      <LineId Id="462" Count="6" />
+      <LineId Id="846" Count="0" />
+      <LineId Id="845" Count="0" />
+      <LineId Id="848" Count="0" />
+      <LineId Id="850" Count="0" />
+      <LineId Id="469" Count="22" />
+      <LineId Id="1660" Count="0" />
+      <LineId Id="492" Count="1" />
+      <LineId Id="687" Count="1" />
+      <LineId Id="1500" Count="0" />
+      <LineId Id="1820" Count="0" />
+      <LineId Id="494" Count="39" />
+      <LineId Id="1661" Count="0" />
+      <LineId Id="534" Count="1" />
+      <LineId Id="689" Count="1" />
+      <LineId Id="1501" Count="0" />
+      <LineId Id="1821" Count="0" />
+      <LineId Id="536" Count="6" />
+      <LineId Id="1502" Count="0" />
+      <LineId Id="693" Count="3" />
+      <LineId Id="5" Count="0" />
+      <LineId Id="1166" Count="1" />
+      <LineId Id="1331" Count="0" />
+      <LineId Id="1007" Count="2" />
+      <LineId Id="1005" Count="0" />
+    </LineIds>
+    <LineIds Name="PR_Line02.Auto">
+      <LineId Id="1977" Count="5" />
+      <LineId Id="2733" Count="2" />
+      <LineId Id="1983" Count="2" />
+      <LineId Id="2650" Count="0" />
+      <LineId Id="1986" Count="0" />
+      <LineId Id="2777" Count="0" />
+      <LineId Id="1987" Count="0" />
+      <LineId Id="1994" Count="3" />
+      <LineId Id="2883" Count="1" />
+      <LineId Id="2005" Count="4" />
+      <LineId Id="2877" Count="0" />
+      <LineId Id="2654" Count="0" />
+      <LineId Id="2802" Count="0" />
+      <LineId Id="2814" Count="3" />
+      <LineId Id="2813" Count="0" />
+      <LineId Id="2803" Count="0" />
+      <LineId Id="2806" Count="0" />
+      <LineId Id="2878" Count="0" />
+      <LineId Id="2808" Count="4" />
+      <LineId Id="2805" Count="0" />
+      <LineId Id="3035" Count="0" />
+      <LineId Id="2804" Count="0" />
+      <LineId Id="2637" Count="1" />
+      <LineId Id="2647" Count="0" />
+      <LineId Id="2639" Count="0" />
+      <LineId Id="2783" Count="0" />
+      <LineId Id="2879" Count="0" />
+      <LineId Id="3070" Count="0" />
+      <LineId Id="2641" Count="1" />
+      <LineId Id="2640" Count="0" />
+      <LineId Id="2012" Count="1" />
+      <LineId Id="2880" Count="0" />
+      <LineId Id="2014" Count="0" />
+      <LineId Id="3036" Count="0" />
+      <LineId Id="3071" Count="3" />
+      <LineId Id="2017" Count="0" />
+      <LineId Id="2019" Count="1" />
+      <LineId Id="2614" Count="0" />
+      <LineId Id="2609" Count="1" />
+      <LineId Id="2613" Count="0" />
+      <LineId Id="2616" Count="2" />
+      <LineId Id="2633" Count="2" />
+      <LineId Id="2620" Count="0" />
+      <LineId Id="2786" Count="0" />
+      <LineId Id="2621" Count="1" />
+      <LineId Id="2611" Count="0" />
+      <LineId Id="2021" Count="0" />
+      <LineId Id="2819" Count="4" />
+      <LineId Id="2818" Count="0" />
+      <LineId Id="2702" Count="10" />
+      <LineId Id="2032" Count="4" />
+      <LineId Id="2993" Count="0" />
+      <LineId Id="2037" Count="4" />
+      <LineId Id="2885" Count="1" />
+      <LineId Id="2888" Count="2" />
+      <LineId Id="2887" Count="0" />
+      <LineId Id="2043" Count="4" />
+      <LineId Id="2952" Count="5" />
+      <LineId Id="2959" Count="0" />
+      <LineId Id="2051" Count="0" />
+      <LineId Id="2987" Count="5" />
+      <LineId Id="2986" Count="0" />
+      <LineId Id="2052" Count="18" />
+      <LineId Id="3027" Count="0" />
+      <LineId Id="2071" Count="12" />
+      <LineId Id="2911" Count="4" />
+      <LineId Id="2902" Count="0" />
+      <LineId Id="2085" Count="1" />
+      <LineId Id="2907" Count="0" />
+      <LineId Id="2088" Count="1" />
+      <LineId Id="2960" Count="0" />
+      <LineId Id="2963" Count="2" />
+      <LineId Id="2961" Count="0" />
+      <LineId Id="2966" Count="0" />
+      <LineId Id="2969" Count="0" />
+      <LineId Id="2962" Count="0" />
+      <LineId Id="3029" Count="5" />
+      <LineId Id="3028" Count="0" />
+      <LineId Id="2094" Count="0" />
+      <LineId Id="3057" Count="1" />
+      <LineId Id="3056" Count="0" />
+      <LineId Id="2095" Count="6" />
+      <LineId Id="3068" Count="0" />
+      <LineId Id="2102" Count="15" />
+      <LineId Id="3085" Count="4" />
+      <LineId Id="2118" Count="42" />
+      <LineId Id="2162" Count="9" />
+      <LineId Id="2173" Count="0" />
+      <LineId Id="2175" Count="5" />
+      <LineId Id="2739" Count="0" />
+      <LineId Id="2743" Count="4" />
+      <LineId Id="2742" Count="0" />
+      <LineId Id="2748" Count="1" />
+      <LineId Id="2741" Count="0" />
+      <LineId Id="2187" Count="1" />
+      <LineId Id="2780" Count="0" />
+      <LineId Id="2189" Count="7" />
+      <LineId Id="2198" Count="8" />
+      <LineId Id="2881" Count="0" />
+      <LineId Id="2208" Count="0" />
+      <LineId Id="3037" Count="0" />
+      <LineId Id="3075" Count="3" />
+      <LineId Id="2210" Count="0" />
+      <LineId Id="2212" Count="0" />
+      <LineId Id="2825" Count="5" />
+      <LineId Id="2841" Count="2" />
+      <LineId Id="2831" Count="9" />
+      <LineId Id="2728" Count="2" />
+      <LineId Id="2223" Count="6" />
+      <LineId Id="2994" Count="0" />
+      <LineId Id="2230" Count="3" />
+      <LineId Id="2891" Count="4" />
+      <LineId Id="2234" Count="5" />
+      <LineId Id="2944" Count="5" />
+      <LineId Id="2951" Count="0" />
+      <LineId Id="2243" Count="0" />
+      <LineId Id="2996" Count="5" />
+      <LineId Id="2995" Count="0" />
+      <LineId Id="2244" Count="20" />
+      <LineId Id="3026" Count="0" />
+      <LineId Id="2265" Count="12" />
+      <LineId Id="2916" Count="4" />
+      <LineId Id="2682" Count="0" />
+      <LineId Id="2279" Count="4" />
+      <LineId Id="2970" Count="5" />
+      <LineId Id="2977" Count="0" />
+      <LineId Id="2287" Count="0" />
+      <LineId Id="3020" Count="5" />
+      <LineId Id="3019" Count="0" />
+      <LineId Id="2288" Count="0" />
+      <LineId Id="3054" Count="1" />
+      <LineId Id="3053" Count="0" />
+      <LineId Id="2289" Count="6" />
+      <LineId Id="3047" Count="0" />
+      <LineId Id="2296" Count="17" />
+      <LineId Id="3090" Count="4" />
+      <LineId Id="2314" Count="44" />
+      <LineId Id="2360" Count="11" />
+      <LineId Id="2373" Count="0" />
+      <LineId Id="2375" Count="5" />
+      <LineId Id="2756" Count="0" />
+      <LineId Id="2845" Count="3" />
+      <LineId Id="2844" Count="0" />
+      <LineId Id="2757" Count="2" />
+      <LineId Id="2755" Count="0" />
+      <LineId Id="2387" Count="1" />
+      <LineId Id="2781" Count="0" />
+      <LineId Id="2389" Count="1" />
+      <LineId Id="2849" Count="0" />
+      <LineId Id="2853" Count="0" />
+      <LineId Id="2850" Count="2" />
+      <LineId Id="2731" Count="1" />
+      <LineId Id="2391" Count="0" />
+      <LineId Id="2764" Count="0" />
+      <LineId Id="2393" Count="0" />
+      <LineId Id="2765" Count="0" />
+      <LineId Id="2394" Count="0" />
+      <LineId Id="3018" Count="0" />
+      <LineId Id="2397" Count="2" />
+      <LineId Id="2882" Count="0" />
+      <LineId Id="3079" Count="3" />
+      <LineId Id="2400" Count="0" />
+      <LineId Id="3083" Count="1" />
+      <LineId Id="2402" Count="0" />
+      <LineId Id="3038" Count="0" />
+      <LineId Id="3069" Count="0" />
+      <LineId Id="2403" Count="0" />
+      <LineId Id="2788" Count="13" />
+      <LineId Id="2787" Count="0" />
+      <LineId Id="2405" Count="0" />
+      <LineId Id="2854" Count="5" />
+      <LineId Id="2863" Count="12" />
+      <LineId Id="2684" Count="0" />
+      <LineId Id="2418" Count="4" />
+      <LineId Id="3002" Count="0" />
+      <LineId Id="2423" Count="1" />
+      <LineId Id="3039" Count="0" />
+      <LineId Id="3043" Count="1" />
+      <LineId Id="3063" Count="0" />
+      <LineId Id="2425" Count="2" />
+      <LineId Id="2896" Count="4" />
+      <LineId Id="2428" Count="5" />
+      <LineId Id="2931" Count="0" />
+      <LineId Id="2940" Count="2" />
+      <LineId Id="2939" Count="0" />
+      <LineId Id="2934" Count="0" />
+      <LineId Id="2943" Count="0" />
+      <LineId Id="2930" Count="0" />
+      <LineId Id="3004" Count="5" />
+      <LineId Id="3003" Count="0" />
+      <LineId Id="3064" Count="2" />
+      <LineId Id="2438" Count="20" />
+      <LineId Id="3017" Count="0" />
+      <LineId Id="2459" Count="1" />
+      <LineId Id="3041" Count="0" />
+      <LineId Id="3045" Count="1" />
+      <LineId Id="3042" Count="0" />
+      <LineId Id="2461" Count="10" />
+      <LineId Id="2921" Count="4" />
+      <LineId Id="2472" Count="5" />
+      <LineId Id="2978" Count="5" />
+      <LineId Id="2985" Count="0" />
+      <LineId Id="2481" Count="0" />
+      <LineId Id="3011" Count="5" />
+      <LineId Id="3010" Count="0" />
+      <LineId Id="3060" Count="2" />
+      <LineId Id="2482" Count="0" />
+      <LineId Id="3049" Count="2" />
+      <LineId Id="2483" Count="6" />
+      <LineId Id="3048" Count="0" />
+      <LineId Id="2490" Count="17" />
+      <LineId Id="3095" Count="4" />
+      <LineId Id="2508" Count="44" />
+      <LineId Id="2554" Count="14" />
+      <LineId Id="2766" Count="0" />
+      <LineId Id="2769" Count="4" />
+      <LineId Id="2767" Count="0" />
+      <LineId Id="2774" Count="1" />
+      <LineId Id="2768" Count="0" />
+      <LineId Id="2575" Count="1" />
+      <LineId Id="2782" Count="0" />
+      <LineId Id="2577" Count="18" />
+      <LineId Id="2648" Count="0" />
+      <LineId Id="2598" Count="2" />
+      <LineId Id="128" Count="0" />
+    </LineIds>
+    <LineIds Name="PR_Line02.check">
+      <LineId Id="125" Count="17" />
+      <LineId Id="222" Count="6" />
+      <LineId Id="143" Count="0" />
+      <LineId Id="229" Count="0" />
+      <LineId Id="144" Count="77" />
+      <LineId Id="124" Count="0" />
+    </LineIds>
+    <LineIds Name="PR_Line02.Check_reset">
+      <LineId Id="2" Count="0" />
+      <LineId Id="84" Count="2" />
+      <LineId Id="121" Count="0" />
+      <LineId Id="83" Count="0" />
+      <LineId Id="87" Count="1" />
+      <LineId Id="73" Count="1" />
+      <LineId Id="119" Count="0" />
+      <LineId Id="95" Count="0" />
+      <LineId Id="104" Count="1" />
+      <LineId Id="122" Count="1" />
+      <LineId Id="106" Count="9" />
+      <LineId Id="125" Count="2" />
+      <LineId Id="124" Count="0" />
+      <LineId Id="120" Count="0" />
+      <LineId Id="96" Count="0" />
+      <LineId Id="1" Count="0" />
+    </LineIds>
+    <LineIds Name="PR_Line02.Init">
+      <LineId Id="1" Count="5" />
+      <LineId Id="30" Count="0" />
+      <LineId Id="10" Count="4" />
+      <LineId Id="27" Count="0" />
+      <LineId Id="16" Count="0" />
+      <LineId Id="31" Count="0" />
+      <LineId Id="17" Count="5" />
+      <LineId Id="32" Count="0" />
+      <LineId Id="23" Count="3" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="42" Count="0" />
+      <LineId Id="34" Count="0" />
+      <LineId Id="41" Count="0" />
+      <LineId Id="35" Count="5" />
+      <LineId Id="33" Count="0" />
+      <LineId Id="29" Count="0" />
+      <LineId Id="7" Count="0" />
+    </LineIds>
+    <LineIds Name="PR_Line02.Manual">
+      <LineId Id="68" Count="1" />
+      <LineId Id="168" Count="0" />
+      <LineId Id="70" Count="7" />
+      <LineId Id="169" Count="0" />
+      <LineId Id="78" Count="29" />
+      <LineId Id="170" Count="1" />
+      <LineId Id="108" Count="32" />
+      <LineId Id="172" Count="1" />
+      <LineId Id="141" Count="26" />
+      <LineId Id="174" Count="4" />
+      <LineId Id="32" Count="0" />
+    </LineIds>
+    <LineIds Name="PR_Line02.Reset">
+      <LineId Id="1" Count="7" />
+    </LineIds>
+    <LineIds Name="PR_Line02.Stop">
+      <LineId Id="38" Count="7" />
+      <LineId Id="47" Count="0" />
+      <LineId Id="46" Count="0" />
+      <LineId Id="28" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

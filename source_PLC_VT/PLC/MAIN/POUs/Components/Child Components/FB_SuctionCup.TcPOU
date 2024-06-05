@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_SuctionCup" Id="{d16da08f-69a9-440f-8644-b99114ab9a9c}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_SuctionCup IMPLEMENTS I_SuctionCup
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	fPressure 		AT %I*	: REAL;
+	bSuck			AT %Q*	: BOOL;
+	bPressure		AT %I* 	: BOOL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Property Name="bIsSuck" Id="{31a28ef6-e844-47fe-9440-2b6e84e94a32}">
+      <Declaration><![CDATA[PROPERTY bIsSuck : BOOL]]></Declaration>
+      <Get Name="Get" Id="{2a39f54a-0e74-4bf5-8dd0-d05b1ba3f090}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[bIsSuck := bPressure; 
+]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Property Name="fThreshold" Id="{e3addf55-7b71-4c3a-8199-ebd63c9ae2f3}">
+      <Declaration><![CDATA[PROPERTY fThreshold : REAL]]></Declaration>
+      <Get Name="Get" Id="{3c7a6992-3317-4c18-ab65-6dd104ad0c44}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[fThreshold := 6;]]></ST>
+        </Implementation>
+      </Get>
+      <Set Name="Set" Id="{88495eee-039f-43df-9a0d-07b42801ea5f}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[]]></ST>
+        </Implementation>
+      </Set>
+    </Property>
+    <Method Name="Release" Id="{9c9ac9c3-f3c6-4efe-b31f-2ed47b802dae}">
+      <Declaration><![CDATA[METHOD Release : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[bSuck := FALSE;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Suck" Id="{592836a1-69b9-45a3-b1f4-75215dffbfc3}">
+      <Declaration><![CDATA[METHOD Suck : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[bSuck := TRUE;]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="FB_SuctionCup">
+      <LineId Id="9" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_SuctionCup.bIsSuck.Get">
+      <LineId Id="6" Count="0" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_SuctionCup.fThreshold.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_SuctionCup.fThreshold.Set">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_SuctionCup.Release">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_SuctionCup.Suck">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

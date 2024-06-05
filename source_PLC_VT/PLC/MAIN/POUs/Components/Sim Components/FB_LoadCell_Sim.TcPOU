@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_LoadCell_Sim" Id="{3e911fc9-a1ad-4ef8-bcff-494fb39ecacb}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_LoadCell_Sim IMPLEMENTS I_LoadCell
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	bEnable : BOOL;
+	fValue  : REAL;
+	wStatus : WORD;
+	// var Sim
+	nState  		: INT;
+	fSetpoint		: REAL := 1000000;//setpoint feedback speed Loadcell 
+	tTimer			: TON; 
+	bInit			: BOOL := TRUE;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[CASE nState OF
+	0: //init
+		IF bInit THEN
+			fValue := 0;
+		END_IF
+		nState := nState + 1;
+	1://Loadcell Stop
+		fValue := 0;
+	
+	10: // check have cup on loadcell
+		IF bHaveLoad THEN
+			nState := 20;
+		END_IF
+	20:
+		fValue := fValue + fInvSpeed/fSetpoint;
+		IF NOT bHaveLoad THEN
+			nState := 10;
+		END_IF
+END_CASE
+//check enable loadcell
+IF (nState = 1) AND bEnable THEN
+	tTimer(IN := FALSE);
+	nState := 10;//Loadcell start
+END_IF]]></ST>
+    </Implementation>
+    <Property Name="fActWeight" Id="{2e7f61a7-07e3-4727-8fa9-99bc9e8be95c}">
+      <Declaration><![CDATA[PROPERTY fActWeight : REAL]]></Declaration>
+      <Get Name="Get" Id="{f99bc1d7-d9af-49ca-9d42-202598be6d16}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[fActWeight := fValue;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Method Name="NetMode" Id="{73ca5b07-5b39-4839-b99e-ea08226c9cd4}">
+      <Declaration><![CDATA[METHOD NetMode : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[bEnable := true;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Set_Zero" Id="{5e28bb37-6392-4580-b3d3-b1263d4d25fd}">
+      <Declaration><![CDATA[METHOD Set_Zero : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[fValue := 0;]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="Status" Id="{f9c681c7-8f0c-4832-8688-f20953bf4759}">
+      <Declaration><![CDATA[PROPERTY Status : REAL]]></Declaration>
+      <Get Name="Get" Id="{b8411849-765b-4608-b7b4-dc7c3fdb93fe}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[Status := WORD_TO_REAL(wStatus);]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <LineIds Name="FB_LoadCell_Sim">
+      <LineId Id="9" Count="0" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="21" Count="0" />
+      <LineId Id="24" Count="1" />
+      <LineId Id="28" Count="0" />
+      <LineId Id="61" Count="0" />
+      <LineId Id="63" Count="0" />
+      <LineId Id="62" Count="0" />
+      <LineId Id="26" Count="0" />
+      <LineId Id="36" Count="4" />
+      <LineId Id="44" Count="1" />
+      <LineId Id="43" Count="0" />
+      <LineId Id="19" Count="0" />
+      <LineId Id="30" Count="1" />
+      <LineId Id="34" Count="0" />
+      <LineId Id="32" Count="1" />
+    </LineIds>
+    <LineIds Name="FB_LoadCell_Sim.fActWeight.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_LoadCell_Sim.NetMode">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_LoadCell_Sim.Set_Zero">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_LoadCell_Sim.Status.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

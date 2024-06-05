@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_Cylinder_Sim" Id="{ffa2aa7a-79f0-47cd-9215-72e248e615cb}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Cylinder_Sim IMPLEMENTS I_Cylinder
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	// original IO
+	bAtExtend 		: BOOL;
+	bAtRetract 		: BOOL;
+	bMoveExtend 	: BOOL;
+	bMoveRetract 	: BOOL;
+	// internal vars for simulation
+	fbTimer				: TON;
+	tDelay				: TIME := T#1000MS;
+	bStartAtRetractPos	: BOOL := TRUE; // TRUE if default pos is at retract pos
+	nState				: INT := 0;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[CASE nState OF
+	0: // init start position sensor
+	IF bStartAtRetractPos THEN
+		bAtRetract := TRUE;
+	ELSE
+		bAtExtend := TRUE;
+	END_IF
+	nState := nState + 1;
+	
+	1: // check for move signal
+	IF (bMoveExtend AND bAtRetract) THEN
+		nState := 10;
+	END_IF
+	IF (bMoveRetract AND bAtExtend) THEN
+		nState := 20;
+	END_IF
+	
+	10: // move to extend pos
+	bAtRetract := FALSE;
+	fbTimer(IN:=TRUE, PT:=tDelay);
+	IF fbTimer.Q THEN
+		fbTimer(IN:=FALSE);
+		bAtExtend := TRUE;
+		nState := 1;
+	END_IF
+	
+	20: // move to retract pos
+	bAtExtend := FALSE;
+	fbTimer(IN:=TRUE, PT:=tDelay);
+	IF fbTimer.Q THEN
+		fbTimer(IN:=FALSE);
+		bAtRetract := TRUE;
+		nState := 1;
+	END_IF
+	
+END_CASE]]></ST>
+    </Implementation>
+    <Property Name="bIsExtend" Id="{d3e10932-1674-48f9-8a46-033d390d7d3b}">
+      <Declaration><![CDATA[PROPERTY bIsExtend : BOOL]]></Declaration>
+      <Get Name="Get" Id="{1f5dfd04-d882-443f-b16b-33d1d997caf4}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[bIsExtend := bAtExtend;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Property Name="bIsRetract" Id="{3ce06607-f8e8-4dac-b4de-bbb6a28b97b6}">
+      <Declaration><![CDATA[PROPERTY bIsRetract : BOOL]]></Declaration>
+      <Get Name="Get" Id="{d846d01c-b5b3-4ca8-bedb-cb62568d7f9d}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[bIsRetract := bAtRetract;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Method Name="Extend" Id="{07f5c472-91d4-46b9-b28b-1968a2e25e39}">
+      <Declaration><![CDATA[METHOD Extend : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[bMoveExtend := TRUE;
+bMoveRetract := FALSE;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Retract" Id="{f4d94734-94aa-4b70-92d7-7ee786d9acd5}">
+      <Declaration><![CDATA[METHOD Retract : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[bMoveExtend := FALSE;
+bMoveRetract := TRUE;]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="FB_Cylinder_Sim">
+      <LineId Id="9" Count="0" />
+      <LineId Id="37" Count="0" />
+      <LineId Id="39" Count="1" />
+      <LineId Id="42" Count="1" />
+      <LineId Id="41" Count="0" />
+      <LineId Id="79" Count="0" />
+      <LineId Id="44" Count="1" />
+      <LineId Id="47" Count="0" />
+      <LineId Id="57" Count="0" />
+      <LineId Id="50" Count="0" />
+      <LineId Id="52" Count="0" />
+      <LineId Id="58" Count="0" />
+      <LineId Id="51" Count="0" />
+      <LineId Id="59" Count="1" />
+      <LineId Id="68" Count="0" />
+      <LineId Id="63" Count="0" />
+      <LineId Id="61" Count="0" />
+      <LineId Id="70" Count="0" />
+      <LineId Id="66" Count="0" />
+      <LineId Id="77" Count="0" />
+      <LineId Id="67" Count="0" />
+      <LineId Id="65" Count="0" />
+      <LineId Id="62" Count="0" />
+      <LineId Id="69" Count="0" />
+      <LineId Id="73" Count="3" />
+      <LineId Id="78" Count="0" />
+      <LineId Id="71" Count="0" />
+      <LineId Id="46" Count="0" />
+      <LineId Id="38" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Cylinder_Sim.bIsExtend.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Cylinder_Sim.bIsRetract.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Cylinder_Sim.Extend">
+      <LineId Id="5" Count="1" />
+    </LineIds>
+    <LineIds Name="FB_Cylinder_Sim.Retract">
+      <LineId Id="6" Count="0" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

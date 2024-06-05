@@ -1,0 +1,2131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <GlobalTextList Name="GlobalTextList" Id="{ec43d1f5-f820-480b-8e52-810b06ed9179}">
+    <XmlArchive>
+      <Data>
+        <o xml:space="preserve" t="GlobalTextListObject">
+          <l n="TextList" t="ArrayList" cet="TextListRow">
+            <o>
+              <v n="TextID">"577"</v>
+              <v n="TextDefault">""</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v></v>
+                <v></v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"578"</v>
+              <v n="TextDefault">"%.1f"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v></v>
+                <v></v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1916"</v>
+              <v n="TextDefault">"%.1f "</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v></v>
+                <v></v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"272"</v>
+              <v n="TextDefault">"%.1f s"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v></v>
+                <v></v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1255"</v>
+              <v n="TextDefault">"%.2f"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v></v>
+                <v></v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"522"</v>
+              <v n="TextDefault">"%.2f "</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v></v>
+                <v></v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"324"</v>
+              <v n="TextDefault">"%d"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v></v>
+                <v></v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"534"</v>
+              <v n="TextDefault">"%i"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v></v>
+                <v></v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"168"</v>
+              <v n="TextDefault">"%s"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v></v>
+                <v></v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"467"</v>
+              <v n="TextDefault">"+"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v></v>
+                <v></v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"2312"</v>
+              <v n="TextDefault">"+/-%.1f "</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v></v>
+                <v></v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"462"</v>
+              <v n="TextDefault">"+/-%.2f "</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v></v>
+                <v></v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1236"</v>
+              <v n="TextDefault">"+/-%.f "</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v></v>
+                <v></v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"759"</v>
+              <v n="TextDefault">"-"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v></v>
+                <v></v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"43"</v>
+              <v n="TextDefault">"1. Ben chặn hũ trên (s)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>1. Ben chặn hũ trên (s)</v>
+                <v>1. Upper cylinder blocks jar (s)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1848"</v>
+              <v n="TextDefault">"1. Ben dập nắp"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>1. Ben dập nắp</v>
+                <v>1. Cylinder presses lid</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"610"</v>
+              <v n="TextDefault">"1. Ben dập nắp (s)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>1. Ben dập nắp (s)</v>
+                <v>1. Cylinder presses lid (s)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"2468"</v>
+              <v n="TextDefault">"1. Ben hút, thả nắp"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>1. Ben hút, thả nắp</v>
+                <v>1. Cylinder sucks/release lid</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1761"</v>
+              <v n="TextDefault">"1. Ben hút/thả nắp (s)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>1. Ben hút/thả nắp (s)</v>
+                <v>1. Cylinder sucks/release lid (s)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1520"</v>
+              <v n="TextDefault">"1. Ben lược vào/ra"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>1. Ben lược vào/ra</v>
+                <v>1. Comb cylinder moves in/out</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"194"</v>
+              <v n="TextDefault">"1. Ben lược vào/ra (s)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>1. Ben lược vào/ra (s)</v>
+                <v>1. Comb cylinder moves in/out (s)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"2358"</v>
+              <v n="TextDefault">"1. Motor đảo thức ăn (Hz)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>1. Động cơ đảo thức ăn (Hz)</v>
+                <v>1. Food Agitator motor (Hz)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"2242"</v>
+              <v n="TextDefault">"1. Phễu rung (Hz)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>1. Phễu rung (Hz)</v>
+                <v>1. Vibrating funnel (Hz)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1784"</v>
+              <v n="TextDefault">"1. Thời gian cân sâu (s)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>1. Thời gian cân sâu (s)</v>
+                <v>1. Time for weighting larvae (s)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"368"</v>
+              <v n="TextDefault">"1. Thời gian cân thức ăn (s)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>1. Thời gian cân thức ăn (s)</v>
+                <v>1. Time for weighting food (s)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"621"</v>
+              <v n="TextDefault">"1.Ben chặn hũ trên"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>1. Ben chặn hũ trên</v>
+                <v>1. The upper cylinder blocks the jar</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1429"</v>
+              <v n="TextDefault">"1.Khối lượng (g)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>1. Khối lượng (g)</v>
+                <v>1. The mass (g)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"758"</v>
+              <v n="TextDefault">"1.Khối lượng yêu cầu (g)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>1. Khối lượng yêu cầu (g)</v>
+                <v>1. The desire mass (g)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1103"</v>
+              <v n="TextDefault">"1.Số Shoot"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>1. Số Shoot</v>
+                <v>1. Shoot number</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1518"</v>
+              <v n="TextDefault">"1/2"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v></v>
+                <v></v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"870"</v>
+              <v n="TextDefault">"10. Khoảng trễ (s)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>10. Khoảng trễ (s)</v>
+                <v>10. Delay (s)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"2444"</v>
+              <v n="TextDefault">"11. Tốc độ băng tải đầu ra (Hz)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>11. Tốc độ băng tải đầu ra (Hz)</v>
+                <v>11. Speed of output conveyor (Hz)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"3265"</v>
+              <v n="TextDefault">"11. Tốc độ đảo thức ăn (Hz)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>11. Tốc độ đảo thức ăn (Hz)</v>
+                <v>11. Speed of agitator motor (Hz)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"3571"</v>
+              <v n="TextDefault">"11. Tốc độ động cơ đảo (Hz)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>11. Tốc độ động cơ đảo (Hz)</v>
+                <v>11. Speed of agitator motor (Hz)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"254"</v>
+              <v n="TextDefault">"2. Ben chặn hũ dưới (s)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>2. Ben chặn hũ dưới (s)</v>
+                <v>2. Lower cylinder blocks jar (s)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"85"</v>
+              <v n="TextDefault">"2. Ben chặn nắp (s)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>2. Ben chặn nắp (s)</v>
+                <v>2. Cylinder blocks lid (s)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"2129"</v>
+              <v n="TextDefault">"2. Ben chặn nắp trên ray"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>2. Ben chặn nắp trên ray</v>
+                <v>2. Cylinder blocks lid in rail</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"4542"</v>
+              <v n="TextDefault">"2. Ben chặn sâu"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>2. Ben chặn sâu </v>
+                <v>2. Cylinder blocks larvae</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"89"</v>
+              <v n="TextDefault">"2. Ben di chuyển lược"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>2. Ben di chuyển lược</v>
+                <v>2. Cylinder moves comb</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1937"</v>
+              <v n="TextDefault">"2. Ben kẹp hũ (s)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>2. Ben kẹp hũ (s)</v>
+                <v>2. Cylinder clamp jar (s)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1481"</v>
+              <v n="TextDefault">"2. Khoảng trễ ben dập nắp rút về (s)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>2. Thời gian ben dập nắp rút về (s)</v>
+                <v>2. Time for cylinder pressing lid retract (s)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"204"</v>
+              <v n="TextDefault">"2. Motor chia thức ăn (rpm)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>2. Động cơ chia thức ăn (rpm)</v>
+                <v>2. Food dispenser motor (rpm)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"588"</v>
+              <v n="TextDefault">"2. Sai số (%)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>2. Sai số (%)</v>
+                <v>2. Deviation (%)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"863"</v>
+              <v n="TextDefault">"2. Sai số cho phép (%)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>2. Sai số cho phép (%)</v>
+                <v>2. Allowable deviation (%)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"4394"</v>
+              <v n="TextDefault">"2. Thời gian ben dập nắp rút về (s)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>2. Thời gian ben dập nắp rút về (s)</v>
+                <v>2. Time for cylinder pressing lid retract (s)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"2355"</v>
+              <v n="TextDefault">"2. Thời gian ổn định hũ sâu (s)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>2. Thời gian ổn định hũ sâu (s)</v>
+                <v>2. Time to stabilize the larvae jar (s)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"4032"</v>
+              <v n="TextDefault">"2. Thời gian ổn định hũ thức ăn (s)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>2. Thời gian ổn định hũ thức ăn (s)</v>
+                <v>2. Time to stabilize the food jar (s)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"311"</v>
+              <v n="TextDefault">"2.Ben chặn hũ dưới"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>2. Ben chặn hũ dưới</v>
+                <v>2. The lower cylinder blocks the jar</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"3026"</v>
+              <v n="TextDefault">"2/2"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v></v>
+                <v></v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"98"</v>
+              <v n="TextDefault">"3. Ben chặn sâu (s)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>3. Ben chặn sâu (s)</v>
+                <v>3. Cylinder blocks larvae (s)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"198"</v>
+              <v n="TextDefault">"3. Ben di chuyển lược (s)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>3. Ben di chuyển lược (s)</v>
+                <v>3. Cylinder moves comb (s)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1881"</v>
+              <v n="TextDefault">"3. Ben kẹp hũ, đối diện lược"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>3. Ben kẹp hũ, đối diện lược</v>
+                <v>3. Cylinder clamp the jar (s)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"779"</v>
+              <v n="TextDefault">"3. Kiểm tra hết hũ (s)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>3. Kiểm tra hết hũ (s)</v>
+                <v>3. The jar is getting low (s)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1590"</v>
+              <v n="TextDefault">"3. Kiểm tra hết nắp (s)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>3. Kiểm tra hết nắp (s)</v>
+                <v>3. The lid is getting low (s)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1960"</v>
+              <v n="TextDefault">"3. Thời gian đảo chiều động cơ trộn thức ăn (s)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>3. Thời gian đảo chiều động cơ trộn thức ăn (s)</v>
+                <v>3. Timer for reversing agitator motor (s)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"952"</v>
+              <v n="TextDefault">"3. Tốc độ cấp I (Hz)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>3. Tốc độ cấp I (Hz)</v>
+                <v>3. The velocity (Hz)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"455"</v>
+              <v n="TextDefault">"3. Tốc độ cấp I (rpm)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>3. Tốc độ cấp I (rpm)</v>
+                <v>3. The velocity I (rpm)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"3651"</v>
+              <v n="TextDefault">"3. Tốc độ I (Hz)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>3. Tốc độ I (Hz)</v>
+                <v>3. The velocity I (Hz)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1182"</v>
+              <v n="TextDefault">"3. Tốc độ I (rpm)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>3. Tốc độ I (rpm)</v>
+                <v>3. The velocity I (rpm)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"3921"</v>
+              <v n="TextDefault">"3. Van hút nắp"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>3. Van hút nắp</v>
+                <v>3. Valve sucks lid </v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"740"</v>
+              <v n="TextDefault">"3.Ben hút/thả hũ"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>3. Ben hút/thả hũ</v>
+                <v>3. Cylinder sucks/release jar</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"594"</v>
+              <v n="TextDefault">"4. Kiểm tra hút được nắp (s)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>4. Kiểm tra hút được nắp (s)</v>
+                <v>4. The lid is suctioned (s)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"413"</v>
+              <v n="TextDefault">"4. Kiểm tra hết sâu (s)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>4. Kiểm tra hết sâu (s)</v>
+                <v>4. Check running out of larvae (s)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1166"</v>
+              <v n="TextDefault">"4. Kiểm tra kẹt hũ (s)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>4. Kiểm tra kẹt hũ (s)</v>
+                <v>4. The jar is stucked (s)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"118"</v>
+              <v n="TextDefault">"4. Thời gian đảo chiều động cơ chia thức ăn (s)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>4. Thời gian đảo chiều động cơ chia thức ăn (s)</v>
+                <v>4. Timer for reversing (s)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"4404"</v>
+              <v n="TextDefault">"4. Tốc độ cấp II (Hz)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>4. Tốc độ cấp II (Hz)</v>
+                <v>4. The velocity I (Hz)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"297"</v>
+              <v n="TextDefault">"4. Tốc độ cấp II (rpm)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>4. Tốc độ cấp II (rpm)</v>
+                <v>4. The velocity II (rpm)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1764"</v>
+              <v n="TextDefault">"4. Tốc độ II (Hz)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>4. Tốc độ II (Hz)</v>
+                <v>4. The velocity II (Hz)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"344"</v>
+              <v n="TextDefault">"4. Tốc độ II (rpm)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>4. Tốc độ II (rpm)</v>
+                <v>4. The velocity II (rpm)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"86"</v>
+              <v n="TextDefault">"4. Van hút định vị hũ"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>4. Van hút định vị hũ</v>
+                <v>4. Suction valve locates the jar</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"2844"</v>
+              <v n="TextDefault">"5. Ben chặn hũ trên đẩy ra (s)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>5. Ben chặn hũ trên đẩy ra (s)</v>
+                <v>5. Upper clinder blocks jar extend (s)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"2498"</v>
+              <v n="TextDefault">"5. Kiểm tra hết thức ăn (s)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>5, Kiểm tra hết thức ăn (s)</v>
+                <v>5. Check running out of food (s)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"2430"</v>
+              <v n="TextDefault">"5. Ngắt hút (s)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>5. Ngắt hút (s)</v>
+                <v>5. Shut off suction (s)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"3883"</v>
+              <v n="TextDefault">"5. Tốc độ cấp III (Hz)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>5. Tốc độ cấp III (Hz)</v>
+                <v>5. The velocity III (Hz)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1037"</v>
+              <v n="TextDefault">"5. Tốc độ cấp III (rpm)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>5. Tốc độ cấp III (rpm)</v>
+                <v>5. The velocity III (rpm)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"4207"</v>
+              <v n="TextDefault">"5. Tốc độ III (Hz)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>5. Tốc độ III (Hz)</v>
+                <v>5. The velocity III (Hz)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"353"</v>
+              <v n="TextDefault">"5. Tốc độ III (rpm)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>5. Tốc độ III (rpm)</v>
+                <v>5. The velocity III (rpm)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"2962"</v>
+              <v n="TextDefault">"6. Ben hút/thả hũ (s)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>6. Ben hút/thả hũ (s)</v>
+                <v>6. Cylinder sucks/releases jar (s)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"2859"</v>
+              <v n="TextDefault">"6. Ben hút/thả hũ(s)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>6. Ben hút/thả hũ (s)</v>
+                <v>6. Cylinder sucks/releases jar (s)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"657"</v>
+              <v n="TextDefault">"6. Chuyển I - II (%)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>6. Chuyển I - II (%)</v>
+                <v>6. Change I - II (%)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"18"</v>
+              <v n="TextDefault">"6. Vị trí chuyển cấp I - II (%)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>6. Vị trí chuyển cấp I - II (%)</v>
+                <v>6. Postion change speed I - II (%)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1654"</v>
+              <v n="TextDefault">"7. Ben hút/thả hũ rút về (s)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>7. Ben hút/thả hũ rút về (s)</v>
+                <v>7. Cylinder sucks/releases jar retract (s)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"865"</v>
+              <v n="TextDefault">"7. Chuyển II - III (%)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>7. Chuyển II - III (%)</v>
+                <v>7. Change II - III (%)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"564"</v>
+              <v n="TextDefault">"7. Vị trí chuyển cấp II - III (%)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>7. Vị trí chuyển cấp II - III (%)</v>
+                <v>7. Position change speed II - III (%)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"965"</v>
+              <v n="TextDefault">"8. Ngắt hút (s)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>8. Ngắt hút (s)</v>
+                <v>8. Stop suction (s)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"677"</v>
+              <v n="TextDefault">"8. Tải trọng tối đa (g)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>8. Tải trọng tối đa (g)</v>
+                <v>8. Maximum payload (g)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1330"</v>
+              <v n="TextDefault">"9. Vị trí dừng (%)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>9. Vị trí dừng (%)</v>
+                <v>9. Halt position (%)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1341"</v>
+              <v n="TextDefault">"9.Kích hút (s)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>9. Kích hút (s)</v>
+                <v>9. Suction (s)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"2827"</v>
+              <v n="TextDefault">"Bypass cửa"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Bypass cửa</v>
+                <v>Bypass door</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1689"</v>
+              <v n="TextDefault">"Bypass Nắp"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Bypass Nắp</v>
+                <v>Bypass lid</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1003"</v>
+              <v n="TextDefault">"Bypass Sâu"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Bypass Sâu</v>
+                <v>Bypass larvae</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"207"</v>
+              <v n="TextDefault">"Bypass Thức ăn"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Bypass Thức ăn</v>
+                <v>Bypass food</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"642"</v>
+              <v n="TextDefault">"Bạn có muốn xóa không?"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Bạn có muốn xóa không?</v>
+                <v>Do you want to delete?</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"917"</v>
+              <v n="TextDefault">"Chạy"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Chạy</v>
+                <v>Run</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"137"</v>
+              <v n="TextDefault">"Clear"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Xóa</v>
+                <v>Clear</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"352"</v>
+              <v n="TextDefault">"Cài đặt"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Cài đặt</v>
+                <v>Setting</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"503"</v>
+              <v n="TextDefault">"Có"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Có</v>
+                <v>Yes</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"689"</v>
+              <v n="TextDefault">"Cụm cân sâu"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Cụm cân sâu</v>
+                <v>Weighing larvae</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"775"</v>
+              <v n="TextDefault">"Cụm cấp hũ"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Cụm cấp hũ</v>
+                <v>Jar supply</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"129"</v>
+              <v n="TextDefault">"Cụm cấp nắp"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Cụm cấp nắp</v>
+                <v>Lid supply</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"838"</v>
+              <v n="TextDefault">"Cụm cấp thức ăn"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Cụm cấp thức ăn</v>
+                <v>Food supply</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"454"</v>
+              <v n="TextDefault">"Cụm dập nắp"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Cụm dập nắp</v>
+                <v>Pressing lid</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"80"</v>
+              <v n="TextDefault">"Cụm transfer"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Cụm transfer</v>
+                <v>Transfer</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1210"</v>
+              <v n="TextDefault">"DELAY LINE 1"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>THỜI GIAN TRẠM 1</v>
+                <v>TIMER LINE 1</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1442"</v>
+              <v n="TextDefault">"DELAY LINE 2"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>THỜI GIAN TRẠM 2</v>
+                <v>TIMER LINE 2</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"61"</v>
+              <v n="TextDefault">"Describe"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v></v>
+                <v></v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"236"</v>
+              <v n="TextDefault">"Dừng"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Dừng</v>
+                <v>Stop</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"643"</v>
+              <v n="TextDefault">"Dừng hút"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Dừng hút</v>
+                <v>Stop suction</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"781"</v>
+              <v n="TextDefault">"Engineer"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v></v>
+                <v></v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"196"</v>
+              <v n="TextDefault">"Hút"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Hút</v>
+                <v>Suck</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"2112"</v>
+              <v n="TextDefault">"Hết ca"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Hết ca</v>
+                <v>End shift</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1181"</v>
+              <v n="TextDefault">"ID"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>ID</v>
+                <v>ID</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"836"</v>
+              <v n="TextDefault">"INPUT"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>NGÕ VÀO</v>
+                <v>INPUT</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"184"</v>
+              <v n="TextDefault">"Không"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Không</v>
+                <v>No</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"640"</v>
+              <v n="TextDefault">"Khối lượng cốc (g)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Khối lượng cốc (g)</v>
+                <v>Mass of cup (g)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"523"</v>
+              <v n="TextDefault">"Khối lượng sâu (g)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Khối lượng sâu (g)</v>
+                <v>Mass of larvae (g)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"474"</v>
+              <v n="TextDefault">"Khối lượng thức ăn (g)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Khối lượng thức ăn (g)</v>
+                <v>Mass of food (g)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1680"</v>
+              <v n="TextDefault">"LINE 1"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>TRẠM 1</v>
+                <v>LINE 1</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1088"</v>
+              <v n="TextDefault">"LINE 2"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>TRẠM 2</v>
+                <v>LINE 2</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"849"</v>
+              <v n="TextDefault">"Lưu"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Lưu</v>
+                <v>Save</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1378"</v>
+              <v n="TextDefault">"Lựa chọn của bạn"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Lựa chọn của bạn</v>
+                <v>Your choice</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"257"</v>
+              <v n="TextDefault">"MÀN HÌNH CHÍNH LINE 1"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>MÀN HÌNH CHÍNH TRẠM 1</v>
+                <v>MAIN LINE 1 SCREEN</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"4"</v>
+              <v n="TextDefault">"MÀN HÌNH CHÍNH LINE 2"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>MÀN HÌNH CHÍNH TRẠM 2</v>
+                <v>MAIN LINE 2 SCREEN</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1168"</v>
+              <v n="TextDefault">"MÀN HÌNH CHẠY TAY LINE 1"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>MÀN HÌNH CHẠY TAY TRẠM 1</v>
+                <v>MANUAL LINE 1 SCREEN</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"762"</v>
+              <v n="TextDefault">"MÀN HÌNH CHẠY TAY LINE 2"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>MÀN HÌNH CHẠY TAY TRẠM 2</v>
+                <v>MANUAL LINE 2 SCREEN</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1368"</v>
+              <v n="TextDefault">"MÀN HÌNH CÀI KHOẢNG TRỄ LINE 1"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>MÀN HÌNH CÀI KHOẢNG TRỄ TRẠM 1</v>
+                <v>SETTING DELAYS LINE 1</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1237"</v>
+              <v n="TextDefault">"MÀN HÌNH CÀI KHOẢNG TRỄ LINE 2"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>MÀN HÌNH CÀI KHOẢNG TRỄ TRẠM 2</v>
+                <v>SETTING DELAYS LINE 2</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"386"</v>
+              <v n="TextDefault">"MÀN HÌNH CÀI ĐẶT LINE 1"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>MÀN HÌNH CÀI ĐẶT TRẠM 1</v>
+                <v>SETTINGS LINE 1 SCREEN</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1892"</v>
+              <v n="TextDefault">"MÀN HÌNH CÀI ĐẶT LINE 2"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>MÀN HÌNH CÀI ĐẶT TRẠM 2</v>
+                <v>SETTINGS LINE 2 SCREEN</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"786"</v>
+              <v n="TextDefault">"MÀN HÌNH IO LINE 1"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>MÀN HÌNH IO TRẠM 1</v>
+                <v>IO LINE 1 SCREEN</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"798"</v>
+              <v n="TextDefault">"MÀN HÌNH IO LINE 2"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>MÀN HÌNH IO TRẠM 2</v>
+                <v>IO LINE 2 SCREEN</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"833"</v>
+              <v n="TextDefault">"MÀN HÌNH LƯU THÔNG SỐ LINE 1"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>MÀN HÌNH LƯU THÔNG SỐ TRẠM 1</v>
+                <v>PARAMETERS STORAGE LINE 1</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1067"</v>
+              <v n="TextDefault">"MÀN HÌNH LƯU THÔNG SỐ LINE 2"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>MÀN HÌNH LƯU THÔNG SỐ TRẠM 2</v>
+                <v>PARAMETERS STORAGE LINE 2</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"4017"</v>
+              <v n="TextDefault">"MÀN HÌNH LỖI TRẠM 1"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>MÀN HÌNH LỖI TRẠM 1</v>
+                <v>ALARM SCREEN LINE 1</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1028"</v>
+              <v n="TextDefault">"MÀN HÌNH LỖI TRẠM 2"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>MÀN HÌNH LỖI TRẠM 2</v>
+                <v>ALARM SCREEN LINE 2</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1780"</v>
+              <v n="TextDefault">"MÀN HÌNH THÔNG SỐ TRẠM 1"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>MÀN HÌNH THÔNG SỐ TRẠM 1</v>
+                <v>PARAMETERS SCREEN LINE 1</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1857"</v>
+              <v n="TextDefault">"MÀN HÌNH THÔNG SỐ TRẠM 2"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>MÀN HÌNH THÔNG SỐ TRẠM 2</v>
+                <v>PARAMETERS SCREEN LINE 2</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1188"</v>
+              <v n="TextDefault">"Mô tả"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Mô tả</v>
+                <v>Description</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1449"</v>
+              <v n="TextDefault">"Ngược"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Ngược</v>
+                <v>Reverse</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"777"</v>
+              <v n="TextDefault">"None"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v></v>
+                <v></v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1079"</v>
+              <v n="TextDefault">"Năng suất (cup/h)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Năng suất(cốc/h)		</v>
+                <v>Product(cup/h)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"669"</v>
+              <v n="TextDefault">"Nạp"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Nạp</v>
+                <v>Load</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"784"</v>
+              <v n="TextDefault">"Operator"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v></v>
+                <v></v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"219"</v>
+              <v n="TextDefault">"OUTPUT"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>NGÕ RA</v>
+                <v>OUTPUT</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1453"</v>
+              <v n="TextDefault">"PARAMETER"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>THÔNG SỐ</v>
+                <v>PARAMETER</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"886"</v>
+              <v n="TextDefault">"Rút về"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Rút về</v>
+                <v>Retract</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"139"</v>
+              <v n="TextDefault">"Sai số sâu (%)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Sai số sâu (%)</v>
+                <v>Deviation of larvae (%)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"625"</v>
+              <v n="TextDefault">"Sai số thức ăn (%)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Sai số thức ăn (%)</v>
+                <v>Deviation of food (%)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"478"</v>
+              <v n="TextDefault">"START"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Bắt đầu</v>
+                <v>Start</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"3882"</v>
+              <v n="TextDefault">"Start page"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Start page</v>
+                <v>Start page</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"440"</v>
+              <v n="TextDefault">"Status"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v></v>
+                <v></v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"12"</v>
+              <v n="TextDefault">"STOP"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Dừng</v>
+                <v>Stop</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"62"</v>
+              <v n="TextDefault">"Sâu"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Sâu</v>
+                <v>Larva</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"587"</v>
+              <v n="TextDefault">"SÂU"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Sâu</v>
+                <v>Larva</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"909"</v>
+              <v n="TextDefault">"TG cân sâu"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>TG cân sâu</v>
+                <v>Time of weight larvae</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"2214"</v>
+              <v n="TextDefault">"TG cân thức ăn"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>TG cân thức ăn</v>
+                <v>Time of weight food</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"2059"</v>
+              <v n="TextDefault">"Thuận"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Thuận</v>
+                <v>Forward</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1204"</v>
+              <v n="TextDefault">"Thời gian"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Thời gian</v>
+                <v>Time</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1876"</v>
+              <v n="TextDefault">"Thời gian (s)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Thời gian (s)</v>
+                <v>Time (s)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"294"</v>
+              <v n="TextDefault">"Thức ăn"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Thức ăn</v>
+                <v>Food</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"513"</v>
+              <v n="TextDefault">"THỨC ĂN"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Thức ăn</v>
+                <v>Food</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"877"</v>
+              <v n="TextDefault">"Thực tế"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Thực tế</v>
+                <v>Actual</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"48"</v>
+              <v n="TextDefault">"Time"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v></v>
+                <v></v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1196"</v>
+              <v n="TextDefault">"Trạng thái"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Trạng thái</v>
+                <v>Status</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"771"</v>
+              <v n="TextDefault">"Trạng thái hoạt động"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Trạng thái hoạt động</v>
+                <v>Operation status</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1711"</v>
+              <v n="TextDefault">"Trộn"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Trộn</v>
+                <v>Mix</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"2142"</v>
+              <v n="TextDefault">"Tạm dừng"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Tạm dừng</v>
+                <v>Pause</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"2305"</v>
+              <v n="TextDefault">"Tốc độ (g/s)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Tốc độ (g/s)</v>
+                <v>Velocity (g/s)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"754"</v>
+              <v n="TextDefault">"Tổng khối lượng (g)"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Tổng khối lượng (g)</v>
+                <v>Mass total (g)</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1399"</v>
+              <v n="TextDefault">"Tổng số cốc đã cân"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Tổng số cốc đã cân</v>
+                <v>Total cups weighted</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1621"</v>
+              <v n="TextDefault">"U1I1-1. Nút Start"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1I1-1. Nút Start</v>
+                <v>U1I1-1. Start button</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"3076"</v>
+              <v n="TextDefault">"U1I1-2. Nút Stop"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1I1-2. Nút Stop</v>
+                <v>U1I1-2. Stop button</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"536"</v>
+              <v n="TextDefault">"U1I1-3. Nút Reset"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1I1-3. Nút Reset</v>
+                <v>U1I1-3. Rest button</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"3249"</v>
+              <v n="TextDefault">"U1I2-4. Cảm biến báo thiếu hũ"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1I2-4. Cảm biến báo thiếu hũ</v>
+                <v>U1I2-4. Sensor detecting jar is getting low</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"2058"</v>
+              <v n="TextDefault">"U1I2-5. Cảm biến rút về của ben chặn hũ trên"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1I2-5. Cảm biến rút về của ben chặn hũ trên</v>
+                <v>U1I2-5. Retract sensor of upper cylinder</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1695"</v>
+              <v n="TextDefault">"U1I2-6. Cảm biến rút về của ben chặn hũ dưới"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1I2-6. Cảm biến rút về của ben chặn hũ dưới</v>
+                <v>U1I2-6. Retract sensor of lower cylinder</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"3389"</v>
+              <v n="TextDefault">"U1I2-7. Cảm biến đẩy ra của ben chặn hũ dưới"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1I2-7. Cảm biến đẩy ra của ben chặn hũ dưới</v>
+                <v>U1I2-7. Extend sensor of upper cylinder</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"71"</v>
+              <v n="TextDefault">"U1I2-8. Cảm biến báo kẹt hũ"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1I2-8. Cảm biến báo kẹt hũ</v>
+                <v>U1I2-8. Sensor detecting jar is stucked</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"4241"</v>
+              <v n="TextDefault">"U1I3-1. Cảm biến rút về ben chặn sâu"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1I3-1. Cảm biến rút về ben chặn sâu</v>
+                <v>U1I3-1. Retract sensor of cylinder blocks larvae</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"500"</v>
+              <v n="TextDefault">"U1I3-2. Cảm biến báo thiếu nắp"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1I3-2. Cảm biến báo thiếu nắp</v>
+                <v>U1I3-2. Sensor detecting lid is getting low</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1849"</v>
+              <v n="TextDefault">"U1I3-3. Cảm biến rút về của ben chặn nắp"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1I3-3. Cảm biến rút về của ben chặn nắp</v>
+                <v>U1I3-3. Retract sensor of cylinder blocks lid</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"31"</v>
+              <v n="TextDefault">"U1I3-4. Cảm biến đẩy ra của ben chặn nắp"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1I3-4. Cảm biến đẩy ra của ben chặn nắp</v>
+                <v>U1I3-4. Extend sensor of cylinder blocks lid</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"277"</v>
+              <v n="TextDefault">"U1I3-5. Cảm biến trên của ben hút nắp"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1I3-5. Cảm biến trên của ben hút nắp</v>
+                <v>U1I3-5. Upper sensor of cylinder sucks lid</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"2845"</v>
+              <v n="TextDefault">"U1I3-6. Cảm biến dưới của ben hút nắp "</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1I3-6. Cảm biến dưới của ben hút nắp</v>
+                <v>U1I3-6. Lower sensor of cylinder sucks lid</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"2605"</v>
+              <v n="TextDefault">"U1I3-7. Cảm biến báo hút được nắp"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1I3-7. Cảm biến báo hút được nắp</v>
+                <v>U1I3-7. Sensor detecting lid is sucked</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"3955"</v>
+              <v n="TextDefault">"U1I3-8. Cảm biến trên của ben dập nắp"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1I3-8. Cảm biến trên của ben dập nắp</v>
+                <v>U1I3-8. Upper sensor of cylinder presses lid</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"3907"</v>
+              <v n="TextDefault">"U1I4-1. Cảm biến dưới của ben dập nắp"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1I4-1. Cảm biến dưới của ben dập nắp</v>
+                <v>U1I4-1. Lower sensor of cylinder presses lid</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"876"</v>
+              <v n="TextDefault">"U1I4-2. Cảm biến rút về của ben lược"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1I4-2. Cảm biến rút về của ben lược</v>
+                <v>U1I4-2. Retract sensor of comb cylinder</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"2630"</v>
+              <v n="TextDefault">"U1I4-3. Cảm biến đẩy ra của ben lược"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1I4-3. Cảm biến đẩy ra của ben lược</v>
+                <v>U1I4-3. Extend sensor of comb cylinder</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"4377"</v>
+              <v n="TextDefault">"U1I4-4. Cảm biến rút về của ben di chuyển lược"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1I4-4. Cảm biến rút về của ben di chuyển lược</v>
+                <v>U1I4-4. Retract sensor of cylinder moves comb</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"2666"</v>
+              <v n="TextDefault">"U1I4-5. Cảm biến đẩy ra của ben di chuyển lược"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1I4-5. Cảm biến đẩy ra của ben di chuyển lược</v>
+                <v>U1I4-5. Extend sensor of cylidner moves comb</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1344"</v>
+              <v n="TextDefault">"U1I4-6. Cảm biến rút về của ben kẹp hũ "</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1I4-6. Cảm biến rút về của ben kẹp hũ</v>
+                <v>U1I4-6. Retract sensor of cylinder clamp jar</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1519"</v>
+              <v n="TextDefault">"U1I4-7. Cảm biến đẩy ra của ben kẹp hũ "</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1I4-7. Cảm biến đẩy ra của ben kẹp hũ</v>
+                <v>U1I4-7. Extend sensor of cylinder clamp jar</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1627"</v>
+              <v n="TextDefault">"U1I4-8. Cảm biến phát hiện hũ ở chỗ cân thức ăn"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1I4-8. Cảm biến phát hiện hũ ở chỗ cân thức ăn</v>
+                <v>U1I4-8. Sensor detecting jar in food station</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"3159"</v>
+              <v n="TextDefault">"U1I5-1. Cảm biến phát hiện hũ ở chỗ cân sâu"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1I5-1. Cảm biến phát hiện hũ ở chỗ cân sâu</v>
+                <v>U1I5-1. Sensor detecting jar in larvae station</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"524"</v>
+              <v n="TextDefault">"U1I5-2. Cảm biến báo thiếu hũ"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1I5-2. Cảm biến báo thiếu hũ</v>
+                <v>U1I5-2. Sensor detecting jar is getting low</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"2400"</v>
+              <v n="TextDefault">"U1I5-3. Cảm biến rút về của ben chặn hũ trên"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1I5-3. Cảm biến rút về của ben chặn hũ trên</v>
+                <v>U1I5-3. Retract sensor of upper cylinder</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"2538"</v>
+              <v n="TextDefault">"U1I5-4. Cảm biến rút về của ben chặn hũ dưới"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1I5-4. Cảm biến rút về của ben chặn hũ dưới</v>
+                <v>U1I5-4. Retract sensor of lower cylinder</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"177"</v>
+              <v n="TextDefault">"U1I5-5. Cảm biến đẩy ra của ben chặn hũ dưới"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1I5-5. Cảm biến đẩy ra của ben chặn hũ dưới</v>
+                <v>U1I5-5. Extend sensor of lower cylinder</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"2643"</v>
+              <v n="TextDefault">"U1I5-6. Cảm biến báo kẹt hũ"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1I5-6. Cảm biến báo kẹt hũ</v>
+                <v>U1I5-6. Sensor detecting jar is stucked</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1877"</v>
+              <v n="TextDefault">"U1I5-7. Cảm biến rút về ben chặn sâu"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1I5-7. Cảm biến rút về ben chặn sâu</v>
+                <v>U1I5-7. Retract sensor of cylinder blocks larvae</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"2706"</v>
+              <v n="TextDefault">"U1I5-8. Cảm biến báo thiếu nắp"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1I5-8. Cảm biến báo thiếu nắp</v>
+                <v>U1I5-8. Sensor detecting lid is getting low</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"3822"</v>
+              <v n="TextDefault">"U1I6-1. Cảm biến rút về của ben chặn nắp"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1I6-1. Cảm biến rút về của ben chặn nắp</v>
+                <v>U1I6-1. Retract sensor of cylinder blocks lid</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"2003"</v>
+              <v n="TextDefault">"U1I6-2. Cảm biến đẩy ra của ben chặn nắp"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1I6-2. Cảm biến đẩy ra của ben chặn nắp</v>
+                <v>U1I6-2. Extend sensor of cylinder blocks lid</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"787"</v>
+              <v n="TextDefault">"U1I6-3. Cảm biến trên của ben hút nắp"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1I6-3. Cảm biến trên của ben hút nắp</v>
+                <v>U1I6-3. Upper sensor of cylinder sucks lid</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1106"</v>
+              <v n="TextDefault">"U1I6-4. Cảm biến dưới của ben hút nắp "</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1I6-4. Cảm biến dưới của ben hút nắp</v>
+                <v>U1I6-4. Lower sensor of cylinder sucks lid</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"2433"</v>
+              <v n="TextDefault">"U1I6-5. Cảm biến báo hút được nắp"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1I6-5. Cảm biến báo hút được nắp</v>
+                <v>U1I6-5. Sensor detecting lid is sucked</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"2961"</v>
+              <v n="TextDefault">"U1I6-6. Cảm biến trên của ben dập nắp"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1I6-6. Cảm biến trên của ben dập nắp</v>
+                <v>U1I6-6. Upper sensor of cylinder presses lid</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"397"</v>
+              <v n="TextDefault">"U1I6-7. Cảm biến dưới của ben dập nắp"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1I6-7. Cảm biến dưới của ben dập nắp</v>
+                <v>U1I6-7. Lower sensor of cylinder presses lid</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1052"</v>
+              <v n="TextDefault">"U1I6-8. Cảm biến rút về của ben lược"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1I6-8. Cảm biến rút về của ben lược</v>
+                <v>U1I6-8. Retract sensor of comb cylinder</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"4010"</v>
+              <v n="TextDefault">"U1I7-1. Cảm biến đẩy ra của ben lược"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1I7-1. Cảm biến đẩy ra của ben lược</v>
+                <v>U1I7-1. Extend sensor of comb cylinder</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1534"</v>
+              <v n="TextDefault">"U1I7-10. Cảm biến cửa 3"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1I7-10. Cảm biến cửa 3</v>
+                <v>U1I7-10. Sensor door 3</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"550"</v>
+              <v n="TextDefault">"U1I7-10.Cảm biến cửa 3"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1I7-10. Cảm biến cửa 3</v>
+                <v>U1I7-10. Sensor door 3</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1820"</v>
+              <v n="TextDefault">"U1I7-2. Cảm biến rút về của ben di chuyển lược"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1I7-2. Cảm biến rút về của ben di chuyển lược</v>
+                <v>U1I7-2. Retract sensor of cylinder moves comb</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"2657"</v>
+              <v n="TextDefault">"U1I7-3. Cảm biến đẩy ra của ben di chuyển lược"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1I7-3. Cảm biến đẩy ra của ben di chuyển lược</v>
+                <v>U1I7-3. Extend sensor of cylinder moves comb</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"360"</v>
+              <v n="TextDefault">"U1I7-4. Cảm biến rút về của ben kẹp hũ"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1I7-4. Cảm biến rút về của ben kẹp hũ</v>
+                <v>U1I7-4. Retract sensor of cylinder clamp jar</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1051"</v>
+              <v n="TextDefault">"U1I7-5. Cảm biến đẩy ra của ben kẹp hũ"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1I7-5. Cảm biến đẩy ra của ben kẹp hũ</v>
+                <v>U1I7-5. Extend sensor of cylinder clamp jar</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"3158"</v>
+              <v n="TextDefault">"U1I7-6. Cảm biến phát hiện hũ ở chỗ cân thức ăn"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1I7-6. Cảm biến phát hiện hũ ở chỗ cân thức ăn</v>
+                <v>U1I7-6. Sensor detecting jar in food station</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"2876"</v>
+              <v n="TextDefault">"U1I7-7. Cảm biến phát hiện hũ ở chỗ cân sâu"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1I7-7. Cảm biến phát hiện hũ ở chỗ cân sâu</v>
+                <v>U1I7-7. Sensor detecting jar in larvae station</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"210"</v>
+              <v n="TextDefault">"U1I7-8. Cảm biến cửa 1"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1I7-8. Cảm biến cửa 1</v>
+                <v>U1I7-8. Sensor door 1</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"761"</v>
+              <v n="TextDefault">"U1I7-9. Cảm biến cửa 2"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1I7-9. Cảm biến cửa 2</v>
+                <v>U1I7-9. Sensor door 2</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"4190"</v>
+              <v n="TextDefault">"U1O1-1. Đèn báo chạy chế độ tự động"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1O1-1. Đèn báo chạy chế độ tự động</v>
+                <v>U1O1-1. Auto start lamp</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1081"</v>
+              <v n="TextDefault">"U1O1-10. Động cơ chia thức ăn"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1O1-10. Động cơ chia thức ăn</v>
+                <v>U1O1-10. Food dispenser motor</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"4307"</v>
+              <v n="TextDefault">"U1O1-12. Động cơ chia thức ăn"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1O1-12. Động cơ chia thức ăn</v>
+                <v>U1O1-12. Food dispenser motor</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"3445"</v>
+              <v n="TextDefault">"U1O1-13. Ben chặn hũ trên"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1O1-13. Ben chặn hũ trên</v>
+                <v>U1O1-13. Upper cylinder blocks jar</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1336"</v>
+              <v n="TextDefault">"U1O1-14. Ben chặn hũ dưới"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1O1-14. Ben chặn hũ dưới</v>
+                <v>U1O1-14. Lower cylinder bocks jar</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"3055"</v>
+              <v n="TextDefault">"U1O1-15. Ben chặn sâu"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1O1-15. Ben chặn sâu</v>
+                <v>U1O1-15. Cylinder blocks larvae</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"3097"</v>
+              <v n="TextDefault">"U1O1-16. Ben chặn nắp"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1O1-16. Ben chặn nắp</v>
+                <v>U1O1-16. Cylinder blocks lid</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"3203"</v>
+              <v n="TextDefault">"U1O1-2. Đèn báo dừng chế độ tự động"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1O1-2. Đèn báo dừng chế độ tự động</v>
+                <v>U1O1-2. Auto stop lamp</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1531"</v>
+              <v n="TextDefault">"U1O1-3. Động cơ đảo thức ăn "</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1O1-3. Động cơ đảo thức ăn</v>
+                <v>U1O1-3. Food agitator motor</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"2964"</v>
+              <v n="TextDefault">"U1O1-4. Phễu rung"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1O1-4. Phễu rung</v>
+                <v>U1O1-4. Vibrating funnel</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1779"</v>
+              <v n="TextDefault">"U1O1-5. Băng tải đầu ra"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1O1-5. Băng tải đầu ra</v>
+                <v>U1O1-5. Output conveyor</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"336"</v>
+              <v n="TextDefault">"U1O1-6. Động cơ đảo thức ăn"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1O1-6. Động cơ đảo thức ăn</v>
+                <v>U1O1-6. Food agitator motor</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"3124"</v>
+              <v n="TextDefault">"U1O1-7. Phễu rung"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1O1-7. Phễu rung</v>
+                <v>U1O1-7. Vibrating funnel</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"4277"</v>
+              <v n="TextDefault">"U1O1-8. Còi"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1O1-8. Còi</v>
+                <v>U1O1-8. Horn</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1546"</v>
+              <v n="TextDefault">"U1O2-1. Ben hút/thả nắp"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1O2-1. Ben hút/thả nắp</v>
+                <v>U1O2-1. Cylinder sucks/releases lid</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"4439"</v>
+              <v n="TextDefault">"U1O2-10. Ben chặn sâu"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1O2-10. Ben chặn sâu</v>
+                <v>U1O2-10. Cylinder blocks larvae</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1589"</v>
+              <v n="TextDefault">"U1O2-11. Ben chặn nắp"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1O2-11. Ben chặn nắp</v>
+                <v>U1O2-11. Cylinder blocks lid</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"2376"</v>
+              <v n="TextDefault">"U1O2-12. Ben hút/thả nắp"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1O2-12. Ben hút/thả nắp</v>
+                <v>U1O2-12. Cylinder sucks/releases lid</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"2070"</v>
+              <v n="TextDefault">"U1O2-13. Van hút nắp"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1O2-13. Van hút nắp</v>
+                <v>U1O2-13. Valve sucks lid</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1647"</v>
+              <v n="TextDefault">"U1O2-14. Van hút hũ"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1O2-14. Van hút hũ</v>
+                <v>U1O2-14. Valve sucks jar</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"2017"</v>
+              <v n="TextDefault">"U1O2-15. Ben dập nắp"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1O2-15. Ben dập nắp</v>
+                <v>U1O2-15. Cylinder presses lid</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"305"</v>
+              <v n="TextDefault">"U1O2-16. Ben kẹp hũ"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1O2-16. Ben kẹp hũ</v>
+                <v>U1O2-16. Cylinder clamp jar</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"4049"</v>
+              <v n="TextDefault">"U1O2-2. Van hút nắp"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1O2-2. Van hút nắp</v>
+                <v>U1O2-2. Valve sucks lid</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"3916"</v>
+              <v n="TextDefault">"U1O2-3. Van hút hũ"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1O2-3. Van hút hũ</v>
+                <v>U1O2-3. Valve sucks jar</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"4107"</v>
+              <v n="TextDefault">"U1O2-4. Ben dập nắp"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1O2-4. Ben dập nắp</v>
+                <v>U1O2-4. Cylinder presses lid</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"2321"</v>
+              <v n="TextDefault">"U1O2-5. Ben kẹp hũ"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1O2-5. Ben kẹp hũ</v>
+                <v>U1O2-5. Cylinder clamp jar</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"4004"</v>
+              <v n="TextDefault">"U1O2-6. Ben lược ra/vào"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1O2-6. Ben lược ra/vào</v>
+                <v>U1O2-6. Comb cylinder moves in/out</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"371"</v>
+              <v n="TextDefault">"U1O2-7. Ben di chuyển lược"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1O2-7. Ben di chuyển lược</v>
+                <v>U1O2-7. Cylinder moves comb</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"2551"</v>
+              <v n="TextDefault">"U1O2-8. Ben chặn hũ trên"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1O2-8. Ben chặn hũ trên</v>
+                <v>U1O2-8. Upper cylinder blocks jar</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"2149"</v>
+              <v n="TextDefault">"U1O2-9. Ben chặn hũ dưới"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1O2-9. Ben chặn hũ dưới</v>
+                <v>U1O2-9. Lower cylinder blocks jar</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"2052"</v>
+              <v n="TextDefault">"U1O3-1. Ben lược ra/vào"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1O3-1. Ben lược ra/vào</v>
+                <v>U1O3-1. Comb clinder moves in/out</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"2598"</v>
+              <v n="TextDefault">"U1O3-2. Ben di chuyển lược"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>U1O3-2. Ben di chuyển lược</v>
+                <v>U1O3-2. Cylinder moves comb</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"126"</v>
+              <v n="TextDefault">"Vui lòng nhập tên của bạn"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Vui lòng nhập tên của bạn</v>
+                <v>Please enter your name</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"2236"</v>
+              <v n="TextDefault">"WARNING: %s"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v></v>
+                <v></v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"26"</v>
+              <v n="TextDefault">"Welcome"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Welcome</v>
+                <v>Welcome</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"3677"</v>
+              <v n="TextDefault">"X"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v></v>
+                <v></v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"286"</v>
+              <v n="TextDefault">"Xóa"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Xóa</v>
+                <v>Delete</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1430"</v>
+              <v n="TextDefault">"Xả sâu"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Xả sâu</v>
+                <v>Flush larvae</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1211"</v>
+              <v n="TextDefault">"Xả thức ăn"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Xả thức ăn</v>
+                <v>Flush food</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"3643"</v>
+              <v n="TextDefault">"Đăng nhập"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Đăng nhập</v>
+                <v>Login</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"1411"</v>
+              <v n="TextDefault">"Đẩy ra"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Đẩy ra</v>
+                <v>Extend</v>
+              </l>
+            </o>
+            <o>
+              <v n="TextID">"831"</v>
+              <v n="TextDefault">"Đặt về 0"</v>
+              <l n="LanguageTexts" t="ArrayList" cet="String">
+                <v>Đặt về 0</v>
+                <v>Set 0</v>
+              </l>
+            </o>
+          </l>
+          <l n="Languages" t="ArrayList" cet="String">
+            <v>vn</v>
+            <v>eng</v>
+          </l>
+          <v n="GuidInit">{798e2075-8d59-4458-be8d-ca678a7eb85a}</v>
+          <v n="GuidReInit">{a92df442-2ed2-46d0-a563-21fb865b5234}</v>
+          <v n="GuidExitX">{51f1500c-51ed-454e-ad92-0d7b283102ce}</v>
+        </o>
+      </Data>
+      <TypeList>
+        <Type n="ArrayList">System.Collections.ArrayList</Type>
+        <Type n="GlobalTextListObject">{63784cbb-9ba0-45e6-9d69-babf3f040511}</Type>
+        <Type n="Guid">System.Guid</Type>
+        <Type n="String">System.String</Type>
+        <Type n="TextListRow">{53da1be7-ad25-47c3-b0e8-e26286dad2e0}</Type>
+      </TypeList>
+    </XmlArchive>
+  </GlobalTextList>
+</TcPlcObject>

@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <GVL Name="GVL_OF_VU" Id="{f0c873f1-cf0c-49e1-b1ee-82c33f07c1d5}">
+    <Declaration><![CDATA[VAR_GLOBAL
+	bDeleteRecipe1  			: BOOL;
+	bDeleteRecipe2				: BOOL;
+	//////////////test////////////////////
+	// vara for main line	////
+	bVN							: BOOL;
+	LineName					: ARRAY[1..2] OF INT;
+	setLinet					: INT;
+	bRunMachine					: ARRAY[1..2] OF BOOL;
+	data_worm1 					: ARRAY[1..2] OF ARRAY[1..10] OF REAL;
+	data_worm2					: ARRAY[1..2] OF ARRAY[1..10] OF REAL;
+	Run 						: ARRAY[1..2] OF BOOL;
+	sOperationStatus			: ARRAY[1..2] OF STRING := ['running','waiting'];
+	fMassOfCup					: ARRAY[1..2] OF REAL := [35.05,56.36];
+	fMassOfFoodAct				: ARRAY[1..2] OF REAL := [5.6,3.4];
+	fMassOfFoodSet				: ARRAY[1..2] OF REAL := [5.6,3.0];
+	fDeviationFoodAct			: ARRAY[1..2] OF REAL;
+	fDeviationFoodSet			: ARRAY[1..2] OF REAL;
+	fMassOfWormAct				: ARRAY[1..2] OF REAL := [10.5,8.3];
+	fMassOfWormSet				: ARRAY[1..2] OF REAL := [9.6,8.3];
+	fDeviationWormAct			: ARRAY[1..2] OF REAL;
+	fDeviationWormSet			: ARRAY[1..2] OF REAL;
+	bClear						: ARRAY[1..2] OF BOOL;
+	bIsSuccessFood				: ARRAY[1..2] OF BOOL := [TRUE,FALSE];
+	bIsSuccessWorm				: ARRAY[1..2] OF BOOL := [FALSE,TRUE];
+	fWeightFood					: ARRAY[1..2] OF REAL;
+	fWeightWorm					: ARRAY[1..2] OF REAL;
+
+	// just add ///
+	nSuccess					: ARRAY[1..2] OF INT :=[10,8];
+	nFail						: ARRAY[1..2] OF INT :=[2,5];
+	nCounter					: ARRAY[1..2] OF INT :=[12,13];
+	fFlowWormMain				: ARRAY[1..2] OF REAL:=[9.56,8.34];
+	fFlowFoodMain				: ARRAY[1..2] OF REAL:=[3.2,5.4];
+	fDelayMain					: ARRAY[1..2] OF REAL:=[3,4];
+	sNameRecipe					: ARRAY[1..2] OF STRING:=['recipe1', 'reccipe2'];
+	
+	///IO////
+	bSensorOutOfLid				: ARRAY[1..2] OF BOOL := [FALSE,TRUE];
+	bSensorOutOfJar				: ARRAY[1..2] OF BOOL := [FALSE,TRUE];
+	bSensorReleaseJar			: ARRAY[1..2] OF BOOL := [TRUE,FALSE];
+	bSensorJarInStation			: ARRAY[1..2] OF BOOL := [TRUE,FALSE];
+	bSensorSuckLid				: ARRAY[1..2] OF BOOL := [FALSE,TRUE];
+	bSensorDoor					: ARRAY[1..4] OF BOOL := [TRUE,FALSE];
+	bUpperCylinderJar			: ARRAY[1..2] OF BOOL;
+	bLowerCylinderJar			: ARRAY[1..2] OF BOOL;
+	bAgitatiorMotor				: ARRAY[1..2] OF BOOL := [TRUE,FALSE];
+	bDispenserMotor				: ARRAY[1..2] OF BOOL := [TRUE,FALSE];
+	bVibrattingFunnel			: ARRAY[1..2] OF BOOL := [FALSE,TRUE];
+	bOutputConveyor				: BOOL;
+	bCylinderMoveComb			: ARRAY[1..2] OF BOOL := [TRUE,FALSE];
+	bCylinderMoveCombInOut		: ARRAY[1..2] OF BOOL := [TRUE,FALSE];
+	bCylinderClampJar			: ARRAY[1..2] OF BOOL := [TRUE,FALSE];
+	bCylinderSuckReleaseLid		: ARRAY[1..2] OF BOOL := [TRUE,FALSE];
+	bValveSuckLlid				: ARRAY[1..2] OF BOOL := [FALSE,TRUE];
+	bCylinderBlockWorm			: ARRAY[1..2] OF BOOL := [TRUE,FALSE];
+	bCylinderBlockLidRail		: ARRAY[1..2] OF BOOL := [TRUE,FALSE];
+	bValveLocateJar				: ARRAY[1..2] OF BOOL := [FALSE,TRUE];
+	bCylinderPressLid			: ARRAY[1..2] OF BOOL := [FALSE,TRUE];
+	bHorn						: BOOL := TRUE;
+	bStartLamp					: ARRAY[1..2] OF BOOL := [FALSE,TRUE];
+	bStopLamp					: ARRAY[1..2] OF BOOL := [TRUE,FALSE];
+	bValveBlowLid				: ARRAY[1..2] OF BOOL := [FALSE,TRUE];
+	
+	
+	//Var for Weight Worm Cluster /////////////
+	bRunVibratingFunnel			: ARRAY[1..2] OF BOOL;
+	fFreqVibratingFunnel		: ARRAY[1..2] OF REAL;
+	bAddFreqVibratingFunnel		: ARRAY[1..2] OF BOOL;
+	bSubFreqVibratingFunnel		: ARRAY[1..2] OF BOOL;
+	bRunCylinderBlockWormExt	: ARRAY[1..2] OF BOOL;
+	bRunCylinderBlockWormRet	: ARRAY[1..2] OF BOOL;
+	bSet0Worm					: ARRAY[1..2] OF BOOL;
+	fWomrMassTotal				: ARRAY[1..2] OF REAL;
+	fFlowWorm					: ARRAY[1..2] OF REAL;
+	
+	//Var for Lid Supply Cluster
+	bRunValveSuckLid			: ARRAY[1..2] OF BOOL;
+	bRunValveReleasekLid		: ARRAY[1..2] OF BOOL;
+	bRunCylinderSuckReleaseLidExt: ARRAY[1..2] OF BOOL;
+	bRunCylinderSuckReleaseLidRet: ARRAY[1..2] OF BOOL;
+	bRunCylinderBlockLidRailExt	: ARRAY[1..2] OF BOOL;
+	bRunCylinderBlockLidRailRet	: ARRAY[1..2] OF BOOL;
+	
+	//Var for Jar Supply Cluster
+	bRunUpperCylinderBlockLidExt: ARRAY[1..2] OF BOOL;
+	bRunUpperCylinderBlockLidRet: ARRAY[1..2] OF BOOL;
+	bRunLowerCylinderBlockLidExt: ARRAY[1..2] OF BOOL;
+	bRunLowerCylinderBlockLidRet: ARRAY[1..2] OF BOOL;
+	
+	//Var for Food Supply Cluster
+	bRunAgitatorMotor			: ARRAY[1..2] OF BOOL;
+	fFreqAgitatorMotor			: ARRAY[1..2] OF REAL;
+	bAddFreqAgitatorMotor		: ARRAY[1..2] OF BOOL;
+	bSubFreqAgitatorMotor		: ARRAY[1..2] OF BOOL;
+	
+	bRunDispenserMotor			: ARRAY[1..2] OF BOOL;
+	fFreqDispenserMotor			: ARRAY[1..2] OF REAL;
+	bAddFreqDispenserMotor		: ARRAY[1..2] OF BOOL;
+	bSubFreqDispenserMotor		: ARRAY[1..2] OF BOOL;
+	bSet0Food					: ARRAY[1..2] OF BOOL;
+	fFoodMassTotal				: ARRAY[1..2] OF REAL;
+	fFlowFood					: ARRAY[1..2] OF REAL;
+	
+	//Var for Pressing Lid Cluster
+	bRunCylinderPressLidExt		: ARRAY[1..2] OF BOOL;
+	bRunCylinderPressLidRet		: ARRAY[1..2] OF BOOL;
+	bRunValveLocateJar			: ARRAY[1..2] OF BOOL;
+	
+	//Var for Transfer Cluster
+	bRunCylinderMoveCombExt		: ARRAY[1..2] OF BOOL;
+	bRunCylinderMoveCombRet		: ARRAY[1..2] OF BOOL;
+	bRunCylinderMoveCombInOutExt: ARRAY[1..2] OF BOOL;
+	bRunCylinderMoveCombInOutRet: ARRAY[1..2] OF BOOL;
+	bRunCylinderClampCombJarExt	: ARRAY[1..2] OF BOOL;
+	bRunCylinderClampCombJarRet	: ARRAY[1..2] OF BOOL;
+	fFreqOutputConveyor			: REAL;
+	bRunOutputConveyor			: BOOL;
+	bAddFreqOutputConveyor		: BOOL;
+	bSubFreqOutputConveyor		: BOOL;
+	// Setting parameter ////
+	fMassDesireFood				: ARRAY[1..2] OF REAL;
+	fAllowableDeviationFood		: ARRAY[1..2] OF REAL;
+	fSpeedIFood					: ARRAY[1..2] OF REAL;
+	fSppedIIFood				: ARRAY[1..2] OF REAL;
+	fSpeedIIIFood				: ARRAY[1..2] OF REAL;
+	fChangeI_IIFood				: ARRAY[1..2] OF REAL;
+	fChangeII_IIIFood			: ARRAY[1..2] OF REAL;
+	fMaxPayLoadFood				: ARRAY[1..2] OF REAL;
+	fPosHaltFood				: ARRAY[1..2] OF REAL;
+	fDelayFood					: ARRAY[1..2] OF REAL;
+	
+	fMassDesireWorm				: ARRAY[1..2] OF REAL;
+	fAllowableDeviationWorm		: ARRAY[1..2] OF REAL;
+	fSpeedIWorm					: ARRAY[1..2] OF REAL;
+	fSppedIIWorm				: ARRAY[1..2] OF REAL;
+	fSpeedIIIWorm				: ARRAY[1..2] OF REAL;
+	fChangeI_IIWorm				: ARRAY[1..2] OF REAL;
+	fChangeII_IIIWorm			: ARRAY[1..2] OF REAL;
+	fMaxPayLoadWorm				: ARRAY[1..2] OF REAL;
+	fPosHaltWorm				: ARRAY[1..2] OF REAL;
+	fDelayWorm					: ARRAY[1..2] OF REAL;
+	
+	// Recipe parametters ///
+	fRecMassOfFood				: ARRAY[1..2] OF REAL;
+	fRecMassOfWorm				: ARRAY[1..2] OF REAL;
+	fRecDeviationOfFood			: ARRAY[1..2] OF REAL;
+	fRecDeviationOfWorm			: ARRAY[1..2] OF REAL;
+	fRecSpeedIOfFood			: ARRAY[1..2] OF REAL;
+	fRecSpeedIOfWorm			: ARRAY[1..2] OF REAL;
+	fRecSpeedIIOfFood			: ARRAY[1..2] OF REAL;
+	fRecSpeedIIOfWorm			: ARRAY[1..2] OF REAL;
+	fRecSpeedIIIOfFood			: ARRAY[1..2] OF REAL;
+	fRecSpeedIIIOfWorm			: ARRAY[1..2] OF REAL;
+	fRecChangeI_IIOfFood		: ARRAY[1..2] OF REAL;
+	fRecChangeI_IIOfWorm		: ARRAY[1..2] OF REAL;
+	fRecChangeII_IIIOfFood		: ARRAY[1..2] OF REAL;
+	fRecChangeII_IIIOfWorm		: ARRAY[1..2] OF REAL;
+	fRecMaxPayLoadOfFood		: ARRAY[1..2] OF REAL;
+	fRecMaxPayLoadOfWorm		: ARRAY[1..2] OF REAL;
+	fRecHaltPosOfFood			: ARRAY[1..2] OF REAL;
+	fRecHaltPosOfWorm			: ARRAY[1..2] OF REAL;
+	fRecDelayOfFood				: ARRAY[1..2] OF REAL;
+	fRecDelayOfWorm				: ARRAY[1..2] OF REAL;
+	bRecSave					: ARRAY[1..2] OF BOOL;
+	bRecLoad					: ARRAY[1..2] OF BOOL;
+	bRecDelete					: ARRAY[1..2] OF BOOL;
+	GetFullTime					: STRING;
+	GetDate						: STRING;	
+	GetTime						: STRING;
+
+	
+		
+	
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

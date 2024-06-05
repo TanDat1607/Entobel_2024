@@ -1,0 +1,4469 @@
+<?xml version="1.0"?>
+<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.44">
+	<DataTypes>
+		<DataType>
+			<Name GUID="{F852D9F7-9DB9-AE77-EE6D-D9BA52CDE308}" Namespace="Tc2_ModbusRTU" AutoDeleteType="true">MB_KL6inData22B</Name>
+			<BitSize>192</BitSize>
+			<SubItem>
+				<Name>Status</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000004}">WORD</Type>
+				<BitSize>16</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>D</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<ArrayInfo>
+					<LBound>0</LBound>
+					<Elements>22</Elements>
+				</ArrayInfo>
+				<BitSize>176</BitSize>
+				<BitOffs>16</BitOffs>
+			</SubItem>
+			<Properties>
+				<Property>
+					<Name>hide</Name>
+				</Property>
+			</Properties>
+		</DataType>
+		<DataType>
+			<Name GUID="{E4C24E72-EF65-C814-8E17-663F53275EE3}" Namespace="Tc2_ModbusRTU" AutoDeleteType="true">MB_KL6outData22B</Name>
+			<BitSize>192</BitSize>
+			<SubItem>
+				<Name>Ctrl</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000004}">WORD</Type>
+				<BitSize>16</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>D</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000001}">BYTE</Type>
+				<ArrayInfo>
+					<LBound>0</LBound>
+					<Elements>22</Elements>
+				</ArrayInfo>
+				<BitSize>176</BitSize>
+				<BitOffs>16</BitOffs>
+			</SubItem>
+			<Properties>
+				<Property>
+					<Name>hide</Name>
+				</Property>
+			</Properties>
+		</DataType>
+		<DataType>
+			<Name GUID="{18071995-0000-0000-0000-002000000001}" IecBaseType="true" BitType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..0] OF BIT</Name>
+			<BitSize>1</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>1</Elements>
+			</ArrayInfo>
+		</DataType>
+		<DataType>
+			<Name GUID="{18071995-0000-0000-0000-002000000004}" IecBaseType="true" BitType="true" AutoDeleteType="true" HideSubItems="true">ARRAY [0..3] OF BIT</Name>
+			<BitSize>4</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000010}">BIT</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>4</Elements>
+			</ArrayInfo>
+		</DataType>
+		<DataType>
+			<Name GUID="{D337D3F8-A007-43A8-9520-67D7C4764C5A}" PersistentType="true">Entobel</Name>
+			<DisplayName TxtId=""><![CDATA[Error]]></DisplayName>
+			<EventId>
+				<Name Id="1">Event1</Name>
+				<DisplayName TxtId=""><![CDATA[E1_1.The jar is empty line 1 [check U1I5-2]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="2">Event2</Name>
+				<DisplayName TxtId=""><![CDATA[E2_1.The jar  is trapped line 1 [check U1I5-6]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="3">Event3</Name>
+				<DisplayName TxtId=""><![CDATA[E3_1.The upper cylinder retract  is faulty line 1 [check U1I5-3]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="4">Event4</Name>
+				<DisplayName TxtId=""><![CDATA[E4_1.The lower cylinder retract  is faulty line 1 [check U1I5-4]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="5">Event5</Name>
+				<DisplayName TxtId=""><![CDATA[E5_1.The lower cylinder extend  is faulty line 1 [check U1I5-5]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="6">Event6</Name>
+				<DisplayName TxtId=""><![CDATA[E6_1.The inverter of agitator motor fault line 1 [check U1I5-6]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="7">Event7</Name>
+				<DisplayName TxtId=""><![CDATA[E7_1.The driver of dispenser motor fault line 1 [check driver 2]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="8">Event8</Name>
+				<DisplayName TxtId=""><![CDATA[E8_1.The cylinder blocking worm retract  is faulty line 1 [check U1I5-7]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="9">Event9</Name>
+				<DisplayName TxtId=""><![CDATA[E9_1.The inverter of vibrating funnel fault line 1 [check inverter 5]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="10">Event10</Name>
+				<DisplayName TxtId=""><![CDATA[E10_1.The lid is empty line 1 [check U1I5-8]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="11">Event11</Name>
+				<DisplayName TxtId=""><![CDATA[E11_1.The cylinder blocking the lid retract is faulty line 1 [check U1I6-1]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="12">Event12</Name>
+				<DisplayName TxtId=""><![CDATA[E12_1.The cylinder blocking the lid extend is faulty line 1 [check U1I6-2]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="13">Event13</Name>
+				<DisplayName TxtId=""><![CDATA[E13_1.The cylinder sucking the lid retract is faulty line 1 [check U1I6-3]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="14">Event14</Name>
+				<DisplayName TxtId=""><![CDATA[E14_1.The cylinder sucking the lid extend is faulty line 1 [check U1I6-4]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="15">Event15</Name>
+				<DisplayName TxtId=""><![CDATA[E15_1.The cylinder pressing the lid retract is faulty line 1 [check U1I6-6]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="16">Event16</Name>
+				<DisplayName TxtId=""><![CDATA[E16_1.The cylinder pressing the lid extend is faulty line 1 [check U1I6-7]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="17">Event17</Name>
+				<DisplayName TxtId=""><![CDATA[E17_1.The comb cylinder retract is faulty line 1 [check U1I6-8]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="18">Event18</Name>
+				<DisplayName TxtId=""><![CDATA[E18_1.The comb cylinder extend is faulty line 1 [check U1I7-1]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="19">Event19</Name>
+				<DisplayName TxtId=""><![CDATA[E19_1.The clap cylinder retract is faulty line 1 [check U1I7-4]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="20">Event20</Name>
+				<DisplayName TxtId=""><![CDATA[E20_1.The clap cylinder extend is faulty line 1 [check U1I7-5]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="21">Event21</Name>
+				<DisplayName TxtId=""><![CDATA[E21_1.The cylinder moving comb retract is faulty line 1 [check U1I7-2]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="22">Event22</Name>
+				<DisplayName TxtId=""><![CDATA[E22_1.The cylinder moving comb extend is faulty line 1 [check U1I7-3]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="23">Event23</Name>
+				<DisplayName TxtId=""><![CDATA[E1_2.The jar is empty line 2 [check U1I2-4]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="24">Event24</Name>
+				<DisplayName TxtId=""><![CDATA[E2_2.The jar  is trapped line 2 [check U1I2-8]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="25">Event25</Name>
+				<DisplayName TxtId=""><![CDATA[E3_2.The upper cylinder retract  is faulty line 2 [check U1I2-5]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="26">Event26</Name>
+				<DisplayName TxtId=""><![CDATA[E4_2.The lower cylinder retract  is faulty line 2 [check U1I2-6]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="27">Event27</Name>
+				<DisplayName TxtId=""><![CDATA[E5_2.The lower cylinder extend  is faulty line 2 [check U1I2-7]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="28">Event28</Name>
+				<DisplayName TxtId=""><![CDATA[E6_2.The inverter of agitator motor fault line 2 [check inverter 1]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="29">Event29</Name>
+				<DisplayName TxtId=""><![CDATA[E7_2.The driver of dispenser motor fault line 2 [check driver 1]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="30">Event30</Name>
+				<DisplayName TxtId=""><![CDATA[E8_2.The cylinder blocking worm retract is faulty line 2 [check U1I3-1]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="31">Event31</Name>
+				<DisplayName TxtId=""><![CDATA[E9_2.The inverter of vibrating funnel fault line 2 [check inverter 2]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="32">Event32</Name>
+				<DisplayName TxtId=""><![CDATA[E10_2.The lid is empty line 2 [check U1I3-2]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="33">Event33</Name>
+				<DisplayName TxtId=""><![CDATA[E11_2.The cylinder blocking the lid retract is faulty line 2 [check U1I3-3]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="34">Event34</Name>
+				<DisplayName TxtId=""><![CDATA[E12_2.The cylinder blocking the lid extend is faulty line 2 [check U1I3-4]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="35">Event35</Name>
+				<DisplayName TxtId=""><![CDATA[E13_2.The cylinder sucking the lid retract is faulty line 2 [check U1I3-5]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="36">Event36</Name>
+				<DisplayName TxtId=""><![CDATA[E14_2.The cylinder sucking the lid extend is faulty line 2 [check U1I3-6]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="37">Event37</Name>
+				<DisplayName TxtId=""><![CDATA[E15_2.The cylinder pressing the lid retract is faulty line 2 [check U1I3-8]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="38">Event38</Name>
+				<DisplayName TxtId=""><![CDATA[E16_2.The cylinder pressing the lid extend is faulty line 2 [check U1I4-1]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="39">Event39</Name>
+				<DisplayName TxtId=""><![CDATA[E17_2.The comb cylinder retract is faulty line 2 [check U1I4-2]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="40">Event40</Name>
+				<DisplayName TxtId=""><![CDATA[E18_2.The comb cylinder extend is faulty line 2 [check U1I4-3]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="41">Event41</Name>
+				<DisplayName TxtId=""><![CDATA[E19_2.The clap cylinder retract is faulty line 2 [check U1I4-6]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="42">Event42</Name>
+				<DisplayName TxtId=""><![CDATA[E20_2.The clap cylinder extend is faulty 2 [check U1I4-4]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="43">Event43</Name>
+				<DisplayName TxtId=""><![CDATA[E21_2.The cylinder moving comb retract is faulty line 2 [check U1I4-4]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="44">Event44</Name>
+				<DisplayName TxtId=""><![CDATA[E22_2.The cylinder moving comb extend is faulty line 2 [check U1I4-5]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="45">Event45</Name>
+				<DisplayName TxtId=""><![CDATA[E23_1.The jar is missed when weighting food line 1 [check U1I7-6]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="46">Event46</Name>
+				<DisplayName TxtId=""><![CDATA[E23_2.The jar is missed when weighting food line 2 [check U1I4-8]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="47">Event47</Name>
+				<DisplayName TxtId=""><![CDATA[E24_1.The jar is missed when weighting larvae line 1 [check U1I7-7]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="48">Event48</Name>
+				<DisplayName TxtId=""><![CDATA[E24_2.The jar is missed when weighting larvae line 2 [check U1I5-1]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="49">Event49</Name>
+				<DisplayName TxtId=""><![CDATA[E25_1.Failed to suction the lid line 1 [check U1I6-5]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="50">Event50</Name>
+				<DisplayName TxtId=""><![CDATA[E25_2.Failed to suction the lid  line 2 [check U1I3-7]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="51">Event51</Name>
+				<DisplayName TxtId=""><![CDATA[E26_1.The lid is still on the valve line 1 [check U1I5-6]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="52">Event52</Name>
+				<DisplayName TxtId=""><![CDATA[E26_2.The lid is still on the valve line 2 [check U1I3-7]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="53">Event53</Name>
+				<DisplayName TxtId=""><![CDATA[E27_1.The safety door 1 is error [check U1I7-8]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="54">Event54</Name>
+				<DisplayName TxtId=""><![CDATA[E28_1.The safety door 2 is error [check U1I7-9]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="55">Event55</Name>
+				<DisplayName TxtId=""><![CDATA[E29_1.The safety door 3 is error [check U1I7-10]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="56">Event56</Name>
+				<DisplayName TxtId=""><![CDATA[E30_1.Overload weightfood [check U1I5-6]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="57">Event57</Name>
+				<DisplayName TxtId=""><![CDATA[E30_1.Overload weightLarvae [check U1I5-6]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="58">Event58</Name>
+				<DisplayName TxtId=""><![CDATA[E30_2.Overload weightfood line 2 [check weightfood]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="59">Event59</Name>
+				<DisplayName TxtId=""><![CDATA[E31_2.Overload weightlarvae line 2 [check weightlarvae]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="60">Event60</Name>
+				<DisplayName TxtId=""><![CDATA[E32_1.The cylinder sucking the jar is faulty line 1 [check U1I7-11]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="61">Event61</Name>
+				<DisplayName TxtId=""><![CDATA[E32_2.The cylinder sucking the jar is faulty line 2 [check U1I7-12]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="62">Event62</Name>
+				<DisplayName TxtId=""><![CDATA[E33_2.Error Modbus device 1]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="63">Event63</Name>
+				<DisplayName TxtId=""><![CDATA[E34_2.Error Modbus device 2]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="64">Event64</Name>
+				<DisplayName TxtId=""><![CDATA[E33_1.Error Modbus device 3]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="65">Event65</Name>
+				<DisplayName TxtId=""><![CDATA[E34_1.Error Modbus device 4]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="66">Event66</Name>
+				<DisplayName TxtId=""><![CDATA[E35_1.Error Modbus device 5]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="67">Event67</Name>
+				<DisplayName TxtId=""><![CDATA[E36_2.Error Modbus device 6]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="68">Event68</Name>
+				<DisplayName TxtId=""><![CDATA[E36_1.Error Modbus device 7]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="69">Event69</Name>
+				<DisplayName TxtId=""><![CDATA[E37_1.Error Mettler Toledo 1]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="70">Event70</Name>
+				<DisplayName TxtId=""><![CDATA[E38_1.Error Mettler Toledo 2]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="71">Event71</Name>
+				<DisplayName TxtId=""><![CDATA[E37_2.Error Laumas 1]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="72">Event72</Name>
+				<DisplayName TxtId=""><![CDATA[E38_2.Error Laumas 2]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="73">Event73</Name>
+				<DisplayName TxtId=""><![CDATA[E39_1.The cylinder blocking worm extend  is faulty line 1]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="74">Event74</Name>
+				<DisplayName TxtId=""><![CDATA[E39_2.The cylinder blocking worm extend  is faulty line 2]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="98">Event98</Name>
+				<DisplayName TxtId=""><![CDATA[E98_1.Emergency Stop [check Emergency]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="99">Event99</Name>
+				<DisplayName TxtId=""><![CDATA[E99_1.The inverter of conveyor out [check inverter 3]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="101">Event101</Name>
+				<DisplayName TxtId=""><![CDATA[W1_1.Warning out of jar line 1 [check U1I5-2]]]></DisplayName>
+				<Severity>Warning</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="102">Event102</Name>
+				<DisplayName TxtId=""><![CDATA[W2_1.Warning out of lid line 1 [check U1I5-8]]]></DisplayName>
+				<Severity>Warning</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="103">Event103</Name>
+				<DisplayName TxtId=""><![CDATA[W3_1.Warning running out of food line 1]]></DisplayName>
+				<Severity>Warning</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="104">Event104</Name>
+				<DisplayName TxtId=""><![CDATA[W4_1.Warning food weight exceeds limit line 1]]></DisplayName>
+				<Severity>Warning</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="105">Event105</Name>
+				<DisplayName TxtId=""><![CDATA[W5_1.Warning running out of larvae line 1]]></DisplayName>
+				<Severity>Warning</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="106">Event106</Name>
+				<DisplayName TxtId=""><![CDATA[W6_1.Warning larvae weight exceeds limit line 1]]></DisplayName>
+				<Severity>Warning</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="107">Event107</Name>
+				<DisplayName TxtId=""><![CDATA[W7_1.Warning do not press lid inward line 1 [check U1I6-7]]]></DisplayName>
+				<Severity>Warning</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="108">Event108</Name>
+				<DisplayName TxtId=""><![CDATA[W1_2.Warning out of jar line 2 [check U1I2-4]]]></DisplayName>
+				<Severity>Warning</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="109">Event109</Name>
+				<DisplayName TxtId=""><![CDATA[W2_2.Warning out of lid line 2 [check U1I3-2]]]></DisplayName>
+				<Severity>Warning</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="110">Event110</Name>
+				<DisplayName TxtId=""><![CDATA[W3_2.Warning running out of food line 2]]></DisplayName>
+				<Severity>Warning</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="111">Event111</Name>
+				<DisplayName TxtId=""><![CDATA[W4_2.Warning food weight exceeds limit line 2]]></DisplayName>
+				<Severity>Warning</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="112">Event112</Name>
+				<DisplayName TxtId=""><![CDATA[W5_2.Warning running out of larvae line 2]]></DisplayName>
+				<Severity>Warning</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="113">Event113</Name>
+				<DisplayName TxtId=""><![CDATA[W6_2.Warning larvae weight exceeds limit line 2]]></DisplayName>
+				<Severity>Warning</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="114">Event114</Name>
+				<DisplayName TxtId=""><![CDATA[W7_2.Warning do not press lid inward line 2 [check U1I4-1]]]></DisplayName>
+				<Severity>Warning</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="75">Event75</Name>
+				<DisplayName TxtId=""><![CDATA[E40_1.Error of lack of input air [check U1I7-13]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<Hides>
+				<Hide GUID="{2FDF5BA8-03B8-46A3-8608-7B0D5835BEF0}"/>
+				<Hide GUID="{B7C6F5DA-7978-4E98-B32B-F375842B0F30}"/>
+				<Hide GUID="{DC6D7CCD-15C2-4BCA-BB4C-2E509C23D3E5}"/>
+				<Hide GUID="{89BCF032-957D-4A55-9C9A-EE3B846EA159}"/>
+				<Hide GUID="{112DD11C-2CD6-4A2C-BA87-AD5C00A7D9D1}"/>
+			</Hides>
+		</DataType>
+		<DataType>
+			<Name GUID="{EF897917-26C7-4FE9-97B3-23BC76F7D134}" PersistentType="true">Entobel</Name>
+			<DisplayName TxtId=""><![CDATA[Notify]]></DisplayName>
+			<EventId>
+				<Name Id="1">Event1</Name>
+				<DisplayName TxtId=""><![CDATA[E1_1.The jar is empty line 1 [check U1I5-2]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="2">Event2</Name>
+				<DisplayName TxtId=""><![CDATA[E2_1.The jar  is trapped line 1 [check U1I5-6]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="3">Event3</Name>
+				<DisplayName TxtId=""><![CDATA[E3_1.The upper cylinder retract  is faulty line 1 [check U1I5-3]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="4">Event4</Name>
+				<DisplayName TxtId=""><![CDATA[E4_1.The lower cylinder retract  is faulty line 1 [check U1I5-4]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="5">Event5</Name>
+				<DisplayName TxtId=""><![CDATA[E5_1.The lower cylinder extend  is faulty line 1 [check U1I5-5]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="6">Event6</Name>
+				<DisplayName TxtId=""><![CDATA[E6_1.The inverter of agitator motor fault line 1 [check U1I5-6]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="7">Event7</Name>
+				<DisplayName TxtId=""><![CDATA[E7_1.The driver of dispenser motor fault line 1 [check driver 2]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="8">Event8</Name>
+				<DisplayName TxtId=""><![CDATA[E8_1.The cylinder blocking larvae retract  is faulty line 1 [check U1I5-7]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="9">Event9</Name>
+				<DisplayName TxtId=""><![CDATA[E9_1.The inverter of vibrating funnel fault line 1 [check inverter 5]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="10">Event10</Name>
+				<DisplayName TxtId=""><![CDATA[E10_1.The lid is empty line 1 [check U1I5-8]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="11">Event11</Name>
+				<DisplayName TxtId=""><![CDATA[E11_1.The cylinder blocking the lid retract is faulty line 1 [check U1I6-1]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="12">Event12</Name>
+				<DisplayName TxtId=""><![CDATA[E12_1.The cylinder blocking the lid extend is faulty line 1 [check U1I6-2]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="13">Event13</Name>
+				<DisplayName TxtId=""><![CDATA[E13_1.The cylinder sucking the lid retract is faulty line 1 [check U1I6-3]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="14">Event14</Name>
+				<DisplayName TxtId=""><![CDATA[E14_1.The cylinder sucking the lid extend is faulty line 1 [check U1I6-4]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="15">Event15</Name>
+				<DisplayName TxtId=""><![CDATA[E15_1.The cylinder pressing the lid retract is faulty line 1 [check U1I6-6]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="16">Event16</Name>
+				<DisplayName TxtId=""><![CDATA[E16_1.The cylinder pressing the lid extend is faulty line 1 [check U1I6-7]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="17">Event17</Name>
+				<DisplayName TxtId=""><![CDATA[E17_1.The comb cylinder retract is faulty line 1 [check U1I6-8]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="18">Event18</Name>
+				<DisplayName TxtId=""><![CDATA[E18_1.The comb cylinder extend is faulty line 1 [check U1I7-1]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="19">Event19</Name>
+				<DisplayName TxtId=""><![CDATA[E19_1.The clap cylinder retract is faulty line 1 [check U1I7-4]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="20">Event20</Name>
+				<DisplayName TxtId=""><![CDATA[E20_1.The clap cylinder extend is faulty line 1 [check U1I7-5]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="21">Event21</Name>
+				<DisplayName TxtId=""><![CDATA[E21_1.The cylinder moving comb retract is faulty line 1 [check U1I7-2]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="22">Event22</Name>
+				<DisplayName TxtId=""><![CDATA[E22_1.The cylinder moving comb extend is faulty line 1 [check U1I7-3]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="23">Event23</Name>
+				<DisplayName TxtId=""><![CDATA[E1_2.The jar is empty line 2 [check U1I2-4]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="24">Event24</Name>
+				<DisplayName TxtId=""><![CDATA[E2_2.The jar  is trapped line 2 [check U1I2-8]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="25">Event25</Name>
+				<DisplayName TxtId=""><![CDATA[E3_2.The upper cylinder retract  is faulty line 2 [check U1I2-5]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="26">Event26</Name>
+				<DisplayName TxtId=""><![CDATA[E4_2.The lower cylinder retract  is faulty line 2 [check U1I2-6]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="27">Event27</Name>
+				<DisplayName TxtId=""><![CDATA[E5_2.The lower cylinder extend  is faulty line 2 [check U1I2-7]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="28">Event28</Name>
+				<DisplayName TxtId=""><![CDATA[E6_2.The inverter of agitator motor fault line 2 [check inverter 1]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="29">Event29</Name>
+				<DisplayName TxtId=""><![CDATA[E7_2.The driver of dispenser motor fault line 2 [check driver 1]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="30">Event30</Name>
+				<DisplayName TxtId=""><![CDATA[E8_2.The cylinder blocking larvae retract is faulty line 2 [check U1I3-1]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="31">Event31</Name>
+				<DisplayName TxtId=""><![CDATA[E9_2.The inverter of vibrating funnel fault line 2 [check inverter 2]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="32">Event32</Name>
+				<DisplayName TxtId=""><![CDATA[E10_2.The lid is empty line 2 [check U1I3-2]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="33">Event33</Name>
+				<DisplayName TxtId=""><![CDATA[E11_2.The cylinder blocking the lid retract is faulty line 2 [check U1I3-3]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="34">Event34</Name>
+				<DisplayName TxtId=""><![CDATA[E12_2.The cylinder blocking the lid extend is faulty line 2 [check U1I3-4]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="35">Event35</Name>
+				<DisplayName TxtId=""><![CDATA[E13_2.The cylinder sucking the lid retract is faulty line 2 [check U1I3-5]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="36">Event36</Name>
+				<DisplayName TxtId=""><![CDATA[E14_2.The cylinder sucking the lid extend is faulty line 2 [check U1I3-6]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="37">Event37</Name>
+				<DisplayName TxtId=""><![CDATA[E15_2.The cylinder pressing the lid retract is faulty line 2 [check U1I3-8]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="38">Event38</Name>
+				<DisplayName TxtId=""><![CDATA[E16_2.The cylinder pressing the lid extend is faulty line 2 [check U1I4-1]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="39">Event39</Name>
+				<DisplayName TxtId=""><![CDATA[E17_2.The comb cylinder retract is faulty line 2 [check U1I4-2]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="40">Event40</Name>
+				<DisplayName TxtId=""><![CDATA[E18_2.The comb cylinder extend is faulty line 2 [check U1I4-3]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="41">Event41</Name>
+				<DisplayName TxtId=""><![CDATA[E19_2.The clap cylinder retract is faulty line 2 [check U1I4-6]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="42">Event42</Name>
+				<DisplayName TxtId=""><![CDATA[E20_2.The clap cylinder extend is faulty 2 [check U1I4-4]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="43">Event43</Name>
+				<DisplayName TxtId=""><![CDATA[E21_2.The cylinder moving comb retract is faulty line 2 [check U1I4-4]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="44">Event44</Name>
+				<DisplayName TxtId=""><![CDATA[E22_2.The cylinder moving comb extend is faulty line 2 [check U1I4-5]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="45">Event45</Name>
+				<DisplayName TxtId=""><![CDATA[E23_1.The jar is missed when weighting food line 1 [check U1I7-6]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="46">Event46</Name>
+				<DisplayName TxtId=""><![CDATA[E23_2.The jar is missed when weighting food line 2 [check U1I4-8]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="47">Event47</Name>
+				<DisplayName TxtId=""><![CDATA[E24_1.The jar is missed when weighting larvae line 1 [check U1I7-7]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="48">Event48</Name>
+				<DisplayName TxtId=""><![CDATA[E24_2.The jar is missed when weighting larvae line 2 [check U1I5-1]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="49">Event49</Name>
+				<DisplayName TxtId=""><![CDATA[E25_1.Failed to suction the lid line 1 [check U1I6-5]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="50">Event50</Name>
+				<DisplayName TxtId=""><![CDATA[E25_2.Failed to suction the lid  line 2 [check U1I3-7]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="51">Event51</Name>
+				<DisplayName TxtId=""><![CDATA[E26_1.The lid is still on the valve line 1 [check U1I5-6]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="52">Event52</Name>
+				<DisplayName TxtId=""><![CDATA[E26_2.The lid is still on the valve line 2 [check U1I3-7]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="53">Event53</Name>
+				<DisplayName TxtId=""><![CDATA[E27_1.The safety door 1 is error [check U1I7-8]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="54">Event54</Name>
+				<DisplayName TxtId=""><![CDATA[E28_1.The safety door 2 is error [check U1I7-9]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="55">Event55</Name>
+				<DisplayName TxtId=""><![CDATA[E29_1.The safety door 3 is error [check U1I7-10]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="56">Event56</Name>
+				<DisplayName TxtId=""><![CDATA[E30_1.Overload weightfood [check U1I5-6]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="57">Event57</Name>
+				<DisplayName TxtId=""><![CDATA[E30_1.Overload weightlarvae [check U1I5-6]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="58">Event58</Name>
+				<DisplayName TxtId=""><![CDATA[E30_2.Overload weightfood line 2 [check weightfood]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="59">Event59</Name>
+				<DisplayName TxtId=""><![CDATA[E31_2.Overload weightlarvae line 2 [check weightlarvae]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="60">Event60</Name>
+				<DisplayName TxtId=""><![CDATA[E32_1.The cylinder sucking the jar is faulty line 1 [check U1I7-11]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="61">Event61</Name>
+				<DisplayName TxtId=""><![CDATA[E32_2.The cylinder sucking the jar is faulty line 2 [check U1I7-12]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="62">Event62</Name>
+				<DisplayName TxtId=""><![CDATA[E33_2.Error Modbus device 1]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="63">Event63</Name>
+				<DisplayName TxtId=""><![CDATA[E34_2.Error Modbus device 2]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="64">Event64</Name>
+				<DisplayName TxtId=""><![CDATA[E33_1.Error Modbus device 3]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="65">Event65</Name>
+				<DisplayName TxtId=""><![CDATA[E34_1.Error Modbus device 4]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="66">Event66</Name>
+				<DisplayName TxtId=""><![CDATA[E35_1.Error Modbus device 5]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="67">Event67</Name>
+				<DisplayName TxtId=""><![CDATA[E36_2.Error Modbus device 6]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="68">Event68</Name>
+				<DisplayName TxtId=""><![CDATA[E36_1.Error Modbus device 7]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="69">Event69</Name>
+				<DisplayName TxtId=""><![CDATA[E37_1.Error Mettler Toledo 1]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="70">Event70</Name>
+				<DisplayName TxtId=""><![CDATA[E38_1.Error Mettler Toledo 2]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="71">Event71</Name>
+				<DisplayName TxtId=""><![CDATA[E37_2.Error Laumas 1]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="72">Event72</Name>
+				<DisplayName TxtId=""><![CDATA[E38_2.Error Laumas 2]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="73">Event73</Name>
+				<DisplayName TxtId=""><![CDATA[E39_1.The cylinder blocking larvae extend  is faulty line 1]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="74">Event74</Name>
+				<DisplayName TxtId=""><![CDATA[E39_2.The cylinder blocking larvae extend  is faulty line 2]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="98">Event98</Name>
+				<DisplayName TxtId=""><![CDATA[E98_1.Emergency Stop [check Emergency]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="99">Event99</Name>
+				<DisplayName TxtId=""><![CDATA[E99_1.The inverter of conveyor out [check inverter 3]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="101">Event101</Name>
+				<DisplayName TxtId=""><![CDATA[W1_1.Warning out of jar line 1 [check U1I5-2]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="102">Event102</Name>
+				<DisplayName TxtId=""><![CDATA[W2_1.Warning out of lid line 1 [check U1I5-8]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="103">Event103</Name>
+				<DisplayName TxtId=""><![CDATA[W3_1.Warning running out of food line 1]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="104">Event104</Name>
+				<DisplayName TxtId=""><![CDATA[W4_1.Warning food weight exceeds limit line 1]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="105">Event105</Name>
+				<DisplayName TxtId=""><![CDATA[W5_1.Warning running out of larvae line 1]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="106">Event106</Name>
+				<DisplayName TxtId=""><![CDATA[W6_1.Warning larvae weight exceeds limit line 1]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="107">Event107</Name>
+				<DisplayName TxtId=""><![CDATA[W7_1.Warning do not press lid inward line 1 [check U1I6-7]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="108">Event108</Name>
+				<DisplayName TxtId=""><![CDATA[W1_2.Warning out of jar line 2 [check U1I2-4]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="109">Event109</Name>
+				<DisplayName TxtId=""><![CDATA[W2_2.Warning out of lid line 2 [check U1I3-2]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="110">Event110</Name>
+				<DisplayName TxtId=""><![CDATA[W3_2.Warning running out of food line 2]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="111">Event111</Name>
+				<DisplayName TxtId=""><![CDATA[W4_2.Warning food weight exceeds limit line 2]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="112">Event112</Name>
+				<DisplayName TxtId=""><![CDATA[W5_2.Warning running out of larvae line 2]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="113">Event113</Name>
+				<DisplayName TxtId=""><![CDATA[W6_2.Warning larvae weight exceeds limit line 2]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="114">Event114</Name>
+				<DisplayName TxtId=""><![CDATA[W7_2.Warning do not press lid inward line 2 [check U1I4-1]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="75">Event75</Name>
+				<DisplayName TxtId=""><![CDATA[E40_1.Error of lack of input air [check U1I7-13]]]></DisplayName>
+				<Severity>Error</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="150">Event150</Name>
+				<DisplayName TxtId=""><![CDATA[Change food speed I line 1]]></DisplayName>
+				<Severity>Info</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="151">Event151</Name>
+				<DisplayName TxtId=""><![CDATA[Change food speed II line 1]]></DisplayName>
+				<Severity>Info</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="152">Event152</Name>
+				<DisplayName TxtId=""><![CDATA[Change food speed III line 1]]></DisplayName>
+				<Severity>Info</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="153">Event153</Name>
+				<DisplayName TxtId=""><![CDATA[Change derised weight food line 1]]></DisplayName>
+				<Severity>Info</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="154">Event154</Name>
+				<DisplayName TxtId=""><![CDATA[Change food mode I-II line 1]]></DisplayName>
+				<Severity>Info</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="155">Event155</Name>
+				<DisplayName TxtId=""><![CDATA[Change mode food II-III line 1]]></DisplayName>
+				<Severity>Info</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="156">Event156</Name>
+				<DisplayName TxtId=""><![CDATA[Change food delay line 1]]></DisplayName>
+				<Severity>Info</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="157">Event157</Name>
+				<DisplayName TxtId=""><![CDATA[Change food perstop Line 1]]></DisplayName>
+				<Severity>Info</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="158">Event158</Name>
+				<DisplayName TxtId=""><![CDATA[Change food delta line 1]]></DisplayName>
+				<Severity>Info</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="159">Event159</Name>
+				<DisplayName TxtId=""><![CDATA[Change larvae speed I line 1]]></DisplayName>
+				<Severity>Info</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="160">Event160</Name>
+				<DisplayName TxtId=""><![CDATA[Change larvae speed II line 1]]></DisplayName>
+				<Severity>Info</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="161">Event161</Name>
+				<DisplayName TxtId=""><![CDATA[Change larvae speed III line 1]]></DisplayName>
+				<Severity>Info</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="162">Event162</Name>
+				<DisplayName TxtId=""><![CDATA[Change derised weight larvae line 1]]></DisplayName>
+				<Severity>Info</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="163">Event163</Name>
+				<DisplayName TxtId=""><![CDATA[Change larvae mode I-II line 1]]></DisplayName>
+				<Severity>Info</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="164">Event164</Name>
+				<DisplayName TxtId=""><![CDATA[Change larvae mode II-III line 1]]></DisplayName>
+				<Severity>Info</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="165">Event165</Name>
+				<DisplayName TxtId=""><![CDATA[Change larvae delay line 1]]></DisplayName>
+				<Severity>Info</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="166">Event166</Name>
+				<DisplayName TxtId=""><![CDATA[Change larvae perstop line 1]]></DisplayName>
+				<Severity>Info</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="167">Event167</Name>
+				<DisplayName TxtId=""><![CDATA[Change larvae  delta line 1]]></DisplayName>
+				<Severity>Info</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="168">Event168</Name>
+				<DisplayName TxtId=""><![CDATA[Change food speed I line 2]]></DisplayName>
+				<Severity>Info</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="169">Event169</Name>
+				<DisplayName TxtId=""><![CDATA[Change food speed II line 2]]></DisplayName>
+				<Severity>Info</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="170">Event170</Name>
+				<DisplayName TxtId=""><![CDATA[Change food speed III line 2]]></DisplayName>
+				<Severity>Info</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="171">Event171</Name>
+				<DisplayName TxtId=""><![CDATA[Change derised weight food line 2]]></DisplayName>
+				<Severity>Info</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="172">Event172</Name>
+				<DisplayName TxtId=""><![CDATA[Change food mode I-II line 2]]></DisplayName>
+				<Severity>Info</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="173">Event173</Name>
+				<DisplayName TxtId=""><![CDATA[Change mode food II-III line 2]]></DisplayName>
+				<Severity>Info</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="174">Event174</Name>
+				<DisplayName TxtId=""><![CDATA[Change food delay line 2]]></DisplayName>
+				<Severity>Info</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="175">Event175</Name>
+				<DisplayName TxtId=""><![CDATA[Change food perstop Line 2]]></DisplayName>
+				<Severity>Info</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="176">Event176</Name>
+				<DisplayName TxtId=""><![CDATA[Change food delta line 2]]></DisplayName>
+				<Severity>Info</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="185">Event185</Name>
+				<DisplayName TxtId=""><![CDATA[Change larvae speed I line 2]]></DisplayName>
+				<Severity>Info</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="177">Event177</Name>
+				<DisplayName TxtId=""><![CDATA[Change larvae speed II line 2]]></DisplayName>
+				<Severity>Info</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="178">Event178</Name>
+				<DisplayName TxtId=""><![CDATA[Change larvae speed III line 2]]></DisplayName>
+				<Severity>Info</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="179">Event179</Name>
+				<DisplayName TxtId=""><![CDATA[Change derised weight larvae line 2]]></DisplayName>
+				<Severity>Info</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="180">Event180</Name>
+				<DisplayName TxtId=""><![CDATA[Change larvae mode I-II line 2]]></DisplayName>
+				<Severity>Info</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="181">Event181</Name>
+				<DisplayName TxtId=""><![CDATA[Change larvae mode II-III line 2]]></DisplayName>
+				<Severity>Info</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="182">Event182</Name>
+				<DisplayName TxtId=""><![CDATA[Change larvae delay line 2]]></DisplayName>
+				<Severity>Info</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="183">Event183</Name>
+				<DisplayName TxtId=""><![CDATA[Change larvae perstop line 2]]></DisplayName>
+				<Severity>Info</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="184">Event184</Name>
+				<DisplayName TxtId=""><![CDATA[Change larvae  delta line 2]]></DisplayName>
+				<Severity>Info</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="76">Event76</Name>
+				<DisplayName TxtId=""><![CDATA[E41_1. Error running out of food line 1]]></DisplayName>
+				<Severity>Verbose</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="77">Event77</Name>
+				<DisplayName TxtId=""><![CDATA[E42_1. Error running out of larvae line 1]]></DisplayName>
+				<Severity>Verbose</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="78">Event78</Name>
+				<DisplayName TxtId=""><![CDATA[E41_2. Error running out of food line 2]]></DisplayName>
+				<Severity>Verbose</Severity>
+			</EventId>
+			<EventId>
+				<Name Id="79">Event79</Name>
+				<DisplayName TxtId=""><![CDATA[E42_2. Error running out of larvae line 2]]></DisplayName>
+				<Severity>Verbose</Severity>
+			</EventId>
+			<Hides>
+				<Hide GUID="{2FDF5BA8-03B8-46A3-8608-7B0D5835BEF0}"/>
+				<Hide GUID="{B7C6F5DA-7978-4E98-B32B-F375842B0F30}"/>
+				<Hide GUID="{DC6D7CCD-15C2-4BCA-BB4C-2E509C23D3E5}"/>
+				<Hide GUID="{89BCF032-957D-4A55-9C9A-EE3B846EA159}"/>
+				<Hide GUID="{112DD11C-2CD6-4A2C-BA87-AD5C00A7D9D1}"/>
+				<Hide GUID="{D337D3F8-A007-43A8-9520-67D7C4764C5A}"/>
+				<Hide GUID="{A8FB51E6-46D9-4389-AC3C-2280495D5C6C}"/>
+				<Hide GUID="{B7403511-31EE-4E31-9076-05AFA9ADEC2B}"/>
+				<Hide GUID="{2DF8C7CC-A1DB-4851-9E23-8CAF42308408}"/>
+				<Hide GUID="{54EDD533-3C77-4035-8C5D-C15F87A6EDFA}"/>
+				<Hide GUID="{ACDE3E08-7186-4C20-9C3D-7D22B2A3C591}"/>
+				<Hide GUID="{9131908A-0143-4A25-9691-58D92A502C15}"/>
+				<Hide GUID="{9A6605F3-F203-4039-B467-8513C47B7B0F}"/>
+			</Hides>
+		</DataType>
+	</DataTypes>
+	<ImageDatas>
+		<ImageData Id="1000">424dd6020000000000003600000028000000100000000e0000000100180000000000a0020000c40e0000c40e00000000000000000000ff00ffff00ffff00ff808080808080808080808080808080808080808080808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c0ffffffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c0ffffffc0c0c000ffffc0c0c000ffff808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c0ffffffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c0ffffffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c0ffffffc0c0c0ff0000c0c0c0ff0000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c0ffffffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c0ffffffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c0ffffffc0c0c00000ffc0c0c00000ff808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c0ffffffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c0ffffffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c0ffffffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c0ffffffc0c0c0008000c0c0c0008000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ff0000c00000c0ffffffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff</ImageData>
+		<ImageData Id="1001">424dd6020000000000003600000028000000100000000e0000000100180000000000a0020000120b0000120b00000000000000000000ff00ffff00ffff00ffff00ffff00ffff00ff808080808080808080808080808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c000ffffc0c0c000ffff808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0ff0000c0c0c0ff0000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff0000ff0000ff0000ff0000ff0000ff0000ffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ff0000ff0000ff0000ff0000ff0000ff0000ffc0c0c00000ffc0c0c00000ff808080ff00ffff00ffff00ffff00ffff00ff0000ff0000ff0000ff0000ff0000ff0000ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff0000ff0000ff0000ff0000ff0000ff0000ffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ff0000ff0000ff0000ff0000ff0000ff0000ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff0000ff0000ff0000ff0000ff0000ff0000ffc0c0c0008000c0c0c0008000808080ff00ffff00ffff00ffff00ffff00ff0000ff0000ff0000ff0000ff0000ff0000ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff</ImageData>
+		<ImageData Id="1002">424dd6020000000000003600000028000000100000000e0000000100180000000000a0020000c40e0000c40e00000000000000000000ff00ff000000000000ff00ffff00ffff00ff808080808080808080808080808080ff00ffff00ffff00ffff00ffff00ff000000ff00ffff00ff000000ff00ffff00ffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ff000000ff00ffff00ffff00ffff00ffff00ffc0c0c000ffffc0c0c000ffff808080ff00ffff00ffff00ffff00ffff00ff000000ff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff000000ff00ffff00ff000000ff00ffff00ffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ff000000000000ff00ffff00ffff00ffc0c0c0ff0000c0c0c0ff0000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c00000ffc0c0c00000ff808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0008000c0c0c0008000808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff</ImageData>
+		<ImageData Id="1003">424dd6020000000000003600000028000000100000000e0000000100180000000000a0020000c40e0000c40e00000000000000000000ff00ffff00ffff00ffff00ffff00ffff00ff808080808080808080808080808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ff00bfffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c080808000bfff00bfff00bfff00bfff00bfffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ff00bfffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff</ImageData>
+	</ImageDatas>
+	<Project ProjectGUID="{CEF0D655-A2B3-4778-8F2A-D4990511AFEB}" TargetNetId="192.168.1.12.1.1" Target64Bit="true" ShowHideConfigurations="#x106">
+		<System>
+			<Settings MaxCpus="2" NonWinCpus="1">
+				<Cpu CpuId="1"/>
+			</Settings>
+			<Tasks>
+				<Task Id="3" Priority="20" CycleTime="100000" AmsPort="350" AdtTasks="true">
+					<Name>PlcTask</Name>
+				</Task>
+				<Task Id="4" Priority="30" CycleTime="100000" AmsPort="351" DisableFpExceptions="true" AdtTasks="true">
+					<Name>VISU_TASK</Name>
+				</Task>
+				<Task Id="5" Priority="21" CycleTime="100000" AmsPort="352" AdtTasks="true">
+					<Name>PlcTask2</Name>
+				</Task>
+				<Task Id="6" Priority="1" CycleTime="100000" AmsPort="353" AdtTasks="true">
+					<Name>VISU_TASK1</Name>
+				</Task>
+			</Tasks>
+		</System>
+		<Plc>
+			<Project GUID="{73CBE4ED-10A4-4A18-BAE8-A4A403460A45}" Name="MAIN" PrjFilePath="MAIN\MAIN.plcproj" TmcFilePath="MAIN\MAIN.tmc" ReloadTmc="true" AmsPort="851" TargetArchiveSettings="#x0001" FileArchiveSettings="#x000e" SymbolicMapping="true">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="MAIN\MAIN.tmc" TmcHash="{EEF0A23E-73DD-1C2D-264A-51CA1B2E5766}">
+					<Name>MAIN Instance</Name>
+					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
+					<Vars VarGrpType="1" ContextId="1" AreaNo="16">
+						<Name>PlcTask Inputs</Name>
+						<Var>
+							<Name>PR_Line01.fb_CupSupply.fbCylinder_Up.bAtExtend</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_CupSupply.fbCylinder_Up.bAtRetract</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_CupSupply.fbCylinder_Up.bAtRetract_2</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_CupSupply.fbCylinder_Dw.bAtExtend</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_CupSupply.fbCylinder_Dw.bAtRetract</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_CupSupply.fbCylinder_Dw.bAtRetract_2</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_CupSupply.fbCylinder_Suction.bAtExtend</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_CupSupply.fbCylinder_Suction.bAtRetract</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_CupSupply.fbCylinder_Suction.bAtRetract_2</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_CupSupply.bCupEmpty</Name>
+							<Comment><![CDATA[===== Var IO ======]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_CupSupply.bCupDrop</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_FoodMixer.fbInverter.fActualSpeed</Name>
+							<Type>REAL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_FoodMixer.bError_Motor_Mixer</Name>
+							<Comment><![CDATA[======= VAR IO =====================]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_FoodWeight.fbDriver.fActualSpeed</Name>
+							<Type>REAL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_FoodWeight.fbLoadcell.fbInterface.IND_M_RD_Float</Name>
+							<Comment><![CDATA[read float from devices]]></Comment>
+							<Type>REAL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_FoodWeight.fbLoadcell.fbInterface.IND_M_RD_Status</Name>
+							<Comment><![CDATA[read status of device    ]]></Comment>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_FoodWeight.fbLoadcell.fbInterface.IND_M_RD_Response</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_FoodWeight.fbLoadcell.fbInterface.IND_SB_STT1</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_FoodWeight.fbLoadcell.fbInterface.IND_SB_STT2</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_FoodWeight.fbLoadcell.fbInterface.IND_SB_STT3</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_FoodWeight.fbLoadcell.fbInterface.IND_SB_RSP</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_FoodWeight.fbLoadcell.fbInterface.WeightLaumas1</Name>
+							<Comment><![CDATA[address 0x0004]]></Comment>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_FoodWeight.fbLoadcell.fbInterface.WeightLaumas2</Name>
+							<Comment><![CDATA[address 0x0005]]></Comment>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_FoodWeight.fbLoadcell.fbInterface.WeightLaumas3</Name>
+							<Comment><![CDATA[address 0x0006]]></Comment>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_FoodWeight.fbLoadcell.fbInterface.WeightLaumas4</Name>
+							<Comment><![CDATA[address 0x0007]]></Comment>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_FoodWeight.fbLoadcell.fbInterface.StatusLaumas1</Name>
+							<Comment><![CDATA[address 0x0012]]></Comment>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_FoodWeight.fbLoadcell.fbInterface.StatusLaumas2</Name>
+							<Comment><![CDATA[address 0x0013]]></Comment>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_FoodWeight.bCupPresent</Name>
+							<Comment><![CDATA[ ====== VAR IO =====================]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_FoodWeight.bError_Driver</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_WormWeight.fbInverter.fActualSpeed</Name>
+							<Type>REAL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_WormWeight.fbCylinder.bAtExtend</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_WormWeight.fbCylinder.bAtRetract</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_WormWeight.fbCylinder.bAtRetract_2</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_WormWeight.fbLoadcell.fbInterface.IND_M_RD_Float</Name>
+							<Comment><![CDATA[read float from devices]]></Comment>
+							<Type>REAL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_WormWeight.fbLoadcell.fbInterface.IND_M_RD_Status</Name>
+							<Comment><![CDATA[read status of device    ]]></Comment>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_WormWeight.fbLoadcell.fbInterface.IND_M_RD_Response</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_WormWeight.fbLoadcell.fbInterface.IND_SB_STT1</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_WormWeight.fbLoadcell.fbInterface.IND_SB_STT2</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_WormWeight.fbLoadcell.fbInterface.IND_SB_STT3</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_WormWeight.fbLoadcell.fbInterface.IND_SB_RSP</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_WormWeight.fbLoadcell.fbInterface.WeightLaumas1</Name>
+							<Comment><![CDATA[address 0x0004]]></Comment>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_WormWeight.fbLoadcell.fbInterface.WeightLaumas2</Name>
+							<Comment><![CDATA[address 0x0005]]></Comment>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_WormWeight.fbLoadcell.fbInterface.WeightLaumas3</Name>
+							<Comment><![CDATA[address 0x0006]]></Comment>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_WormWeight.fbLoadcell.fbInterface.WeightLaumas4</Name>
+							<Comment><![CDATA[address 0x0007]]></Comment>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_WormWeight.fbLoadcell.fbInterface.StatusLaumas1</Name>
+							<Comment><![CDATA[address 0x0012]]></Comment>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_WormWeight.fbLoadcell.fbInterface.StatusLaumas2</Name>
+							<Comment><![CDATA[address 0x0013]]></Comment>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_WormWeight.bCupPresent</Name>
+							<Comment><![CDATA[ ====== VAR IO =====================]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_WormWeight.bError_Inverter</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_LidSupply.fbCylinder_LidStopper.bAtExtend</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_LidSupply.fbCylinder_LidStopper.bAtRetract</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_LidSupply.fbCylinder_LidStopper.bAtRetract_2</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_LidSupply.fbCylinder_Suction.bAtExtend</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_LidSupply.fbCylinder_Suction.bAtRetract</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_LidSupply.fbCylinder_Suction.bAtRetract_2</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_LidSupply.fbLidSuctionValve.fPressure</Name>
+							<Type>REAL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_LidSupply.fbLidSuctionValve.bPressure</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_LidSupply.fbCupSuctionValve.fPressure</Name>
+							<Type>REAL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_LidSupply.fbCupSuctionValve.bPressure</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_LidSupply.bLidEmpty</Name>
+							<Comment><![CDATA[===== Var IO ======]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_LidClose.fbCylinder_LidClose.bAtExtend</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_LidClose.fbCylinder_LidClose.bAtRetract</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_LidClose.fbCylinder_LidClose.bAtRetract_2</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_Transfer.fbCylinder_Comb.bAtExtend</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_Transfer.fbCylinder_Comb.bAtRetract</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_Transfer.fbCylinder_Comb.bAtRetract_2</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_Transfer.fbCylinder_Clip.bAtExtend</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_Transfer.fbCylinder_Clip.bAtRetract</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_Transfer.fbCylinder_Clip.bAtRetract_2</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_Transfer.fbCylinder_Move_Comb.bAtExtend</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_Transfer.fbCylinder_Move_Comb.bAtRetract</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_Transfer.fbCylinder_Move_Comb.bAtRetract_2</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Conveyor_Out.fb_Conveyor.fbInverter.fActualSpeed</Name>
+							<Type>REAL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Conveyor_Out.fb_Conveyor.bError_Motor_Mixer</Name>
+							<Comment><![CDATA[======= VAR IO =====================]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>GVL.fbModbus.InData</Name>
+							<Type GUID="{F852D9F7-9DB9-AE77-EE6D-D9BA52CDE308}" Namespace="Tc2_ModbusRTU">MB_KL6inData22B</Type>
+						</Var>
+						<Var>
+							<Name>GVL_IO.bStart</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>GVL_IO.bStop</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>GVL_IO.bReset</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>GVL_IO.bEmer</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>GVL_IO.bSafetyDoor1</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>GVL_IO.bSafetyDoor2</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>GVL_IO.bSafetyDoor3</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>GVL_IO.bCheckVan</Name>
+							<Type>BOOL</Type>
+						</Var>
+					</Vars>
+					<Vars VarGrpType="2" ContextId="1" AreaNo="17">
+						<Name>PlcTask Outputs</Name>
+						<Var>
+							<Name>PR_Line01.fb_CupSupply.fbCylinder_Up.bMoveExtend</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_CupSupply.fbCylinder_Up.bMoveRetract</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_CupSupply.fbCylinder_Dw.bMoveExtend</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_CupSupply.fbCylinder_Dw.bMoveRetract</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_CupSupply.fbCylinder_Suction.bMoveExtend</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_CupSupply.fbCylinder_Suction.bMoveRetract</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_FoodMixer.fbInverter.bBrake</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_FoodMixer.fbInverter.bVFD</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_FoodMixer.fbInverter.bReverse</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_FoodMixer.fbInverter.bReset</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_FoodWeight.fbDriver.bBrake</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_FoodWeight.fbDriver.bVFD</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_FoodWeight.fbDriver.bReverse</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_FoodWeight.fbDriver.bReset</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_FoodWeight.fbLoadcell.fbInterface.IND_M_WR_Float</Name>
+							<Comment><![CDATA[write float to devices     ]]></Comment>
+							<Type>REAL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_FoodWeight.fbLoadcell.fbInterface.IND_M_WR_Channel</Name>
+							<Comment><![CDATA[select device to write    ]]></Comment>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_FoodWeight.fbLoadcell.fbInterface.IND_M_WR_Command</Name>
+							<Comment><![CDATA[command to device    ]]></Comment>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_FoodWeight.fbLoadcell.fbInterface.IND_SB_RSV1</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_FoodWeight.fbLoadcell.fbInterface.IND_SB_RSV2</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_FoodWeight.fbLoadcell.fbInterface.IND_SB_RSV3</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_FoodWeight.fbLoadcell.fbInterface.IND_SB_CMD</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_FoodWeight.fbLoadcell.fbInterface.CMDLaumas</Name>
+							<Comment><![CDATA[=======var laumas=======]]></Comment>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_WormWeight.fbInverter.bBrake</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_WormWeight.fbInverter.bVFD</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_WormWeight.fbInverter.bReverse</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_WormWeight.fbInverter.bReset</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_WormWeight.fbCylinder.bMoveExtend</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_WormWeight.fbCylinder.bMoveRetract</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_WormWeight.fbLoadcell.fbInterface.IND_M_WR_Float</Name>
+							<Comment><![CDATA[write float to devices     ]]></Comment>
+							<Type>REAL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_WormWeight.fbLoadcell.fbInterface.IND_M_WR_Channel</Name>
+							<Comment><![CDATA[select device to write    ]]></Comment>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_WormWeight.fbLoadcell.fbInterface.IND_M_WR_Command</Name>
+							<Comment><![CDATA[command to device    ]]></Comment>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_WormWeight.fbLoadcell.fbInterface.IND_SB_RSV1</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_WormWeight.fbLoadcell.fbInterface.IND_SB_RSV2</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_WormWeight.fbLoadcell.fbInterface.IND_SB_RSV3</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_WormWeight.fbLoadcell.fbInterface.IND_SB_CMD</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_WormWeight.fbLoadcell.fbInterface.CMDLaumas</Name>
+							<Comment><![CDATA[=======var laumas=======]]></Comment>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_LidSupply.fbCylinder_LidStopper.bMoveExtend</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_LidSupply.fbCylinder_LidStopper.bMoveRetract</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_LidSupply.fbCylinder_Suction.bMoveExtend</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_LidSupply.fbCylinder_Suction.bMoveRetract</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_LidSupply.fbLidSuctionValve.bSuck</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_LidSupply.fbCupSuctionValve.bSuck</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_LidSupply.bLidBlow</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_LidClose.fbCylinder_LidClose.bMoveExtend</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_LidClose.fbCylinder_LidClose.bMoveRetract</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_Transfer.fbCylinder_Comb.bMoveExtend</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_Transfer.fbCylinder_Comb.bMoveRetract</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_Transfer.fbCylinder_Clip.bMoveExtend</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_Transfer.fbCylinder_Clip.bMoveRetract</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_Transfer.fbCylinder_Move_Comb.bMoveExtend</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line01.fb_Transfer.fbCylinder_Move_Comb.bMoveRetract</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Conveyor_Out.fb_Conveyor.fbInverter.bBrake</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Conveyor_Out.fb_Conveyor.fbInverter.bVFD</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Conveyor_Out.fb_Conveyor.fbInverter.bReverse</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Conveyor_Out.fb_Conveyor.fbInverter.bReset</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>GVL.fbModbus.OutData</Name>
+							<Type GUID="{E4C24E72-EF65-C814-8E17-663F53275EE3}" Namespace="Tc2_ModbusRTU">MB_KL6outData22B</Type>
+						</Var>
+						<Var>
+							<Name>GVL_IO.bLight_Running</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>GVL_IO.bLight_Stop</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>GVL_IO.bSirens</Name>
+							<Type>BOOL</Type>
+						</Var>
+					</Vars>
+					<Vars VarGrpType="1" ContextId="2" AreaNo="32">
+						<Name>PlcTask2 Inputs</Name>
+						<Var>
+							<Name>PR_Line02.fb_CupSupply.fbCylinder_Up.bAtExtend</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_CupSupply.fbCylinder_Up.bAtRetract</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_CupSupply.fbCylinder_Up.bAtRetract_2</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_CupSupply.fbCylinder_Dw.bAtExtend</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_CupSupply.fbCylinder_Dw.bAtRetract</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_CupSupply.fbCylinder_Dw.bAtRetract_2</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_CupSupply.fbCylinder_Suction.bAtExtend</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_CupSupply.fbCylinder_Suction.bAtRetract</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_CupSupply.fbCylinder_Suction.bAtRetract_2</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_CupSupply.bCupEmpty</Name>
+							<Comment><![CDATA[===== Var IO ======]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_CupSupply.bCupDrop</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_FoodMixer.fbInverter.fActualSpeed</Name>
+							<Type>REAL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_FoodMixer.bError_Motor_Mixer</Name>
+							<Comment><![CDATA[======= VAR IO =====================]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_FoodWeight.fbDriver.fActualSpeed</Name>
+							<Type>REAL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_FoodWeight.fbLoadcell.fbInterface.IND_M_RD_Float</Name>
+							<Comment><![CDATA[read float from devices]]></Comment>
+							<Type>REAL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_FoodWeight.fbLoadcell.fbInterface.IND_M_RD_Status</Name>
+							<Comment><![CDATA[read status of device    ]]></Comment>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_FoodWeight.fbLoadcell.fbInterface.IND_M_RD_Response</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_FoodWeight.fbLoadcell.fbInterface.IND_SB_STT1</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_FoodWeight.fbLoadcell.fbInterface.IND_SB_STT2</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_FoodWeight.fbLoadcell.fbInterface.IND_SB_STT3</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_FoodWeight.fbLoadcell.fbInterface.IND_SB_RSP</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_FoodWeight.fbLoadcell.fbInterface.WeightLaumas1</Name>
+							<Comment><![CDATA[address 0x0004]]></Comment>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_FoodWeight.fbLoadcell.fbInterface.WeightLaumas2</Name>
+							<Comment><![CDATA[address 0x0005]]></Comment>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_FoodWeight.fbLoadcell.fbInterface.WeightLaumas3</Name>
+							<Comment><![CDATA[address 0x0006]]></Comment>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_FoodWeight.fbLoadcell.fbInterface.WeightLaumas4</Name>
+							<Comment><![CDATA[address 0x0007]]></Comment>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_FoodWeight.fbLoadcell.fbInterface.StatusLaumas1</Name>
+							<Comment><![CDATA[address 0x0012]]></Comment>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_FoodWeight.fbLoadcell.fbInterface.StatusLaumas2</Name>
+							<Comment><![CDATA[address 0x0013]]></Comment>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_FoodWeight.bCupPresent</Name>
+							<Comment><![CDATA[ ====== VAR IO =====================]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_FoodWeight.bError_Driver</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_WormWeight.fbInverter.fActualSpeed</Name>
+							<Type>REAL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_WormWeight.fbCylinder.bAtExtend</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_WormWeight.fbCylinder.bAtRetract</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_WormWeight.fbCylinder.bAtRetract_2</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_WormWeight.fbLoadcell.fbInterface.IND_M_RD_Float</Name>
+							<Comment><![CDATA[read float from devices]]></Comment>
+							<Type>REAL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_WormWeight.fbLoadcell.fbInterface.IND_M_RD_Status</Name>
+							<Comment><![CDATA[read status of device    ]]></Comment>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_WormWeight.fbLoadcell.fbInterface.IND_M_RD_Response</Name>
+							<Type>INT</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_WormWeight.fbLoadcell.fbInterface.IND_SB_STT1</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_WormWeight.fbLoadcell.fbInterface.IND_SB_STT2</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_WormWeight.fbLoadcell.fbInterface.IND_SB_STT3</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_WormWeight.fbLoadcell.fbInterface.IND_SB_RSP</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_WormWeight.fbLoadcell.fbInterface.WeightLaumas1</Name>
+							<Comment><![CDATA[address 0x0004]]></Comment>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_WormWeight.fbLoadcell.fbInterface.WeightLaumas2</Name>
+							<Comment><![CDATA[address 0x0005]]></Comment>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_WormWeight.fbLoadcell.fbInterface.WeightLaumas3</Name>
+							<Comment><![CDATA[address 0x0006]]></Comment>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_WormWeight.fbLoadcell.fbInterface.WeightLaumas4</Name>
+							<Comment><![CDATA[address 0x0007]]></Comment>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_WormWeight.fbLoadcell.fbInterface.StatusLaumas1</Name>
+							<Comment><![CDATA[address 0x0012]]></Comment>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_WormWeight.fbLoadcell.fbInterface.StatusLaumas2</Name>
+							<Comment><![CDATA[address 0x0013]]></Comment>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_WormWeight.bCupPresent</Name>
+							<Comment><![CDATA[ ====== VAR IO =====================]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_WormWeight.bError_Inverter</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_LidSupply.fbCylinder_LidStopper.bAtExtend</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_LidSupply.fbCylinder_LidStopper.bAtRetract</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_LidSupply.fbCylinder_LidStopper.bAtRetract_2</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_LidSupply.fbCylinder_Suction.bAtExtend</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_LidSupply.fbCylinder_Suction.bAtRetract</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_LidSupply.fbCylinder_Suction.bAtRetract_2</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_LidSupply.fbLidSuctionValve.fPressure</Name>
+							<Type>REAL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_LidSupply.fbLidSuctionValve.bPressure</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_LidSupply.fbCupSuctionValve.fPressure</Name>
+							<Type>REAL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_LidSupply.fbCupSuctionValve.bPressure</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_LidSupply.bLidEmpty</Name>
+							<Comment><![CDATA[===== Var IO ======]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_LidClose.fbCylinder_LidClose.bAtExtend</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_LidClose.fbCylinder_LidClose.bAtRetract</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_LidClose.fbCylinder_LidClose.bAtRetract_2</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_Transfer.fbCylinder_Comb.bAtExtend</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_Transfer.fbCylinder_Comb.bAtRetract</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_Transfer.fbCylinder_Comb.bAtRetract_2</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_Transfer.fbCylinder_Clip.bAtExtend</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_Transfer.fbCylinder_Clip.bAtRetract</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_Transfer.fbCylinder_Clip.bAtRetract_2</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_Transfer.fbCylinder_Move_Comb.bAtExtend</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_Transfer.fbCylinder_Move_Comb.bAtRetract</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_Transfer.fbCylinder_Move_Comb.bAtRetract_2</Name>
+							<Type>BOOL</Type>
+						</Var>
+					</Vars>
+					<Vars VarGrpType="2" ContextId="2" AreaNo="33">
+						<Name>PlcTask2 Outputs</Name>
+						<Var>
+							<Name>PR_Line02.fb_CupSupply.fbCylinder_Up.bMoveExtend</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_CupSupply.fbCylinder_Up.bMoveRetract</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_CupSupply.fbCylinder_Dw.bMoveExtend</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_CupSupply.fbCylinder_Dw.bMoveRetract</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_CupSupply.fbCylinder_Suction.bMoveExtend</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_CupSupply.fbCylinder_Suction.bMoveRetract</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_FoodMixer.fbInverter.bBrake</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_FoodMixer.fbInverter.bVFD</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_FoodMixer.fbInverter.bReverse</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_FoodMixer.fbInverter.bReset</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_FoodWeight.fbDriver.bBrake</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_FoodWeight.fbDriver.bVFD</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_FoodWeight.fbDriver.bReverse</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_FoodWeight.fbDriver.bReset</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_FoodWeight.fbLoadcell.fbInterface.IND_M_WR_Float</Name>
+							<Comment><![CDATA[write float to devices     ]]></Comment>
+							<Type>REAL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_FoodWeight.fbLoadcell.fbInterface.IND_M_WR_Channel</Name>
+							<Comment><![CDATA[select device to write    ]]></Comment>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_FoodWeight.fbLoadcell.fbInterface.IND_M_WR_Command</Name>
+							<Comment><![CDATA[command to device    ]]></Comment>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_FoodWeight.fbLoadcell.fbInterface.IND_SB_RSV1</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_FoodWeight.fbLoadcell.fbInterface.IND_SB_RSV2</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_FoodWeight.fbLoadcell.fbInterface.IND_SB_RSV3</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_FoodWeight.fbLoadcell.fbInterface.IND_SB_CMD</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_FoodWeight.fbLoadcell.fbInterface.CMDLaumas</Name>
+							<Comment><![CDATA[=======var laumas=======]]></Comment>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_WormWeight.fbInverter.bBrake</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_WormWeight.fbInverter.bVFD</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_WormWeight.fbInverter.bReverse</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_WormWeight.fbInverter.bReset</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_WormWeight.fbCylinder.bMoveExtend</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_WormWeight.fbCylinder.bMoveRetract</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_WormWeight.fbLoadcell.fbInterface.IND_M_WR_Float</Name>
+							<Comment><![CDATA[write float to devices     ]]></Comment>
+							<Type>REAL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_WormWeight.fbLoadcell.fbInterface.IND_M_WR_Channel</Name>
+							<Comment><![CDATA[select device to write    ]]></Comment>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_WormWeight.fbLoadcell.fbInterface.IND_M_WR_Command</Name>
+							<Comment><![CDATA[command to device    ]]></Comment>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_WormWeight.fbLoadcell.fbInterface.IND_SB_RSV1</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_WormWeight.fbLoadcell.fbInterface.IND_SB_RSV2</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_WormWeight.fbLoadcell.fbInterface.IND_SB_RSV3</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_WormWeight.fbLoadcell.fbInterface.IND_SB_CMD</Name>
+							<Type>WORD</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_WormWeight.fbLoadcell.fbInterface.CMDLaumas</Name>
+							<Comment><![CDATA[=======var laumas=======]]></Comment>
+							<Type>BYTE</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_LidSupply.fbCylinder_LidStopper.bMoveExtend</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_LidSupply.fbCylinder_LidStopper.bMoveRetract</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_LidSupply.fbCylinder_Suction.bMoveExtend</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_LidSupply.fbCylinder_Suction.bMoveRetract</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_LidSupply.fbLidSuctionValve.bSuck</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_LidSupply.fbCupSuctionValve.bSuck</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_LidSupply.bLidBlow</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_LidClose.fbCylinder_LidClose.bMoveExtend</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_LidClose.fbCylinder_LidClose.bMoveRetract</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_Transfer.fbCylinder_Comb.bMoveExtend</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_Transfer.fbCylinder_Comb.bMoveRetract</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_Transfer.fbCylinder_Clip.bMoveExtend</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_Transfer.fbCylinder_Clip.bMoveRetract</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_Transfer.fbCylinder_Move_Comb.bMoveExtend</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>PR_Line02.fb_Transfer.fbCylinder_Move_Comb.bMoveRetract</Name>
+							<Type>BOOL</Type>
+						</Var>
+					</Vars>
+					<UnrestoredVarLinks ImportTime="2023-08-15T20:41:35">
+						<OwnerA Name="InputDst" Prefix="TIPC^MAIN^MAIN Instance" Type="1">
+							<OwnerB Name="TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 12 (EL6021)">
+								<Link VarA="S4m_ModbusRTU.PRG_MBusRtuKL6x22B.fbMbusRtu.InData^D[0]" TypeA="BYTE" InOutA="0" ParentTypeA="MB_KL6inData22B" GuidA="{18071995-0000-0000-0000-000000000001}" VarB="COM TxPDO-Map Inputs^Data In 0" RestoreInfo="ANotFound"/>
+								<Link VarA="S4m_ModbusRTU.PRG_MBusRtuKL6x22B.fbMbusRtu.InData^D[10]" TypeA="BYTE" InOutA="0" ParentTypeA="MB_KL6inData22B" GuidA="{18071995-0000-0000-0000-000000000001}" VarB="COM TxPDO-Map Inputs^Data In 10" RestoreInfo="ANotFound"/>
+								<Link VarA="S4m_ModbusRTU.PRG_MBusRtuKL6x22B.fbMbusRtu.InData^D[11]" TypeA="BYTE" InOutA="0" ParentTypeA="MB_KL6inData22B" GuidA="{18071995-0000-0000-0000-000000000001}" VarB="COM TxPDO-Map Inputs^Data In 11" RestoreInfo="ANotFound"/>
+								<Link VarA="S4m_ModbusRTU.PRG_MBusRtuKL6x22B.fbMbusRtu.InData^D[12]" TypeA="BYTE" InOutA="0" ParentTypeA="MB_KL6inData22B" GuidA="{18071995-0000-0000-0000-000000000001}" VarB="COM TxPDO-Map Inputs^Data In 12" RestoreInfo="ANotFound"/>
+								<Link VarA="S4m_ModbusRTU.PRG_MBusRtuKL6x22B.fbMbusRtu.InData^D[13]" TypeA="BYTE" InOutA="0" ParentTypeA="MB_KL6inData22B" GuidA="{18071995-0000-0000-0000-000000000001}" VarB="COM TxPDO-Map Inputs^Data In 13" RestoreInfo="ANotFound"/>
+								<Link VarA="S4m_ModbusRTU.PRG_MBusRtuKL6x22B.fbMbusRtu.InData^D[14]" TypeA="BYTE" InOutA="0" ParentTypeA="MB_KL6inData22B" GuidA="{18071995-0000-0000-0000-000000000001}" VarB="COM TxPDO-Map Inputs^Data In 14" RestoreInfo="ANotFound"/>
+								<Link VarA="S4m_ModbusRTU.PRG_MBusRtuKL6x22B.fbMbusRtu.InData^D[15]" TypeA="BYTE" InOutA="0" ParentTypeA="MB_KL6inData22B" GuidA="{18071995-0000-0000-0000-000000000001}" VarB="COM TxPDO-Map Inputs^Data In 15" RestoreInfo="ANotFound"/>
+								<Link VarA="S4m_ModbusRTU.PRG_MBusRtuKL6x22B.fbMbusRtu.InData^D[16]" TypeA="BYTE" InOutA="0" ParentTypeA="MB_KL6inData22B" GuidA="{18071995-0000-0000-0000-000000000001}" VarB="COM TxPDO-Map Inputs^Data In 16" RestoreInfo="ANotFound"/>
+								<Link VarA="S4m_ModbusRTU.PRG_MBusRtuKL6x22B.fbMbusRtu.InData^D[17]" TypeA="BYTE" InOutA="0" ParentTypeA="MB_KL6inData22B" GuidA="{18071995-0000-0000-0000-000000000001}" VarB="COM TxPDO-Map Inputs^Data In 17" RestoreInfo="ANotFound"/>
+								<Link VarA="S4m_ModbusRTU.PRG_MBusRtuKL6x22B.fbMbusRtu.InData^D[18]" TypeA="BYTE" InOutA="0" ParentTypeA="MB_KL6inData22B" GuidA="{18071995-0000-0000-0000-000000000001}" VarB="COM TxPDO-Map Inputs^Data In 18" RestoreInfo="ANotFound"/>
+								<Link VarA="S4m_ModbusRTU.PRG_MBusRtuKL6x22B.fbMbusRtu.InData^D[19]" TypeA="BYTE" InOutA="0" ParentTypeA="MB_KL6inData22B" GuidA="{18071995-0000-0000-0000-000000000001}" VarB="COM TxPDO-Map Inputs^Data In 19" RestoreInfo="ANotFound"/>
+								<Link VarA="S4m_ModbusRTU.PRG_MBusRtuKL6x22B.fbMbusRtu.InData^D[1]" TypeA="BYTE" InOutA="0" ParentTypeA="MB_KL6inData22B" GuidA="{18071995-0000-0000-0000-000000000001}" VarB="COM TxPDO-Map Inputs^Data In 1" RestoreInfo="ANotFound"/>
+								<Link VarA="S4m_ModbusRTU.PRG_MBusRtuKL6x22B.fbMbusRtu.InData^D[20]" TypeA="BYTE" InOutA="0" ParentTypeA="MB_KL6inData22B" GuidA="{18071995-0000-0000-0000-000000000001}" VarB="COM TxPDO-Map Inputs^Data In 20" RestoreInfo="ANotFound"/>
+								<Link VarA="S4m_ModbusRTU.PRG_MBusRtuKL6x22B.fbMbusRtu.InData^D[21]" TypeA="BYTE" InOutA="0" ParentTypeA="MB_KL6inData22B" GuidA="{18071995-0000-0000-0000-000000000001}" VarB="COM TxPDO-Map Inputs^Data In 21" RestoreInfo="ANotFound"/>
+								<Link VarA="S4m_ModbusRTU.PRG_MBusRtuKL6x22B.fbMbusRtu.InData^D[2]" TypeA="BYTE" InOutA="0" ParentTypeA="MB_KL6inData22B" GuidA="{18071995-0000-0000-0000-000000000001}" VarB="COM TxPDO-Map Inputs^Data In 2" RestoreInfo="ANotFound"/>
+								<Link VarA="S4m_ModbusRTU.PRG_MBusRtuKL6x22B.fbMbusRtu.InData^D[3]" TypeA="BYTE" InOutA="0" ParentTypeA="MB_KL6inData22B" GuidA="{18071995-0000-0000-0000-000000000001}" VarB="COM TxPDO-Map Inputs^Data In 3" RestoreInfo="ANotFound"/>
+								<Link VarA="S4m_ModbusRTU.PRG_MBusRtuKL6x22B.fbMbusRtu.InData^D[4]" TypeA="BYTE" InOutA="0" ParentTypeA="MB_KL6inData22B" GuidA="{18071995-0000-0000-0000-000000000001}" VarB="COM TxPDO-Map Inputs^Data In 4" RestoreInfo="ANotFound"/>
+								<Link VarA="S4m_ModbusRTU.PRG_MBusRtuKL6x22B.fbMbusRtu.InData^D[5]" TypeA="BYTE" InOutA="0" ParentTypeA="MB_KL6inData22B" GuidA="{18071995-0000-0000-0000-000000000001}" VarB="COM TxPDO-Map Inputs^Data In 5" RestoreInfo="ANotFound"/>
+								<Link VarA="S4m_ModbusRTU.PRG_MBusRtuKL6x22B.fbMbusRtu.InData^D[6]" TypeA="BYTE" InOutA="0" ParentTypeA="MB_KL6inData22B" GuidA="{18071995-0000-0000-0000-000000000001}" VarB="COM TxPDO-Map Inputs^Data In 6" RestoreInfo="ANotFound"/>
+								<Link VarA="S4m_ModbusRTU.PRG_MBusRtuKL6x22B.fbMbusRtu.InData^D[7]" TypeA="BYTE" InOutA="0" ParentTypeA="MB_KL6inData22B" GuidA="{18071995-0000-0000-0000-000000000001}" VarB="COM TxPDO-Map Inputs^Data In 7" RestoreInfo="ANotFound"/>
+								<Link VarA="S4m_ModbusRTU.PRG_MBusRtuKL6x22B.fbMbusRtu.InData^D[8]" TypeA="BYTE" InOutA="0" ParentTypeA="MB_KL6inData22B" GuidA="{18071995-0000-0000-0000-000000000001}" VarB="COM TxPDO-Map Inputs^Data In 8" RestoreInfo="ANotFound"/>
+								<Link VarA="S4m_ModbusRTU.PRG_MBusRtuKL6x22B.fbMbusRtu.InData^D[9]" TypeA="BYTE" InOutA="0" ParentTypeA="MB_KL6inData22B" GuidA="{18071995-0000-0000-0000-000000000001}" VarB="COM TxPDO-Map Inputs^Data In 9" RestoreInfo="ANotFound"/>
+								<Link VarA="S4m_ModbusRTU.PRG_MBusRtuKL6x22B.fbMbusRtu.InData^Status" TypeA="WORD" InOutA="0" ParentTypeA="MB_KL6inData22B" GuidA="{18071995-0000-0000-0000-000000000004}" VarB="COM TxPDO-Map Inputs^Status" RestoreInfo="ANotFound"/>
+							</OwnerB>
+						</OwnerA>
+						<OwnerA Name="OutputSrc" Prefix="TIPC^MAIN^MAIN Instance" Type="2">
+							<OwnerB Name="TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Term 12 (EL6021)">
+								<Link VarA="S4m_ModbusRTU.PRG_MBusRtuKL6x22B.fbMbusRtu.OutData^Ctrl" TypeA="WORD" InOutA="1" ParentTypeA="MB_KL6outData22B" GuidA="{18071995-0000-0000-0000-000000000004}" VarB="COM RxPDO-Map Outputs^Ctrl" RestoreInfo="ANotFound"/>
+								<Link VarA="S4m_ModbusRTU.PRG_MBusRtuKL6x22B.fbMbusRtu.OutData^D[0]" TypeA="BYTE" InOutA="1" ParentTypeA="MB_KL6outData22B" GuidA="{18071995-0000-0000-0000-000000000001}" VarB="COM RxPDO-Map Outputs^Data Out 0" RestoreInfo="ANotFound"/>
+								<Link VarA="S4m_ModbusRTU.PRG_MBusRtuKL6x22B.fbMbusRtu.OutData^D[10]" TypeA="BYTE" InOutA="1" ParentTypeA="MB_KL6outData22B" GuidA="{18071995-0000-0000-0000-000000000001}" VarB="COM RxPDO-Map Outputs^Data Out 10" RestoreInfo="ANotFound"/>
+								<Link VarA="S4m_ModbusRTU.PRG_MBusRtuKL6x22B.fbMbusRtu.OutData^D[11]" TypeA="BYTE" InOutA="1" ParentTypeA="MB_KL6outData22B" GuidA="{18071995-0000-0000-0000-000000000001}" VarB="COM RxPDO-Map Outputs^Data Out 11" RestoreInfo="ANotFound"/>
+								<Link VarA="S4m_ModbusRTU.PRG_MBusRtuKL6x22B.fbMbusRtu.OutData^D[12]" TypeA="BYTE" InOutA="1" ParentTypeA="MB_KL6outData22B" GuidA="{18071995-0000-0000-0000-000000000001}" VarB="COM RxPDO-Map Outputs^Data Out 12" RestoreInfo="ANotFound"/>
+								<Link VarA="S4m_ModbusRTU.PRG_MBusRtuKL6x22B.fbMbusRtu.OutData^D[13]" TypeA="BYTE" InOutA="1" ParentTypeA="MB_KL6outData22B" GuidA="{18071995-0000-0000-0000-000000000001}" VarB="COM RxPDO-Map Outputs^Data Out 13" RestoreInfo="ANotFound"/>
+								<Link VarA="S4m_ModbusRTU.PRG_MBusRtuKL6x22B.fbMbusRtu.OutData^D[14]" TypeA="BYTE" InOutA="1" ParentTypeA="MB_KL6outData22B" GuidA="{18071995-0000-0000-0000-000000000001}" VarB="COM RxPDO-Map Outputs^Data Out 14" RestoreInfo="ANotFound"/>
+								<Link VarA="S4m_ModbusRTU.PRG_MBusRtuKL6x22B.fbMbusRtu.OutData^D[15]" TypeA="BYTE" InOutA="1" ParentTypeA="MB_KL6outData22B" GuidA="{18071995-0000-0000-0000-000000000001}" VarB="COM RxPDO-Map Outputs^Data Out 15" RestoreInfo="ANotFound"/>
+								<Link VarA="S4m_ModbusRTU.PRG_MBusRtuKL6x22B.fbMbusRtu.OutData^D[16]" TypeA="BYTE" InOutA="1" ParentTypeA="MB_KL6outData22B" GuidA="{18071995-0000-0000-0000-000000000001}" VarB="COM RxPDO-Map Outputs^Data Out 16" RestoreInfo="ANotFound"/>
+								<Link VarA="S4m_ModbusRTU.PRG_MBusRtuKL6x22B.fbMbusRtu.OutData^D[17]" TypeA="BYTE" InOutA="1" ParentTypeA="MB_KL6outData22B" GuidA="{18071995-0000-0000-0000-000000000001}" VarB="COM RxPDO-Map Outputs^Data Out 17" RestoreInfo="ANotFound"/>
+								<Link VarA="S4m_ModbusRTU.PRG_MBusRtuKL6x22B.fbMbusRtu.OutData^D[18]" TypeA="BYTE" InOutA="1" ParentTypeA="MB_KL6outData22B" GuidA="{18071995-0000-0000-0000-000000000001}" VarB="COM RxPDO-Map Outputs^Data Out 18" RestoreInfo="ANotFound"/>
+								<Link VarA="S4m_ModbusRTU.PRG_MBusRtuKL6x22B.fbMbusRtu.OutData^D[19]" TypeA="BYTE" InOutA="1" ParentTypeA="MB_KL6outData22B" GuidA="{18071995-0000-0000-0000-000000000001}" VarB="COM RxPDO-Map Outputs^Data Out 19" RestoreInfo="ANotFound"/>
+								<Link VarA="S4m_ModbusRTU.PRG_MBusRtuKL6x22B.fbMbusRtu.OutData^D[1]" TypeA="BYTE" InOutA="1" ParentTypeA="MB_KL6outData22B" GuidA="{18071995-0000-0000-0000-000000000001}" VarB="COM RxPDO-Map Outputs^Data Out 1" RestoreInfo="ANotFound"/>
+								<Link VarA="S4m_ModbusRTU.PRG_MBusRtuKL6x22B.fbMbusRtu.OutData^D[20]" TypeA="BYTE" InOutA="1" ParentTypeA="MB_KL6outData22B" GuidA="{18071995-0000-0000-0000-000000000001}" VarB="COM RxPDO-Map Outputs^Data Out 20" RestoreInfo="ANotFound"/>
+								<Link VarA="S4m_ModbusRTU.PRG_MBusRtuKL6x22B.fbMbusRtu.OutData^D[21]" TypeA="BYTE" InOutA="1" ParentTypeA="MB_KL6outData22B" GuidA="{18071995-0000-0000-0000-000000000001}" VarB="COM RxPDO-Map Outputs^Data Out 21" RestoreInfo="ANotFound"/>
+								<Link VarA="S4m_ModbusRTU.PRG_MBusRtuKL6x22B.fbMbusRtu.OutData^D[2]" TypeA="BYTE" InOutA="1" ParentTypeA="MB_KL6outData22B" GuidA="{18071995-0000-0000-0000-000000000001}" VarB="COM RxPDO-Map Outputs^Data Out 2" RestoreInfo="ANotFound"/>
+								<Link VarA="S4m_ModbusRTU.PRG_MBusRtuKL6x22B.fbMbusRtu.OutData^D[3]" TypeA="BYTE" InOutA="1" ParentTypeA="MB_KL6outData22B" GuidA="{18071995-0000-0000-0000-000000000001}" VarB="COM RxPDO-Map Outputs^Data Out 3" RestoreInfo="ANotFound"/>
+								<Link VarA="S4m_ModbusRTU.PRG_MBusRtuKL6x22B.fbMbusRtu.OutData^D[4]" TypeA="BYTE" InOutA="1" ParentTypeA="MB_KL6outData22B" GuidA="{18071995-0000-0000-0000-000000000001}" VarB="COM RxPDO-Map Outputs^Data Out 4" RestoreInfo="ANotFound"/>
+								<Link VarA="S4m_ModbusRTU.PRG_MBusRtuKL6x22B.fbMbusRtu.OutData^D[5]" TypeA="BYTE" InOutA="1" ParentTypeA="MB_KL6outData22B" GuidA="{18071995-0000-0000-0000-000000000001}" VarB="COM RxPDO-Map Outputs^Data Out 5" RestoreInfo="ANotFound"/>
+								<Link VarA="S4m_ModbusRTU.PRG_MBusRtuKL6x22B.fbMbusRtu.OutData^D[6]" TypeA="BYTE" InOutA="1" ParentTypeA="MB_KL6outData22B" GuidA="{18071995-0000-0000-0000-000000000001}" VarB="COM RxPDO-Map Outputs^Data Out 6" RestoreInfo="ANotFound"/>
+								<Link VarA="S4m_ModbusRTU.PRG_MBusRtuKL6x22B.fbMbusRtu.OutData^D[7]" TypeA="BYTE" InOutA="1" ParentTypeA="MB_KL6outData22B" GuidA="{18071995-0000-0000-0000-000000000001}" VarB="COM RxPDO-Map Outputs^Data Out 7" RestoreInfo="ANotFound"/>
+								<Link VarA="S4m_ModbusRTU.PRG_MBusRtuKL6x22B.fbMbusRtu.OutData^D[8]" TypeA="BYTE" InOutA="1" ParentTypeA="MB_KL6outData22B" GuidA="{18071995-0000-0000-0000-000000000001}" VarB="COM RxPDO-Map Outputs^Data Out 8" RestoreInfo="ANotFound"/>
+								<Link VarA="S4m_ModbusRTU.PRG_MBusRtuKL6x22B.fbMbusRtu.OutData^D[9]" TypeA="BYTE" InOutA="1" ParentTypeA="MB_KL6outData22B" GuidA="{18071995-0000-0000-0000-000000000001}" VarB="COM RxPDO-Map Outputs^Data Out 9" RestoreInfo="ANotFound"/>
+							</OwnerB>
+						</OwnerA>
+					</UnrestoredVarLinks>
+					<Contexts>
+						<Context>
+							<Id NeedCalleeCall="true">0</Id>
+							<Name>VISU_TASK</Name>
+							<ManualConfig>
+								<OTCID>#x02010060</OTCID>
+							</ManualConfig>
+							<Priority>1</Priority>
+							<CycleTime>10000000</CycleTime>
+						</Context>
+						<Context>
+							<Id NeedCalleeCall="true">1</Id>
+							<Name>PlcTask</Name>
+							<ManualConfig>
+								<OTCID>#x02010030</OTCID>
+							</ManualConfig>
+							<Priority>20</Priority>
+							<CycleTime>10000000</CycleTime>
+						</Context>
+						<Context>
+							<Id NeedCalleeCall="true">2</Id>
+							<Name>PlcTask2</Name>
+							<ManualConfig>
+								<OTCID>#x02010050</OTCID>
+							</ManualConfig>
+							<Priority>21</Priority>
+							<CycleTime>10000000</CycleTime>
+						</Context>
+					</Contexts>
+					<TaskPouOids>
+						<TaskPouOid Prio="1" OTCID="#x08502002"/>
+						<TaskPouOid Prio="20" OTCID="#x08502001"/>
+						<TaskPouOid Prio="21" OTCID="#x08502003"/>
+					</TaskPouOids>
+				</Instance>
+			</Project>
+		</Plc>
+		<Io>
+			<Device Id="1" Disabled="true" DevType="111" DevFlags="#x0003" AmsPort="28673" AmsNetId="192.168.1.12.2.1" RemoteName="Device 1 (EtherCAT)" InfoImageId="2">
+				<Name>Device 1 (EtherCAT)</Name>
+				<AddressInfo>
+					<Ccat>
+						<Address>-268435456</Address>
+						<Offset>131072</Offset>
+						<Size>8192</Size>
+						<BaseAddr>0</BaseAddr>
+						<BusNo>65535</BusNo>
+						<SlotNo>0</SlotNo>
+					</Ccat>
+				</AddressInfo>
+				<Image Id="1" AddrType="9" ImageType="3">
+					<Name>Image</Name>
+				</Image>
+				<Image Id="3" AddrType="10" ImageType="3">
+					<Name>Image-2</Name>
+				</Image>
+				<Box Id="1" BoxType="9099">
+					<Name>Term 1 (EK1200)</Name>
+					<ImageId>1000</ImageId>
+					<EtherCAT PdiType="#x0100" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x04b02c52" RevisionNo="#x00001388" InfoDataState="false" PortPhys="49" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EK1200-5000 EtherCAT Power supply (2A E-Bus)" Desc="EK1200" PortABoxInfo="#x00ffffff"/>
+					<Box Id="2" BoxType="9099">
+						<Name>Term 2 (EL1008)</Name>
+						<ImageId>7</ImageId>
+						<EtherCAT SlaveType="1" PdiType="#x0104" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x03f03052" RevisionNo="#x00120000" RepeatSupport="true" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL1008 8Ch. Dig. Input 24V, 3ms" Desc="EL1008" PortABoxInfo="#x01000001">
+							<SyncMan>001001000000010004000000000000000100001000010000</SyncMan>
+							<Fmmu>0000000000000000001000010100000002000000000000000000000000000000</Fmmu>
+							<Pdo Name="Channel 1" Index="#x1a00" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6000" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 2" Index="#x1a01" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6010" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 3" Index="#x1a02" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6020" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 4" Index="#x1a03" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6030" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 5" Index="#x1a04" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6040" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 6" Index="#x1a05" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6050" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 7" Index="#x1a06" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6060" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 8" Index="#x1a07" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6070" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+						</EtherCAT>
+					</Box>
+					<Box Id="3" BoxType="9099">
+						<Name>Term 3 (EL1008)</Name>
+						<ImageId>7</ImageId>
+						<EtherCAT SlaveType="1" PdiType="#x0104" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x03f03052" RevisionNo="#x00120000" RepeatSupport="true" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL1008 8Ch. Dig. Input 24V, 3ms" Desc="EL1008" PortABoxInfo="#x01000002">
+							<SyncMan>001001000000010004000000000000000100001000010000</SyncMan>
+							<Fmmu>0000000000000000001000010100000002000000000000000000000000000000</Fmmu>
+							<Pdo Name="Channel 1" Index="#x1a00" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6000" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 2" Index="#x1a01" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6010" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 3" Index="#x1a02" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6020" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 4" Index="#x1a03" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6030" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 5" Index="#x1a04" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6040" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 6" Index="#x1a05" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6050" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 7" Index="#x1a06" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6060" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 8" Index="#x1a07" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6070" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+						</EtherCAT>
+					</Box>
+					<Box Id="4" BoxType="9099">
+						<Name>Term 4 (EL1008)</Name>
+						<ImageId>7</ImageId>
+						<EtherCAT SlaveType="1" PdiType="#x0104" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x03f03052" RevisionNo="#x00120000" RepeatSupport="true" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL1008 8Ch. Dig. Input 24V, 3ms" Desc="EL1008" PortABoxInfo="#x01000003">
+							<SyncMan>001001000000010004000000000000000100001000010000</SyncMan>
+							<Fmmu>0000000000000000001000010100000002000000000000000000000000000000</Fmmu>
+							<Pdo Name="Channel 1" Index="#x1a00" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6000" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 2" Index="#x1a01" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6010" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 3" Index="#x1a02" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6020" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 4" Index="#x1a03" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6030" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 5" Index="#x1a04" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6040" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 6" Index="#x1a05" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6050" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 7" Index="#x1a06" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6060" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 8" Index="#x1a07" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6070" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+						</EtherCAT>
+					</Box>
+					<Box Id="5" BoxType="9099">
+						<Name>Term 5 (EL1008)</Name>
+						<ImageId>7</ImageId>
+						<EtherCAT SlaveType="1" PdiType="#x0104" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x03f03052" RevisionNo="#x00120000" RepeatSupport="true" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL1008 8Ch. Dig. Input 24V, 3ms" Desc="EL1008" PortABoxInfo="#x01000004">
+							<SyncMan>001001000000010004000000000000000100001000010000</SyncMan>
+							<Fmmu>0000000000000000001000010100000002000000000000000000000000000000</Fmmu>
+							<Pdo Name="Channel 1" Index="#x1a00" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6000" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 2" Index="#x1a01" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6010" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 3" Index="#x1a02" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6020" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 4" Index="#x1a03" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6030" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 5" Index="#x1a04" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6040" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 6" Index="#x1a05" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6050" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 7" Index="#x1a06" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6060" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 8" Index="#x1a07" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6070" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+						</EtherCAT>
+					</Box>
+					<Box Id="6" BoxType="9099">
+						<Name>Term 6 (EL1008)</Name>
+						<ImageId>7</ImageId>
+						<EtherCAT SlaveType="1" PdiType="#x0104" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x03f03052" RevisionNo="#x00120000" RepeatSupport="true" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL1008 8Ch. Dig. Input 24V, 3ms" Desc="EL1008" PortABoxInfo="#x01000005">
+							<SyncMan>001001000000010004000000000000000100001000010000</SyncMan>
+							<Fmmu>0000000000000000001000010100000002000000000000000000000000000000</Fmmu>
+							<Pdo Name="Channel 1" Index="#x1a00" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6000" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 2" Index="#x1a01" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6010" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 3" Index="#x1a02" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6020" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 4" Index="#x1a03" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6030" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 5" Index="#x1a04" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6040" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 6" Index="#x1a05" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6050" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 7" Index="#x1a06" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6060" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 8" Index="#x1a07" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6070" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+						</EtherCAT>
+					</Box>
+					<Box Id="7" BoxType="9099">
+						<Name>Term 7 (EL1008)</Name>
+						<ImageId>7</ImageId>
+						<EtherCAT SlaveType="1" PdiType="#x0104" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x03f03052" RevisionNo="#x00120000" RepeatSupport="true" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL1008 8Ch. Dig. Input 24V, 3ms" Desc="EL1008" PortABoxInfo="#x01000006">
+							<SyncMan>001001000000010004000000000000000100001000010000</SyncMan>
+							<Fmmu>0000000000000000001000010100000002000000000000000000000000000000</Fmmu>
+							<Pdo Name="Channel 1" Index="#x1a00" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6000" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 2" Index="#x1a01" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6010" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 3" Index="#x1a02" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6020" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 4" Index="#x1a03" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6030" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 5" Index="#x1a04" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6040" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 6" Index="#x1a05" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6050" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 7" Index="#x1a06" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6060" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 8" Index="#x1a07" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6070" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+						</EtherCAT>
+					</Box>
+					<Box Id="8" BoxType="9099">
+						<Name>Term 8 (EL1819)</Name>
+						<ImageId>7</ImageId>
+						<EtherCAT SlaveType="1" PdiType="#x0104" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x071b3052" RevisionNo="#x00120000" RepeatSupport="true" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL1819 16Ch. Dig. Input 24V, 10µs" Desc="EL1819" PortABoxInfo="#x01000007">
+							<SyncMan>001002000000010004000000000000000200001000010000</SyncMan>
+							<Fmmu>0000000000000000001000010100000002000000000000000000000000000000</Fmmu>
+							<Pdo Name="Channel 1" Index="#x1a00" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6000" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 2" Index="#x1a01" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6010" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 3" Index="#x1a02" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6020" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 4" Index="#x1a03" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6030" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 5" Index="#x1a04" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6040" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 6" Index="#x1a05" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6050" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 7" Index="#x1a06" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6060" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 8" Index="#x1a07" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6070" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 9" Index="#x1a08" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6080" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 10" Index="#x1a09" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x6090" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 11" Index="#x1a0a" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x60a0" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 12" Index="#x1a0b" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x60b0" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 13" Index="#x1a0c" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x60c0" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 14" Index="#x1a0d" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x60d0" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 15" Index="#x1a0e" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x60e0" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 16" Index="#x1a0f" Flags="#x0011" SyncMan="0">
+								<Entry Name="Input" Index="#x60f0" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+						</EtherCAT>
+					</Box>
+					<Box Id="9" BoxType="9099">
+						<Name>Term 9 (EL2809)</Name>
+						<ImageId>1001</ImageId>
+						<EtherCAT SlaveType="1" PdiType="#x0104" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x0af93052" RevisionNo="#x00120000" RepeatSupport="true" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL2809 16Ch. Dig. Output 24V, 0.5A" Desc="EL2809" PortABoxInfo="#x01000008">
+							<SyncMan>000f01004400010003000000000000000100000f44090000</SyncMan>
+							<SyncMan>010f01004400010003000000000000000100010f44090000</SyncMan>
+							<Fmmu>0000000000000000000f00020100000001000000000000000000000000000000</Fmmu>
+							<Pdo Name="Channel 1" Index="#x1600" InOut="1" Flags="#x0011" SyncMan="0">
+								<Entry Name="Output" Index="#x7000" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 2" Index="#x1601" InOut="1" Flags="#x0011" SyncMan="0">
+								<Entry Name="Output" Index="#x7010" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 3" Index="#x1602" InOut="1" Flags="#x0011" SyncMan="0">
+								<Entry Name="Output" Index="#x7020" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 4" Index="#x1603" InOut="1" Flags="#x0011" SyncMan="0">
+								<Entry Name="Output" Index="#x7030" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 5" Index="#x1604" InOut="1" Flags="#x0011" SyncMan="0">
+								<Entry Name="Output" Index="#x7040" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 6" Index="#x1605" InOut="1" Flags="#x0011" SyncMan="0">
+								<Entry Name="Output" Index="#x7050" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 7" Index="#x1606" InOut="1" Flags="#x0011" SyncMan="0">
+								<Entry Name="Output" Index="#x7060" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 8" Index="#x1607" InOut="1" Flags="#x0011" SyncMan="0">
+								<Entry Name="Output" Index="#x7070" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 9" Index="#x1608" InOut="1" Flags="#x0011" SyncMan="1">
+								<Entry Name="Output" Index="#x7080" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 10" Index="#x1609" InOut="1" Flags="#x0011" SyncMan="1">
+								<Entry Name="Output" Index="#x7090" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 11" Index="#x160a" InOut="1" Flags="#x0011" SyncMan="1">
+								<Entry Name="Output" Index="#x70a0" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 12" Index="#x160b" InOut="1" Flags="#x0011" SyncMan="1">
+								<Entry Name="Output" Index="#x70b0" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 13" Index="#x160c" InOut="1" Flags="#x0011" SyncMan="1">
+								<Entry Name="Output" Index="#x70c0" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 14" Index="#x160d" InOut="1" Flags="#x0011" SyncMan="1">
+								<Entry Name="Output" Index="#x70d0" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 15" Index="#x160e" InOut="1" Flags="#x0011" SyncMan="1">
+								<Entry Name="Output" Index="#x70e0" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 16" Index="#x160f" InOut="1" Flags="#x0011" SyncMan="1">
+								<Entry Name="Output" Index="#x70f0" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+						</EtherCAT>
+					</Box>
+					<Box Id="10" BoxType="9099">
+						<Name>Term 10 (EL2809)</Name>
+						<ImageId>1001</ImageId>
+						<EtherCAT SlaveType="1" PdiType="#x0104" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x0af93052" RevisionNo="#x00120000" RepeatSupport="true" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL2809 16Ch. Dig. Output 24V, 0.5A" Desc="EL2809" PortABoxInfo="#x01000009">
+							<SyncMan>000f01004400010003000000000000000100000f44090000</SyncMan>
+							<SyncMan>010f01004400010003000000000000000100010f44090000</SyncMan>
+							<Fmmu>0000000000000000000f00020100000001000000000000000000000000000000</Fmmu>
+							<Pdo Name="Channel 1" Index="#x1600" InOut="1" Flags="#x0011" SyncMan="0">
+								<Entry Name="Output" Index="#x7000" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 2" Index="#x1601" InOut="1" Flags="#x0011" SyncMan="0">
+								<Entry Name="Output" Index="#x7010" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 3" Index="#x1602" InOut="1" Flags="#x0011" SyncMan="0">
+								<Entry Name="Output" Index="#x7020" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 4" Index="#x1603" InOut="1" Flags="#x0011" SyncMan="0">
+								<Entry Name="Output" Index="#x7030" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 5" Index="#x1604" InOut="1" Flags="#x0011" SyncMan="0">
+								<Entry Name="Output" Index="#x7040" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 6" Index="#x1605" InOut="1" Flags="#x0011" SyncMan="0">
+								<Entry Name="Output" Index="#x7050" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 7" Index="#x1606" InOut="1" Flags="#x0011" SyncMan="0">
+								<Entry Name="Output" Index="#x7060" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 8" Index="#x1607" InOut="1" Flags="#x0011" SyncMan="0">
+								<Entry Name="Output" Index="#x7070" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 9" Index="#x1608" InOut="1" Flags="#x0011" SyncMan="1">
+								<Entry Name="Output" Index="#x7080" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 10" Index="#x1609" InOut="1" Flags="#x0011" SyncMan="1">
+								<Entry Name="Output" Index="#x7090" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 11" Index="#x160a" InOut="1" Flags="#x0011" SyncMan="1">
+								<Entry Name="Output" Index="#x70a0" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 12" Index="#x160b" InOut="1" Flags="#x0011" SyncMan="1">
+								<Entry Name="Output" Index="#x70b0" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 13" Index="#x160c" InOut="1" Flags="#x0011" SyncMan="1">
+								<Entry Name="Output" Index="#x70c0" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 14" Index="#x160d" InOut="1" Flags="#x0011" SyncMan="1">
+								<Entry Name="Output" Index="#x70d0" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 15" Index="#x160e" InOut="1" Flags="#x0011" SyncMan="1">
+								<Entry Name="Output" Index="#x70e0" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 16" Index="#x160f" InOut="1" Flags="#x0011" SyncMan="1">
+								<Entry Name="Output" Index="#x70f0" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+						</EtherCAT>
+					</Box>
+					<Box Id="11" BoxType="9099">
+						<Name>Term 11 (EL2809-0015)</Name>
+						<ImageId>1001</ImageId>
+						<EtherCAT SlaveType="1" PdiType="#x0104" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x0af93052" RevisionNo="#x0010000f" RepeatSupport="true" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL2809-0015 16Ch. Dig. Output 24V DC, 0.35A, not short-circuit proof" Desc="EL2809-0015" PortABoxInfo="#x0100000a">
+							<SyncMan>000f01004400010003000000000000000100000f44090000</SyncMan>
+							<SyncMan>010f01004400010003000000000000000100010f44090000</SyncMan>
+							<Fmmu>0000000000000000000f00020100000001000000000000000000000000000000</Fmmu>
+							<Pdo Name="Channel 1" Index="#x1600" InOut="1" Flags="#x0011" SyncMan="0">
+								<Entry Name="Output" Index="#x7000" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 2" Index="#x1601" InOut="1" Flags="#x0011" SyncMan="0">
+								<Entry Name="Output" Index="#x7010" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 3" Index="#x1602" InOut="1" Flags="#x0011" SyncMan="0">
+								<Entry Name="Output" Index="#x7020" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 4" Index="#x1603" InOut="1" Flags="#x0011" SyncMan="0">
+								<Entry Name="Output" Index="#x7030" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 5" Index="#x1604" InOut="1" Flags="#x0011" SyncMan="0">
+								<Entry Name="Output" Index="#x7040" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 6" Index="#x1605" InOut="1" Flags="#x0011" SyncMan="0">
+								<Entry Name="Output" Index="#x7050" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 7" Index="#x1606" InOut="1" Flags="#x0011" SyncMan="0">
+								<Entry Name="Output" Index="#x7060" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 8" Index="#x1607" InOut="1" Flags="#x0011" SyncMan="0">
+								<Entry Name="Output" Index="#x7070" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 9" Index="#x1608" InOut="1" Flags="#x0011" SyncMan="1">
+								<Entry Name="Output" Index="#x7080" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 10" Index="#x1609" InOut="1" Flags="#x0011" SyncMan="1">
+								<Entry Name="Output" Index="#x7090" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 11" Index="#x160a" InOut="1" Flags="#x0011" SyncMan="1">
+								<Entry Name="Output" Index="#x70a0" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 12" Index="#x160b" InOut="1" Flags="#x0011" SyncMan="1">
+								<Entry Name="Output" Index="#x70b0" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 13" Index="#x160c" InOut="1" Flags="#x0011" SyncMan="1">
+								<Entry Name="Output" Index="#x70c0" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 14" Index="#x160d" InOut="1" Flags="#x0011" SyncMan="1">
+								<Entry Name="Output" Index="#x70d0" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 15" Index="#x160e" InOut="1" Flags="#x0011" SyncMan="1">
+								<Entry Name="Output" Index="#x70e0" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="Channel 16" Index="#x160f" InOut="1" Flags="#x0011" SyncMan="1">
+								<Entry Name="Output" Index="#x70f0" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+							</Pdo>
+						</EtherCAT>
+					</Box>
+					<Box Id="12" BoxType="9103" BoxFlags="#x00000020">
+						<Name>Term 12 (EL6021)</Name>
+						<ImageId>1002</ImageId>
+						<EtherCAT SlaveType="7" PdiType="#x0005" MboxDataLinkLayer="true" CycleMBoxPolling="true" CoeType="7" FoeType="1" VendorId="#x00000002" ProductCode="#x17853052" RevisionNo="#x00140000" InfoDataAddr="true" TimeoutMailbox2="2000" CheckRevisionNoType="3" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL6021 Interface (RS422/485)" Desc="EL6021" PortABoxInfo="#x0100000b">
+							<SyncMan>0018f6002600010001000000f600f600f600001826010000</SyncMan>
+							<SyncMan>f618f6002200010002000000f600f600f600f61822010000</SyncMan>
+							<SyncMan>001018002400010003000000000000001800001024010000</SyncMan>
+							<SyncMan>001418002000010004000000000000001800001420010000</SyncMan>
+							<Fmmu>0000000000000000001000020100000001000000000000000000000000000000</Fmmu>
+							<Fmmu>0000000000000000001400010100000002000000000000000000000000000000</Fmmu>
+							<BootStrapData>0010f400f410f400</BootStrapData>
+							<Pdo Name="TxPDO-Map Inputs" Index="#x1a00" Flags="#x0010">
+								<ExcludePdo>#x1a01</ExcludePdo>
+								<ExcludePdo>#x1a02</ExcludePdo>
+								<ExcludePdo>#x1a04</ExcludePdo>
+								<ExcludePdo>#x1a05</ExcludePdo>
+								<Entry Name="Status" Index="#x3101" Sub="#x01">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 0" Index="#x3101" Sub="#x02">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 1" Index="#x3101" Sub="#x03">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 2" Index="#x3101" Sub="#x04">
+									<Type>USINT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="TxPDO-Map Inputs" Index="#x1a01" Flags="#x0010">
+								<ExcludePdo>#x1a00</ExcludePdo>
+								<ExcludePdo>#x1a02</ExcludePdo>
+								<ExcludePdo>#x1a04</ExcludePdo>
+								<ExcludePdo>#x1a05</ExcludePdo>
+								<Entry Name="Status" Index="#x3102" Sub="#x01">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 0" Index="#x3102" Sub="#x02">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 1" Index="#x3102" Sub="#x03">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 2" Index="#x3102" Sub="#x04">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 3" Index="#x3102" Sub="#x05">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 4" Index="#x3102" Sub="#x06">
+									<Type>USINT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="TxPDO-Map Inputs" Index="#x1a02" Flags="#x0010">
+								<ExcludePdo>#x1a00</ExcludePdo>
+								<ExcludePdo>#x1a01</ExcludePdo>
+								<ExcludePdo>#x1a04</ExcludePdo>
+								<ExcludePdo>#x1a05</ExcludePdo>
+								<Entry Name="Status" Index="#x3103" Sub="#x01">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data In 0" Index="#x3103" Sub="#x02">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 1" Index="#x3103" Sub="#x03">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 2" Index="#x3103" Sub="#x04">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 3" Index="#x3103" Sub="#x05">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 4" Index="#x3103" Sub="#x06">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 5" Index="#x3103" Sub="#x07">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 6" Index="#x3103" Sub="#x08">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 7" Index="#x3103" Sub="#x09">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 8" Index="#x3103" Sub="#x0a">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 9" Index="#x3103" Sub="#x0b">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 10" Index="#x3103" Sub="#x0c">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 11" Index="#x3103" Sub="#x0d">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 12" Index="#x3103" Sub="#x0e">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 13" Index="#x3103" Sub="#x0f">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 14" Index="#x3103" Sub="#x10">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 15" Index="#x3103" Sub="#x11">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 16" Index="#x3103" Sub="#x12">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 17" Index="#x3103" Sub="#x13">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 18" Index="#x3103" Sub="#x14">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 19" Index="#x3103" Sub="#x15">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 20" Index="#x3103" Sub="#x16">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 21" Index="#x3103" Sub="#x17">
+									<Type>USINT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="COM TxPDO-Map Inputs" Index="#x1a04" Flags="#x0010" SyncMan="3">
+								<ExcludePdo>#x1a00</ExcludePdo>
+								<ExcludePdo>#x1a01</ExcludePdo>
+								<ExcludePdo>#x1a02</ExcludePdo>
+								<ExcludePdo>#x1a05</ExcludePdo>
+								<Entry Name="Status__Transmit accepted" Index="#x6000" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Status__Receive request" Index="#x6000" Sub="#x02">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Status__Init accepted" Index="#x6000" Sub="#x03">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Status__Buffer full" Index="#x6000" Sub="#x04">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Status__Parity error" Index="#x6000" Sub="#x05">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Status__Framing error" Index="#x6000" Sub="#x06">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Status__Overrun error" Index="#x6000" Sub="#x07">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Status__">
+									<Type GUID="{18071995-0000-0000-0000-002000000001}">ARRAY [0..0] OF BIT</Type>
+								</Entry>
+								<Entry Name="Status__Input length" Index="#x6000" Sub="#x09">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 0" Index="#x6000" Sub="#x11">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 1" Index="#x6000" Sub="#x12">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 2" Index="#x6000" Sub="#x13">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 3" Index="#x6000" Sub="#x14">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 4" Index="#x6000" Sub="#x15">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 5" Index="#x6000" Sub="#x16">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 6" Index="#x6000" Sub="#x17">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 7" Index="#x6000" Sub="#x18">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 8" Index="#x6000" Sub="#x19">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 9" Index="#x6000" Sub="#x1a">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 10" Index="#x6000" Sub="#x1b">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 11" Index="#x6000" Sub="#x1c">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 12" Index="#x6000" Sub="#x1d">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 13" Index="#x6000" Sub="#x1e">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 14" Index="#x6000" Sub="#x1f">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 15" Index="#x6000" Sub="#x20">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 16" Index="#x6000" Sub="#x21">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 17" Index="#x6000" Sub="#x22">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 18" Index="#x6000" Sub="#x23">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 19" Index="#x6000" Sub="#x24">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 20" Index="#x6000" Sub="#x25">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 21" Index="#x6000" Sub="#x26">
+									<Type>USINT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="COM ext. inputs" Index="#x1a05" Flags="#x0010">
+								<ExcludePdo>#x1a00</ExcludePdo>
+								<ExcludePdo>#x1a01</ExcludePdo>
+								<ExcludePdo>#x1a02</ExcludePdo>
+								<ExcludePdo>#x1a04</ExcludePdo>
+								<Entry Name="Status__Transmit accepted" Index="#x6001" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Status__Receive request" Index="#x6001" Sub="#x02">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Status__Init accepted" Index="#x6001" Sub="#x03">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Status__Buffer full" Index="#x6001" Sub="#x04">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Status__Parity error" Index="#x6001" Sub="#x05">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Status__Framing error" Index="#x6001" Sub="#x06">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Status__Overrun error" Index="#x6001" Sub="#x07">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Status__">
+									<Type GUID="{18071995-0000-0000-0000-002000000001}">ARRAY [0..0] OF BIT</Type>
+								</Entry>
+								<Entry Name="Status__Input length" Index="#x6001" Sub="#x09">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data In 0" Index="#x6001" Sub="#x11">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data In 1" Index="#x6001" Sub="#x12">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data In 2" Index="#x6001" Sub="#x13">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data In 3" Index="#x6001" Sub="#x14">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data In 4" Index="#x6001" Sub="#x15">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data In 5" Index="#x6001" Sub="#x16">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data In 6" Index="#x6001" Sub="#x17">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data In 7" Index="#x6001" Sub="#x18">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data In 8" Index="#x6001" Sub="#x19">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data In 9" Index="#x6001" Sub="#x1a">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data In 10" Index="#x6001" Sub="#x1b">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data In 11" Index="#x6001" Sub="#x1c">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data In 12" Index="#x6001" Sub="#x1d">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data In 13" Index="#x6001" Sub="#x1e">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data In 14" Index="#x6001" Sub="#x1f">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data In 15" Index="#x6001" Sub="#x20">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data In 16" Index="#x6001" Sub="#x21">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data In 17" Index="#x6001" Sub="#x22">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data In 18" Index="#x6001" Sub="#x23">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data In 19" Index="#x6001" Sub="#x24">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data In 20" Index="#x6001" Sub="#x25">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data In 21" Index="#x6001" Sub="#x26">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data In 22" Index="#x6001" Sub="#x27">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data In 23" Index="#x6001" Sub="#x28">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data In 24" Index="#x6001" Sub="#x29">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data In 25" Index="#x6001" Sub="#x2a">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data In 26" Index="#x6001" Sub="#x2b">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data In 27" Index="#x6001" Sub="#x2c">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data In 28" Index="#x6001" Sub="#x2d">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data In 29" Index="#x6001" Sub="#x2e">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data In 30" Index="#x6001" Sub="#x2f">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data In 31" Index="#x6001" Sub="#x30">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data In 32" Index="#x6001" Sub="#x31">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data In 33" Index="#x6001" Sub="#x32">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data In 34" Index="#x6001" Sub="#x33">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data In 35" Index="#x6001" Sub="#x34">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data In 36" Index="#x6001" Sub="#x35">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data In 37" Index="#x6001" Sub="#x36">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data In 38" Index="#x6001" Sub="#x37">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data In 39" Index="#x6001" Sub="#x38">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data In 40" Index="#x6001" Sub="#x39">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data In 41" Index="#x6001" Sub="#x3a">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data In 42" Index="#x6001" Sub="#x3b">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data In 43" Index="#x6001" Sub="#x3c">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data In 44" Index="#x6001" Sub="#x3d">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data In 45" Index="#x6001" Sub="#x3e">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data In 46" Index="#x6001" Sub="#x3f">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data In 47" Index="#x6001" Sub="#x40">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data In 48" Index="#x6001" Sub="#x41">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data In 49" Index="#x6001" Sub="#x42">
+									<Type>UINT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="RxPDO-Map Outputs" Index="#x1600" InOut="1" Flags="#x0010">
+								<ExcludePdo>#x1601</ExcludePdo>
+								<ExcludePdo>#x1602</ExcludePdo>
+								<ExcludePdo>#x1604</ExcludePdo>
+								<ExcludePdo>#x1605</ExcludePdo>
+								<Entry Name="Ctrl" Index="#x3001" Sub="#x01">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 0" Index="#x3001" Sub="#x02">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 1" Index="#x3001" Sub="#x03">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 2" Index="#x3001" Sub="#x04">
+									<Type>USINT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="RxPDO-Map Outputs" Index="#x1601" InOut="1" Flags="#x0010">
+								<ExcludePdo>#x1600</ExcludePdo>
+								<ExcludePdo>#x1602</ExcludePdo>
+								<ExcludePdo>#x1604</ExcludePdo>
+								<ExcludePdo>#x1605</ExcludePdo>
+								<Entry Name="Ctrl" Index="#x3002" Sub="#x01">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 0" Index="#x3002" Sub="#x02">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 1" Index="#x3002" Sub="#x03">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 2" Index="#x3002" Sub="#x04">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 3" Index="#x3002" Sub="#x05">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 4" Index="#x3002" Sub="#x06">
+									<Type>USINT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="RxPDO-Map Outputs" Index="#x1602" InOut="1" Flags="#x0010">
+								<ExcludePdo>#x1600</ExcludePdo>
+								<ExcludePdo>#x1601</ExcludePdo>
+								<ExcludePdo>#x1604</ExcludePdo>
+								<ExcludePdo>#x1605</ExcludePdo>
+								<Entry Name="Ctrl" Index="#x3003" Sub="#x01">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data Out 0" Index="#x3003" Sub="#x02">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 1" Index="#x3003" Sub="#x03">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 2" Index="#x3003" Sub="#x04">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 3" Index="#x3003" Sub="#x05">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 4" Index="#x3003" Sub="#x06">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 5" Index="#x3003" Sub="#x07">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 6" Index="#x3003" Sub="#x08">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 7" Index="#x3003" Sub="#x09">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 8" Index="#x3003" Sub="#x0a">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 9" Index="#x3003" Sub="#x0b">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 10" Index="#x3003" Sub="#x0c">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 11" Index="#x3003" Sub="#x0d">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 12" Index="#x3003" Sub="#x0e">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 13" Index="#x3003" Sub="#x0f">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 14" Index="#x3003" Sub="#x10">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 15" Index="#x3003" Sub="#x11">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 16" Index="#x3003" Sub="#x12">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 17" Index="#x3003" Sub="#x13">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 18" Index="#x3003" Sub="#x14">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 19" Index="#x3003" Sub="#x15">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 20" Index="#x3003" Sub="#x16">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 21" Index="#x3003" Sub="#x17">
+									<Type>USINT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="COM RxPDO-Map Outputs" Index="#x1604" InOut="1" Flags="#x0010" SyncMan="2">
+								<ExcludePdo>#x1600</ExcludePdo>
+								<ExcludePdo>#x1601</ExcludePdo>
+								<ExcludePdo>#x1602</ExcludePdo>
+								<ExcludePdo>#x1605</ExcludePdo>
+								<Entry Name="Ctrl__Transmit request" Index="#x7000" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Ctrl__Receive accepted" Index="#x7000" Sub="#x02">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Ctrl__Init request" Index="#x7000" Sub="#x03">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Ctrl__Send continues" Index="#x7000" Sub="#x04">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Ctrl__">
+									<Type GUID="{18071995-0000-0000-0000-002000000004}">ARRAY [0..3] OF BIT</Type>
+								</Entry>
+								<Entry Name="Ctrl__Output length" Index="#x7000" Sub="#x09">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 0" Index="#x7000" Sub="#x11">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 1" Index="#x7000" Sub="#x12">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 2" Index="#x7000" Sub="#x13">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 3" Index="#x7000" Sub="#x14">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 4" Index="#x7000" Sub="#x15">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 5" Index="#x7000" Sub="#x16">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 6" Index="#x7000" Sub="#x17">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 7" Index="#x7000" Sub="#x18">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 8" Index="#x7000" Sub="#x19">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 9" Index="#x7000" Sub="#x1a">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 10" Index="#x7000" Sub="#x1b">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 11" Index="#x7000" Sub="#x1c">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 12" Index="#x7000" Sub="#x1d">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 13" Index="#x7000" Sub="#x1e">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 14" Index="#x7000" Sub="#x1f">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 15" Index="#x7000" Sub="#x20">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 16" Index="#x7000" Sub="#x21">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 17" Index="#x7000" Sub="#x22">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 18" Index="#x7000" Sub="#x23">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 19" Index="#x7000" Sub="#x24">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 20" Index="#x7000" Sub="#x25">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 21" Index="#x7000" Sub="#x26">
+									<Type>USINT</Type>
+								</Entry>
+							</Pdo>
+							<Pdo Name="COM ext. outputs" Index="#x1605" InOut="1" Flags="#x0010">
+								<ExcludePdo>#x1600</ExcludePdo>
+								<ExcludePdo>#x1601</ExcludePdo>
+								<ExcludePdo>#x1602</ExcludePdo>
+								<ExcludePdo>#x1604</ExcludePdo>
+								<Entry Name="Ctrl__Transmit request" Index="#x7001" Sub="#x01">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Ctrl__Receive accepted" Index="#x7001" Sub="#x02">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Ctrl__Init request" Index="#x7001" Sub="#x03">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Ctrl__Send continuous" Index="#x7001" Sub="#x04">
+									<Type>BIT</Type>
+								</Entry>
+								<Entry Name="Ctrl__">
+									<Type GUID="{18071995-0000-0000-0000-002000000004}">ARRAY [0..3] OF BIT</Type>
+								</Entry>
+								<Entry Name="Ctrl__Output length" Index="#x7001" Sub="#x09">
+									<Type>USINT</Type>
+								</Entry>
+								<Entry Name="Data Out 0" Index="#x7001" Sub="#x11">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data Out 1" Index="#x7001" Sub="#x12">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data Out 2" Index="#x7001" Sub="#x13">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data Out 3" Index="#x7001" Sub="#x14">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data Out 4" Index="#x7001" Sub="#x15">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data Out 5" Index="#x7001" Sub="#x16">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data Out 6" Index="#x7001" Sub="#x17">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data Out 7" Index="#x7001" Sub="#x18">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data Out 8" Index="#x7001" Sub="#x19">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data Out 9" Index="#x7001" Sub="#x1a">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data Out 10" Index="#x7001" Sub="#x1b">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data Out 11" Index="#x7001" Sub="#x1c">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data Out 12" Index="#x7001" Sub="#x1d">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data Out 13" Index="#x7001" Sub="#x1e">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data Out 14" Index="#x7001" Sub="#x1f">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data Out 15" Index="#x7001" Sub="#x20">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data Out 16" Index="#x7001" Sub="#x21">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data Out 17" Index="#x7001" Sub="#x22">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data Out 18" Index="#x7001" Sub="#x23">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data Out 19" Index="#x7001" Sub="#x24">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data Out 20" Index="#x7001" Sub="#x25">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data Out 21" Index="#x7001" Sub="#x26">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data Out 22" Index="#x7001" Sub="#x27">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data Out 23" Index="#x7001" Sub="#x28">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data Out 24" Index="#x7001" Sub="#x29">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data Out 25" Index="#x7001" Sub="#x2a">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data Out 26" Index="#x7001" Sub="#x2b">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data Out 27" Index="#x7001" Sub="#x2c">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data Out 28" Index="#x7001" Sub="#x2d">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data Out 29" Index="#x7001" Sub="#x2e">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data Out 30" Index="#x7001" Sub="#x2f">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data Out 31" Index="#x7001" Sub="#x30">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data Out 32" Index="#x7001" Sub="#x31">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data Out 33" Index="#x7001" Sub="#x32">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data Out 34" Index="#x7001" Sub="#x33">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data Out 35" Index="#x7001" Sub="#x34">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data Out 36" Index="#x7001" Sub="#x35">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data Out 37" Index="#x7001" Sub="#x36">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data Out 38" Index="#x7001" Sub="#x37">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data Out 39" Index="#x7001" Sub="#x38">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data Out 40" Index="#x7001" Sub="#x39">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data Out 41" Index="#x7001" Sub="#x3a">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data Out 42" Index="#x7001" Sub="#x3b">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data Out 43" Index="#x7001" Sub="#x3c">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data Out 44" Index="#x7001" Sub="#x3d">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data Out 45" Index="#x7001" Sub="#x3e">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data Out 46" Index="#x7001" Sub="#x3f">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data Out 47" Index="#x7001" Sub="#x40">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data Out 48" Index="#x7001" Sub="#x41">
+									<Type>UINT</Type>
+								</Entry>
+								<Entry Name="Data Out 49" Index="#x7001" Sub="#x42">
+									<Type>UINT</Type>
+								</Entry>
+							</Pdo>
+							<CoeProfile ProfileNo="39326601"/>
+							<CoeProfile ProfileNo="5001"/>
+						</EtherCAT>
+					</Box>
+					<Box Id="13" BoxType="9099">
+						<Name>Term 13 (EK1110)</Name>
+						<ImageId>1003</ImageId>
+						<EtherCAT SlaveType="1" PdiType="#x0100" CycleMBoxPollingTime="0" VendorId="#x00000002" ProductCode="#x04562c52" RevisionNo="#x00110000" PortPhys="19" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EK1110 EtherCAT extension" Desc="EK1110" PortABoxInfo="#x0100000c"/>
+					</Box>
+				</Box>
+				<Box Id="14" BoxType="9099" BoxFlags="#x00000020">
+					<Name>Box 14 (TLBETHERCAT)</Name>
+					<ImageId>65</ImageId>
+					<EtherCAT SlaveType="2" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="19" VendorId="#xe0000044" ProductCode="#x0000000b" InfoDataAddr="true" PortPhys="17" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="TLBETHERCAT" Desc="TLBETHERCAT" PortABoxInfo="#x0100000d">
+						<SyncMan>001080003600010001000000800080008000001036010000</SyncMan>
+						<SyncMan>801080003200010002000000800080008000801032010000</SyncMan>
+						<SyncMan>001108007400010003000000080008000800001174030000</SyncMan>
+						<SyncMan>001d12003000010004000000120012001200001d30030000</SyncMan>
+						<Fmmu>0000000000000000001100020100000001000000000000000000000000000000</Fmmu>
+						<Fmmu>0000000000000000001d00010100000002000000000000000000000000000000</Fmmu>
+						<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
+						<Pdo Name="TxPDO" Index="#x1a00" Flags="#x0011" SyncMan="3">
+							<Entry Name="1 Byte In (0)" Index="#x3000" Sub="#x01">
+								<Type>USINT</Type>
+							</Entry>
+							<Entry Name="1 Byte In (1)" Index="#x3000" Sub="#x02">
+								<Type>USINT</Type>
+							</Entry>
+							<Entry Name="1 Byte In (2)" Index="#x3000" Sub="#x03">
+								<Type>USINT</Type>
+							</Entry>
+							<Entry Name="1 Byte In (3)" Index="#x3000" Sub="#x04">
+								<Type>USINT</Type>
+							</Entry>
+							<Entry Name="1 Byte In (4)" Index="#x3000" Sub="#x05">
+								<Type>USINT</Type>
+							</Entry>
+							<Entry Name="1 Byte In (5)" Index="#x3000" Sub="#x06">
+								<Type>USINT</Type>
+							</Entry>
+							<Entry Name="1 Byte In (6)" Index="#x3000" Sub="#x07">
+								<Type>USINT</Type>
+							</Entry>
+							<Entry Name="1 Byte In (7)" Index="#x3000" Sub="#x08">
+								<Type>USINT</Type>
+							</Entry>
+							<Entry Name="1 Byte In (8)" Index="#x3000" Sub="#x09">
+								<Type>USINT</Type>
+							</Entry>
+							<Entry Name="1 Byte In (9)" Index="#x3000" Sub="#x0a">
+								<Type>USINT</Type>
+							</Entry>
+							<Entry Name="1 Byte In (10)" Index="#x3000" Sub="#x0b">
+								<Type>USINT</Type>
+							</Entry>
+							<Entry Name="1 Byte In (11)" Index="#x3000" Sub="#x0c">
+								<Type>USINT</Type>
+							</Entry>
+							<Entry Name="1 Byte In (12)" Index="#x3000" Sub="#x0d">
+								<Type>USINT</Type>
+							</Entry>
+							<Entry Name="1 Byte In (13)" Index="#x3000" Sub="#x0e">
+								<Type>USINT</Type>
+							</Entry>
+							<Entry Name="1 Byte In (14)" Index="#x3000" Sub="#x0f">
+								<Type>USINT</Type>
+							</Entry>
+							<Entry Name="1 Byte In (15)" Index="#x3000" Sub="#x10">
+								<Type>USINT</Type>
+							</Entry>
+							<Entry Name="1 Byte In (16)" Index="#x3000" Sub="#x11">
+								<Type>USINT</Type>
+							</Entry>
+							<Entry Name="1 Byte In (17)" Index="#x3000" Sub="#x12">
+								<Type>USINT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="RxPDO" Index="#x1600" InOut="1" Flags="#x0011" SyncMan="2">
+							<Entry Name="1 Byte Out (0)" Index="#x2000" Sub="#x01">
+								<Type>USINT</Type>
+							</Entry>
+							<Entry Name="1 Byte Out (1)" Index="#x2000" Sub="#x02">
+								<Type>USINT</Type>
+							</Entry>
+							<Entry Name="1 Byte Out (2)" Index="#x2000" Sub="#x03">
+								<Type>USINT</Type>
+							</Entry>
+							<Entry Name="1 Byte Out (3)" Index="#x2000" Sub="#x04">
+								<Type>USINT</Type>
+							</Entry>
+							<Entry Name="1 Byte Out (4)" Index="#x2000" Sub="#x05">
+								<Type>USINT</Type>
+							</Entry>
+							<Entry Name="1 Byte Out (5)" Index="#x2000" Sub="#x06">
+								<Type>USINT</Type>
+							</Entry>
+							<Entry Name="1 Byte Out (6)" Index="#x2000" Sub="#x07">
+								<Type>USINT</Type>
+							</Entry>
+							<Entry Name="1 Byte Out (7)" Index="#x2000" Sub="#x08">
+								<Type>USINT</Type>
+							</Entry>
+						</Pdo>
+					</EtherCAT>
+				</Box>
+				<Box Id="15" BoxType="9099" BoxFlags="#x00000020">
+					<Name>Box 15 (TLBETHERCAT)</Name>
+					<ImageId>65</ImageId>
+					<EtherCAT SlaveType="2" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="19" VendorId="#xe0000044" ProductCode="#x0000000b" InfoDataAddr="true" PortPhys="17" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="TLBETHERCAT" Desc="TLBETHERCAT" PortABoxInfo="#x0100000e">
+						<SyncMan>001080003600010001000000800080008000001036010000</SyncMan>
+						<SyncMan>801080003200010002000000800080008000801032010000</SyncMan>
+						<SyncMan>001108007400010003000000080008000800001174030000</SyncMan>
+						<SyncMan>001d12003000010004000000120012001200001d30030000</SyncMan>
+						<Fmmu>0000000000000000001100020100000001000000000000000000000000000000</Fmmu>
+						<Fmmu>0000000000000000001d00010100000002000000000000000000000000000000</Fmmu>
+						<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
+						<Pdo Name="TxPDO" Index="#x1a00" Flags="#x0011" SyncMan="3">
+							<Entry Name="1 Byte In (0)" Index="#x3000" Sub="#x01">
+								<Type>USINT</Type>
+							</Entry>
+							<Entry Name="1 Byte In (1)" Index="#x3000" Sub="#x02">
+								<Type>USINT</Type>
+							</Entry>
+							<Entry Name="1 Byte In (2)" Index="#x3000" Sub="#x03">
+								<Type>USINT</Type>
+							</Entry>
+							<Entry Name="1 Byte In (3)" Index="#x3000" Sub="#x04">
+								<Type>USINT</Type>
+							</Entry>
+							<Entry Name="1 Byte In (4)" Index="#x3000" Sub="#x05">
+								<Type>USINT</Type>
+							</Entry>
+							<Entry Name="1 Byte In (5)" Index="#x3000" Sub="#x06">
+								<Type>USINT</Type>
+							</Entry>
+							<Entry Name="1 Byte In (6)" Index="#x3000" Sub="#x07">
+								<Type>USINT</Type>
+							</Entry>
+							<Entry Name="1 Byte In (7)" Index="#x3000" Sub="#x08">
+								<Type>USINT</Type>
+							</Entry>
+							<Entry Name="1 Byte In (8)" Index="#x3000" Sub="#x09">
+								<Type>USINT</Type>
+							</Entry>
+							<Entry Name="1 Byte In (9)" Index="#x3000" Sub="#x0a">
+								<Type>USINT</Type>
+							</Entry>
+							<Entry Name="1 Byte In (10)" Index="#x3000" Sub="#x0b">
+								<Type>USINT</Type>
+							</Entry>
+							<Entry Name="1 Byte In (11)" Index="#x3000" Sub="#x0c">
+								<Type>USINT</Type>
+							</Entry>
+							<Entry Name="1 Byte In (12)" Index="#x3000" Sub="#x0d">
+								<Type>USINT</Type>
+							</Entry>
+							<Entry Name="1 Byte In (13)" Index="#x3000" Sub="#x0e">
+								<Type>USINT</Type>
+							</Entry>
+							<Entry Name="1 Byte In (14)" Index="#x3000" Sub="#x0f">
+								<Type>USINT</Type>
+							</Entry>
+							<Entry Name="1 Byte In (15)" Index="#x3000" Sub="#x10">
+								<Type>USINT</Type>
+							</Entry>
+							<Entry Name="1 Byte In (16)" Index="#x3000" Sub="#x11">
+								<Type>USINT</Type>
+							</Entry>
+							<Entry Name="1 Byte In (17)" Index="#x3000" Sub="#x12">
+								<Type>USINT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="RxPDO" Index="#x1600" InOut="1" Flags="#x0011" SyncMan="2">
+							<Entry Name="1 Byte Out (0)" Index="#x2000" Sub="#x01">
+								<Type>USINT</Type>
+							</Entry>
+							<Entry Name="1 Byte Out (1)" Index="#x2000" Sub="#x02">
+								<Type>USINT</Type>
+							</Entry>
+							<Entry Name="1 Byte Out (2)" Index="#x2000" Sub="#x03">
+								<Type>USINT</Type>
+							</Entry>
+							<Entry Name="1 Byte Out (3)" Index="#x2000" Sub="#x04">
+								<Type>USINT</Type>
+							</Entry>
+							<Entry Name="1 Byte Out (4)" Index="#x2000" Sub="#x05">
+								<Type>USINT</Type>
+							</Entry>
+							<Entry Name="1 Byte Out (5)" Index="#x2000" Sub="#x06">
+								<Type>USINT</Type>
+							</Entry>
+							<Entry Name="1 Byte Out (6)" Index="#x2000" Sub="#x07">
+								<Type>USINT</Type>
+							</Entry>
+							<Entry Name="1 Byte Out (7)" Index="#x2000" Sub="#x08">
+								<Type>USINT</Type>
+							</Entry>
+						</Pdo>
+					</EtherCAT>
+				</Box>
+				<Box Id="16" BoxType="9099" BoxFlags="#x00000020">
+					<Name>Box 16 (IND360)</Name>
+					<ImageId>65</ImageId>
+					<EtherCAT SlaveType="2" PdiType="#x0006" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="19" VendorId="#x000007a7" ProductCode="#x00004202" RevisionNo="#x00000001" InfoDataAddr="true" PortPhys="17" IdentificationAdo="308" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="IND360 ECS" Desc="IND360" PortABoxInfo="#x0100000f">
+						<SyncMan>001080002600010001000000800080008000001026010000</SyncMan>
+						<SyncMan>801080002200010002000000800080008000801022010000</SyncMan>
+						<SyncMan>001110006400010003000000000000040000001164030000</SyncMan>
+						<SyncMan>001d10002000010004000000000000040000001d20030000</SyncMan>
+						<Fmmu>0000000000000000001100020100000001000000000000000000000000000000</Fmmu>
+						<Fmmu>0000000000000000001d00010100000002000000000000000000000000000000</Fmmu>
+						<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
+						<BootStrapData>0010800080108000</BootStrapData>
+						<Pdo Name="TxPDO-2Block" Index="#x1a01" Flags="#x0011" SyncMan="3">
+							<Entry Name="MB1 Requested Measuring Value" Index="#x3f01" Sub="#x01">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="MB1 Scale Status" Index="#x3f01" Sub="#x02">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="MB1 Response" Index="#x3f01" Sub="#x03">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="SB1 Status Group 1" Index="#x3f01" Sub="#x04">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="SB1 Status Group 2" Index="#x3f01" Sub="#x05">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="SB1 Status Group 3" Index="#x3f01" Sub="#x06">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="SB1 Response" Index="#x3f01" Sub="#x07">
+								<Type>UINT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="RxPDO-2Block" Index="#x1601" InOut="1" Flags="#x0011" SyncMan="2">
+							<Entry Name="MB1 Command Value" Index="#x2f01" Sub="#x01">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="MB1 Channel Mask" Index="#x2f01" Sub="#x02">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="MB1 Command" Index="#x2f01" Sub="#x03">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="SB1 Reserved 1" Index="#x2f01" Sub="#x04">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="SB1 Reserved 2" Index="#x2f01" Sub="#x05">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="SB1 Reserved 3" Index="#x2f01" Sub="#x06">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="SB1 Command" Index="#x2f01" Sub="#x07">
+								<Type>UINT</Type>
+							</Entry>
+						</Pdo>
+					</EtherCAT>
+				</Box>
+				<Box Id="17" BoxType="9099" BoxFlags="#x00000020">
+					<Name>Box 17 (IND360)</Name>
+					<ImageId>65</ImageId>
+					<EtherCAT SlaveType="2" PdiType="#x0006" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="19" VendorId="#x000007a7" ProductCode="#x00004202" RevisionNo="#x00000001" InfoDataAddr="true" PortPhys="17" IdentificationAdo="308" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="IND360 ECS" Desc="IND360" PortABoxInfo="#x01000010">
+						<SyncMan>001080002600010001000000800080008000001026010000</SyncMan>
+						<SyncMan>801080002200010002000000800080008000801022010000</SyncMan>
+						<SyncMan>001110006400010003000000000000040000001164030000</SyncMan>
+						<SyncMan>001d10002000010004000000000000040000001d20030000</SyncMan>
+						<Fmmu>0000000000000000001100020100000001000000000000000000000000000000</Fmmu>
+						<Fmmu>0000000000000000001d00010100000002000000000000000000000000000000</Fmmu>
+						<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
+						<BootStrapData>0010800080108000</BootStrapData>
+						<Pdo Name="TxPDO-2Block" Index="#x1a01" Flags="#x0011" SyncMan="3">
+							<Entry Name="MB1 Requested Measuring Value" Index="#x3f01" Sub="#x01">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="MB1 Scale Status" Index="#x3f01" Sub="#x02">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="MB1 Response" Index="#x3f01" Sub="#x03">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="SB1 Status Group 1" Index="#x3f01" Sub="#x04">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="SB1 Status Group 2" Index="#x3f01" Sub="#x05">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="SB1 Status Group 3" Index="#x3f01" Sub="#x06">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="SB1 Response" Index="#x3f01" Sub="#x07">
+								<Type>UINT</Type>
+							</Entry>
+						</Pdo>
+						<Pdo Name="RxPDO-2Block" Index="#x1601" InOut="1" Flags="#x0011" SyncMan="2">
+							<Entry Name="MB1 Command Value" Index="#x2f01" Sub="#x01">
+								<Type>REAL</Type>
+							</Entry>
+							<Entry Name="MB1 Channel Mask" Index="#x2f01" Sub="#x02">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="MB1 Command" Index="#x2f01" Sub="#x03">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="SB1 Reserved 1" Index="#x2f01" Sub="#x04">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="SB1 Reserved 2" Index="#x2f01" Sub="#x05">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="SB1 Reserved 3" Index="#x2f01" Sub="#x06">
+								<Type>UINT</Type>
+							</Entry>
+							<Entry Name="SB1 Command" Index="#x2f01" Sub="#x07">
+								<Type>UINT</Type>
+							</Entry>
+						</Pdo>
+					</EtherCAT>
+				</Box>
+				<EtherCAT/>
+			</Device>
+			<Device Id="3" Disabled="true" DevType="121">
+				<Name>Device 3 (NOV-DP-RAM)</Name>
+				<AddressInfo>
+					<Isa>
+						<Address>-267386880</Address>
+						<Size>131072</Size>
+					</Isa>
+				</AddressInfo>
+				<Vars VarGrpType="1" InsertType="1">
+					<Name>Inputs</Name>
+				</Vars>
+				<Vars VarGrpType="2" InsertType="1">
+					<Name>Outputs</Name>
+				</Vars>
+				<Image Id="4" ImageFlags="#x00000042" AddrType="5" ImageType="5">
+					<Name>Image</Name>
+				</Image>
+				<DpRam/>
+			</Device>
+		</Io>
+	</Project>
+	<Mappings>
+		<OwnerA Name="TIPC^MAIN^MAIN Instance">
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Box 14 (TLBETHERCAT)">
+				<Link VarA="PlcTask2 Inputs^PR_Line02.fb_WormWeight.fbLoadcell.fbInterface.StatusLaumas1" VarB="TxPDO^1 Byte In (13)"/>
+				<Link VarA="PlcTask2 Inputs^PR_Line02.fb_WormWeight.fbLoadcell.fbInterface.StatusLaumas2" VarB="TxPDO^1 Byte In (12)"/>
+				<Link VarA="PlcTask2 Inputs^PR_Line02.fb_WormWeight.fbLoadcell.fbInterface.WeightLaumas1" VarB="TxPDO^1 Byte In (3)"/>
+				<Link VarA="PlcTask2 Inputs^PR_Line02.fb_WormWeight.fbLoadcell.fbInterface.WeightLaumas2" VarB="TxPDO^1 Byte In (2)"/>
+				<Link VarA="PlcTask2 Inputs^PR_Line02.fb_WormWeight.fbLoadcell.fbInterface.WeightLaumas3" VarB="TxPDO^1 Byte In (1)"/>
+				<Link VarA="PlcTask2 Inputs^PR_Line02.fb_WormWeight.fbLoadcell.fbInterface.WeightLaumas4" VarB="TxPDO^1 Byte In (0)"/>
+				<Link VarA="PlcTask2 Outputs^PR_Line02.fb_WormWeight.fbLoadcell.fbInterface.CMDLaumas" VarB="RxPDO^1 Byte Out (1)"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Box 15 (TLBETHERCAT)">
+				<Link VarA="PlcTask2 Inputs^PR_Line02.fb_FoodWeight.fbLoadcell.fbInterface.StatusLaumas1" VarB="TxPDO^1 Byte In (13)"/>
+				<Link VarA="PlcTask2 Inputs^PR_Line02.fb_FoodWeight.fbLoadcell.fbInterface.StatusLaumas2" VarB="TxPDO^1 Byte In (12)"/>
+				<Link VarA="PlcTask2 Inputs^PR_Line02.fb_FoodWeight.fbLoadcell.fbInterface.WeightLaumas1" VarB="TxPDO^1 Byte In (3)"/>
+				<Link VarA="PlcTask2 Inputs^PR_Line02.fb_FoodWeight.fbLoadcell.fbInterface.WeightLaumas2" VarB="TxPDO^1 Byte In (2)"/>
+				<Link VarA="PlcTask2 Inputs^PR_Line02.fb_FoodWeight.fbLoadcell.fbInterface.WeightLaumas3" VarB="TxPDO^1 Byte In (1)"/>
+				<Link VarA="PlcTask2 Inputs^PR_Line02.fb_FoodWeight.fbLoadcell.fbInterface.WeightLaumas4" VarB="TxPDO^1 Byte In (0)"/>
+				<Link VarA="PlcTask2 Outputs^PR_Line02.fb_FoodWeight.fbLoadcell.fbInterface.CMDLaumas" VarB="RxPDO^1 Byte Out (1)"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Box 16 (IND360)">
+				<Link VarA="PlcTask Inputs^PR_Line01.fb_WormWeight.fbLoadcell.fbInterface.IND_M_RD_Float" VarB="TxPDO-2Block^MB1 Requested Measuring Value"/>
+				<Link VarA="PlcTask Inputs^PR_Line01.fb_WormWeight.fbLoadcell.fbInterface.IND_M_RD_Response" VarB="TxPDO-2Block^MB1 Response"/>
+				<Link VarA="PlcTask Inputs^PR_Line01.fb_WormWeight.fbLoadcell.fbInterface.IND_M_RD_Status" VarB="TxPDO-2Block^MB1 Scale Status"/>
+				<Link VarA="PlcTask Inputs^PR_Line01.fb_WormWeight.fbLoadcell.fbInterface.IND_SB_STT1" VarB="TxPDO-2Block^SB1 Status Group 1"/>
+				<Link VarA="PlcTask Inputs^PR_Line01.fb_WormWeight.fbLoadcell.fbInterface.IND_SB_STT2" VarB="TxPDO-2Block^SB1 Status Group 2"/>
+				<Link VarA="PlcTask Inputs^PR_Line01.fb_WormWeight.fbLoadcell.fbInterface.IND_SB_STT3" VarB="TxPDO-2Block^SB1 Status Group 3"/>
+				<Link VarA="PlcTask Outputs^PR_Line01.fb_WormWeight.fbLoadcell.fbInterface.IND_M_WR_Command" VarB="RxPDO-2Block^MB1 Command"/>
+				<Link VarA="PlcTask Outputs^PR_Line01.fb_WormWeight.fbLoadcell.fbInterface.IND_M_WR_Float" VarB="RxPDO-2Block^MB1 Command Value"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Box 17 (IND360)">
+				<Link VarA="PlcTask Inputs^PR_Line01.fb_FoodWeight.fbLoadcell.fbInterface.IND_M_RD_Float" VarB="TxPDO-2Block^MB1 Requested Measuring Value"/>
+				<Link VarA="PlcTask Inputs^PR_Line01.fb_FoodWeight.fbLoadcell.fbInterface.IND_M_RD_Response" VarB="TxPDO-2Block^MB1 Response"/>
+				<Link VarA="PlcTask Inputs^PR_Line01.fb_FoodWeight.fbLoadcell.fbInterface.IND_M_RD_Status" VarB="TxPDO-2Block^MB1 Scale Status"/>
+				<Link VarA="PlcTask Inputs^PR_Line01.fb_FoodWeight.fbLoadcell.fbInterface.IND_SB_STT1" VarB="TxPDO-2Block^SB1 Status Group 1"/>
+				<Link VarA="PlcTask Inputs^PR_Line01.fb_FoodWeight.fbLoadcell.fbInterface.IND_SB_STT2" VarB="TxPDO-2Block^SB1 Status Group 2"/>
+				<Link VarA="PlcTask Inputs^PR_Line01.fb_FoodWeight.fbLoadcell.fbInterface.IND_SB_STT3" VarB="TxPDO-2Block^SB1 Status Group 3"/>
+				<Link VarA="PlcTask Outputs^PR_Line01.fb_FoodWeight.fbLoadcell.fbInterface.IND_M_WR_Command" VarB="RxPDO-2Block^MB1 Command"/>
+				<Link VarA="PlcTask Outputs^PR_Line01.fb_FoodWeight.fbLoadcell.fbInterface.IND_M_WR_Float" VarB="RxPDO-2Block^MB1 Command Value"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 10 (EL2809)">
+				<Link VarA="PlcTask Outputs^PR_Line01.fb_CupSupply.fbCylinder_Dw.bMoveRetract" VarB="Channel 9^Output"/>
+				<Link VarA="PlcTask Outputs^PR_Line01.fb_CupSupply.fbCylinder_Suction.bMoveRetract" VarB="Channel 14^Output"/>
+				<Link VarA="PlcTask Outputs^PR_Line01.fb_CupSupply.fbCylinder_Up.bMoveExtend" VarB="Channel 8^Output"/>
+				<Link VarA="PlcTask Outputs^PR_Line01.fb_LidClose.fbCylinder_LidClose.bMoveExtend" VarB="Channel 15^Output"/>
+				<Link VarA="PlcTask Outputs^PR_Line01.fb_LidSupply.fbCylinder_LidStopper.bMoveRetract" VarB="Channel 11^Output"/>
+				<Link VarA="PlcTask Outputs^PR_Line01.fb_LidSupply.fbCylinder_Suction.bMoveExtend" VarB="Channel 12^Output"/>
+				<Link VarA="PlcTask Outputs^PR_Line01.fb_LidSupply.fbLidSuctionValve.bSuck" VarB="Channel 13^Output"/>
+				<Link VarA="PlcTask Outputs^PR_Line01.fb_Transfer.fbCylinder_Clip.bMoveRetract" VarB="Channel 16^Output"/>
+				<Link VarA="PlcTask Outputs^PR_Line01.fb_WormWeight.fbCylinder.bMoveRetract" VarB="Channel 10^Output"/>
+				<Link VarA="PlcTask2 Outputs^PR_Line02.fb_CupSupply.fbCylinder_Suction.bMoveRetract" VarB="Channel 3^Output"/>
+				<Link VarA="PlcTask2 Outputs^PR_Line02.fb_LidClose.fbCylinder_LidClose.bMoveExtend" VarB="Channel 4^Output"/>
+				<Link VarA="PlcTask2 Outputs^PR_Line02.fb_LidSupply.fbCylinder_Suction.bMoveExtend" VarB="Channel 1^Output"/>
+				<Link VarA="PlcTask2 Outputs^PR_Line02.fb_LidSupply.fbLidSuctionValve.bSuck" VarB="Channel 2^Output"/>
+				<Link VarA="PlcTask2 Outputs^PR_Line02.fb_Transfer.fbCylinder_Clip.bMoveRetract" VarB="Channel 5^Output"/>
+				<Link VarA="PlcTask2 Outputs^PR_Line02.fb_Transfer.fbCylinder_Comb.bMoveExtend" VarB="Channel 6^Output"/>
+				<Link VarA="PlcTask2 Outputs^PR_Line02.fb_Transfer.fbCylinder_Move_Comb.bMoveExtend" VarB="Channel 7^Output"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 11 (EL2809-0015)">
+				<Link VarA="PlcTask Outputs^PR_Line01.fb_FoodMixer.fbInverter.bReverse" VarB="Channel 3^Output"/>
+				<Link VarA="PlcTask Outputs^PR_Line01.fb_FoodWeight.fbDriver.bReverse" VarB="Channel 6^Output"/>
+				<Link VarA="PlcTask Outputs^PR_Line01.fb_Transfer.fbCylinder_Comb.bMoveExtend" VarB="Channel 1^Output"/>
+				<Link VarA="PlcTask Outputs^PR_Line01.fb_Transfer.fbCylinder_Move_Comb.bMoveExtend" VarB="Channel 2^Output"/>
+				<Link VarA="PlcTask2 Outputs^PR_Line02.fb_FoodMixer.fbInverter.bReverse" VarB="Channel 4^Output"/>
+				<Link VarA="PlcTask2 Outputs^PR_Line02.fb_FoodWeight.fbDriver.bReverse" VarB="Channel 5^Output"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 12 (EL6021)">
+				<Link VarA="PlcTask Inputs^GVL.fbModbus.InData^D[0]" VarB="COM TxPDO-Map Inputs^Data In 0"/>
+				<Link VarA="PlcTask Inputs^GVL.fbModbus.InData^D[10]" VarB="COM TxPDO-Map Inputs^Data In 10"/>
+				<Link VarA="PlcTask Inputs^GVL.fbModbus.InData^D[11]" VarB="COM TxPDO-Map Inputs^Data In 11"/>
+				<Link VarA="PlcTask Inputs^GVL.fbModbus.InData^D[12]" VarB="COM TxPDO-Map Inputs^Data In 12"/>
+				<Link VarA="PlcTask Inputs^GVL.fbModbus.InData^D[13]" VarB="COM TxPDO-Map Inputs^Data In 13"/>
+				<Link VarA="PlcTask Inputs^GVL.fbModbus.InData^D[14]" VarB="COM TxPDO-Map Inputs^Data In 14"/>
+				<Link VarA="PlcTask Inputs^GVL.fbModbus.InData^D[15]" VarB="COM TxPDO-Map Inputs^Data In 15"/>
+				<Link VarA="PlcTask Inputs^GVL.fbModbus.InData^D[16]" VarB="COM TxPDO-Map Inputs^Data In 16"/>
+				<Link VarA="PlcTask Inputs^GVL.fbModbus.InData^D[17]" VarB="COM TxPDO-Map Inputs^Data In 17"/>
+				<Link VarA="PlcTask Inputs^GVL.fbModbus.InData^D[18]" VarB="COM TxPDO-Map Inputs^Data In 18"/>
+				<Link VarA="PlcTask Inputs^GVL.fbModbus.InData^D[19]" VarB="COM TxPDO-Map Inputs^Data In 19"/>
+				<Link VarA="PlcTask Inputs^GVL.fbModbus.InData^D[1]" VarB="COM TxPDO-Map Inputs^Data In 1"/>
+				<Link VarA="PlcTask Inputs^GVL.fbModbus.InData^D[20]" VarB="COM TxPDO-Map Inputs^Data In 20"/>
+				<Link VarA="PlcTask Inputs^GVL.fbModbus.InData^D[21]" VarB="COM TxPDO-Map Inputs^Data In 21"/>
+				<Link VarA="PlcTask Inputs^GVL.fbModbus.InData^D[2]" VarB="COM TxPDO-Map Inputs^Data In 2"/>
+				<Link VarA="PlcTask Inputs^GVL.fbModbus.InData^D[3]" VarB="COM TxPDO-Map Inputs^Data In 3"/>
+				<Link VarA="PlcTask Inputs^GVL.fbModbus.InData^D[4]" VarB="COM TxPDO-Map Inputs^Data In 4"/>
+				<Link VarA="PlcTask Inputs^GVL.fbModbus.InData^D[5]" VarB="COM TxPDO-Map Inputs^Data In 5"/>
+				<Link VarA="PlcTask Inputs^GVL.fbModbus.InData^D[6]" VarB="COM TxPDO-Map Inputs^Data In 6"/>
+				<Link VarA="PlcTask Inputs^GVL.fbModbus.InData^D[7]" VarB="COM TxPDO-Map Inputs^Data In 7"/>
+				<Link VarA="PlcTask Inputs^GVL.fbModbus.InData^D[8]" VarB="COM TxPDO-Map Inputs^Data In 8"/>
+				<Link VarA="PlcTask Inputs^GVL.fbModbus.InData^D[9]" VarB="COM TxPDO-Map Inputs^Data In 9"/>
+				<Link VarA="PlcTask Inputs^GVL.fbModbus.InData^Status" VarB="COM TxPDO-Map Inputs^Status"/>
+				<Link VarA="PlcTask Outputs^GVL.fbModbus.OutData^Ctrl" VarB="COM RxPDO-Map Outputs^Ctrl"/>
+				<Link VarA="PlcTask Outputs^GVL.fbModbus.OutData^D[0]" VarB="COM RxPDO-Map Outputs^Data Out 0"/>
+				<Link VarA="PlcTask Outputs^GVL.fbModbus.OutData^D[10]" VarB="COM RxPDO-Map Outputs^Data Out 10"/>
+				<Link VarA="PlcTask Outputs^GVL.fbModbus.OutData^D[11]" VarB="COM RxPDO-Map Outputs^Data Out 11"/>
+				<Link VarA="PlcTask Outputs^GVL.fbModbus.OutData^D[12]" VarB="COM RxPDO-Map Outputs^Data Out 12"/>
+				<Link VarA="PlcTask Outputs^GVL.fbModbus.OutData^D[13]" VarB="COM RxPDO-Map Outputs^Data Out 13"/>
+				<Link VarA="PlcTask Outputs^GVL.fbModbus.OutData^D[14]" VarB="COM RxPDO-Map Outputs^Data Out 14"/>
+				<Link VarA="PlcTask Outputs^GVL.fbModbus.OutData^D[15]" VarB="COM RxPDO-Map Outputs^Data Out 15"/>
+				<Link VarA="PlcTask Outputs^GVL.fbModbus.OutData^D[16]" VarB="COM RxPDO-Map Outputs^Data Out 16"/>
+				<Link VarA="PlcTask Outputs^GVL.fbModbus.OutData^D[17]" VarB="COM RxPDO-Map Outputs^Data Out 17"/>
+				<Link VarA="PlcTask Outputs^GVL.fbModbus.OutData^D[18]" VarB="COM RxPDO-Map Outputs^Data Out 18"/>
+				<Link VarA="PlcTask Outputs^GVL.fbModbus.OutData^D[19]" VarB="COM RxPDO-Map Outputs^Data Out 19"/>
+				<Link VarA="PlcTask Outputs^GVL.fbModbus.OutData^D[1]" VarB="COM RxPDO-Map Outputs^Data Out 1"/>
+				<Link VarA="PlcTask Outputs^GVL.fbModbus.OutData^D[20]" VarB="COM RxPDO-Map Outputs^Data Out 20"/>
+				<Link VarA="PlcTask Outputs^GVL.fbModbus.OutData^D[21]" VarB="COM RxPDO-Map Outputs^Data Out 21"/>
+				<Link VarA="PlcTask Outputs^GVL.fbModbus.OutData^D[2]" VarB="COM RxPDO-Map Outputs^Data Out 2"/>
+				<Link VarA="PlcTask Outputs^GVL.fbModbus.OutData^D[3]" VarB="COM RxPDO-Map Outputs^Data Out 3"/>
+				<Link VarA="PlcTask Outputs^GVL.fbModbus.OutData^D[4]" VarB="COM RxPDO-Map Outputs^Data Out 4"/>
+				<Link VarA="PlcTask Outputs^GVL.fbModbus.OutData^D[5]" VarB="COM RxPDO-Map Outputs^Data Out 5"/>
+				<Link VarA="PlcTask Outputs^GVL.fbModbus.OutData^D[6]" VarB="COM RxPDO-Map Outputs^Data Out 6"/>
+				<Link VarA="PlcTask Outputs^GVL.fbModbus.OutData^D[7]" VarB="COM RxPDO-Map Outputs^Data Out 7"/>
+				<Link VarA="PlcTask Outputs^GVL.fbModbus.OutData^D[8]" VarB="COM RxPDO-Map Outputs^Data Out 8"/>
+				<Link VarA="PlcTask Outputs^GVL.fbModbus.OutData^D[9]" VarB="COM RxPDO-Map Outputs^Data Out 9"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 2 (EL1008)">
+				<Link VarA="PlcTask Inputs^GVL_IO.bEmer" VarB="Channel 4^Input"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.bReset" VarB="Channel 3^Input"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.bStart" VarB="Channel 1^Input"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.bStop" VarB="Channel 2^Input"/>
+				<Link VarA="PlcTask Inputs^PR_Conveyor_Out.fb_Conveyor.bError_Motor_Mixer" VarB="Channel 7^Input"/>
+				<Link VarA="PlcTask Inputs^PR_Line01.fb_FoodMixer.bError_Motor_Mixer" VarB="Channel 8^Input"/>
+				<Link VarA="PlcTask2 Inputs^PR_Line02.fb_FoodMixer.bError_Motor_Mixer" VarB="Channel 5^Input"/>
+				<Link VarA="PlcTask2 Inputs^PR_Line02.fb_WormWeight.bError_Inverter" VarB="Channel 6^Input"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 3 (EL1008)">
+				<Link VarA="PlcTask Inputs^PR_Line01.fb_FoodWeight.bError_Driver" VarB="Channel 3^Input"/>
+				<Link VarA="PlcTask Inputs^PR_Line01.fb_WormWeight.bError_Inverter" VarB="Channel 1^Input"/>
+				<Link VarA="PlcTask2 Inputs^PR_Line02.fb_CupSupply.bCupDrop" VarB="Channel 8^Input"/>
+				<Link VarA="PlcTask2 Inputs^PR_Line02.fb_CupSupply.bCupEmpty" VarB="Channel 4^Input"/>
+				<Link VarA="PlcTask2 Inputs^PR_Line02.fb_CupSupply.fbCylinder_Dw.bAtExtend" VarB="Channel 7^Input"/>
+				<Link VarA="PlcTask2 Inputs^PR_Line02.fb_CupSupply.fbCylinder_Dw.bAtRetract" VarB="Channel 6^Input"/>
+				<Link VarA="PlcTask2 Inputs^PR_Line02.fb_CupSupply.fbCylinder_Up.bAtRetract" VarB="Channel 5^Input"/>
+				<Link VarA="PlcTask2 Inputs^PR_Line02.fb_FoodWeight.bError_Driver" VarB="Channel 2^Input"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 4 (EL1008)">
+				<Link VarA="PlcTask2 Inputs^PR_Line02.fb_LidClose.fbCylinder_LidClose.bAtRetract" VarB="Channel 8^Input"/>
+				<Link VarA="PlcTask2 Inputs^PR_Line02.fb_LidSupply.bLidEmpty" VarB="Channel 2^Input"/>
+				<Link VarA="PlcTask2 Inputs^PR_Line02.fb_LidSupply.fbCylinder_LidStopper.bAtExtend" VarB="Channel 4^Input"/>
+				<Link VarA="PlcTask2 Inputs^PR_Line02.fb_LidSupply.fbCylinder_LidStopper.bAtRetract" VarB="Channel 3^Input"/>
+				<Link VarA="PlcTask2 Inputs^PR_Line02.fb_LidSupply.fbCylinder_Suction.bAtExtend" VarB="Channel 6^Input"/>
+				<Link VarA="PlcTask2 Inputs^PR_Line02.fb_LidSupply.fbCylinder_Suction.bAtRetract" VarB="Channel 5^Input"/>
+				<Link VarA="PlcTask2 Inputs^PR_Line02.fb_LidSupply.fbLidSuctionValve.bPressure" VarB="Channel 7^Input"/>
+				<Link VarA="PlcTask2 Inputs^PR_Line02.fb_WormWeight.fbCylinder.bAtRetract" VarB="Channel 1^Input"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 5 (EL1008)">
+				<Link VarA="PlcTask2 Inputs^PR_Line02.fb_FoodWeight.bCupPresent" VarB="Channel 8^Input"/>
+				<Link VarA="PlcTask2 Inputs^PR_Line02.fb_LidClose.fbCylinder_LidClose.bAtExtend" VarB="Channel 1^Input"/>
+				<Link VarA="PlcTask2 Inputs^PR_Line02.fb_Transfer.fbCylinder_Clip.bAtExtend" VarB="Channel 7^Input"/>
+				<Link VarA="PlcTask2 Inputs^PR_Line02.fb_Transfer.fbCylinder_Clip.bAtRetract" VarB="Channel 6^Input"/>
+				<Link VarA="PlcTask2 Inputs^PR_Line02.fb_Transfer.fbCylinder_Comb.bAtExtend" VarB="Channel 3^Input"/>
+				<Link VarA="PlcTask2 Inputs^PR_Line02.fb_Transfer.fbCylinder_Comb.bAtRetract" VarB="Channel 2^Input"/>
+				<Link VarA="PlcTask2 Inputs^PR_Line02.fb_Transfer.fbCylinder_Move_Comb.bAtExtend" VarB="Channel 5^Input"/>
+				<Link VarA="PlcTask2 Inputs^PR_Line02.fb_Transfer.fbCylinder_Move_Comb.bAtRetract" VarB="Channel 4^Input"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 6 (EL1008)">
+				<Link VarA="PlcTask Inputs^PR_Line01.fb_CupSupply.bCupDrop" VarB="Channel 6^Input"/>
+				<Link VarA="PlcTask Inputs^PR_Line01.fb_CupSupply.bCupEmpty" VarB="Channel 2^Input"/>
+				<Link VarA="PlcTask Inputs^PR_Line01.fb_CupSupply.fbCylinder_Dw.bAtExtend" VarB="Channel 5^Input"/>
+				<Link VarA="PlcTask Inputs^PR_Line01.fb_CupSupply.fbCylinder_Dw.bAtRetract" VarB="Channel 4^Input"/>
+				<Link VarA="PlcTask Inputs^PR_Line01.fb_CupSupply.fbCylinder_Up.bAtRetract" VarB="Channel 3^Input"/>
+				<Link VarA="PlcTask Inputs^PR_Line01.fb_LidSupply.bLidEmpty" VarB="Channel 8^Input"/>
+				<Link VarA="PlcTask Inputs^PR_Line01.fb_WormWeight.fbCylinder.bAtRetract" VarB="Channel 7^Input"/>
+				<Link VarA="PlcTask2 Inputs^PR_Line02.fb_WormWeight.bCupPresent" VarB="Channel 1^Input"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 7 (EL1008)">
+				<Link VarA="PlcTask Inputs^PR_Line01.fb_LidClose.fbCylinder_LidClose.bAtExtend" VarB="Channel 7^Input"/>
+				<Link VarA="PlcTask Inputs^PR_Line01.fb_LidClose.fbCylinder_LidClose.bAtRetract" VarB="Channel 6^Input"/>
+				<Link VarA="PlcTask Inputs^PR_Line01.fb_LidSupply.fbCylinder_LidStopper.bAtExtend" VarB="Channel 2^Input"/>
+				<Link VarA="PlcTask Inputs^PR_Line01.fb_LidSupply.fbCylinder_LidStopper.bAtRetract" VarB="Channel 1^Input"/>
+				<Link VarA="PlcTask Inputs^PR_Line01.fb_LidSupply.fbCylinder_Suction.bAtExtend" VarB="Channel 4^Input"/>
+				<Link VarA="PlcTask Inputs^PR_Line01.fb_LidSupply.fbCylinder_Suction.bAtRetract" VarB="Channel 3^Input"/>
+				<Link VarA="PlcTask Inputs^PR_Line01.fb_LidSupply.fbLidSuctionValve.bPressure" VarB="Channel 5^Input"/>
+				<Link VarA="PlcTask Inputs^PR_Line01.fb_Transfer.fbCylinder_Comb.bAtRetract" VarB="Channel 8^Input"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 8 (EL1819)">
+				<Link VarA="PlcTask Inputs^GVL_IO.bCheckVan" VarB="Channel 13^Input"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.bSafetyDoor1" VarB="Channel 9^Input"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.bSafetyDoor2" VarB="Channel 8^Input"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.bSafetyDoor3" VarB="Channel 10^Input"/>
+				<Link VarA="PlcTask Inputs^PR_Line01.fb_CupSupply.fbCylinder_Suction.bAtExtend" VarB="Channel 11^Input"/>
+				<Link VarA="PlcTask Inputs^PR_Line01.fb_FoodWeight.bCupPresent" VarB="Channel 6^Input"/>
+				<Link VarA="PlcTask Inputs^PR_Line01.fb_Transfer.fbCylinder_Clip.bAtExtend" VarB="Channel 5^Input"/>
+				<Link VarA="PlcTask Inputs^PR_Line01.fb_Transfer.fbCylinder_Clip.bAtRetract" VarB="Channel 4^Input"/>
+				<Link VarA="PlcTask Inputs^PR_Line01.fb_Transfer.fbCylinder_Comb.bAtExtend" VarB="Channel 1^Input"/>
+				<Link VarA="PlcTask Inputs^PR_Line01.fb_Transfer.fbCylinder_Move_Comb.bAtExtend" VarB="Channel 3^Input"/>
+				<Link VarA="PlcTask Inputs^PR_Line01.fb_Transfer.fbCylinder_Move_Comb.bAtRetract" VarB="Channel 2^Input"/>
+				<Link VarA="PlcTask Inputs^PR_Line01.fb_WormWeight.bCupPresent" VarB="Channel 7^Input"/>
+				<Link VarA="PlcTask2 Inputs^PR_Line02.fb_CupSupply.fbCylinder_Suction.bAtExtend" VarB="Channel 12^Input"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 9 (EL2809)">
+				<Link VarA="PlcTask Outputs^GVL_IO.bLight_Running" VarB="Channel 1^Output"/>
+				<Link VarA="PlcTask Outputs^GVL_IO.bLight_Stop" VarB="Channel 2^Output"/>
+				<Link VarA="PlcTask Outputs^GVL_IO.bSirens" VarB="Channel 8^Output"/>
+				<Link VarA="PlcTask Outputs^PR_Conveyor_Out.fb_Conveyor.fbInverter.bVFD" VarB="Channel 5^Output"/>
+				<Link VarA="PlcTask Outputs^PR_Line01.fb_FoodMixer.fbInverter.bVFD" VarB="Channel 6^Output"/>
+				<Link VarA="PlcTask Outputs^PR_Line01.fb_FoodWeight.fbDriver.bReset" VarB="Channel 11^Output"/>
+				<Link VarA="PlcTask Outputs^PR_Line01.fb_FoodWeight.fbDriver.bVFD" VarB="Channel 12^Output"/>
+				<Link VarA="PlcTask Outputs^PR_Line01.fb_WormWeight.fbInverter.bVFD" VarB="Channel 7^Output"/>
+				<Link VarA="PlcTask2 Outputs^PR_Line02.fb_CupSupply.fbCylinder_Dw.bMoveRetract" VarB="Channel 14^Output"/>
+				<Link VarA="PlcTask2 Outputs^PR_Line02.fb_CupSupply.fbCylinder_Up.bMoveExtend" VarB="Channel 13^Output"/>
+				<Link VarA="PlcTask2 Outputs^PR_Line02.fb_FoodMixer.fbInverter.bVFD" VarB="Channel 3^Output"/>
+				<Link VarA="PlcTask2 Outputs^PR_Line02.fb_FoodWeight.fbDriver.bReset" VarB="Channel 9^Output"/>
+				<Link VarA="PlcTask2 Outputs^PR_Line02.fb_FoodWeight.fbDriver.bVFD" VarB="Channel 10^Output"/>
+				<Link VarA="PlcTask2 Outputs^PR_Line02.fb_LidSupply.fbCylinder_LidStopper.bMoveRetract" VarB="Channel 16^Output"/>
+				<Link VarA="PlcTask2 Outputs^PR_Line02.fb_WormWeight.fbCylinder.bMoveRetract" VarB="Channel 15^Output"/>
+				<Link VarA="PlcTask2 Outputs^PR_Line02.fb_WormWeight.fbInverter.bVFD" VarB="Channel 4^Output"/>
+			</OwnerB>
+		</OwnerA>
+	</Mappings>
+</TcSmProject>

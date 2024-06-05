@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="PR_Conveyor_Out" Id="{8c087792-927f-4f94-8161-60b452cc5a6e}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM PR_Conveyor_Out
+VAR
+	fSpeed_Conveyor			: REAL := 25;
+	bUp_Speed				: BOOL;
+	bDw_Speed				: BOOL;
+	bMotor_Conveyor			: BOOL;
+	fb_Conveyor				: FB_FoodMixerModule;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[fb_Conveyor(nLine:= 3, UnitID:= 3, fSpeed_motor_mixer:= fSpeed_Conveyor);
+]]></ST>
+    </Implementation>
+    <Action Name="Auto" Id="{6fceea7e-2008-4adf-8698-130b8460b778}">
+      <Implementation>
+        <ST><![CDATA[fb_Conveyor.Auto();
+]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="Manual" Id="{e931e9fb-a624-483c-b894-cabc04e96d69}">
+      <Implementation>
+        <ST><![CDATA[fb_Conveyor.Manual(bUp_Motor_Mixer := bUp_Speed, bDown_Motor_Mixer := bDw_Speed,
+					bMotor_mixer_Manual := bMotor_Conveyor,bMotor_mixer_reverse := FALSE);
+IF bUp_Speed THEN
+	bUp_Speed := FALSE;
+END_IF
+
+IF bDw_Speed THEN
+	bDw_Speed := FALSE;
+END_IF]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="Reset" Id="{a9385318-48d6-4b78-875d-9ffa56d20e30}">
+      <Implementation>
+        <ST><![CDATA[fb_Conveyor.Reset();]]></ST>
+      </Implementation>
+    </Action>
+    <Action Name="Stop" Id="{3d1ea182-ce8d-4f25-86c5-57cd8aa01916}">
+      <Implementation>
+        <ST><![CDATA[bMotor_Conveyor		:= FALSE;
+fb_Conveyor.Stop();]]></ST>
+      </Implementation>
+    </Action>
+    <LineIds Name="PR_Conveyor_Out">
+      <LineId Id="5" Count="0" />
+      <LineId Id="11" Count="0" />
+    </LineIds>
+    <LineIds Name="PR_Conveyor_Out.Auto">
+      <LineId Id="2" Count="1" />
+    </LineIds>
+    <LineIds Name="PR_Conveyor_Out.Manual">
+      <LineId Id="4" Count="0" />
+      <LineId Id="11" Count="0" />
+      <LineId Id="5" Count="5" />
+      <LineId Id="1" Count="0" />
+    </LineIds>
+    <LineIds Name="PR_Conveyor_Out.Reset">
+      <LineId Id="1" Count="0" />
+    </LineIds>
+    <LineIds Name="PR_Conveyor_Out.Stop">
+      <LineId Id="1" Count="1" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

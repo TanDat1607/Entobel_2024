@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_SuctionCup_Sim" Id="{66b54f8e-cd6e-49f1-a63b-0d9b3ba7cb64}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_SuctionCup_Sim IMPLEMENTS I_SuctionCup
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	fPressure 			: REAL;// Value 0-100 %
+	bSuck				: BOOL;
+	// var sim
+	tTimer				: TON;
+	tDelay				: TIME := T#1000MS;// acceleration time of fPressure to value = 100
+	nState				: INT := 0;
+	bRelease			: BOOL := TRUE;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[CASE nState OF
+	0: //init release Suction
+		IF bRelease THEN
+			bSuck := FALSE;
+			fPressure := 0;
+		ELSE
+			bSuck := TRUE;
+			fPressure := 100;
+		END_IF
+		tTimer(IN := FALSE);
+		nState := nState + 1;
+	1:// check for signal
+		tTimer(IN := FALSE);
+		IF bSuck AND (fPressure = 0) THEN
+			nState := 10;
+		END_IF
+		IF NOT bSuck AND (fPressure = 100) THEN
+			nState := 20;
+		END_IF
+	10: //Suck 
+		tTimer(IN := TRUE,PT := tDelay);
+		fPressure := TIME_TO_REAL(tTimer.ET)*(100/TIME_TO_REAL(tDelay));
+		IF (fPressure = 100) THEN
+			nState := 1;
+		END_IF
+	20:// release
+		tTimer(IN := TRUE,PT := tDelay);
+		fPressure := 100 - (TIME_TO_REAL(tTimer.ET)*(100/TIME_TO_REAL(tDelay)));
+		IF (fPressure = 0) THEN
+			nState := 1;
+		END_IF
+END_CASE]]></ST>
+    </Implementation>
+    <Property Name="bIsSuck" Id="{413d8c2a-4fc7-4c33-b68c-d7fed262ced3}">
+      <Declaration><![CDATA[PROPERTY bIsSuck : BOOL]]></Declaration>
+      <Get Name="Get" Id="{ed8cbd51-05d0-4216-9cae-eeea3ad4fadc}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[IF fPressure > fThreshold THEN
+	bIsSuck := TRUE;
+ELSE 
+	bIsSuck := FALSE;
+END_IF]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Property Name="fThreshold" Id="{54931e21-7f12-4014-8004-1dcda19fe3c8}">
+      <Declaration><![CDATA[PROPERTY fThreshold : REAL]]></Declaration>
+      <Get Name="Get" Id="{5b8425b8-304a-4ec8-9797-5606ac7d58fa}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[fThreshold := 50;]]></ST>
+        </Implementation>
+      </Get>
+      <Set Name="Set" Id="{45cc4d9c-453c-47a4-bec2-113bb997aa4f}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[]]></ST>
+        </Implementation>
+      </Set>
+    </Property>
+    <Method Name="Release" Id="{8461aea9-1726-4a5e-aa5b-8dbf45b93a5f}">
+      <Declaration><![CDATA[METHOD Release : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[bSuck := FALSE;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Suck" Id="{1da0afd0-7312-49b8-916e-5a4f627ce6d7}">
+      <Declaration><![CDATA[METHOD Suck : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[bSuck := TRUE;]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="FB_SuctionCup_Sim">
+      <LineId Id="9" Count="0" />
+      <LineId Id="15" Count="0" />
+      <LineId Id="19" Count="1" />
+      <LineId Id="28" Count="0" />
+      <LineId Id="22" Count="1" />
+      <LineId Id="29" Count="0" />
+      <LineId Id="21" Count="0" />
+      <LineId Id="51" Count="0" />
+      <LineId Id="24" Count="1" />
+      <LineId Id="42" Count="0" />
+      <LineId Id="26" Count="0" />
+      <LineId Id="30" Count="0" />
+      <LineId Id="34" Count="0" />
+      <LineId Id="32" Count="1" />
+      <LineId Id="31" Count="0" />
+      <LineId Id="35" Count="1" />
+      <LineId Id="38" Count="3" />
+      <LineId Id="43" Count="1" />
+      <LineId Id="47" Count="3" />
+      <LineId Id="16" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_SuctionCup_Sim.bIsSuck.Get">
+      <LineId Id="5" Count="3" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_SuctionCup_Sim.fThreshold.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_SuctionCup_Sim.fThreshold.Set">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_SuctionCup_Sim.Release">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_SuctionCup_Sim.Suck">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <DUT Name="U_4Bytes2Real" Id="{173867c6-b4df-4cc5-8e37-4805b90cae8d}">
+    <Declaration><![CDATA[TYPE U_4Bytes2Real :
+UNION
+	fReal	: DINT;
+	st4bytes: ST_4Bytes;
+END_UNION
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <GVL Name="GVL_IoT" Id="{a3f904ed-8f81-4a7a-ac68-8b7f6f1ed217}">
+    <Declaration><![CDATA[VAR_GLOBAL
+	username					: STRING;
+	fWeight_Food_line1			: REAL;
+	fWeight_Worm_line1			: REAL;
+	fDerisedWeight_Food_line1	: REAL;
+	fDerisedWeight_Worm_line1	: REAL;
+	fActDelta_Food_line1		: REAL;
+	fActDelta_Worm_line1		: REAL;	
+	fWeight_Food_line2			: REAL;
+	fWeight_Worm_line2			: REAL;
+	fDerisedWeight_Food_line2	: REAL;
+	fDerisedWeight_Worm_line2	: REAL;
+	fActDelta_Food_line2		: REAL;
+	fActDelta_Worm_line2		: REAL;	
+	Time_Start_Food_line1		: DT;
+	Time_Stop_Food_line1		: DT;
+	Time_Start_Worm_line1		: DT;
+	Time_Stop_Worm_line1		: DT;	
+	Time_Start_Food_line2		: DT;
+	Time_Stop_Food_line2		: DT;
+	Time_Start_Worm_line2		: DT;
+	Time_Stop_Worm_line2		: DT;	
+	status						: STRING;	
+	fDelta_Food_line1			: REAL;
+	fDelta_Worm_line1			: REAL;
+	fDelta_Food_line2			: REAL;
+	fDelta_Worm_line2			: REAL;
+	bStatus_Food_line1			: STRING;
+	bStatus_Worm_line1			: STRING;
+	bStatus_Food_line2			: STRING;
+	bStatus_Worm_line2			: STRING;
+	bAlarm						: BOOL;
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

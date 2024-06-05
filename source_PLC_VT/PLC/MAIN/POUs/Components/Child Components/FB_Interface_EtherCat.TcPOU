@@ -1,0 +1,957 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_Interface_EtherCat" Id="{9d4eb367-04d8-42b3-9234-01a8b9c6f1c4}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Interface_EtherCat
+VAR_INPUT
+    idDevice                : INT; // 1 : mettler    , 2: Laumas
+END_VAR
+VAR_OUTPUT
+	Error					: BOOL;
+END_VAR
+VAR
+    IND360_tareStableCMD    :    BOOL;
+    IND360_tareImmediateCMD    :    BOOL;
+    IND360_zeroStableCMD    :    BOOL;
+    IND360_zeroImmediateCMD    :    BOOL;
+    IND360_clearCMD            :    BOOL;
+    IND360_preTareCMD        :    BOOL;
+    IND360_preTareCMDVAL    :    REAL;
+    IND360_reportedWeight    :    REAL;
+    IND360_stableWeight        :    REAL;
+    IND360_heartBeat        :    BOOL;
+    IND360_DataOK            :    BOOL;
+    IND360_Smart5lvl5        :    BOOL;
+    IND360_Smart5lvl4        :    BOOL;
+    IND360_Smart5lvl3        :    BOOL;
+    IND360_Smart5lvl2        :    BOOL;
+    IND360_centerofZero        :    BOOL;
+    IND360_motion            :    BOOL;
+    IND360_netMode            :    BOOL;
+    IND360_cmdDone            :    BOOL;
+    IND360_cmdPending        :    BOOL;
+    IND360_cmdFailed        :    BOOL;
+    IND360_weightCMD        :    UINT        := 3;
+    //Variables and Function Block for SAI Device Heartbeat check
+    IND360_Alive            :    BOOL;
+    IND360_heartBeat_        :    BOOL;
+    //EtherCAT device's CoE identification:
+    IND360_NetId            :     T_AmsNetId     := '192.168.0.106.3.1'; // Have to be entered
+    IND360_SlaveAddr         :     UINT         := 1001;     // Have to be entered        
+    //Variables and Function Block for APW Internal Adjustment Procedure
+    IntAdjust_Done            :    BOOL;
+    IntAdjust_Error            :    BOOL;
+    IntAdjust_Process        :    BOOL;
+    IntAdjust_Cancelled        :    BOOL;
+    IntAdjust_Start            :    BOOL;
+    IntAdjust_Cancel        :    BOOL;
+    //Variables and Function Block for APW External Adjustment Procedure    
+    ExtAdjust_Done            :    BOOL;
+    ExtAdjust_Error            :    BOOL;
+    ExtAdjust_Process        :    BOOL;
+    ExtAdjust_Cancelled        :    BOOL;
+    ExtAdjust_Start            :    BOOL;
+    ExtAdjust_Cancel        :    BOOL;
+    ExtAdjust_Load            :    BOOL;
+    ExtAdjust_Unload        :    BOOL;
+    ExtAdjust_currWeight    :    REAL;
+    ExtAdjust_extWeight        :    REAL;
+    //IO
+    //Var of FB SAI
+    IND_M_WR_Float         AT %Q* : REAL; //write float to devices     
+    IND_M_WR_Channel     AT %Q* : WORD; //select device to write    
+    IND_M_WR_Command     AT %Q* : WORD; //command to device    
+    IND_SB_RSV1             AT %Q* : WORD;
+    IND_SB_RSV2             AT %Q* : WORD;
+    IND_SB_RSV3             AT %Q* : WORD;
+    IND_SB_CMD             AT %Q* : WORD;
+
+ 
+
+ 
+
+    IND_M_RD_Float         AT %I* : REAL; //read float from devices
+    IND_M_RD_Status         AT %I* : WORD; //read status of device    
+    IND_M_RD_Response     AT %I* : INT;
+    IND_SB_STT1             AT %I* : WORD;
+    IND_SB_STT2             AT %I* : WORD;
+    IND_SB_STT3             AT %I* : WORD;
+    IND_SB_RSP             AT %I* : WORD;    
+
+ 
+
+    //var Ext
+    fbAdjust_CoESdoWrite_Ext    :     FB_EcCoESdoWrite;
+    fbStatus_CoESdoRead_Ext        :    FB_EcCoESdoRead;
+    fbWeight_CoESdoRead_Ext        :    FB_EcCoESdoRead;
+    fbWeight_CoESdoWrite_Ext    :    FB_EcCoESdoWrite;
+    fbCancel_CoESdoWrite_Ext    :     FB_EcCoESdoWrite;
+    nState_Ext                :    SINT        :=    0;
+    fbStart_RTrig_Ext        :    R_TRIG;
+    fbCancel_RTrig_Ext        :    R_TRIG;
+    wValue_Ext                :    BYTE        :=    1;
+    wValue0_Ext                :    BYTE        :=    0;
+    iStatus_Ext                :    INT;
+    bRead_Ext                :    BOOL;
+    bRead2_Ext                :    BOOL;
+    bWrite_Ext                :    BOOL;
+    fbtimer_Ext                :    TON;
+    currentWeight0_Ext        :    REAL;
+    //var int
+    fbAdjust_CoESdoWrite_Int    :     FB_EcCoESdoWrite;
+    fbStatus_CoESdoRead_Int        :    FB_EcCoESdoRead;
+    fbCancel_CoESdoWrite_Int    :     FB_EcCoESdoWrite;
+    nState_Int                :    SINT        :=    0;
+    fbStart_RTrig_Int        :    R_TRIG;
+    fbCancel_RTrig_Int        :    R_TRIG;
+    wValue_Int                :    BYTE        :=    1;
+    rValue_Int                :    INT;
+    bRead_Int                :    BOOL;
+    bWrite_Int                :    BOOL;
+    fbtimer_Int                :    TON;
+    //var check
+    heartBeatRTrig_Check        :    R_TRIG;
+    heartBeatFTrig_Check        :    F_TRIG;
+    timerReset_Check            :    BOOL;
+    timer2S_Check                :    TON;
+    //var weight
+    writeTrigger_W            :    BOOL;
+    restoreTrigger_W        :    BOOL;
+    cmd_W                    :    UINT;
+    fbRTrig_TareStable_W    :     R_TRIG;
+    fbRTrig_TareImm_W        :    R_TRIG;
+    fbRTrig_ZeroStable_W    :    R_TRIG;
+    fbRTrig_ZeroImm_W        :    R_TRIG;
+    fbRTrig_PreTare_W        :    R_TRIG;
+    fbRTrig_Clear_W            :    R_TRIG;
+    sequence0_W                :    BOOL;
+    sequence1_W                :    BOOL;
+
+    //=======var laumas=======
+    CMDLaumas        AT %Q*    :     BYTE;
+    WeightLaumas1    AT %I*    :     BYTE;//address 0x0004
+    WeightLaumas2    AT %I*    :     BYTE;//address 0x0005
+    WeightLaumas3    AT %I*    :     BYTE;//address 0x0006
+    WeightLaumas4    AT %I*    :     BYTE;//address 0x0007
+    StatusLaumas1    AT %I*    :     BYTE;//address 0x0012
+    StatusLaumas2    AT %I*    :     BYTE;//address 0x0013
+
+    uWeightLaumas            :     U_4Bytes2Real;
+    uStatusLaumas            :     U_4Bytes2Real;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[SAI_APW_ExtAdjust(
+	deviceNetId:= IND360_NetId, 
+	deviceSlaveAddr:= IND360_SlaveAddr, 
+	currentWeight=> ExtAdjust_currWeight, 
+	Load_Weight=> ExtAdjust_Load, 
+	Unload_Weight=> ExtAdjust_Unload, 
+	Process=> ExtAdjust_Process, 
+	Done=> ExtAdjust_Done, 
+	Error=> ExtAdjust_Error, 
+	Cancelled=> ExtAdjust_Cancelled, 
+	externalWeight:= ExtAdjust_extWeight, 
+	Start:= ExtAdjust_Start, 
+	Cancel:= ExtAdjust_Cancel);
+	
+
+SAI_APW_IntAdjust(
+	deviceNetId:= IND360_NetId, 
+	deviceSlaveAddr:= IND360_SlaveAddr, 
+	Process=> IntAdjust_Process, 
+	Done=> IntAdjust_Done, 
+	Error=> IntAdjust_Error, 
+	Cancelled=> IntAdjust_Cancelled, 
+	Start:= IntAdjust_Start, 
+	Cancel:= IntAdjust_Cancel);
+	
+SAI_Cyclic_CheckAlive(
+	MB_DeviceStatus:= IND_M_RD_Status, 
+	Alive=> IND360_Alive, 
+	HeartBeat=> IND360_heartBeat_);
+	
+SAI_Cyclic_WeightProc(
+	weightCmd:= IND360_weightCMD, 
+	MB_DeviceStatus:= IND_M_RD_Status, 
+	realtimeWeight=> IND360_reportedWeight, 
+	stableWeight=> IND360_stableWeight, 
+	heartBeat=> IND360_heartBeat, 
+	DataOK=> IND360_DataOK, 
+	Smart5_red=> IND360_Smart5lvl5, 
+	Smart5_orange=> IND360_Smart5lvl4, 
+	Smart5_yellow=> IND360_Smart5lvl3, 
+	Smart5_blue=> IND360_Smart5lvl2, 
+	centerofZero=> IND360_centerofZero, 
+	motion=> IND360_motion, 
+	netMode=> IND360_netMode, 
+	cmdDone=> IND360_cmdDone, 
+	cmdPending=> IND360_cmdPending, 
+	cmdFailed=> IND360_cmdFailed, 
+	TareStable_cmd:= IND360_tareStableCMD, 
+	TareImmediate_cmd:= IND360_tareImmediateCMD, 
+	ZeroStable_cmd:= IND360_zeroStableCMD, 
+	ZeroImmediate_cmd:= IND360_zeroImmediateCMD, 
+	PreTare_cmd:= IND360_preTareCMD, 
+	PreTare_value:= IND360_preTareCMDVAL, 
+	Clear_cmd:= IND360_clearCMD, 
+	MB_MeasuredValue:= IND_M_RD_Float, 
+	MB_Response:= IND_M_RD_Response, 
+	MB_CmdValue:= IND_M_WR_Float, 
+	MB_Command:= IND_M_WR_Command);
+	
+//Error Mettler
+IF idDevice = 1 THEN
+	IF IND360_Alive = 0 THEN
+		Error := TRUE;
+	ELSIF IND_SB_STT1.0 = 1 THEN
+		Error := TRUE;
+	ELSIF IND_SB_STT1.1 = 1 THEN
+		Error := TRUE;
+	ELSIF IND_SB_STT1.2 = 1 THEN
+		Error := TRUE;
+	ELSIF IND_SB_STT1.3 = 1 THEN
+		Error := TRUE;
+	ELSIF IND_SB_STT1.4 = 1 THEN
+		Error := TRUE;
+	ELSIF IND_SB_STT1.5 = 1 THEN
+		Error := TRUE;
+	ELSIF IND_SB_STT1.7 = 1 THEN
+		Error := TRUE;
+	ELSIF IND_SB_STT1.8 = 1 THEN
+		Error := TRUE;
+	ELSIF IND_SB_STT1.13 = 1 THEN
+		Error := TRUE;
+	ELSE
+		Error := FALSE;
+	END_IF
+ELSIF idDevice = 2 THEN
+	IF StatusLaumas1.0 = 1 THEN
+		Error := TRUE;
+	ELSIF StatusLaumas2.7 = 1 THEN
+		Error := TRUE;
+	ELSE
+		Error := FALSE;
+	END_IF
+END_IF
+
+
+
+// link Laumas
+uWeightLaumas.st4bytes.Byte1 := WeightLaumas1;
+uWeightLaumas.st4bytes.Byte2 := WeightLaumas2;
+uWeightLaumas.st4bytes.Byte3 := WeightLaumas3;
+uWeightLaumas.st4bytes.Byte4 := WeightLaumas4;
+
+ 
+
+uStatusLaumas.st4bytes.Byte1 := StatusLaumas1;
+uStatusLaumas.st4bytes.Byte2 := StatusLaumas2;]]></ST>
+    </Implementation>
+    <Property Name="fActWeight" Id="{8067e555-b82d-4294-a0bf-5f7c1e8a2bca}">
+      <Declaration><![CDATA[PROPERTY fActWeight : REAL]]></Declaration>
+      <Get Name="Get" Id="{e1f108f8-5400-4701-995b-722040a809cf}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[IF idDevice = 1 THEN
+    fActWeight := IND_M_RD_Float;
+ELSIF idDevice = 2 THEN
+	IF StatusLaumas2.0 = 1 THEN
+		 fActWeight := -DINT_TO_REAL(uWeightLaumas.fReal)/100;
+	ELSE
+		fActWeight := DINT_TO_REAL(uWeightLaumas.fReal)/100;
+	END_IF
+END_IF]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Method Name="NetMode" Id="{2d24ea1f-3408-48f6-82cf-7fe9417421c4}">
+      <Declaration><![CDATA[METHOD NetMode : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF idDevice = 1 THEN
+    IND_M_WR_Command := 3;
+ELSIF idDevice = 2 THEN
+    CMDLaumas := 9;
+END_IF]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="SAI_APW_ExtAdjust" Id="{21198f15-f454-4d55-b8fe-fa18776eb6c0}">
+      <Declaration><![CDATA[METHOD SAI_APW_ExtAdjust
+VAR_INPUT
+   	deviceNetId         : 	T_AmsNetId 	:= '192.168.0.106.3.1'; // Have to be entered
+  	deviceSlaveAddr     : 	UINT 		:= 1001;     // Have to be entered		
+END_VAR
+VAR_OUTPUT
+	currentWeight		:	REAL;		//current adjustment weight to be loaded onto the scale
+	Load_Weight			:	BOOL;		//flag to load the adjustment weight according to currentWeight
+	Unload_Weight		:	BOOL;		//flag to unload the weight from the scale
+	Process				:	BOOL;
+	Done				: 	BOOL;
+	Error				:	BOOL;
+	Cancelled			:	BOOL;
+END_VAR
+VAR_IN_OUT
+	externalWeight		:	REAL;
+	Start				: 	BOOL;	
+	Cancel				:	BOOL;
+END_VAR
+
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[fbStart_RTrig_Ext(CLK:= Start, Q=> );
+IF fbStart_RTrig_Ext.Q THEN
+	fbAdjust_CoESdoWrite_Ext(bExecute:= FALSE);
+	fbWeight_CoESdoWrite_Ext(bExecute := FALSE);
+	fbCancel_CoESdoWrite_Ext(bExecute := FALSE);
+	Process			:=	FALSE;
+	Error			:=	FALSE;
+	Done			:=	FALSE;
+	Cancelled		:=	FALSE;
+	nState_Ext			:=	1;
+END_IF
+
+// Read the adjustment status CoE #4007 INT continuously
+IF nState_Ext >= 4 THEN
+	IF NOT fbStatus_CoESdoRead_Ext.bBusy THEN
+		bRead_Ext	:= TRUE;
+	ELSE
+		bRead_Ext	:= FALSE;
+	END_IF
+	// Read CoE Index #4007 size of 2 bytes: 2047-inProcee; 0-Done
+	fbStatus_CoESdoRead_Ext(
+		sNetId		:= deviceNetId, 
+		nSlaveAddr	:= deviceSlaveAddr, 
+		nSubIndex	:= 0, 
+		nIndex		:= 16#4007,
+		pDstBuf		:= ADR(iStatus_Ext), 
+		cbBufLen	:= SIZEOF(iStatus_Ext), 
+		bExecute	:= bRead_Ext, 
+		tTimeout	:= T#2S
+		);	
+		
+	IF NOT fbWeight_CoESdoRead_Ext.bBusy THEN
+		bRead2_Ext	:= TRUE;
+	ELSE
+		bRead2_Ext	:= FALSE;
+	END_IF
+	// Read the required external weight CoE #4011 4-byte REAL continuously
+	fbWeight_CoESdoRead_Ext(
+		sNetId		:= deviceNetId, 
+		nSlaveAddr	:= deviceSlaveAddr, 
+		nSubIndex	:= 0, 
+		nIndex		:= 16#4011,
+		pDstBuf		:= ADR(currentWeight0_Ext), 
+		cbBufLen	:= SIZEOF(currentWeight0_Ext), 
+		bExecute	:= bRead2_Ext, 
+		tTimeout	:= T#2S
+		);
+END_IF
+
+// Cancel adjustment procedure:
+fbCancel_RTrig_Ext(CLK:=Cancel, Q=> );
+wValue_Ext	:= 1;
+fbCancel_CoESdoWrite_Ext(
+	sNetId		:= deviceNetId, 
+	nSlaveAddr	:= deviceSlaveAddr, 
+	nSubIndex	:= 0, 
+	nIndex		:= 16#4004, 
+	pSrcBuf		:= ADR(wValue_Ext), 
+	cbBufLen	:= SIZEOF(wValue_Ext), 
+	bExecute	:= bWrite_Ext, 
+	tTimeout	:= T#1S, 
+	bBusy=> , 
+	bError=> , 
+	nErrId=> );
+
+IF fbCancel_RTrig_Ext.Q THEN
+	bWrite_Ext	:= TRUE;
+END_IF
+
+IF fbCancel_CoESdoWrite_Ext.bExecute = TRUE AND NOT fbCancel_CoESdoWrite_Ext.bBusy THEN
+	iStatus_Ext			:=	0;
+	Start			:=	FALSE;
+	bWrite_Ext			:= 	FALSE;
+	Process			:=	FALSE;
+	Error			:=	FALSE;
+	Cancelled		:=	TRUE;
+	Done			:=	FALSE;
+	Cancel			:=	FALSE;
+	Load_Weight		:=	FALSE;
+	Unload_Weight	:=	FALSE;
+	currentWeight	:=	0.0;
+	nState_Ext			:=	0;
+END_IF
+
+CASE nState_Ext OF
+	1:
+	IF externalWeight > 0.0 THEN
+		nState_Ext	:= 2;
+	ELSE 
+		nState_Ext	:= 99;
+	END_IF
+	
+	2:
+	// Turn off the adjustment step control #401F 2-Byte CoE
+	wValue0_Ext	:= 0;
+	fbAdjust_CoESdoWrite_Ext(
+	sNetId		:= deviceNetId,
+	nSlaveAddr	:= deviceSlaveAddr,
+	nSubIndex	:= 16#00,
+	nIndex		:= 16#401F,
+	pSrcBuf		:= ADR(wValue0_Ext),
+	cbBufLen	:= SIZEOF(wValue0_Ext),
+	bExecute	:= TRUE,
+	tTimeout	:= T#1S
+	);
+	IF fbAdjust_CoESdoWrite_Ext.bError THEN
+		nState_Ext	:= 99;
+	ELSE
+		IF NOT fbAdjust_CoESdoWrite_Ext.bBusy THEN
+			iStatus_Ext			:=	0;
+			currentWeight0_Ext	:=	0.0;
+			nState_Ext			:= 3;
+		END_IF
+	END_IF
+	
+	3:	
+	fbAdjust_CoESdoWrite_Ext(bExecute := FALSE);
+	//write external weight into Index #4009, 4 bytes of REAL
+	fbWeight_CoESdoWrite_Ext(
+	sNetId		:= deviceNetId,
+	nSlaveAddr	:= deviceSlaveAddr,
+	nSubIndex	:= 16#00,
+	nIndex		:= 16#4009,
+	pSrcBuf		:= ADR(externalWeight),
+	cbBufLen	:= SIZEOF(externalWeight),
+	bExecute	:= TRUE,
+	tTimeout	:= T#1S
+	);
+	IF fbWeight_CoESdoWrite_Ext.bError THEN
+		nState_Ext	:= 99;
+	ELSE
+		IF NOT fbWeight_CoESdoWrite_Ext.bBusy THEN
+			nState_Ext	:= 4;
+		END_IF
+	END_IF
+	
+	4:	//trigger the external adjustment process Index #4002, 1 byte data: [0000 0001]
+	fbWeight_CoESdoWrite_Ext(bExecute := FALSE);
+	fbtimer_Ext(IN:=FALSE,PT:=T#1000MS,Q=>,ET=>);
+	fbAdjust_CoESdoWrite_Ext(
+	sNetId		:= deviceNetId,
+	nSlaveAddr	:= deviceSlaveAddr,
+	nSubIndex	:= 16#00,
+	nIndex		:= 16#4002,
+	pSrcBuf		:= ADR(wValue_Ext),
+	cbBufLen	:= SIZEOF(wValue_Ext),
+	bExecute	:= TRUE,
+	tTimeout	:= T#1S
+	);
+	IF fbAdjust_CoESdoWrite_Ext.bError THEN
+		nState_Ext	:= 99;
+	ELSE
+		IF NOT fbAdjust_CoESdoWrite_Ext.bBusy THEN
+			nState_Ext	:= 5;
+		END_IF
+	END_IF
+	
+	5:	
+	fbtimer_Ext(IN:=TRUE,PT:=T#2000MS,Q=>,ET=>);
+	fbAdjust_CoESdoWrite_Ext(bExecute:= FALSE);
+	IF fbtimer_Ext.Q THEN
+		IF iStatus_Ext	= 2046 THEN
+			IF currentWeight0_Ext = 0.0 THEN
+				nState_Ext := 5;
+			ELSIF currentWeight0_Ext = externalWeight THEN
+				nState_Ext := 6; 
+			END_IF
+		ELSIF iStatus_Ext < 0 THEN
+			nState_Ext	:= 99;
+		END_IF
+	END_IF
+	6:	
+	fbtimer_Ext(IN:=FALSE,PT:=T#1000MS,Q=>,ET=>);
+	IF iStatus_Ext	= 2046 THEN
+		IF currentWeight0_Ext = 0.0 THEN
+			nState_Ext := 7;
+		ELSIF currentWeight0_Ext = externalWeight THEN
+			nState_Ext := 6; 
+		END_IF
+	ELSIF iStatus_Ext < 0 THEN
+		nState_Ext	:= 99;
+	END_IF
+	7:	
+	IF currentWeight0_Ext	= 0.0 THEN
+		IF iStatus_Ext = 0 THEN
+			nState_Ext := 8;
+		ELSIF iStatus_Ext = 2046 THEN
+			nState_Ext := 7;
+		ELSIF iStatus_Ext < 0 THEN
+			nState_Ext	:= 99; 
+		END_IF
+	END_IF	
+	
+	8:
+	fbtimer_Ext(IN:=TRUE,PT:=T#1000MS,Q=>,ET=>);
+	IF fbtimer_Ext.Q THEN
+		Error		:= FALSE;
+		Process		:= FALSE;
+		Done		:= TRUE;
+		Start		:= FALSE;
+		Cancelled	:= FALSE;	
+		Load_Weight	:=	FALSE;
+		Unload_Weight	:=	FALSE;
+		nState_Ext		:= 0;
+	END_IF
+	
+	99:	//error case
+	currentWeight0_Ext	:= 0.0;
+	Error		:= TRUE;
+	Process		:= FALSE;
+	Done		:= FALSE;
+	Start		:= FALSE;
+	Cancelled	:= FALSE;
+	Load_Weight	:=	FALSE;
+	Unload_Weight	:=	FALSE;
+	nState_Ext 		:= 0;     // Error case	
+END_CASE
+
+// control the Load_Weight, Unload_Weight and Process flags
+IF nState_Ext >= 4 AND nState_Ext < 8 AND NOT Cancel THEN
+	IF iStatus_Ext = 2047 THEN
+		Process		:=	TRUE;
+	ELSE
+		Process		:=	FALSE;
+	END_IF
+	
+	IF iStatus_Ext = 2046 AND currentWeight0_Ext = externalWeight THEN
+		Load_Weight		:=	TRUE;
+	ELSE
+		Load_Weight		:=	FALSE;
+	END_IF
+
+	IF currentWeight0_Ext = 0.0 THEN
+		Unload_Weight		:=	TRUE;
+	ELSE
+		Unload_Weight		:=	FALSE;
+	END_IF	
+END_IF
+
+// assign the VAR currentWeight0 to VAR_OUT currentWeight
+currentWeight := currentWeight0_Ext;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="SAI_APW_IntAdjust" Id="{50e8fa99-b263-4bbe-b36f-376a2b0cf68e}">
+      <Declaration><![CDATA[METHOD SAI_APW_IntAdjust : BOOL
+VAR_INPUT
+   	deviceNetId         : 	T_AmsNetId 	:= '192.168.0.106.3.1'; // Have to be entered
+  	deviceSlaveAddr     : 	UINT 		:= 1001;     // Have to be entered		
+END_VAR
+VAR_OUTPUT
+	Process				:	BOOL;
+	Done				: 	BOOL;
+	Error				:	BOOL;
+	Cancelled			:	BOOL;
+END_VAR
+VAR_IN_OUT
+	Start				: 	BOOL;	
+	Cancel				:	BOOL;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[fbStart_RTrig_Int(CLK:= Start, Q=> );
+IF fbStart_RTrig_Int.Q THEN
+	fbAdjust_CoESdoWrite_Int(bExecute:= FALSE);
+	Process			:=	FALSE;
+	Error			:=	FALSE;
+	Done			:=	FALSE;
+	Cancelled		:=	FALSE;
+	nState_Int			:=	1;
+END_IF
+
+// Cancel adjustment procedure:
+fbCancel_RTrig_Int(CLK:=Cancel, Q=> );
+wValue_Int	:= 1;
+fbCancel_CoESdoWrite_Int(
+	sNetId		:= deviceNetId, 
+	nSlaveAddr	:= deviceSlaveAddr, 
+	nSubIndex	:= 0, 
+	nIndex		:= 16#4004, 
+	pSrcBuf		:= ADR(wValue_Int), 
+	cbBufLen	:= SIZEOF(wValue_Int), 
+	bExecute	:= bWrite_Int, 
+	tTimeout	:= T#1S, 
+	bBusy=> , 
+	bError=> , 
+	nErrId=> );
+
+IF fbCancel_RTrig_Int.Q THEN
+	bWrite_Int	:= TRUE;
+END_IF
+
+IF fbCancel_CoESdoWrite_Int.bExecute = TRUE AND NOT fbCancel_CoESdoWrite_Int.bBusy THEN
+	rValue_Int			:=	0;
+	Start			:=	FALSE;
+	bWrite_Int			:= 	FALSE;
+	Process			:=	FALSE;
+	Error			:=	FALSE;
+	Cancelled		:=	TRUE;
+	Done			:=	FALSE;
+	Cancel			:=	FALSE;
+	nState_Int			:=	0;
+END_IF
+
+CASE nState_Int OF
+	1:
+		wValue_Int	:= 1;
+		// Write byte data "16#01" into CoE Index #4001
+	   	fbAdjust_CoESdoWrite_Int(
+	   	sNetId		:= deviceNetId,
+	   	nSlaveAddr	:= deviceSlaveAddr,
+	   	nSubIndex	:= 16#00,
+	   	nIndex		:= 16#4001,
+	   	pSrcBuf		:= ADR(wValue_Int),
+	   	cbBufLen	:= SIZEOF(wValue_Int),
+	   	bExecute	:= TRUE,
+	   	tTimeout	:= T#1S
+	   	);
+		nState_Int		:=	2;
+	2:
+	   	fbAdjust_CoESdoWrite_Int();       // Execute CoE write until done
+   		IF fbAdjust_CoESdoWrite_Int.bError THEN
+			Error	:= TRUE;
+			Process	:= FALSE;
+			Done	:= FALSE;
+			Start	:= FALSE;
+      		nState_Int 	:= 0;     // Error case
+   		ELSE
+			IF NOT fbAdjust_CoESdoWrite_Int.bBusy THEN
+				nState_Int := 3;    
+      		END_IF
+   		END_IF
+	3:
+		IF NOT fbStatus_CoESdoRead_Int.bBusy THEN
+			bRead_Int	:= TRUE;
+		ELSE
+			bRead_Int 	:= FALSE;
+		END_IF
+		// Read CoE Index #4007 size of 2 bytes: 2047-inProcee; 0-Done
+		fbStatus_CoESdoRead_Int(
+		sNetId		:= deviceNetId, 
+		nSlaveAddr	:= deviceSlaveAddr, 
+		nSubIndex	:= 0, 
+		nIndex		:= 16#4007,
+		pDstBuf		:= ADR(rValue_Int), 
+		cbBufLen	:= SIZEOF(rValue_Int), 
+		bExecute	:= bRead_Int, 
+		tTimeout	:= T#1S
+		);			
+
+		fbtimer_Int(IN:= TRUE, PT:=T#1000MS, Q=> , ET=>);
+		IF fbtimer_Int.Q AND NOT fbStatus_CoESdoRead_Int.bBusy THEN
+			IF rValue_Int = 2047 THEN
+				Error		:= FALSE;
+				Process		:= TRUE;
+				Done		:= FALSE;	
+				Cancelled	:= FALSE;	
+				nState_Int		:= 3;	
+			ELSIF rValue_Int <0 THEN
+				Error		:= TRUE;
+				Process		:= FALSE;
+				Done		:= FALSE;
+				Start		:= FALSE;
+				Cancelled	:= FALSE;
+				nState_Int 		:= 0;     // Error case			
+			ELSIF rValue_Int = 0 THEN
+				Error		:= FALSE;
+				Process		:= FALSE;
+				Done		:= TRUE;
+				Start		:= FALSE;
+				Cancelled	:= FALSE;	
+				nState_Int		:= 0;					
+			END_IF
+		END_IF
+END_CASE]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="SAI_Cyclic_CheckAlive" Id="{04630a11-b330-4722-8cb7-b4686bf5ecb3}">
+      <Declaration><![CDATA[METHOD SAI_Cyclic_CheckAlive : BOOL
+VAR_INPUT
+	MB_DeviceStatus		:	WORD;
+END_VAR
+VAR_OUTPUT
+	Alive				:	BOOL;
+	HeartBeat			:	BOOL;
+END_VAR
+
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[HeartBeat	:=		MB_DeviceStatus.2;
+heartBeatRTrig_Check(CLK := HeartBeat, Q => );
+heartBeatFTrig_Check(CLK := HeartBeat, Q => );
+timer2S_Check(IN:= NOT timerReset_Check, PT := T#2S, Q => , ET => );
+
+IF heartBeatRTrig_Check.Q OR heartBeatFTrig_Check.Q THEN
+	timerReset_Check	:= TRUE;
+ELSE
+	timerReset_Check	:= FALSE;
+END_IF
+
+IF timer2S_Check.Q THEN
+	Alive	:= FALSE;
+ELSE
+	Alive	:= TRUE;
+END_IF]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="SAI_Cyclic_WeightProc" Id="{498b4144-e860-4468-be53-5570e18351bb}">
+      <Declaration><![CDATA[METHOD SAI_Cyclic_WeightProc : BOOL
+VAR_INPUT
+	weightCmd			:	UINT	:= 3;
+	MB_DeviceStatus		:	WORD;	
+END_VAR
+
+VAR_OUTPUT
+	realtimeWeight		:	REAL;
+	stableWeight		:	REAL;
+	heartBeat			:	BOOL;
+	DataOK				:	BOOL;
+	Smart5_red			:	BOOL;
+	Smart5_orange		:	BOOL;
+	Smart5_yellow		:	BOOL;
+	Smart5_blue			:	BOOL;
+	centerofZero		:	BOOL;
+	motion				:	BOOL;
+	netMode				:	BOOL;
+	cmdDone				:	BOOL;
+	cmdPending			:	BOOL;
+	cmdFailed			:	BOOL;
+END_VAR
+
+VAR_IN_OUT
+	TareStable_cmd		:	BOOL;
+	TareImmediate_cmd	:	BOOL;
+	ZeroStable_cmd		:	BOOL;
+	ZeroImmediate_cmd	:	BOOL;
+	PreTare_cmd			:	BOOL;
+	PreTare_value		:	REAL;
+	Clear_cmd			:	BOOL;
+	MB_MeasuredValue	:	REAL;
+	MB_Response			:	INT;
+	MB_CmdValue			:	REAL;
+	MB_Command			:	WORD;	
+END_VAR
+
+
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[//List of most commonly used cyclic scale commands:
+fbRTrig_TareStable_W(CLK:= TareStable_cmd, Q=> );
+fbRTrig_TareImm_W(CLK:= TareImmediate_cmd, Q=> );
+fbRTrig_ZeroStable_W(CLK:= ZeroStable_cmd, Q=> );
+fbRTrig_ZeroImm_W(CLK:= ZeroImmediate_cmd, Q=> );
+fbRTrig_PreTare_W(CLK:= PreTare_cmd, Q=> );
+fbRTrig_Clear_W(CLK:= Clear_cmd, Q=> );
+
+IF fbRTrig_TareStable_W.Q THEN
+	cmd_W 			:= 400;
+	writeTrigger_W	:= TRUE;
+END_IF
+
+IF fbRTrig_TareImm_W.Q THEN
+	cmd_W 			:= 403;
+	writeTrigger_W	:= TRUE;
+END_IF
+
+IF fbRTrig_ZeroStable_W.Q THEN
+	cmd_W 			:= 401;
+	writeTrigger_W	:= TRUE;
+END_IF
+
+IF fbRTrig_ZeroImm_W.Q THEN
+	cmd_W 			:= 404;
+	writeTrigger_W	:= TRUE;
+END_IF
+
+IF fbRTrig_Clear_W.Q THEN
+	cmd_W 			:= 402;
+	writeTrigger_W	:= TRUE;
+END_IF
+
+IF fbRTrig_PreTare_W.Q THEN
+	MB_CmdValue		:= PreTare_value;
+	cmd_W 			:= 201;
+	writeTrigger_W	:= TRUE;
+END_IF
+
+// Deliver the command to the EtherCAT device:
+IF writeTrigger_W THEN
+	MB_Command		:=	cmd_W;
+	MB_CmdValue		:= 	0.0;
+	cmdDone			:=	FALSE;
+	cmdFailed		:=	FALSE;
+	restoreTrigger_W	:=	FALSE;
+	writeTrigger_W	:= 	FALSE;
+END_IF
+// cmdDone status flag will be turned ON if the command resposne is equal to command delivered
+// cmdPending status flag is raised when the command response is decimal "2047", the device is trying to execute the command
+// cmdFailed status flag will be turned ON if the device finally fails to execute the current command due to motion or out-of-range 
+IF MB_Response = UINT_TO_INT(cmd_W) THEN
+	cmdDone			:=	TRUE;
+	cmdPending		:=	FALSE;
+	cmdFailed		:=	FALSE;
+	restoreTrigger_W	:=	TRUE;
+ELSIF MB_Response = 2047 THEN
+	cmdDone			:=	FALSE;
+	cmdPending		:=	TRUE;
+	cmdFailed		:=	FALSE;
+ELSIF MB_Response < 0 THEN
+	cmdDone			:=	FALSE;
+	cmdPending		:=	FALSE;
+	cmdFailed		:=	TRUE;	
+	restoreTrigger_W	:=	TRUE;
+END_IF
+// After scale command is executed/ failed, issue a new command to report the weight data... 
+// according to user defined type in "weightCmd"
+IF restoreTrigger_W THEN
+	MB_Command		:= weightCmd; 
+	TareStable_cmd := TareImmediate_cmd := ZeroStable_cmd := ZeroImmediate_cmd := PreTare_cmd := Clear_cmd := FALSE; 
+	restoreTrigger_W	:= FALSE;
+END_IF
+
+// Continuously updates the device primary status bits
+sequence0_W		:=		MB_DeviceStatus.0; 
+sequence1_W		:=		MB_DeviceStatus.1;
+heartBeat		:=		MB_DeviceStatus.2;
+DataOK			:=		MB_DeviceStatus.3;
+Smart5_red		:=		MB_DeviceStatus.4;
+centerofZero	:=		MB_DeviceStatus.5;
+motion			:=		MB_DeviceStatus.6;
+netMode			:=		MB_DeviceStatus.7;
+Smart5_orange	:=		MB_DeviceStatus.10;
+Smart5_yellow	:=		MB_DeviceStatus.11;
+Smart5_blue		:=		MB_DeviceStatus.12;
+
+// Updates the real-time and stable weight values continuously
+IF (MB_Response <= 3 AND MB_Response >= 0) 
+OR (MB_Response <= 7 AND MB_Response >= 5) THEN
+	realtimeWeight := MB_MeasuredValue;
+	IF NOT motion THEN
+		stableWeight := MB_MeasuredValue;
+	END_IF
+END_IF]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Set_Zero" Id="{103d714c-71bb-49ce-b236-051facb9cd74}">
+      <Declaration><![CDATA[METHOD Set_Zero : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF idDevice = 1 THEN
+    IND_M_WR_Command := 404;
+ELSIF idDevice = 2 THEN
+    CMDLaumas := 8;
+END_IF]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="Status" Id="{7982f932-02df-4560-acd3-5915946fae21}">
+      <Declaration><![CDATA[PROPERTY Status : REAL]]></Declaration>
+      <Get Name="Get" Id="{dca5e58a-5524-49f3-bd8d-e51468a9b9bf}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[IF idDevice = 1 THEN
+	status := WORD_TO_REAL(IND_M_RD_Status);
+ELSIF idDevice = 2 THEN
+	status := DINT_TO_REAL(uStatusLaumas.fReal);
+END_IF]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <LineIds Name="FB_Interface_EtherCat">
+      <LineId Id="122" Count="11" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="134" Count="0" />
+      <LineId Id="136" Count="0" />
+      <LineId Id="135" Count="0" />
+      <LineId Id="142" Count="0" />
+      <LineId Id="137" Count="1" />
+      <LineId Id="143" Count="0" />
+      <LineId Id="139" Count="0" />
+      <LineId Id="144" Count="0" />
+      <LineId Id="140" Count="1" />
+      <LineId Id="145" Count="1" />
+      <LineId Id="149" Count="0" />
+      <LineId Id="147" Count="1" />
+      <LineId Id="150" Count="0" />
+      <LineId Id="152" Count="26" />
+      <LineId Id="151" Count="0" />
+      <LineId Id="426" Count="0" />
+      <LineId Id="575" Count="0" />
+      <LineId Id="581" Count="0" />
+      <LineId Id="584" Count="1" />
+      <LineId Id="596" Count="3" />
+      <LineId Id="601" Count="3" />
+      <LineId Id="613" Count="1" />
+      <LineId Id="605" Count="0" />
+      <LineId Id="615" Count="0" />
+      <LineId Id="607" Count="5" />
+      <LineId Id="586" Count="1" />
+      <LineId Id="582" Count="0" />
+      <LineId Id="590" Count="2" />
+      <LineId Id="641" Count="1" />
+      <LineId Id="594" Count="1" />
+      <LineId Id="593" Count="0" />
+      <LineId Id="583" Count="0" />
+      <LineId Id="785" Count="0" />
+      <LineId Id="780" Count="0" />
+      <LineId Id="427" Count="0" />
+      <LineId Id="429" Count="8" />
+      <LineId Id="428" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Interface_EtherCat.fActWeight.Get">
+      <LineId Id="5" Count="2" />
+      <LineId Id="11" Count="1" />
+      <LineId Id="14" Count="1" />
+      <LineId Id="13" Count="0" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Interface_EtherCat.NetMode">
+      <LineId Id="6" Count="3" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Interface_EtherCat.SAI_APW_ExtAdjust">
+      <LineId Id="4473" Count="239" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Interface_EtherCat.SAI_APW_IntAdjust">
+      <LineId Id="1572" Count="111" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Interface_EtherCat.SAI_Cyclic_CheckAlive">
+      <LineId Id="134" Count="14" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Interface_EtherCat.SAI_Cyclic_WeightProc">
+      <LineId Id="1652" Count="93" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Interface_EtherCat.Set_Zero">
+      <LineId Id="6" Count="3" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Interface_EtherCat.Status.Get">
+      <LineId Id="5" Count="0" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="7" Count="0" />
+      <LineId Id="13" Count="0" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

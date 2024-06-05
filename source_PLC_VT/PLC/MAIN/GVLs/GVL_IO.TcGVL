@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <GVL Name="GVL_IO" Id="{c138935e-253d-4e7e-816e-577eecb17c88}">
+    <Declaration><![CDATA[VAR_GLOBAL
+	bStart			AT %I* : BOOL;
+	bStop			AT %I* : BOOL;
+	bReset			AT %I* : BOOL;
+	bEmer			AT %I* : BOOL;
+	bSafetyDoor1	AT %I* : BOOL;
+	bSafetyDoor2	AT %I* : BOOL;
+	bSafetyDoor3	AT %I* : BOOL;
+	bCheckVan		AT %I* : BOOL;
+	bLight_Running 	AT %Q* : BOOL;
+	bLight_Stop		AT %Q* : BOOL;
+	bSirens			AT %Q* : BOOL;
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

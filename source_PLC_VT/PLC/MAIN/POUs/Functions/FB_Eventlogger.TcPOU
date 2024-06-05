@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_Eventlogger" Id="{54fe8374-df8d-45a4-bac0-640d990f252a}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Eventlogger
+VAR_INPUT
+	eventClass: GUID;
+	nEventID  : UDINT;
+//	sString   : STRING;
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	fbEventLogger : FB_TcEventLogger;
+	fbSourceInfo  : FB_TcSourceInfo;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[fbSourceInfo.Clear();
+	fbSourceInfo.sName := '';
+	fbSourceInfo.nId := 1;	
+fbEventLogger.SendMessage(
+	eventClass:= eventClass, 
+	nEventId:= nEventID, 
+	eSeverity:= TcEventSeverity.Error, 
+	ipSourceInfo:= fbSourceInfo, 
+	nTimeStamp:= 0, 
+	ipArguments:= 0);
+]]></ST>
+    </Implementation>
+    <LineIds Name="FB_Eventlogger">
+      <LineId Id="15" Count="9" />
+      <LineId Id="9" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

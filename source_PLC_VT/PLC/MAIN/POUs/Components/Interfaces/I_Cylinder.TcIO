@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <Itf Name="I_Cylinder" Id="{90982fa2-f182-413f-9fb2-d8a232658566}">
+    <Declaration><![CDATA[INTERFACE I_Cylinder
+]]></Declaration>
+    <Property Name="bIsExtend" Id="{445c20e1-d570-4dff-8efb-092a311630cf}">
+      <Declaration><![CDATA[PROPERTY bIsExtend : BOOL]]></Declaration>
+      <Get Name="Get" Id="{ac59b736-eec7-4995-83ab-92fd7b15943f}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
+    <Property Name="bIsRetract" Id="{d125ba91-5851-4c2d-8123-35bcb38f17f8}">
+      <Declaration><![CDATA[PROPERTY bIsRetract : BOOL]]></Declaration>
+      <Get Name="Get" Id="{16f5ebf5-44de-4b2d-89b7-1161bb94e694}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
+    <Method Name="Extend" Id="{91d98c47-3d9a-4bb9-a3a8-1accebb95519}">
+      <Declaration><![CDATA[METHOD Extend : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+    </Method>
+    <Method Name="Retract" Id="{a4852e2c-c128-47c2-8324-e45b99ad198f}">
+      <Declaration><![CDATA[METHOD Retract : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+    </Method>
+  </Itf>
+</TcPlcObject>

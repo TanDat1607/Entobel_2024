@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <GVL Name="GVL_Retain" Id="{83174e21-0f67-4ee7-94d0-c17f1c6a3719}">
+    <Declaration><![CDATA[VAR_GLOBAL PERSISTENT
+	nErrorIDList1		: ARRAY[1..100] OF ST_Error;
+	nErrorIDList2		: ARRAY[1..100] OF ST_Error;
+	a2 					: INT;
+	i 					: INT := 1;
+	nResult_true1		: INT;
+	nResult_false1		: INT;
+	nCount1				: INT;
+	nResult_true2		: INT;
+	nResult_false2		: INT;
+	nCount2				: INT;
+	nShoot1				: REAL;
+	nShoot2				: REAL;
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

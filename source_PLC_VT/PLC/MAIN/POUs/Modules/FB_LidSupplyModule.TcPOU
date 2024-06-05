@@ -1,0 +1,745 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_LidSupplyModule" Id="{04eaac29-0db0-46aa-92f2-93fe60b80fe2}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_LidSupplyModule
+VAR_INPUT
+	nLine						: INT;
+	timerCylinder_Suction		: REAL := 10;
+	timerCheckLidRelease		: REAL := 1;
+	timerLidBlow				: REAL := 1;
+	timerCheckLidEmpty			: REAL := 1;
+	timerCheckLidSuck			: REAL := 1;
+	timerCylinder_Stopper		: REAL := 1;
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	// ===== CHILD COMPONENTS ======
+	fbCylinder_LidStopper		: FB_Cylinder;
+	fbCylinder_Suction			: FB_Cylinder;
+	fbLidSuctionValve			: FB_SuctionCup;
+	fbCupSuctionValve			: FB_SuctionCup;
+	// ===== SIM COMPONENTS ======
+	fbCylinder_LidStopper_Sim	: FB_Cylinder_Sim;
+	fbCylinder_Suction_Sim		: FB_Cylinder_Sim;
+	fbLidSuctionValve_Sim		: FB_SuctionCup_Sim;
+	fbCupSuctionValve_Sim		: FB_SuctionCup_Sim;
+	// ===== INTERFACES ======
+	iCylinder_LidStopper		: I_Cylinder;
+	iCylinder_Suction			: I_Cylinder;
+	iLidSuctionValve			: I_SuctionCup;
+	iCupSuctionValve			: I_SuctionCup;
+	//===== Var IO ======
+	bLidEmpty AT %I*			: BOOL;
+	bLidBlow  AT %Q*			: BOOL;
+	//===== Var method enable
+	nState_Enable				: INT;
+	tTimer_Enable				: TON;
+	//===== Var method DropLid
+	nState_DropLid				: INT;
+	tTimer_DropLid				: TON;
+	RunDropLid					: BOOL;
+	//===== Var method TakeLid
+	nState_Check				: INT;
+	nState_Siren				: INT;
+	nState_TakeLid				: INT;
+	tTimer_TakeLid				: TON;
+	tTimer_checkLid				: TON;
+	//===== var method manual
+	tTimer_stoplid				: TON;
+	tTimer_Suction				: TON;
+	tTimer_Valve				: TON;
+	tTimer_Pick					: ton;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF bSimMode THEN
+	iCylinder_LidStopper := fbCylinder_LidStopper_Sim;
+	iCylinder_Suction	 := fbCylinder_Suction_Sim;
+	iLidSuctionValve	 := fbLidSuctionValve_Sim;
+	iCupSuctionValve	 := fbCupSuctionValve_Sim;
+	fbCylinder_LidStopper_Sim();
+	fbCylinder_Suction_Sim();
+	fbLidSuctionValve_Sim();
+	fbCupSuctionValve_Sim();
+ELSE
+	iCylinder_LidStopper := fbCylinder_LidStopper;
+	iCylinder_Suction	 := fbCylinder_Suction;
+	iLidSuctionValve	 := fbLidSuctionValve;
+	iCupSuctionValve	 := fbCupSuctionValve;
+	fbCylinder_LidStopper(id := 1);
+	fbCylinder_Suction(id := 1);
+	fbLidSuctionValve();
+	fbCupSuctionValve();
+END_IF]]></ST>
+    </Implementation>
+    <Method Name="CheckLid" Id="{1efbb417-5e20-4992-b4e9-35dfcaf1913c}">
+      <Declaration><![CDATA[METHOD CheckLid : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF NOT isLidEmpty THEN
+	CASE nState_Check OF
+		0:
+			IF nLine = 1 THEN
+				F_SetWarning(102,nLine := 1);
+			ELSIF nLine = 2 THEN
+				F_SetWarning(109,nLine := 2);
+			END_IF
+			nState_Check := 1;
+		1:
+			tTimer_checkLid(IN := TRUE, PT := REAL_TO_TIME(timerCheckLidEmpty)*1000);
+			IF tTimer_checkLid.Q AND NOT RunDropLid THEN
+				IF nLine = 1 THEN
+					F_SetError(10,nLine := 1);
+				ELSIF nLine = 2 THEN
+					F_SetError(32,nLine := 2);
+				END_IF
+			END_IF
+
+	END_CASE
+ELSE
+	tTimer_checkLid(IN := FALSE);
+	nState_Check := 0;
+END_IF
+
+CASE nState_Siren OF 
+	0:
+		IF NOT isLidEmpty THEN
+			nState_Siren := 1;
+		END_IF
+	1:
+		IF isLidEmpty THEN
+			IF nLine = 1 THEN
+				bWrn := FALSE;
+			ELSIF nLine = 2 THEN
+				bWrn2 := FALSE;
+			END_IF
+			bSirens := FALSE;
+			nState_Siren := 0;
+		END_IF
+END_CASE]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="DropLid" Id="{661aa6b2-551a-4b8f-9d1e-246b824d56e5}">
+      <Declaration><![CDATA[METHOD DropLid : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[CASE nState_DropLid OF
+	0://init
+		DropLid := FALSE;
+		tTimer_DropLid(IN:= FALSE);
+		RunDropLid := FALSE;
+		nState_DropLid := 1;
+	1://check LidPick
+		RunDropLid := TRUE;
+		iLidSuctionValve.Suck();
+		IF isLidPick THEN
+			tTimer_DropLid(IN := FALSE);
+			nState_DropLid := 2;
+		ELSE
+			tTimer_DropLid(IN := TRUE, PT := REAL_TO_TIME(timerCheckLidSuck)*1000);
+			IF tTimer_DropLid.Q THEN
+				IF nLine = 1 THEN
+					F_SetError(49,nLine := 1);
+				ELSIF nLine = 2 THEN
+					F_SetError(50,nLine := 2);
+				END_IF
+			END_IF
+		END_IF
+	2://suck the cup and cylinder_suction retract
+		RunDropLid := TRUE;
+		iCupSuctionValve.Suck();
+		iLidSuctionValve.Suck();
+		iCylinder_Suction.Extend();
+		IF iCylinder_Suction.bIsExtend THEN
+			tTimer_DropLid(IN:= FALSE);
+			nState_DropLid := 4;
+		ELSE
+			tTimer_DropLid(IN:= TRUE,PT := REAL_TO_TIME(timerCylinder_Suction)*1000);
+			IF tTimer_DropLid.Q THEN
+				IF nLine = 1 THEN
+					F_SetError(14,nLine := 1);
+				ELSIF nLine = 2 THEN
+					F_SetError(36,nLine := 2);
+				END_IF
+			END_IF
+		END_IF
+	4://drop Lid
+		RunDropLid := TRUE;
+		iLidSuctionValve.Release();
+		tTimer_DropLid(IN := TRUE, PT := REAL_TO_TIME(timerCheckLidRelease)*1000);
+		IF tTimer_DropLid.Q AND NOT isLidPick THEN
+			nState_DropLid := 5;
+		END_IF
+	5:
+		RunDropLid := TRUE;
+		tTimer_DropLid(IN := FALSE);
+		iCylinder_Suction.Retract();
+		iCupSuctionValve.Release();
+		nState_DropLid := 6;
+	6:
+		RunDropLid := TRUE;
+		IF iCylinder_Suction.bIsRetract THEN
+			tTimer_DropLid(IN:= FALSE);
+			nState_DropLid := 7;
+		ELSE
+			tTimer_DropLid(IN:= TRUE,PT := REAL_TO_TIME(timerCylinder_Suction)*1000);
+			IF tTimer_DropLid.Q THEN
+				IF nLine = 1 THEN
+					F_SetError(13,nLine := 1);
+				ELSIF nLine = 2 THEN
+					F_SetError(35,nLine := 2);
+				END_IF
+			END_IF
+		END_IF
+	7://release the cup
+		RunDropLid := TRUE;
+		tTimer_DropLid(IN := FALSE);
+		IF NOT iCupSuctionValve.bIsSuck THEN
+			nState_DropLid := 8;
+		END_IF
+	8://finish
+		RunDropLid := FALSE;
+		DropLid := TRUE;
+		nState_DropLid := 0;
+	99://error
+		
+END_CASE]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Enable" Id="{d455ae8e-4960-4b8b-bb7c-e5448692cacc}">
+      <Declaration><![CDATA[METHOD Enable : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[CASE nState_Enable OF
+	0:
+		Enable := FALSE;
+		tTimer_Enable(IN := FALSE);
+		nState_Enable := 1;
+	1:
+		iCylinder_Suction.Retract();
+		tTimer_Enable(IN := TRUE,PT := REAL_TO_TIME(timerCylinder_Suction)*1000);
+		IF tTimer_Enable.Q THEN
+			IF nLine = 1 THEN
+				F_SetError(12,nLine := 1);
+			ELSIF nLine = 2 THEN
+				F_SetError(30,nLine := 2);
+			END_IF
+		ELSIF iCylinder_Suction.bIsRetract THEN
+			tTimer_Enable(IN := FALSE);
+			nState_Enable := 2;
+		END_IF
+	2: 
+		iCylinder_LidStopper.Retract();
+		tTimer_Enable(IN := TRUE,PT := REAL_TO_TIME(timerCylinder_Stopper)*1000);
+		IF tTimer_Enable.Q THEN
+			IF nLine = 1 THEN
+				F_SetError(13,nLine := 1);
+			ELSIF nLine = 2 THEN
+				F_SetError(31,nLine := 2);
+			END_IF
+		ELSIF iCylinder_LidStopper.bIsRetract THEN
+			tTimer_Enable(IN := FALSE);
+			nState_Enable := 3;
+		END_IF
+	3:
+		Enable := TRUE;
+	99://Error
+END_CASE]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Init" Id="{773ef9b2-5c83-422d-aae0-f778fd69e10c}">
+      <Declaration><![CDATA[METHOD Init : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[nState_DropLid := 0;
+nState_TakeLid := 0;
+nState_Enable  := 0;]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="isLidEmpty" Id="{953a9898-fe96-44c1-9338-55c0534964f8}">
+      <Declaration><![CDATA[PROPERTY isLidEmpty : BOOL]]></Declaration>
+      <Get Name="Get" Id="{91364552-ad4a-46fc-bcab-0f4d8fbb7fe5}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[isLidEmpty := bLidEmpty;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Property Name="isLidPick" Id="{d7283291-b491-4a7e-84e4-af2a93a9a197}">
+      <Declaration><![CDATA[PROPERTY isLidPick : BOOL]]></Declaration>
+      <Get Name="Get" Id="{d18c4db4-8b82-4ef7-ae79-c24af5330346}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[isLidPick := iLidSuctionValve.bIsSuck;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Method Name="Manual" Id="{91a1b27b-52c6-4f79-b759-a33dca3a4dcf}">
+      <Declaration><![CDATA[METHOD Manual : BOOL
+VAR_INPUT
+	bCylinder_LidStopper_extend 	: BOOL;
+	bCylinder_LidStopper_retract 	: BOOL;
+	bCylinder_Suction_extend		: BOOL;
+	bCylinder_Suction_retract		: BOOL;
+	bLidSuctionValve				: BOOL;
+	bCupSuctionValve				: BOOL;
+	bBlowValve						: BOOL;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF bCylinder_LidStopper_extend THEN
+	iCylinder_LidStopper.Extend();
+		IF iCylinder_LidStopper.bIsExtend THEN
+			tTimer_stoplid(IN := FALSE);
+		ELSE
+			tTimer_stoplid(IN := TRUE, PT := REAL_TO_TIME(timerCylinder_Stopper)*1000);
+			IF tTimer_stoplid.Q THEN
+				IF nLine = 1 THEN
+					F_SetError(12,nLine := 1);
+				ELSIF nLine = 2 THEN
+					F_SetError(34,nLine := 2);
+				END_IF
+			END_IF
+		END_IF
+END_IF
+
+IF bCylinder_LidStopper_retract THEN
+	iCylinder_LidStopper.Retract();
+	IF iCylinder_LidStopper.bIsRetract THEN
+			tTimer_stoplid(IN := FALSE);
+	ELSE
+		tTimer_stoplid(IN := TRUE, PT := REAL_TO_TIME(timerCylinder_Stopper)*1000);
+		IF tTimer_stoplid.Q THEN
+			IF nLine = 1 THEN
+				F_SetError(11,nLine := 1);
+			ELSIF nLine = 2 THEN
+				F_SetError(33,nLine := 2);
+			END_IF
+		END_IF
+	END_IF
+END_IF
+
+IF bCylinder_Suction_extend THEN
+	iCylinder_Suction.Extend();
+	IF iCylinder_Suction.bIsExtend THEN
+			tTimer_Suction(IN:= FALSE);
+		ELSE
+			tTimer_Suction(IN:= TRUE,PT := REAL_TO_TIME(timerCylinder_Suction)*1000);
+			IF tTimer_Suction.Q THEN
+				IF nLine = 1 THEN
+					F_SetError(14,nLine := 1);
+				ELSIF nLine = 2 THEN
+					F_SetError(36,nLine := 2);
+				END_IF
+			END_IF
+		END_IF
+END_IF
+
+IF bCylinder_Suction_retract THEN
+	iCylinder_Suction.Retract();
+	IF iCylinder_Suction.bIsRetract THEN
+			tTimer_Suction(IN := FALSE);
+		ELSE
+			tTimer_Suction(IN := TRUE, PT := REAL_TO_TIME(timerCylinder_Suction)*1000);
+			IF tTimer_Suction.Q THEN
+				IF nLine = 1 THEN
+					F_SetError(13,nLine := 1);
+				ELSIF nLine = 2 THEN
+					F_SetError(35,nLine := 2);
+				END_IF
+			END_IF
+		END_IF
+END_IF
+
+IF bLidSuctionValve THEN
+	iLidSuctionValve.Suck();
+	(*IF isLidPick THEN
+			tTimer_Valve(IN := FALSE);
+		ELSE
+			tTimer_Valve(IN := TRUE, PT := REAL_TO_TIME(timerCheckLidSuck)*1000);
+			IF tTimer_Valve.Q THEN
+				IF nLine = 1 THEN
+					F_SetError(49);
+				ELSIF nLine = 2 THEN
+					F_SetError(50);
+				END_IF
+			END_IF
+		END_IF*)
+ELSE
+	iLidSuctionValve.Release();
+END_IF
+
+IF bCupSuctionValve THEN
+	iCupSuctionValve.Suck();
+ELSE
+	iCupSuctionValve.Release();
+END_IF
+
+IF bBlowValve THEN
+	bLidBlow := TRUE;
+ELSE
+	bLidBlow := FALSE;
+END_IF]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Reset" Id="{b544ce01-7d51-49f0-a578-587cde4e3fc8}">
+      <Declaration><![CDATA[METHOD Reset : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[tTimer_Enable(IN := FALSE);
+tTimer_DropLid(IN := FALSE);
+tTimer_TakeLid(IN := FALSE);
+tTimer_Suction(IN := FALSE);
+tTimer_Pick(IN := FALSE);
+iCylinder_Suction.Retract();]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Stop" Id="{2585d162-6acf-49dc-b99b-37bba0dfd09d}">
+      <Declaration><![CDATA[METHOD Stop : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[tTimer_Enable(IN := FALSE);
+tTimer_DropLid(IN := FALSE);
+tTimer_Suction(IN := FALSE);
+tTimer_TakeLid(IN := FALSE);
+tTimer_Pick(IN := FALSE);
+iCylinder_LidStopper.Extend();
+iLidSuctionValve.Release();
+iCupSuctionValve.Release();
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="TakeLid" Id="{f38e394e-7b2b-4244-a443-2b0d9c7f6158}">
+      <Declaration><![CDATA[METHOD TakeLid : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[CASE nState_TakeLid OF
+	0://init
+		TakeLid := FALSE;
+		tTimer_TakeLid(IN:= FALSE);
+		tTimer_Pick(IN := FALSE);
+		nState_TakeLid := 1;
+	1://check LidEmpty
+		IF isLidPick THEN
+			IF nLine = 1 THEN
+				F_SetError(51,nLine := 1);
+			ELSIF nLine = 2 THEN
+				F_SetError(52,nLine := 2);
+			END_IF
+		ELSE
+			nState_TakeLid := 11;
+		END_IF
+	11:// call cylinder_suction. retract to take lid
+		iCylinder_Suction.Retract();
+		IF iCylinder_Suction.bIsRetract THEN
+			tTimer_TakeLid(IN := FALSE);
+			nState_TakeLid := 2;
+		ELSE
+			tTimer_TakeLid(IN := TRUE, PT := REAL_TO_TIME(timerCylinder_Suction)*1000);
+			IF tTimer_TakeLid.Q THEN
+				IF nLine = 1 THEN
+					F_SetError(13,nLine := 1);
+				ELSIF nLine = 2 THEN
+					F_SetError(35,nLine := 2);
+				END_IF
+			END_IF
+		END_IF
+	2://call cylinder_Lidstop.retract to drop lid
+		iCylinder_LidStopper.Retract();
+		IF iCylinder_LidStopper.bIsRetract THEN
+			tTimer_TakeLid(IN := FALSE);
+			nState_TakeLid := 3;
+		ELSE
+			tTimer_TakeLid(IN := TRUE, PT := REAL_TO_TIME(timerCylinder_Stopper)*1000);
+			IF tTimer_TakeLid.Q THEN
+				IF nLine = 1 THEN
+					F_SetError(11,nLine := 1);
+				ELSIF nLine = 2 THEN
+					F_SetError(33,nLine := 2);
+				END_IF
+			END_IF
+		END_IF
+	3:// Suck lid
+		iCylinder_LidStopper.Retract();
+		iLidSuctionValve.Suck();
+		IF isLidPick THEN
+			tTimer_TakeLid(IN := FALSE);
+			nState_TakeLid := 33;
+		ELSE
+			tTimer_TakeLid(IN := TRUE, PT := REAL_TO_TIME(timerCheckLidSuck)*1000);
+			IF tTimer_TakeLid.Q THEN
+				IF nLine = 1 THEN
+					F_SetError(49,nLine := 1);
+					nState_TakeLid := 2;
+				ELSIF nLine = 2 THEN
+					F_SetError(50,nLine := 2);
+					nState_TakeLid := 2;
+				END_IF
+			END_IF
+		END_IF
+	33:
+		iLidSuctionValve.Suck();
+		tTimer_Pick(IN := TRUE, PT:= T#0.5S);
+		IF tTimer_Pick.Q THEN
+			nState_TakeLid := 4;
+		END_IF
+	4://Block Lid Up
+		iLidSuctionValve.Suck();
+		tTimer_Pick(IN := FALSE);
+		iCylinder_LidStopper.Extend();
+		IF iCylinder_LidStopper.bIsExtend THEN
+			tTimer_TakeLid(IN := FALSE);
+			nState_TakeLid := 5;
+		ELSE
+			tTimer_TakeLid(IN := TRUE, PT := REAL_TO_TIME(timerCylinder_Stopper)*1000);
+			IF tTimer_TakeLid.Q THEN
+				IF nLine = 1 THEN
+					F_SetError(12,nLine := 1);
+				ELSIF nLine = 2 THEN
+					F_SetError(34,nLine := 2);
+				END_IF
+			END_IF
+		END_IF
+	5://finish takelid
+		TakeLid := TRUE;
+		nState_TakeLid := 0;	
+END_CASE
+]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="FB_LidSupplyModule">
+      <LineId Id="37" Count="1" />
+      <LineId Id="47" Count="6" />
+      <LineId Id="42" Count="0" />
+      <LineId Id="54" Count="6" />
+      <LineId Id="46" Count="0" />
+      <LineId Id="9" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_LidSupplyModule.CheckLid">
+      <LineId Id="6" Count="0" />
+      <LineId Id="37" Count="0" />
+      <LineId Id="60" Count="0" />
+      <LineId Id="42" Count="3" />
+      <LineId Id="41" Count="0" />
+      <LineId Id="40" Count="0" />
+      <LineId Id="46" Count="0" />
+      <LineId Id="48" Count="7" />
+      <LineId Id="47" Count="0" />
+      <LineId Id="39" Count="0" />
+      <LineId Id="11" Count="0" />
+      <LineId Id="27" Count="0" />
+      <LineId Id="56" Count="0" />
+      <LineId Id="29" Count="0" />
+      <LineId Id="64" Count="0" />
+      <LineId Id="63" Count="0" />
+      <LineId Id="65" Count="0" />
+      <LineId Id="67" Count="4" />
+      <LineId Id="75" Count="1" />
+      <LineId Id="78" Count="1" />
+      <LineId Id="77" Count="0" />
+      <LineId Id="72" Count="0" />
+      <LineId Id="74" Count="0" />
+      <LineId Id="73" Count="0" />
+      <LineId Id="66" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_LidSupplyModule.DropLid">
+      <LineId Id="6" Count="3" />
+      <LineId Id="200" Count="0" />
+      <LineId Id="10" Count="1" />
+      <LineId Id="193" Count="0" />
+      <LineId Id="176" Count="11" />
+      <LineId Id="26" Count="0" />
+      <LineId Id="188" Count="0" />
+      <LineId Id="27" Count="0" />
+      <LineId Id="195" Count="0" />
+      <LineId Id="28" Count="0" />
+      <LineId Id="189" Count="0" />
+      <LineId Id="88" Count="1" />
+      <LineId Id="137" Count="0" />
+      <LineId Id="90" Count="0" />
+      <LineId Id="126" Count="2" />
+      <LineId Id="131" Count="1" />
+      <LineId Id="134" Count="1" />
+      <LineId Id="129" Count="1" />
+      <LineId Id="91" Count="1" />
+      <LineId Id="196" Count="0" />
+      <LineId Id="93" Count="0" />
+      <LineId Id="112" Count="2" />
+      <LineId Id="111" Count="0" />
+      <LineId Id="165" Count="0" />
+      <LineId Id="197" Count="0" />
+      <LineId Id="166" Count="1" />
+      <LineId Id="172" Count="0" />
+      <LineId Id="168" Count="0" />
+      <LineId Id="145" Count="0" />
+      <LineId Id="198" Count="0" />
+      <LineId Id="148" Count="7" />
+      <LineId Id="157" Count="1" />
+      <LineId Id="160" Count="1" />
+      <LineId Id="146" Count="0" />
+      <LineId Id="99" Count="0" />
+      <LineId Id="199" Count="0" />
+      <LineId Id="103" Count="0" />
+      <LineId Id="101" Count="0" />
+      <LineId Id="54" Count="0" />
+      <LineId Id="104" Count="1" />
+      <LineId Id="194" Count="0" />
+      <LineId Id="106" Count="1" />
+      <LineId Id="58" Count="1" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_LidSupplyModule.Enable">
+      <LineId Id="9" Count="1" />
+      <LineId Id="12" Count="3" />
+      <LineId Id="17" Count="0" />
+      <LineId Id="16" Count="0" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="21" Count="1" />
+      <LineId Id="24" Count="1" />
+      <LineId Id="19" Count="0" />
+      <LineId Id="27" Count="0" />
+      <LineId Id="29" Count="0" />
+      <LineId Id="28" Count="0" />
+      <LineId Id="20" Count="0" />
+      <LineId Id="30" Count="0" />
+      <LineId Id="36" Count="0" />
+      <LineId Id="38" Count="0" />
+      <LineId Id="40" Count="2" />
+      <LineId Id="44" Count="1" />
+      <LineId Id="47" Count="3" />
+      <LineId Id="39" Count="0" />
+      <LineId Id="37" Count="0" />
+      <LineId Id="31" Count="1" />
+      <LineId Id="11" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_LidSupplyModule.Init">
+      <LineId Id="5" Count="2" />
+    </LineIds>
+    <LineIds Name="FB_LidSupplyModule.isLidEmpty.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_LidSupplyModule.isLidPick.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_LidSupplyModule.Manual">
+      <LineId Id="5" Count="0" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="114" Count="1" />
+      <LineId Id="117" Count="8" />
+      <LineId Id="112" Count="0" />
+      <LineId Id="10" Count="0" />
+      <LineId Id="15" Count="2" />
+      <LineId Id="127" Count="1" />
+      <LineId Id="130" Count="8" />
+      <LineId Id="126" Count="0" />
+      <LineId Id="14" Count="0" />
+      <LineId Id="22" Count="0" />
+      <LineId Id="21" Count="0" />
+      <LineId Id="23" Count="0" />
+      <LineId Id="87" Count="1" />
+      <LineId Id="90" Count="8" />
+      <LineId Id="86" Count="0" />
+      <LineId Id="24" Count="0" />
+      <LineId Id="29" Count="2" />
+      <LineId Id="74" Count="1" />
+      <LineId Id="77" Count="8" />
+      <LineId Id="73" Count="0" />
+      <LineId Id="28" Count="0" />
+      <LineId Id="36" Count="0" />
+      <LineId Id="35" Count="0" />
+      <LineId Id="40" Count="0" />
+      <LineId Id="100" Count="1" />
+      <LineId Id="103" Count="8" />
+      <LineId Id="99" Count="0" />
+      <LineId Id="37" Count="0" />
+      <LineId Id="39" Count="0" />
+      <LineId Id="38" Count="0" />
+      <LineId Id="42" Count="0" />
+      <LineId Id="41" Count="0" />
+      <LineId Id="46" Count="0" />
+      <LineId Id="43" Count="0" />
+      <LineId Id="45" Count="0" />
+      <LineId Id="44" Count="0" />
+      <LineId Id="58" Count="4" />
+      <LineId Id="57" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_LidSupplyModule.Reset">
+      <LineId Id="14" Count="0" />
+      <LineId Id="11" Count="1" />
+      <LineId Id="22" Count="0" />
+      <LineId Id="26" Count="0" />
+      <LineId Id="18" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_LidSupplyModule.Stop">
+      <LineId Id="47" Count="3" />
+      <LineId Id="44" Count="0" />
+      <LineId Id="51" Count="1" />
+      <LineId Id="45" Count="0" />
+      <LineId Id="13" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_LidSupplyModule.TakeLid">
+      <LineId Id="5" Count="1" />
+      <LineId Id="8" Count="1" />
+      <LineId Id="255" Count="0" />
+      <LineId Id="10" Count="0" />
+      <LineId Id="12" Count="0" />
+      <LineId Id="215" Count="4" />
+      <LineId Id="214" Count="0" />
+      <LineId Id="221" Count="1" />
+      <LineId Id="220" Count="0" />
+      <LineId Id="139" Count="1" />
+      <LineId Id="142" Count="7" />
+      <LineId Id="151" Count="1" />
+      <LineId Id="154" Count="1" />
+      <LineId Id="141" Count="0" />
+      <LineId Id="28" Count="0" />
+      <LineId Id="30" Count="1" />
+      <LineId Id="75" Count="0" />
+      <LineId Id="32" Count="0" />
+      <LineId Id="76" Count="0" />
+      <LineId Id="78" Count="3" />
+      <LineId Id="83" Count="1" />
+      <LineId Id="86" Count="0" />
+      <LineId Id="77" Count="0" />
+      <LineId Id="33" Count="0" />
+      <LineId Id="119" Count="0" />
+      <LineId Id="261" Count="0" />
+      <LineId Id="157" Count="8" />
+      <LineId Id="226" Count="0" />
+      <LineId Id="167" Count="1" />
+      <LineId Id="227" Count="0" />
+      <LineId Id="170" Count="1" />
+      <LineId Id="156" Count="0" />
+      <LineId Id="249" Count="0" />
+      <LineId Id="256" Count="0" />
+      <LineId Id="250" Count="3" />
+      <LineId Id="232" Count="0" />
+      <LineId Id="257" Count="0" />
+      <LineId Id="254" Count="0" />
+      <LineId Id="233" Count="12" />
+      <LineId Id="231" Count="0" />
+      <LineId Id="56" Count="2" />
+      <LineId Id="7" Count="0" />
+      <LineId Id="210" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

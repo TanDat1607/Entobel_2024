@@ -1,0 +1,275 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_LidCloseModule" Id="{bc44a0b0-f8bd-4ac6-befb-9ff6377a384e}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_LidCloseModule
+VAR_INPUT
+	nLine							: INT;
+	timer_Check_Cylinder_extend		: REAL;
+	timer_Check_Cylinder_retract	: REAL;
+	timer_CloseLid					: REAL;
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	// ===== CHILD COMPONENTS ======
+	fbCylinder_LidClose 		: FB_Cylinder;
+	// ===== SIM COMPONENTS ======
+	fbCylinder_LidClose_Sim		: FB_Cylinder_Sim;
+	// ===== INTERFACES ======
+	iCylinder					: I_Cylinder;
+	// ===== Var method enable
+	nState_Enable				: INT;
+	tTimer_Enable				: TON;
+	// ===== Var method CloseLid
+	nState_Close				: INT;
+	tTimer_Close				: TON;
+	i							: INT := 1; //number of repetitions
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF bSimMode THEN
+	iCylinder := fbCylinder_LidClose_Sim;
+	fbCylinder_LidClose_Sim();
+ELSE
+	iCylinder := fbCylinder_LidClose;
+	fbCylinder_LidClose(id := 1);
+END_IF]]></ST>
+    </Implementation>
+    <Method Name="CloseLid" Id="{75ed382e-b2d6-4db5-bb7a-c6eccc11acf0}">
+      <Declaration><![CDATA[METHOD CloseLid : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[CASE nState_Close OF
+	0:
+		CloseLid := FALSE;
+		tTimer_Close(IN := FALSE);
+		nState_Close := 1;
+	1: //set init i
+		i := 1;
+		nState_Close := 2;
+	2: // cylinder extend and check sensor
+		iCylinder.Extend();
+		IF iCylinder.bIsExtend THEN
+			tTimer_Close(IN := FALSE);
+			nState_Close := 3;
+		ELSE
+			tTimer_Close(IN := TRUE,PT := REAL_TO_TIME(timer_Check_Cylinder_extend)*1000);
+			IF tTimer_Close.Q THEN
+				i := i + 1;
+				nState_Close := 3;
+			END_IF
+		END_IF
+	3: //cylinder retract
+		iCylinder.Retract();
+		IF iCylinder.bIsRetract THEN
+			tTimer_Close(IN := FALSE);
+			nState_Close := 4;//return extend
+		ELSE
+			tTimer_Close(IN := TRUE,PT := REAL_TO_TIME(timer_Check_Cylinder_retract)*1000);
+			IF tTimer_Close.Q THEN
+				IF nLine = 1 THEN
+					F_SetError(15,nLine := 1);
+				ELSIF nLine = 2 THEN
+					F_SetError(37,nLine := 2);
+				END_IF
+			END_IF
+		END_IF
+	4:// cylinder extend and check sensor
+		iCylinder.Extend();
+		IF iCylinder.bIsExtend THEN
+			tTimer_Close(IN := FALSE);
+			nState_Close := 5;
+		ELSE
+			tTimer_Close(IN := TRUE,PT := REAL_TO_TIME(timer_Check_Cylinder_extend)*1000);
+			IF tTimer_Close.Q THEN
+				i := i + 1;
+				nState_Close := 5;
+			END_IF
+		END_IF
+	5:// cylinder retract -> end
+		iCylinder.Retract();
+		IF iCylinder.bIsRetract THEN
+			tTimer_Close(IN := FALSE);
+			nState_Close := 6;//end
+		ELSE
+			tTimer_Close(IN := TRUE,PT := REAL_TO_TIME(timer_Check_Cylinder_retract)*1000);
+			IF tTimer_Close.Q THEN
+				IF nLine = 1 THEN
+					F_SetError(15,nLine := 1);
+				ELSIF nLine = 2 THEN
+					F_SetError(37,nLine := 2);
+				END_IF
+			END_IF
+		END_IF
+	6://check warning
+		IF (i = 3) THEN
+			IF nLine = 1 THEN
+				F_SetWarning(107,nLine := 1);
+			ELSIF nLine = 2 THEN 
+				F_SetWarning(114,nLine := 2);
+			END_IF
+			
+			nState_Close := 7; //end
+		ELSE
+			nState_Close := 7; //end
+		END_IF
+	7: //Finish
+		CloseLid := TRUE;
+		nState_Close := 0;
+END_CASE]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Enable" Id="{fddb5b56-a9d4-42a0-a0ce-31e4963caa49}">
+      <Declaration><![CDATA[METHOD Enable : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[CASE nState_Enable OF
+	0:
+		Enable 			:= FALSE;
+		tTimer_Enable(IN := FALSE);
+		nState_Enable 	:= 1;
+	1: // cylinder retract and check
+		iCylinder.Retract();
+		IF iCylinder.bIsRetract THEN
+			tTimer_Enable(IN := FALSE);
+			nState_Enable 	:= 2;
+		ELSE
+			tTimer_Enable(IN := TRUE, PT := REAL_TO_TIME(timer_Check_Cylinder_retract)*1000);
+			IF tTimer_Enable.Q THEN
+				IF nLine = 1 THEN
+					F_SetError(15,nLine := 1);
+				ELSIF nLine = 2 THEN
+					F_SetError(33,nLine := 2);
+				END_IF
+			END_IF
+		END_IF
+	2:
+		tTimer_Enable(IN := FALSE);
+		Enable := TRUE;
+	99://Error
+END_CASE]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Init" Id="{d389cf7d-3d82-4b53-a49d-06c3d78d7fc9}">
+      <Declaration><![CDATA[METHOD Init : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[nState_Close := 0;
+i 			 := 1;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Manual" Id="{36a74e1a-ffb7-4919-a954-3e6644982abe}">
+      <Declaration><![CDATA[METHOD Manual : BOOL
+VAR_INPUT
+	bCylinder_CloseLid_Extend	: BOOL;
+	bCylinder_CloseLid_Retract	: BOOL;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF bCylinder_CloseLid_Extend THEN
+	iCylinder.Extend();
+	IF iCylinder.bIsExtend THEN
+		tTimer_Close(IN := FALSE);
+	ELSE
+		tTimer_Close(IN := TRUE,PT := REAL_TO_TIME(timer_Check_Cylinder_retract)*1000);
+		IF tTimer_Close.Q THEN
+			IF nLine = 1 THEN
+				F_SetError(16,nLine := 1);
+			ELSIF nLine = 2 THEN
+				F_SetError(38,nLine := 2);
+			END_IF
+		END_IF
+	END_IF
+ELSIF bCylinder_CloseLid_Retract THEN
+	iCylinder.Retract();
+	IF iCylinder.bIsRetract THEN
+		tTimer_Close(IN := FALSE);
+	ELSE
+		tTimer_Close(IN := TRUE,PT := REAL_TO_TIME(timer_Check_Cylinder_retract)*1000);
+		IF tTimer_Close.Q THEN
+			IF nLine = 1 THEN
+				F_SetError(15,nLine := 1);
+			ELSIF nLine = 2 THEN
+				F_SetError(37,nLine := 2);
+			END_IF
+		END_IF
+	END_IF
+END_IF
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Reset" Id="{cc7db590-e06d-4fe7-9628-49ce9365963c}">
+      <Declaration><![CDATA[METHOD Reset : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[tTimer_Enable(IN := FALSE);							
+tTimer_Close(IN := FALSE);
+iCylinder.Retract();				]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Stop" Id="{88fcde3a-7356-4179-be72-509701df2a65}">
+      <Declaration><![CDATA[METHOD Stop : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[tTimer_Enable(IN := FALSE);						
+tTimer_Close(IN := FALSE);]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="FB_LidCloseModule">
+      <LineId Id="23" Count="5" />
+      <LineId Id="9" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_LidCloseModule.CloseLid">
+      <LineId Id="90" Count="29" />
+      <LineId Id="121" Count="1" />
+      <LineId Id="124" Count="24" />
+      <LineId Id="150" Count="1" />
+      <LineId Id="153" Count="5" />
+      <LineId Id="170" Count="0" />
+      <LineId Id="172" Count="1" />
+      <LineId Id="171" Count="0" />
+      <LineId Id="169" Count="0" />
+      <LineId Id="159" Count="6" />
+      <LineId Id="7" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_LidCloseModule.Enable">
+      <LineId Id="37" Count="14" />
+      <LineId Id="53" Count="1" />
+      <LineId Id="56" Count="6" />
+      <LineId Id="7" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_LidCloseModule.Init">
+      <LineId Id="5" Count="1" />
+    </LineIds>
+    <LineIds Name="FB_LidCloseModule.Manual">
+      <LineId Id="5" Count="0" />
+      <LineId Id="8" Count="0" />
+      <LineId Id="32" Count="10" />
+      <LineId Id="31" Count="0" />
+      <LineId Id="11" Count="1" />
+      <LineId Id="19" Count="1" />
+      <LineId Id="22" Count="8" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="9" Count="1" />
+    </LineIds>
+    <LineIds Name="FB_LidCloseModule.Reset">
+      <LineId Id="7" Count="0" />
+      <LineId Id="5" Count="0" />
+      <LineId Id="10" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_LidCloseModule.Stop">
+      <LineId Id="7" Count="0" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

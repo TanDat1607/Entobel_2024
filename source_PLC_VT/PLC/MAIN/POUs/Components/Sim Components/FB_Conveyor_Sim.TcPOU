@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_Conveyor_Sim" Id="{5b50461e-6d34-4e99-b7e5-480daff7770c}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Conveyor_Sim IMPLEMENTS I_Conveyor
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	bRunConveyor : BOOL;
+	bIsRun		 : BOOL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF bRunConveyor THEN
+	bIsRun := TRUE;
+ELSE
+	bIsRun := FALSE;
+END_IF]]></ST>
+    </Implementation>
+    <Property Name="IsRun" Id="{f56fba4c-cef9-4421-a910-cfdcc706e4f6}">
+      <Declaration><![CDATA[PROPERTY IsRun : BOOL]]></Declaration>
+      <Get Name="Get" Id="{2fb5369b-d6b4-41d9-9fb0-c05eb2f42731}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[IsRun := bIsRun;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Method Name="Start" Id="{64b8eb14-af7d-4e19-ac48-8ba72824c50a}">
+      <Declaration><![CDATA[METHOD Start : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[bRunConveyor := TRUE;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Stop" Id="{d8f0f0ad-9e0e-4ea2-a736-3e1fee03f61d}">
+      <Declaration><![CDATA[METHOD Stop : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[bRunConveyor := FALSE;]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="FB_Conveyor_Sim">
+      <LineId Id="9" Count="0" />
+      <LineId Id="12" Count="0" />
+      <LineId Id="14" Count="1" />
+      <LineId Id="13" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Conveyor_Sim.IsRun.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Conveyor_Sim.Start">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Conveyor_Sim.Stop">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

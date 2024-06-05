@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <GVL Name="GVL_HMI" Id="{08c6e3c0-24cd-441e-819c-50f5149502b3}">
+    <Declaration><![CDATA[VAR_GLOBAL 
+	//system
+	hienthiDialog		: BOOL;
+	hienthiDialog2		: BOOL;
+	bResetErr1			: BOOL;
+	bStart1				: BOOL;
+	bStart2				: BOOL;
+	bStop1				: BOOL;
+	bStop2				: BOOL;
+	bShift_is_over1		: BOOL;
+	bShift_is_over2		: BOOL;
+	bResetErr2			: BOOL;
+	bStatusStart1		: BOOL;
+	bStatusStart2		: BOOL;
+	Busy				: ARRAY [1..7] OF BOOL;
+	Error				: ARRAY [1..7] OF BOOL;
+	ErrorID				: ARRAY [1..7] OF MODBUS_ERRORS;
+	bSave1				: BOOL;
+	bLoad1				: BOOL;
+	bDelete1			: BOOL;
+	nStatus1			: STRING;
+	nStatus2			: STRING;
+	bClear1				: BOOL;
+	bClear2				: BOOL;
+	bypass				: BOOL;
+	hienthibypass		: BOOL;
+	bSave2				: BOOL;
+	bLoad2				: BOOL;
+	bDelete2			: BOOL;
+	AlarmList 			: ARRAY [1..4, 1..100] OF WSTRING;
+	AlarmList2 			: ARRAY [1..4, 1..100] OF WSTRING;
+	AlarmList3			: ARRAY [1..4, 1..100] OF STRING;
+	AlarmList4			: ARRAY [1..4, 1..100] OF STRING;
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

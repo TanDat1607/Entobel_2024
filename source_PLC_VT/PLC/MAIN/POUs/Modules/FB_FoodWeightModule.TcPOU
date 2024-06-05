@@ -1,0 +1,641 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_FoodWeightModule" Id="{2bac8a86-a7be-46cf-b081-b2bfb82788ea}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_FoodWeightModule
+VAR_INPUT
+	nLine					: INT;
+	UnitID					: BYTE;
+	fFast_Speed				: REAL;
+	fSlow_Speed_1			: REAL;
+	fSlow_Speed_2			: REAL;
+	fDerisedWeight_Food		: REAL;
+	fChangeMode_Food_1		: REAL;
+	fChangeMode_Food_2		: REAL;
+	fMaxWeight_Food			: REAL;
+	fPerStop_Food			: REAL;
+	fTimer_Food				: REAL;
+	fTimer_Alarm_Food		: REAL;
+	fTimer_Check_Food		: REAL;
+	fTimer_Error_Food		: REAL;
+	fDelta_Food				: REAL;
+	fTimer_Reverse			: REAL;
+END_VAR
+VAR_OUTPUT
+	fProductLogF			: ARRAY [1..5] OF REAL;
+	bStatus_Food			: BOOL;
+	Time_start				: DT;
+	Time_Stop				: DT;
+	status					: STRING;
+	fweight_iot				: REAL;
+END_VAR
+VAR
+	// ===== CHILD COMPONENTS ============
+	fbDriver			: FB_Inverter;
+	fbLoadcell			: FB_Loadcell;
+	// ===== SIM COMPONENTS ==============
+	fbDriverSim			: FB_Inverter_Sim;
+	fbLoadcellSim		: FB_LoadCell_Sim;
+	// ===== INTERFACES ==================
+	iDriver				: I_Inverter;
+	iLoadcell			: I_LoadCell;
+	// ====== VAR IO =====================
+	bCupPresent 	AT %I*	: BOOL;
+	bError_Driver   AT %I* 	: BOOL;
+	//======= VAR METHOD =================
+	nState				: INT;
+	nStateErr			: INT;
+	nStateWrn			: INT;
+	fbTimer				: TON;
+	fbTimer1			: TON;
+	fbTimer_Alarm		: TON;
+	fbTimer_Error		: TON;			
+	fFastWeight			: REAL;
+	fSlowWeight			: REAL;
+	fSlowWeight1		: REAL;
+	fChangemode_val		: REAL;
+	fChangemode_val1	: REAL;
+	fLowToleWeight		: REAL;
+	fHighToleWeight		: REAL;
+	fTareWeight			: REAL;
+	bDone				: BOOL;
+	p,k					: INT;
+	//========= VAR HMI Worm Weight Auto ============
+	fFlow_Food						: REAL;
+	fWeight_Food					: REAL;
+	fActDelta_Food					: REAL;	
+	fSpeed_Food_Motor_Manual		: REAL;
+	fTime							: REAL;
+	Error							: BOOL;
+	bStatus							: BOOL;
+	timestart						: dt;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF bSimMode THEN
+	iDriver	:= fbDriverSim;
+	fbDriverSim();
+	iLoadcell	:= fbLoadcellSim;
+	fbLoadcellSim();
+ELSE
+	iDriver	:= fbDriver;
+	fbDriver(UnitID := UnitID, id := 2);
+	iLoadcell	:= fbLoadcell;
+	fbLoadcell(idDevice := nLine,Error => Error);
+END_IF
+
+IF iLoadcell.fActWeight > fMaxWeight_Food THEN
+	IF nLine = 1 THEN
+		F_SetError(56,nLine := 1);
+	ELSIF nLine = 2 THEN
+		F_SetError(58,nLine := 2);
+	END_IF
+END_IF
+
+IF Error THEN
+	IF nLine = 1 THEN
+		F_SetError(69,nLine := 1);
+	ELSIF nLine = 2 THEN
+		F_SetError(71,nLine := 2);
+	END_IF
+END_IF
+
+IF bIsError_Driver THEN
+	iDriver.Stop();
+	IF nLine = 1 THEN
+		F_SetError(7,nLine := 1);
+	ELSIF nLine = 2 THEN
+		F_SetError(29,nLine := 2);
+	END_IF
+END_IF]]></ST>
+    </Implementation>
+    <Method Name="Auto" Id="{cf3f48ec-bc8a-40e4-a115-502ff292a9f9}">
+      <Declaration><![CDATA[METHOD Auto : BOOL
+VAR_INPUT
+END_VAR
+
+VAR
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[GetLocalSystemTime(bEnable := 1);
+fbTimer(PT := T#100S);
+fbTimer_Alarm(PT := REAL_TO_TIME(fTimer_Alarm_Food)*1000);
+CASE nState OF
+	0:// Init Value
+		Auto					:= FALSE;
+		fbTimer(IN := FALSE);
+		fbTimer1(IN := FALSE);
+		fbTimer_Alarm(IN := FALSE);
+		fbTimer_Error(IN := FALSE);
+		bDone					:= FALSE;
+		iDriver.fTargetSpeed 	:= fFast_Speed;
+		nState 					:= 1;
+	1:// Init Value
+		fFastWeight				:= fFast_Speed;
+		fSlowWeight				:= fSlow_Speed_1;
+		fSlowWeight1			:= fSlow_Speed_2;
+		fChangemode_val			:= fDerisedWeight_Food*fChangeMode_Food_1/100;
+		fChangemode_val1		:= (fDerisedWeight_Food - fChangemode_val)*fChangeMode_Food_2/100 + fChangemode_val;
+		fLowToleWeight			:= fDerisedWeight_Food*(1-(fDelta_Food/100));
+		fHighToleWeight			:= fDerisedWeight_Food*(1+(fDelta_Food/100));
+		bStatus_Food			:= FALSE;
+		bStatus					:= FALSE;
+		fTime					:= 0;
+		nState					:= 2;
+	2:// Cup detection
+		iDriver.fTargetSpeed 	:= fFastWeight;
+		iLoadcell.NetMode();
+		IF NOT bIsCupPresent THEN
+			fbTimer1(IN := TRUE, PT := REAL_TO_TIME(fTimer_Food)*1000);
+			IF fbTimer1.Q THEN
+				nState	:= 3;
+			END_IF
+		END_IF
+	3:// Tare weight
+		timestart := SYSTEMTIME_TO_DT(GetLocalSystemTime.systemTime);
+		fbTimer1(IN := FALSE);
+		fTareWeight 			:= iLoadcell.fActWeight;
+		fWeight_Food			:= iLoadcell.fActWeight - fTareWeight;
+		nState					:= 4;
+	4:
+		iDriver.Start();
+		iDriver.fTargetSpeed	:= fSlowWeight;
+		fbTimer_Alarm(IN := TRUE);
+		fTime := TIME_TO_REAL(fbTimer.ET)/1000;
+		fWeight_Food			:= iLoadcell.fActWeight - fTareWeight;
+		fbTimer(IN := TRUE);
+		fFlow_Food				:= fWeight_Food/((TIME_TO_REAL(fbTimer.ET)+0.00001)/1000);
+		IF fWeight_Food >= fChangemode_val THEN
+			nState 				:= 5;
+		END_IF
+	5:// Slow 1 Weight
+		iDriver.Stop();
+		nState					:= 55;
+	55:
+		iDriver.Start();
+		iDriver.fTargetSpeed	:= fSlowWeight;
+		fWeight_Food			:= iLoadcell.fActWeight	- fTareWeight;
+		fbTimer(IN := TRUE);
+		fTime := TIME_TO_REAL(fbTimer.ET)/1000;
+		fFlow_Food				:= fWeight_Food/((TIME_TO_REAL(fbTimer.ET)+0.00001)/1000);
+		IF fWeight_Food	>= fChangemode_val1 THEN
+			nState				:= 6;
+		END_IF
+	6:// Slow 2 Weight
+		iDriver.Stop();
+		nState					:= 66;
+	66:
+		iDriver.fTargetSpeed	:= fSlowWeight1;
+		iDriver.Start();
+		fWeight_Food			:= iLoadcell.fActWeight	- fTareWeight;
+		fbTimer(IN := TRUE);
+		fTime := TIME_TO_REAL(fbTimer.ET)/1000;
+		fFlow_Food				:= fWeight_Food/((TIME_TO_REAL(fbTimer.ET)+0.00001)/1000);
+		IF fWeight_Food	>= fLowToleWeight*fPerStop_Food/100 THEN
+			nState				:= 7;
+		END_IF
+	7:
+		iDriver.Stop();
+		nState					:= 71;
+	71:
+		iDriver.Reverse();
+		fbTimer(IN := TRUE);
+		fWeight_Food			:= iLoadcell.fActWeight	- fTareWeight;
+		fbTimer1(IN := TRUE, PT := REAL_TO_TIME(fTimer_Reverse)*1000);
+		fTime := TIME_TO_REAL(fbTimer.ET)/1000;
+		IF fbTimer1.Q THEN
+			nState 				:= 72;
+		END_IF
+	72:
+		fbTimer1(IN := FALSE);
+			nState				:= 73;
+	73:// Wait Stable Weight
+		iDriver.fTargetSpeed 	:= fFastWeight;
+		iDriver.Stop();
+		fTime := TIME_TO_REAL(fbTimer.ET)/1000;
+		fbTimer(IN := TRUE);
+		fWeight_Food			:= iLoadcell.fActWeight	- fTareWeight;
+		fbTimer1(IN := TRUE, PT := REAL_TO_TIME(fTimer_Check_Food)*1000);
+		IF fbTimer1.Q THEN
+			nState				:= 8;
+		END_IF
+	8:// Check Done
+		fbTimer1(IN := FALSE);
+		fbTimer_Alarm(IN := TRUE);
+		fWeight_Food			:= iLoadcell.fActWeight	- fTareWeight;
+		IF fWeight_Food < fLowToleWeight THEN
+			nState				:= 9;
+		ELSIF fWeight_Food >= fLowToleWeight AND fWeight_Food <= fHighToleWeight THEN
+			nState				:= 10;
+		ELSIF fWeight_Food > fHighToleWeight THEN
+			nState				:= 11;	
+		END_IF
+	9:// No Enough Weight
+		fWeight_Food			:= iLoadcell.fActWeight - fTareWeight;
+		iDriver.fTargetSpeed	:= fSlowWeight1;
+		iDriver.Start();
+		IF fWeight_Food	>= fLowToleWeight THEN
+			nState				:= 7;
+		END_IF
+	10:// Enough Weight
+		fActDelta_Food			:= (fWeight_food - fDerisedWeight_Food)/fDerisedWeight_Food*100;
+		fWeight_Food			:= iLoadcell.fActWeight - fTareWeight;
+		fweight_iot				:= iLoadcell.fActWeight - fTareWeight;
+		Time_start				:= timestart;
+		bStatus_Food			:= TRUE;
+		status					:= 'Pass';
+		fbTimer(IN := FALSE);
+		fbTimer_Alarm(IN := FALSE);
+		bDone					:= TRUE;
+		p						:= p + 1;
+		nState					:= 12;
+	11:// Overweight
+		fActDelta_Food			:= (fWeight_Food - fDerisedWeight_Food)/fDerisedWeight_Food*100;
+		fWeight_Food			:= iLoadcell.fActWeight - fTareWeight;
+		fweight_iot				:= iLoadcell.fActWeight - fTareWeight;
+		Time_start				:= timestart;
+		bStatus_Food			:= FALSE;
+		status					:= 'Fail';
+		fbTimer_Alarm(IN := FALSE);
+		fbTimer(IN := FALSE);
+		fbTimer_Error(IN := FALSE);
+		bDone					:= TRUE;
+		p						:= p + 1;
+		IF nLine = 1 THEN
+			//F_SetWarning(104);
+			nState				:= 12;
+		ELSIF nLine = 2 THEN
+			//F_SetWarning(111);
+			nState				:= 12;
+		END_IF
+	12:// Done
+		Time_Stop				:= SYSTEMTIME_TO_DT(GetLocalSystemTime.systemTime);
+		bStatus					:= TRUE;
+		IF p > 5 THEN
+			p := 5;
+		END_IF
+		IF bDone THEN
+			IF p <> 1 THEN
+				FOR k := p TO 2 BY -1 DO
+					fProductLogF[k] := fProductLogF[k-1];
+				END_FOR
+			END_IF
+			fProductLogF[1]	:= fWeight_Food;
+			bDone 			:= FALSE;
+		END_IF
+		Auto					:= TRUE;
+		nState					:= 13;
+	13:
+		nState					:= 0;
+END_CASE
+
+//Check Timer WormWeight
+CASE nStateWrn OF 
+	0:
+		IF fbTimer_Alarm.Q THEN
+			IF nLine = 1 THEN
+				F_SetWarning(103,nLine := 1);
+			ELSIF nLine = 2 THEN
+				F_SetWarning(110,nLine := 2);
+			END_IF
+			nStateWrn := 1;
+		END_IF
+	1:
+		IF NOT fbTimer_Alarm.Q THEN
+			IF nLine = 1 THEN
+				bWrn := FALSE;
+			ELSIF nLine = 2 THEN
+				bWrn2 := FALSE;
+			END_IF
+			bSirens := FALSE;
+			nStateWrn := 0;
+		END_IF
+		fbTimer_Error(IN := TRUE, PT := REAL_TO_TIME(fTimer_Error_Food*1000));
+		IF fbTimer_Error.Q THEN
+			IF nLine = 1 THEN
+				F_SetError(76,nLine := 1);
+			ELSIF nLine = 2 THEN
+				F_SetError(78,nLine := 2);
+			END_IF
+			fbTimer_Alarm(IN := FALSE);
+			nState := 11;
+			nStateWrn := 0;
+		END_IF	
+END_CASE
+
+// Check Fault CupPresent
+
+IF nState > 2 AND nState < 99 THEN
+	IF bIsCupPresent THEN
+		IF nLine = 1 THEN
+			F_SetError(45,nLine := 1);
+			nState := 0;
+		ELSIF nLine = 2 THEN
+			F_SetError(46,nLine := 2);
+			nState := 0;
+		END_IF
+	END_IF
+END_IF
+
+// Write ProductLog
+]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="bIsCupPresent" Id="{78396d6d-759b-48e9-9927-43cb1e73cecc}">
+      <Declaration><![CDATA[PROPERTY bIsCupPresent : BOOL]]></Declaration>
+      <Get Name="Get" Id="{ea48f357-602c-41ec-becb-a66da980d5ee}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[bIsCupPresent := bCupPresent;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Property Name="bIsError_Driver" Id="{619508a9-bc70-4c3a-865d-c1b421677562}">
+      <Declaration><![CDATA[PROPERTY bIsError_Driver : BOOL]]></Declaration>
+      <Get Name="Get" Id="{8a96df28-23ae-4d87-b05b-81b5002f3e9d}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[bIsError_Driver	:= bError_Driver;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Method Name="Enable" Id="{0131f7f6-07bc-4687-a13a-47a67fb92ded}">
+      <Declaration><![CDATA[METHOD Enable : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[iLoadcell.NetMode();]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Init" Id="{1029c303-1b74-4a57-b71b-2a5d8297dae0}">
+      <Declaration><![CDATA[METHOD Init : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[nState := 0;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Manual" Id="{ae727d16-c583-40a0-a740-eb0b3e39a217}">
+      <Declaration><![CDATA[METHOD Manual : BOOL
+VAR_INPUT
+	bUp_Food_Motor					: BOOL;
+	bDown_Food_Motor				: BOOL;
+	bZero_Loadcell_Food				: BOOL;
+	bMotor_Food						: BOOL;	
+	bMotor_Food_Reverse				: BOOL;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF bUp_Food_Motor THEN
+	fSpeed_Food_Motor_Manual	:= fSpeed_Food_Motor_Manual + 10;
+END_IF
+
+IF bDown_Food_Motor THEN
+	fSpeed_Food_Motor_Manual	:= fSpeed_Food_Motor_Manual - 10;
+END_IF
+
+IF bMotor_Food THEN
+	iDriver.Start();
+ELSIF bMotor_Food_Reverse THEN
+	iDriver.Reverse();
+ELSIF NOT bMotor_Food AND NOT bMotor_Food_Reverse THEN
+	iDriver.Stop();
+END_IF
+
+iDriver.fTargetSpeed	:= fSpeed_Food_Motor_Manual;
+
+IF bZero_Loadcell_Food THEN
+	iLoadcell.Set_Zero();
+ELSE
+	iLoadcell.NetMode();
+END_IF
+
+fWeight_Food := iLoadcell.fActWeight;
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Reset" Id="{85cd60bf-9828-407c-9ccf-5595942ff8ad}">
+      <Declaration><![CDATA[METHOD Reset : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[iDriver.Reset();
+fbTimer(IN := FALSE);			
+fbTimer1(IN	:= FALSE);
+fbTimer_Alarm(IN := FALSE);
+fbTimer_Error(IN := FALSE);]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="SetZero" Id="{4f9a0ac8-a930-4264-88ad-e4873072a0bc}">
+      <Declaration><![CDATA[METHOD SetZero : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[iLoadcell.Set_Zero();]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Stop" Id="{63d319f9-b480-4610-ae39-36aa3a1e2469}">
+      <Declaration><![CDATA[METHOD Stop : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[iDriver.Stop();
+fbTimer(IN := FALSE);			
+fbTimer1(IN	:= FALSE);
+fbTimer_Alarm(IN := FALSE);
+fbTimer_Error(IN := FALSE);
+]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="FB_FoodWeightModule">
+      <LineId Id="54" Count="2" />
+      <LineId Id="59" Count="2" />
+      <LineId Id="63" Count="1" />
+      <LineId Id="67" Count="1" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="125" Count="0" />
+      <LineId Id="124" Count="0" />
+      <LineId Id="126" Count="0" />
+      <LineId Id="128" Count="0" />
+      <LineId Id="130" Count="1" />
+      <LineId Id="129" Count="0" />
+      <LineId Id="127" Count="0" />
+      <LineId Id="193" Count="0" />
+      <LineId Id="192" Count="0" />
+      <LineId Id="194" Count="0" />
+      <LineId Id="196" Count="0" />
+      <LineId Id="198" Count="1" />
+      <LineId Id="197" Count="0" />
+      <LineId Id="195" Count="0" />
+      <LineId Id="201" Count="7" />
+      <LineId Id="200" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_FoodWeightModule.Auto">
+      <LineId Id="608" Count="0" />
+      <LineId Id="304" Count="1" />
+      <LineId Id="307" Count="5" />
+      <LineId Id="722" Count="0" />
+      <LineId Id="314" Count="0" />
+      <LineId Id="594" Count="0" />
+      <LineId Id="315" Count="8" />
+      <LineId Id="483" Count="0" />
+      <LineId Id="668" Count="0" />
+      <LineId Id="550" Count="0" />
+      <LineId Id="326" Count="1" />
+      <LineId Id="592" Count="0" />
+      <LineId Id="328" Count="7" />
+      <LineId Id="606" Count="0" />
+      <LineId Id="336" Count="3" />
+      <LineId Id="559" Count="0" />
+      <LineId Id="562" Count="0" />
+      <LineId Id="589" Count="0" />
+      <LineId Id="350" Count="0" />
+      <LineId Id="552" Count="0" />
+      <LineId Id="353" Count="6" />
+      <LineId Id="566" Count="1" />
+      <LineId Id="563" Count="0" />
+      <LineId Id="526" Count="0" />
+      <LineId Id="590" Count="0" />
+      <LineId Id="361" Count="0" />
+      <LineId Id="537" Count="0" />
+      <LineId Id="554" Count="0" />
+      <LineId Id="362" Count="4" />
+      <LineId Id="570" Count="1" />
+      <LineId Id="569" Count="0" />
+      <LineId Id="600" Count="0" />
+      <LineId Id="527" Count="0" />
+      <LineId Id="368" Count="0" />
+      <LineId Id="538" Count="0" />
+      <LineId Id="553" Count="0" />
+      <LineId Id="369" Count="3" />
+      <LineId Id="572" Count="4" />
+      <LineId Id="614" Count="0" />
+      <LineId Id="682" Count="0" />
+      <LineId Id="577" Count="0" />
+      <LineId Id="591" Count="0" />
+      <LineId Id="578" Count="5" />
+      <LineId Id="373" Count="0" />
+      <LineId Id="593" Count="0" />
+      <LineId Id="374" Count="0" />
+      <LineId Id="615" Count="1" />
+      <LineId Id="376" Count="0" />
+      <LineId Id="378" Count="5" />
+      <LineId Id="548" Count="0" />
+      <LineId Id="384" Count="0" />
+      <LineId Id="386" Count="8" />
+      <LineId Id="396" Count="5" />
+      <LineId Id="404" Count="0" />
+      <LineId Id="695" Count="0" />
+      <LineId Id="749" Count="0" />
+      <LineId Id="751" Count="0" />
+      <LineId Id="405" Count="0" />
+      <LineId Id="688" Count="0" />
+      <LineId Id="406" Count="1" />
+      <LineId Id="409" Count="3" />
+      <LineId Id="415" Count="0" />
+      <LineId Id="696" Count="0" />
+      <LineId Id="750" Count="0" />
+      <LineId Id="752" Count="0" />
+      <LineId Id="416" Count="0" />
+      <LineId Id="689" Count="0" />
+      <LineId Id="417" Count="1" />
+      <LineId Id="723" Count="0" />
+      <LineId Id="419" Count="8" />
+      <LineId Id="434" Count="0" />
+      <LineId Id="607" Count="0" />
+      <LineId Id="669" Count="0" />
+      <LineId Id="742" Count="1" />
+      <LineId Id="741" Count="0" />
+      <LineId Id="703" Count="0" />
+      <LineId Id="707" Count="6" />
+      <LineId Id="702" Count="0" />
+      <LineId Id="436" Count="1" />
+      <LineId Id="675" Count="1" />
+      <LineId Id="449" Count="2" />
+      <LineId Id="640" Count="1" />
+      <LineId Id="644" Count="5" />
+      <LineId Id="651" Count="0" />
+      <LineId Id="643" Count="0" />
+      <LineId Id="650" Count="0" />
+      <LineId Id="652" Count="0" />
+      <LineId Id="657" Count="3" />
+      <LineId Id="656" Count="0" />
+      <LineId Id="653" Count="0" />
+      <LineId Id="655" Count="0" />
+      <LineId Id="654" Count="0" />
+      <LineId Id="724" Count="0" />
+      <LineId Id="726" Count="0" />
+      <LineId Id="729" Count="6" />
+      <LineId Id="727" Count="1" />
+      <LineId Id="642" Count="0" />
+      <LineId Id="460" Count="0" />
+      <LineId Id="510" Count="0" />
+      <LineId Id="623" Count="0" />
+      <LineId Id="626" Count="3" />
+      <LineId Id="661" Count="0" />
+      <LineId Id="630" Count="1" />
+      <LineId Id="662" Count="0" />
+      <LineId Id="632" Count="1" />
+      <LineId Id="625" Count="0" />
+      <LineId Id="470" Count="1" />
+      <LineId Id="714" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_FoodWeightModule.bIsCupPresent.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_FoodWeightModule.bIsError_Driver.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_FoodWeightModule.Enable">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_FoodWeightModule.Init">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_FoodWeightModule.Manual">
+      <LineId Id="5" Count="2" />
+      <LineId Id="10" Count="0" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="11" Count="1" />
+      <LineId Id="16" Count="0" />
+      <LineId Id="15" Count="0" />
+      <LineId Id="101" Count="0" />
+      <LineId Id="19" Count="0" />
+      <LineId Id="136" Count="1" />
+      <LineId Id="20" Count="0" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="138" Count="0" />
+      <LineId Id="112" Count="0" />
+      <LineId Id="22" Count="0" />
+      <LineId Id="21" Count="0" />
+      <LineId Id="23" Count="0" />
+      <LineId Id="25" Count="1" />
+      <LineId Id="24" Count="0" />
+      <LineId Id="121" Count="0" />
+      <LineId Id="120" Count="0" />
+      <LineId Id="79" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_FoodWeightModule.Reset">
+      <LineId Id="6" Count="0" />
+      <LineId Id="18" Count="2" />
+      <LineId Id="24" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_FoodWeightModule.SetZero">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_FoodWeightModule.Stop">
+      <LineId Id="8" Count="0" />
+      <LineId Id="10" Count="2" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="14" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

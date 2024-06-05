@@ -1,0 +1,210 @@
+<?xml version="1.0"?>
+<VarLinks>
+	<OwnerA Name="TIPC^MAIN^MAIN Instance">
+		<OwnerB Name="TIID^Device 1 (EtherCAT)^Box 14 (TLBETHERCAT)">
+			<Link VarA="PlcTask2 Inputs^PR_Line02.fb_WormWeight.fbLoadcell.fbInterface.StatusLaumas1" VarB="TxPDO^1 Byte In (13)"/>
+			<Link VarA="PlcTask2 Inputs^PR_Line02.fb_WormWeight.fbLoadcell.fbInterface.StatusLaumas2" VarB="TxPDO^1 Byte In (12)"/>
+			<Link VarA="PlcTask2 Inputs^PR_Line02.fb_WormWeight.fbLoadcell.fbInterface.WeightLaumas1" VarB="TxPDO^1 Byte In (3)"/>
+			<Link VarA="PlcTask2 Inputs^PR_Line02.fb_WormWeight.fbLoadcell.fbInterface.WeightLaumas2" VarB="TxPDO^1 Byte In (2)"/>
+			<Link VarA="PlcTask2 Inputs^PR_Line02.fb_WormWeight.fbLoadcell.fbInterface.WeightLaumas3" VarB="TxPDO^1 Byte In (1)"/>
+			<Link VarA="PlcTask2 Inputs^PR_Line02.fb_WormWeight.fbLoadcell.fbInterface.WeightLaumas4" VarB="TxPDO^1 Byte In (0)"/>
+			<Link VarA="PlcTask2 Outputs^PR_Line02.fb_WormWeight.fbLoadcell.fbInterface.CMDLaumas" VarB="RxPDO^1 Byte Out (1)"/>
+		</OwnerB>
+		<OwnerB Name="TIID^Device 1 (EtherCAT)^Box 15 (TLBETHERCAT)">
+			<Link VarA="PlcTask2 Inputs^PR_Line02.fb_FoodWeight.fbLoadcell.fbInterface.StatusLaumas1" VarB="TxPDO^1 Byte In (13)"/>
+			<Link VarA="PlcTask2 Inputs^PR_Line02.fb_FoodWeight.fbLoadcell.fbInterface.StatusLaumas2" VarB="TxPDO^1 Byte In (12)"/>
+			<Link VarA="PlcTask2 Inputs^PR_Line02.fb_FoodWeight.fbLoadcell.fbInterface.WeightLaumas1" VarB="TxPDO^1 Byte In (3)"/>
+			<Link VarA="PlcTask2 Inputs^PR_Line02.fb_FoodWeight.fbLoadcell.fbInterface.WeightLaumas2" VarB="TxPDO^1 Byte In (2)"/>
+			<Link VarA="PlcTask2 Inputs^PR_Line02.fb_FoodWeight.fbLoadcell.fbInterface.WeightLaumas3" VarB="TxPDO^1 Byte In (1)"/>
+			<Link VarA="PlcTask2 Inputs^PR_Line02.fb_FoodWeight.fbLoadcell.fbInterface.WeightLaumas4" VarB="TxPDO^1 Byte In (0)"/>
+			<Link VarA="PlcTask2 Outputs^PR_Line02.fb_FoodWeight.fbLoadcell.fbInterface.CMDLaumas" VarB="RxPDO^1 Byte Out (1)"/>
+		</OwnerB>
+		<OwnerB Name="TIID^Device 1 (EtherCAT)^Box 16 (IND360)">
+			<Link VarA="PlcTask Inputs^PR_Line01.fb_WormWeight.fbLoadcell.fbInterface.IND_M_RD_Float" VarB="TxPDO-2Block^MB1 Requested Measuring Value"/>
+			<Link VarA="PlcTask Inputs^PR_Line01.fb_WormWeight.fbLoadcell.fbInterface.IND_M_RD_Response" VarB="TxPDO-2Block^MB1 Response"/>
+			<Link VarA="PlcTask Inputs^PR_Line01.fb_WormWeight.fbLoadcell.fbInterface.IND_M_RD_Status" VarB="TxPDO-2Block^MB1 Scale Status"/>
+			<Link VarA="PlcTask Inputs^PR_Line01.fb_WormWeight.fbLoadcell.fbInterface.IND_SB_STT1" VarB="TxPDO-2Block^SB1 Status Group 1"/>
+			<Link VarA="PlcTask Inputs^PR_Line01.fb_WormWeight.fbLoadcell.fbInterface.IND_SB_STT2" VarB="TxPDO-2Block^SB1 Status Group 2"/>
+			<Link VarA="PlcTask Inputs^PR_Line01.fb_WormWeight.fbLoadcell.fbInterface.IND_SB_STT3" VarB="TxPDO-2Block^SB1 Status Group 3"/>
+			<Link VarA="PlcTask Outputs^PR_Line01.fb_WormWeight.fbLoadcell.fbInterface.IND_M_WR_Command" VarB="RxPDO-2Block^MB1 Command"/>
+			<Link VarA="PlcTask Outputs^PR_Line01.fb_WormWeight.fbLoadcell.fbInterface.IND_M_WR_Float" VarB="RxPDO-2Block^MB1 Command Value"/>
+		</OwnerB>
+		<OwnerB Name="TIID^Device 1 (EtherCAT)^Box 17 (IND360)">
+			<Link VarA="PlcTask Inputs^PR_Line01.fb_FoodWeight.fbLoadcell.fbInterface.IND_M_RD_Float" VarB="TxPDO-2Block^MB1 Requested Measuring Value"/>
+			<Link VarA="PlcTask Inputs^PR_Line01.fb_FoodWeight.fbLoadcell.fbInterface.IND_M_RD_Response" VarB="TxPDO-2Block^MB1 Response"/>
+			<Link VarA="PlcTask Inputs^PR_Line01.fb_FoodWeight.fbLoadcell.fbInterface.IND_M_RD_Status" VarB="TxPDO-2Block^MB1 Scale Status"/>
+			<Link VarA="PlcTask Inputs^PR_Line01.fb_FoodWeight.fbLoadcell.fbInterface.IND_SB_STT1" VarB="TxPDO-2Block^SB1 Status Group 1"/>
+			<Link VarA="PlcTask Inputs^PR_Line01.fb_FoodWeight.fbLoadcell.fbInterface.IND_SB_STT2" VarB="TxPDO-2Block^SB1 Status Group 2"/>
+			<Link VarA="PlcTask Inputs^PR_Line01.fb_FoodWeight.fbLoadcell.fbInterface.IND_SB_STT3" VarB="TxPDO-2Block^SB1 Status Group 3"/>
+			<Link VarA="PlcTask Outputs^PR_Line01.fb_FoodWeight.fbLoadcell.fbInterface.IND_M_WR_Command" VarB="RxPDO-2Block^MB1 Command"/>
+			<Link VarA="PlcTask Outputs^PR_Line01.fb_FoodWeight.fbLoadcell.fbInterface.IND_M_WR_Float" VarB="RxPDO-2Block^MB1 Command Value"/>
+		</OwnerB>
+		<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 10 (EL2809)">
+			<Link VarA="PlcTask Outputs^PR_Line01.fb_CupSupply.fbCylinder_Dw.bMoveRetract" VarB="Channel 9^Output"/>
+			<Link VarA="PlcTask Outputs^PR_Line01.fb_CupSupply.fbCylinder_Suction.bMoveRetract" VarB="Channel 14^Output"/>
+			<Link VarA="PlcTask Outputs^PR_Line01.fb_CupSupply.fbCylinder_Up.bMoveExtend" VarB="Channel 8^Output"/>
+			<Link VarA="PlcTask Outputs^PR_Line01.fb_LidClose.fbCylinder_LidClose.bMoveExtend" VarB="Channel 15^Output"/>
+			<Link VarA="PlcTask Outputs^PR_Line01.fb_LidSupply.fbCylinder_LidStopper.bMoveRetract" VarB="Channel 11^Output"/>
+			<Link VarA="PlcTask Outputs^PR_Line01.fb_LidSupply.fbCylinder_Suction.bMoveExtend" VarB="Channel 12^Output"/>
+			<Link VarA="PlcTask Outputs^PR_Line01.fb_LidSupply.fbLidSuctionValve.bSuck" VarB="Channel 13^Output"/>
+			<Link VarA="PlcTask Outputs^PR_Line01.fb_Transfer.fbCylinder_Clip.bMoveRetract" VarB="Channel 16^Output"/>
+			<Link VarA="PlcTask Outputs^PR_Line01.fb_WormWeight.fbCylinder.bMoveRetract" VarB="Channel 10^Output"/>
+			<Link VarA="PlcTask2 Outputs^PR_Line02.fb_CupSupply.fbCylinder_Suction.bMoveRetract" VarB="Channel 3^Output"/>
+			<Link VarA="PlcTask2 Outputs^PR_Line02.fb_LidClose.fbCylinder_LidClose.bMoveExtend" VarB="Channel 4^Output"/>
+			<Link VarA="PlcTask2 Outputs^PR_Line02.fb_LidSupply.fbCylinder_Suction.bMoveExtend" VarB="Channel 1^Output"/>
+			<Link VarA="PlcTask2 Outputs^PR_Line02.fb_LidSupply.fbLidSuctionValve.bSuck" VarB="Channel 2^Output"/>
+			<Link VarA="PlcTask2 Outputs^PR_Line02.fb_Transfer.fbCylinder_Clip.bMoveRetract" VarB="Channel 5^Output"/>
+			<Link VarA="PlcTask2 Outputs^PR_Line02.fb_Transfer.fbCylinder_Comb.bMoveExtend" VarB="Channel 6^Output"/>
+			<Link VarA="PlcTask2 Outputs^PR_Line02.fb_Transfer.fbCylinder_Move_Comb.bMoveExtend" VarB="Channel 7^Output"/>
+		</OwnerB>
+		<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 11 (EL2809-0015)">
+			<Link VarA="PlcTask Outputs^PR_Line01.fb_FoodMixer.fbInverter.bReverse" VarB="Channel 3^Output"/>
+			<Link VarA="PlcTask Outputs^PR_Line01.fb_FoodWeight.fbDriver.bReverse" VarB="Channel 6^Output"/>
+			<Link VarA="PlcTask Outputs^PR_Line01.fb_Transfer.fbCylinder_Comb.bMoveExtend" VarB="Channel 1^Output"/>
+			<Link VarA="PlcTask Outputs^PR_Line01.fb_Transfer.fbCylinder_Move_Comb.bMoveExtend" VarB="Channel 2^Output"/>
+			<Link VarA="PlcTask2 Outputs^PR_Line02.fb_FoodMixer.fbInverter.bReverse" VarB="Channel 4^Output"/>
+			<Link VarA="PlcTask2 Outputs^PR_Line02.fb_FoodWeight.fbDriver.bReverse" VarB="Channel 5^Output"/>
+		</OwnerB>
+		<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 12 (EL6021)">
+			<Link VarA="PlcTask Inputs^GVL.fbModbus.InData^D[0]" VarB="COM TxPDO-Map Inputs^Data In 0"/>
+			<Link VarA="PlcTask Inputs^GVL.fbModbus.InData^D[10]" VarB="COM TxPDO-Map Inputs^Data In 10"/>
+			<Link VarA="PlcTask Inputs^GVL.fbModbus.InData^D[11]" VarB="COM TxPDO-Map Inputs^Data In 11"/>
+			<Link VarA="PlcTask Inputs^GVL.fbModbus.InData^D[12]" VarB="COM TxPDO-Map Inputs^Data In 12"/>
+			<Link VarA="PlcTask Inputs^GVL.fbModbus.InData^D[13]" VarB="COM TxPDO-Map Inputs^Data In 13"/>
+			<Link VarA="PlcTask Inputs^GVL.fbModbus.InData^D[14]" VarB="COM TxPDO-Map Inputs^Data In 14"/>
+			<Link VarA="PlcTask Inputs^GVL.fbModbus.InData^D[15]" VarB="COM TxPDO-Map Inputs^Data In 15"/>
+			<Link VarA="PlcTask Inputs^GVL.fbModbus.InData^D[16]" VarB="COM TxPDO-Map Inputs^Data In 16"/>
+			<Link VarA="PlcTask Inputs^GVL.fbModbus.InData^D[17]" VarB="COM TxPDO-Map Inputs^Data In 17"/>
+			<Link VarA="PlcTask Inputs^GVL.fbModbus.InData^D[18]" VarB="COM TxPDO-Map Inputs^Data In 18"/>
+			<Link VarA="PlcTask Inputs^GVL.fbModbus.InData^D[19]" VarB="COM TxPDO-Map Inputs^Data In 19"/>
+			<Link VarA="PlcTask Inputs^GVL.fbModbus.InData^D[1]" VarB="COM TxPDO-Map Inputs^Data In 1"/>
+			<Link VarA="PlcTask Inputs^GVL.fbModbus.InData^D[20]" VarB="COM TxPDO-Map Inputs^Data In 20"/>
+			<Link VarA="PlcTask Inputs^GVL.fbModbus.InData^D[21]" VarB="COM TxPDO-Map Inputs^Data In 21"/>
+			<Link VarA="PlcTask Inputs^GVL.fbModbus.InData^D[2]" VarB="COM TxPDO-Map Inputs^Data In 2"/>
+			<Link VarA="PlcTask Inputs^GVL.fbModbus.InData^D[3]" VarB="COM TxPDO-Map Inputs^Data In 3"/>
+			<Link VarA="PlcTask Inputs^GVL.fbModbus.InData^D[4]" VarB="COM TxPDO-Map Inputs^Data In 4"/>
+			<Link VarA="PlcTask Inputs^GVL.fbModbus.InData^D[5]" VarB="COM TxPDO-Map Inputs^Data In 5"/>
+			<Link VarA="PlcTask Inputs^GVL.fbModbus.InData^D[6]" VarB="COM TxPDO-Map Inputs^Data In 6"/>
+			<Link VarA="PlcTask Inputs^GVL.fbModbus.InData^D[7]" VarB="COM TxPDO-Map Inputs^Data In 7"/>
+			<Link VarA="PlcTask Inputs^GVL.fbModbus.InData^D[8]" VarB="COM TxPDO-Map Inputs^Data In 8"/>
+			<Link VarA="PlcTask Inputs^GVL.fbModbus.InData^D[9]" VarB="COM TxPDO-Map Inputs^Data In 9"/>
+			<Link VarA="PlcTask Inputs^GVL.fbModbus.InData^Status" VarB="COM TxPDO-Map Inputs^Status"/>
+			<Link VarA="PlcTask Outputs^GVL.fbModbus.OutData^Ctrl" VarB="COM RxPDO-Map Outputs^Ctrl"/>
+			<Link VarA="PlcTask Outputs^GVL.fbModbus.OutData^D[0]" VarB="COM RxPDO-Map Outputs^Data Out 0"/>
+			<Link VarA="PlcTask Outputs^GVL.fbModbus.OutData^D[10]" VarB="COM RxPDO-Map Outputs^Data Out 10"/>
+			<Link VarA="PlcTask Outputs^GVL.fbModbus.OutData^D[11]" VarB="COM RxPDO-Map Outputs^Data Out 11"/>
+			<Link VarA="PlcTask Outputs^GVL.fbModbus.OutData^D[12]" VarB="COM RxPDO-Map Outputs^Data Out 12"/>
+			<Link VarA="PlcTask Outputs^GVL.fbModbus.OutData^D[13]" VarB="COM RxPDO-Map Outputs^Data Out 13"/>
+			<Link VarA="PlcTask Outputs^GVL.fbModbus.OutData^D[14]" VarB="COM RxPDO-Map Outputs^Data Out 14"/>
+			<Link VarA="PlcTask Outputs^GVL.fbModbus.OutData^D[15]" VarB="COM RxPDO-Map Outputs^Data Out 15"/>
+			<Link VarA="PlcTask Outputs^GVL.fbModbus.OutData^D[16]" VarB="COM RxPDO-Map Outputs^Data Out 16"/>
+			<Link VarA="PlcTask Outputs^GVL.fbModbus.OutData^D[17]" VarB="COM RxPDO-Map Outputs^Data Out 17"/>
+			<Link VarA="PlcTask Outputs^GVL.fbModbus.OutData^D[18]" VarB="COM RxPDO-Map Outputs^Data Out 18"/>
+			<Link VarA="PlcTask Outputs^GVL.fbModbus.OutData^D[19]" VarB="COM RxPDO-Map Outputs^Data Out 19"/>
+			<Link VarA="PlcTask Outputs^GVL.fbModbus.OutData^D[1]" VarB="COM RxPDO-Map Outputs^Data Out 1"/>
+			<Link VarA="PlcTask Outputs^GVL.fbModbus.OutData^D[20]" VarB="COM RxPDO-Map Outputs^Data Out 20"/>
+			<Link VarA="PlcTask Outputs^GVL.fbModbus.OutData^D[21]" VarB="COM RxPDO-Map Outputs^Data Out 21"/>
+			<Link VarA="PlcTask Outputs^GVL.fbModbus.OutData^D[2]" VarB="COM RxPDO-Map Outputs^Data Out 2"/>
+			<Link VarA="PlcTask Outputs^GVL.fbModbus.OutData^D[3]" VarB="COM RxPDO-Map Outputs^Data Out 3"/>
+			<Link VarA="PlcTask Outputs^GVL.fbModbus.OutData^D[4]" VarB="COM RxPDO-Map Outputs^Data Out 4"/>
+			<Link VarA="PlcTask Outputs^GVL.fbModbus.OutData^D[5]" VarB="COM RxPDO-Map Outputs^Data Out 5"/>
+			<Link VarA="PlcTask Outputs^GVL.fbModbus.OutData^D[6]" VarB="COM RxPDO-Map Outputs^Data Out 6"/>
+			<Link VarA="PlcTask Outputs^GVL.fbModbus.OutData^D[7]" VarB="COM RxPDO-Map Outputs^Data Out 7"/>
+			<Link VarA="PlcTask Outputs^GVL.fbModbus.OutData^D[8]" VarB="COM RxPDO-Map Outputs^Data Out 8"/>
+			<Link VarA="PlcTask Outputs^GVL.fbModbus.OutData^D[9]" VarB="COM RxPDO-Map Outputs^Data Out 9"/>
+		</OwnerB>
+		<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 2 (EL1008)">
+			<Link VarA="PlcTask Inputs^GVL_IO.bEmer" VarB="Channel 4^Input"/>
+			<Link VarA="PlcTask Inputs^GVL_IO.bReset" VarB="Channel 3^Input"/>
+			<Link VarA="PlcTask Inputs^GVL_IO.bStart" VarB="Channel 1^Input"/>
+			<Link VarA="PlcTask Inputs^GVL_IO.bStop" VarB="Channel 2^Input"/>
+			<Link VarA="PlcTask Inputs^PR_Conveyor_Out.fb_Conveyor.bError_Motor_Mixer" VarB="Channel 7^Input"/>
+			<Link VarA="PlcTask Inputs^PR_Line01.fb_FoodMixer.bError_Motor_Mixer" VarB="Channel 8^Input"/>
+			<Link VarA="PlcTask2 Inputs^PR_Line02.fb_FoodMixer.bError_Motor_Mixer" VarB="Channel 5^Input"/>
+			<Link VarA="PlcTask2 Inputs^PR_Line02.fb_WormWeight.bError_Inverter" VarB="Channel 6^Input"/>
+		</OwnerB>
+		<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 3 (EL1008)">
+			<Link VarA="PlcTask Inputs^PR_Line01.fb_FoodWeight.bError_Driver" VarB="Channel 3^Input"/>
+			<Link VarA="PlcTask Inputs^PR_Line01.fb_WormWeight.bError_Inverter" VarB="Channel 1^Input"/>
+			<Link VarA="PlcTask2 Inputs^PR_Line02.fb_CupSupply.bCupDrop" VarB="Channel 8^Input"/>
+			<Link VarA="PlcTask2 Inputs^PR_Line02.fb_CupSupply.bCupEmpty" VarB="Channel 4^Input"/>
+			<Link VarA="PlcTask2 Inputs^PR_Line02.fb_CupSupply.fbCylinder_Dw.bAtExtend" VarB="Channel 7^Input"/>
+			<Link VarA="PlcTask2 Inputs^PR_Line02.fb_CupSupply.fbCylinder_Dw.bAtRetract" VarB="Channel 6^Input"/>
+			<Link VarA="PlcTask2 Inputs^PR_Line02.fb_CupSupply.fbCylinder_Up.bAtRetract" VarB="Channel 5^Input"/>
+			<Link VarA="PlcTask2 Inputs^PR_Line02.fb_FoodWeight.bError_Driver" VarB="Channel 2^Input"/>
+		</OwnerB>
+		<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 4 (EL1008)">
+			<Link VarA="PlcTask2 Inputs^PR_Line02.fb_LidClose.fbCylinder_LidClose.bAtRetract" VarB="Channel 8^Input"/>
+			<Link VarA="PlcTask2 Inputs^PR_Line02.fb_LidSupply.bLidEmpty" VarB="Channel 2^Input"/>
+			<Link VarA="PlcTask2 Inputs^PR_Line02.fb_LidSupply.fbCylinder_LidStopper.bAtExtend" VarB="Channel 4^Input"/>
+			<Link VarA="PlcTask2 Inputs^PR_Line02.fb_LidSupply.fbCylinder_LidStopper.bAtRetract" VarB="Channel 3^Input"/>
+			<Link VarA="PlcTask2 Inputs^PR_Line02.fb_LidSupply.fbCylinder_Suction.bAtExtend" VarB="Channel 6^Input"/>
+			<Link VarA="PlcTask2 Inputs^PR_Line02.fb_LidSupply.fbCylinder_Suction.bAtRetract" VarB="Channel 5^Input"/>
+			<Link VarA="PlcTask2 Inputs^PR_Line02.fb_LidSupply.fbLidSuctionValve.bPressure" VarB="Channel 7^Input"/>
+			<Link VarA="PlcTask2 Inputs^PR_Line02.fb_WormWeight.fbCylinder.bAtRetract" VarB="Channel 1^Input"/>
+		</OwnerB>
+		<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 5 (EL1008)">
+			<Link VarA="PlcTask2 Inputs^PR_Line02.fb_FoodWeight.bCupPresent" VarB="Channel 8^Input"/>
+			<Link VarA="PlcTask2 Inputs^PR_Line02.fb_LidClose.fbCylinder_LidClose.bAtExtend" VarB="Channel 1^Input"/>
+			<Link VarA="PlcTask2 Inputs^PR_Line02.fb_Transfer.fbCylinder_Clip.bAtExtend" VarB="Channel 7^Input"/>
+			<Link VarA="PlcTask2 Inputs^PR_Line02.fb_Transfer.fbCylinder_Clip.bAtRetract" VarB="Channel 6^Input"/>
+			<Link VarA="PlcTask2 Inputs^PR_Line02.fb_Transfer.fbCylinder_Comb.bAtExtend" VarB="Channel 3^Input"/>
+			<Link VarA="PlcTask2 Inputs^PR_Line02.fb_Transfer.fbCylinder_Comb.bAtRetract" VarB="Channel 2^Input"/>
+			<Link VarA="PlcTask2 Inputs^PR_Line02.fb_Transfer.fbCylinder_Move_Comb.bAtExtend" VarB="Channel 5^Input"/>
+			<Link VarA="PlcTask2 Inputs^PR_Line02.fb_Transfer.fbCylinder_Move_Comb.bAtRetract" VarB="Channel 4^Input"/>
+		</OwnerB>
+		<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 6 (EL1008)">
+			<Link VarA="PlcTask Inputs^PR_Line01.fb_CupSupply.bCupDrop" VarB="Channel 6^Input"/>
+			<Link VarA="PlcTask Inputs^PR_Line01.fb_CupSupply.bCupEmpty" VarB="Channel 2^Input"/>
+			<Link VarA="PlcTask Inputs^PR_Line01.fb_CupSupply.fbCylinder_Dw.bAtExtend" VarB="Channel 5^Input"/>
+			<Link VarA="PlcTask Inputs^PR_Line01.fb_CupSupply.fbCylinder_Dw.bAtRetract" VarB="Channel 4^Input"/>
+			<Link VarA="PlcTask Inputs^PR_Line01.fb_CupSupply.fbCylinder_Up.bAtRetract" VarB="Channel 3^Input"/>
+			<Link VarA="PlcTask Inputs^PR_Line01.fb_LidSupply.bLidEmpty" VarB="Channel 8^Input"/>
+			<Link VarA="PlcTask Inputs^PR_Line01.fb_WormWeight.fbCylinder.bAtRetract" VarB="Channel 7^Input"/>
+			<Link VarA="PlcTask2 Inputs^PR_Line02.fb_WormWeight.bCupPresent" VarB="Channel 1^Input"/>
+		</OwnerB>
+		<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 7 (EL1008)">
+			<Link VarA="PlcTask Inputs^PR_Line01.fb_LidClose.fbCylinder_LidClose.bAtExtend" VarB="Channel 7^Input"/>
+			<Link VarA="PlcTask Inputs^PR_Line01.fb_LidClose.fbCylinder_LidClose.bAtRetract" VarB="Channel 6^Input"/>
+			<Link VarA="PlcTask Inputs^PR_Line01.fb_LidSupply.fbCylinder_LidStopper.bAtExtend" VarB="Channel 2^Input"/>
+			<Link VarA="PlcTask Inputs^PR_Line01.fb_LidSupply.fbCylinder_LidStopper.bAtRetract" VarB="Channel 1^Input"/>
+			<Link VarA="PlcTask Inputs^PR_Line01.fb_LidSupply.fbCylinder_Suction.bAtExtend" VarB="Channel 4^Input"/>
+			<Link VarA="PlcTask Inputs^PR_Line01.fb_LidSupply.fbCylinder_Suction.bAtRetract" VarB="Channel 3^Input"/>
+			<Link VarA="PlcTask Inputs^PR_Line01.fb_LidSupply.fbLidSuctionValve.bPressure" VarB="Channel 5^Input"/>
+			<Link VarA="PlcTask Inputs^PR_Line01.fb_Transfer.fbCylinder_Comb.bAtRetract" VarB="Channel 8^Input"/>
+		</OwnerB>
+		<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 8 (EL1819)">
+			<Link VarA="PlcTask Inputs^GVL_IO.bCheckVan" VarB="Channel 13^Input"/>
+			<Link VarA="PlcTask Inputs^GVL_IO.bSafetyDoor1" VarB="Channel 9^Input"/>
+			<Link VarA="PlcTask Inputs^GVL_IO.bSafetyDoor2" VarB="Channel 8^Input"/>
+			<Link VarA="PlcTask Inputs^GVL_IO.bSafetyDoor3" VarB="Channel 10^Input"/>
+			<Link VarA="PlcTask Inputs^PR_Line01.fb_CupSupply.fbCylinder_Suction.bAtExtend" VarB="Channel 11^Input"/>
+			<Link VarA="PlcTask Inputs^PR_Line01.fb_FoodWeight.bCupPresent" VarB="Channel 6^Input"/>
+			<Link VarA="PlcTask Inputs^PR_Line01.fb_Transfer.fbCylinder_Clip.bAtExtend" VarB="Channel 5^Input"/>
+			<Link VarA="PlcTask Inputs^PR_Line01.fb_Transfer.fbCylinder_Clip.bAtRetract" VarB="Channel 4^Input"/>
+			<Link VarA="PlcTask Inputs^PR_Line01.fb_Transfer.fbCylinder_Comb.bAtExtend" VarB="Channel 1^Input"/>
+			<Link VarA="PlcTask Inputs^PR_Line01.fb_Transfer.fbCylinder_Move_Comb.bAtExtend" VarB="Channel 3^Input"/>
+			<Link VarA="PlcTask Inputs^PR_Line01.fb_Transfer.fbCylinder_Move_Comb.bAtRetract" VarB="Channel 2^Input"/>
+			<Link VarA="PlcTask Inputs^PR_Line01.fb_WormWeight.bCupPresent" VarB="Channel 7^Input"/>
+			<Link VarA="PlcTask2 Inputs^PR_Line02.fb_CupSupply.fbCylinder_Suction.bAtExtend" VarB="Channel 12^Input"/>
+		</OwnerB>
+		<OwnerB Name="TIID^Device 1 (EtherCAT)^Term 1 (EK1200)^Term 9 (EL2809)">
+			<Link VarA="PlcTask Outputs^GVL_IO.bLight_Running" VarB="Channel 1^Output"/>
+			<Link VarA="PlcTask Outputs^GVL_IO.bLight_Stop" VarB="Channel 2^Output"/>
+			<Link VarA="PlcTask Outputs^GVL_IO.bSirens" VarB="Channel 8^Output"/>
+			<Link VarA="PlcTask Outputs^PR_Conveyor_Out.fb_Conveyor.fbInverter.bVFD" VarB="Channel 5^Output"/>
+			<Link VarA="PlcTask Outputs^PR_Line01.fb_FoodMixer.fbInverter.bVFD" VarB="Channel 6^Output"/>
+			<Link VarA="PlcTask Outputs^PR_Line01.fb_FoodWeight.fbDriver.bReset" VarB="Channel 11^Output"/>
+			<Link VarA="PlcTask Outputs^PR_Line01.fb_FoodWeight.fbDriver.bVFD" VarB="Channel 12^Output"/>
+			<Link VarA="PlcTask Outputs^PR_Line01.fb_WormWeight.fbInverter.bVFD" VarB="Channel 7^Output"/>
+			<Link VarA="PlcTask2 Outputs^PR_Line02.fb_CupSupply.fbCylinder_Dw.bMoveRetract" VarB="Channel 14^Output"/>
+			<Link VarA="PlcTask2 Outputs^PR_Line02.fb_CupSupply.fbCylinder_Up.bMoveExtend" VarB="Channel 13^Output"/>
+			<Link VarA="PlcTask2 Outputs^PR_Line02.fb_FoodMixer.fbInverter.bVFD" VarB="Channel 3^Output"/>
+			<Link VarA="PlcTask2 Outputs^PR_Line02.fb_FoodWeight.fbDriver.bReset" VarB="Channel 9^Output"/>
+			<Link VarA="PlcTask2 Outputs^PR_Line02.fb_FoodWeight.fbDriver.bVFD" VarB="Channel 10^Output"/>
+			<Link VarA="PlcTask2 Outputs^PR_Line02.fb_LidSupply.fbCylinder_LidStopper.bMoveRetract" VarB="Channel 16^Output"/>
+			<Link VarA="PlcTask2 Outputs^PR_Line02.fb_WormWeight.fbCylinder.bMoveRetract" VarB="Channel 15^Output"/>
+			<Link VarA="PlcTask2 Outputs^PR_Line02.fb_WormWeight.fbInverter.bVFD" VarB="Channel 4^Output"/>
+		</OwnerB>
+	</OwnerA>
+</VarLinks>

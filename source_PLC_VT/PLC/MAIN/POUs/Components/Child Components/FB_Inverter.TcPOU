@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_Inverter" Id="{fac70b65-6562-4a81-8070-9a789707e623}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Inverter IMPLEMENTS I_Inverter
+VAR_INPUT
+	UnitID		: BYTE;	
+	id			: UINT;
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	TargetSpeed			: REAL;
+	fActualSpeed AT %I*	: REAL;
+	bBrake 		 AT %Q* : BOOL;
+	bVFD		 AT %Q* : BOOL;
+	bReverse	 AT %Q* : BOOL;
+	bReset		 AT %Q*	: BOOL;
+	nErrId				: INT;
+	
+	fbInterfaceMbus		: FB_Interface_MbRtu;
+	bExecute 			: BOOL;
+	bStop				: BOOL;
+	WriteVal1			: REAL;
+	WriteVal2			: REAL;
+	WriteVal3			: REAL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[fbInterfaceMbus(
+	UnitID:= UnitID, 
+	bExecute:= bExecute, 
+	bStop:= bStop, 
+	bReset:= bReset,
+	idDevice := id,
+	fTargetSpeed:= fTargetSpeed);
+]]></ST>
+    </Implementation>
+    <Property Name="ActualSpeed" Id="{d2a175f0-8795-465e-b91c-9e487d4b40fa}">
+      <Declaration><![CDATA[PROPERTY ActualSpeed : REAL]]></Declaration>
+      <Get Name="Get" Id="{61386726-836d-440b-b616-356d5f2fe22a}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[ActualSpeed := fActualSpeed/100;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Property Name="bIsMove" Id="{75908c6f-195f-415f-a3e4-8a7137821b78}">
+      <Declaration><![CDATA[PROPERTY bIsMove : BOOL]]></Declaration>
+      <Get Name="Get" Id="{47cab446-da80-44b8-8b5c-8ab325dd5968}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[IF bVFD OR bReverse THEN 
+	bIsMove := TRUE;
+ELSIF NOT bVFD AND NOT bReverse THEN
+	bIsMove := FALSE;
+END_IF]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Property Name="fTargetSpeed" Id="{dd0d149b-b085-424d-953b-b801f80fb27a}">
+      <Declaration><![CDATA[PROPERTY fTargetSpeed : REAL]]></Declaration>
+      <Get Name="Get" Id="{a4e514c8-4b39-4312-94ff-fba384ab652d}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[fTargetSpeed := TargetSpeed;]]></ST>
+        </Implementation>
+      </Get>
+      <Set Name="Set" Id="{54af87fd-3a9b-46a4-9b97-c87bfef50503}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[TargetSpeed := fTargetSpeed;]]></ST>
+        </Implementation>
+      </Set>
+    </Property>
+    <Method Name="Reset" Id="{28b24c92-a680-49d6-8321-f68524566246}">
+      <Declaration><![CDATA[METHOD Reset : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[bStop	 := FALSE;
+bReset	 := TRUE;
+bExecute := FALSE;
+bVFD	 := FALSE;
+
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Reverse" Id="{d22f891c-feb4-4e6b-a9f7-77e2a23e318c}">
+      <Declaration><![CDATA[METHOD Reverse : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[bExecute := TRUE;
+bStop	 := FALSE;
+bReset	 := FALSE;
+bReverse := TRUE;
+bVFD 	 := false;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Start" Id="{5753aa38-0732-4c48-8288-db7180a0f573}">
+      <Declaration><![CDATA[METHOD Start : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[bExecute := TRUE;
+bStop	 := FALSE;
+bReset	 := FALSE;
+bVFD	 := TRUE;
+bReverse := false;
+
+
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Stop" Id="{21eba6b6-6a34-47fc-8935-a20df8f47973}">
+      <Declaration><![CDATA[METHOD Stop : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[bExecute := FALSE;
+bStop	 := TRUE;
+bReset	 := FALSE;
+bVFD	 := FALSE;
+bReverse := false;]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="FB_Inverter">
+      <LineId Id="62" Count="4" />
+      <LineId Id="96" Count="0" />
+      <LineId Id="126" Count="0" />
+      <LineId Id="119" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Inverter.ActualSpeed.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Inverter.bIsMove.Get">
+      <LineId Id="2" Count="0" />
+      <LineId Id="5" Count="0" />
+      <LineId Id="7" Count="1" />
+      <LineId Id="6" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Inverter.fTargetSpeed.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Inverter.fTargetSpeed.Set">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Inverter.Reset">
+      <LineId Id="32" Count="2" />
+      <LineId Id="21" Count="0" />
+      <LineId Id="17" Count="0" />
+      <LineId Id="13" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Inverter.Reverse">
+      <LineId Id="6" Count="2" />
+      <LineId Id="5" Count="0" />
+      <LineId Id="9" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Inverter.Start">
+      <LineId Id="27" Count="0" />
+      <LineId Id="26" Count="0" />
+      <LineId Id="23" Count="0" />
+      <LineId Id="15" Count="0" />
+      <LineId Id="32" Count="0" />
+      <LineId Id="31" Count="0" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Inverter.Stop">
+      <LineId Id="21" Count="2" />
+      <LineId Id="15" Count="0" />
+      <LineId Id="27" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

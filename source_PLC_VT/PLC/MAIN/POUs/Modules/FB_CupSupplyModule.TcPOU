@@ -1,0 +1,647 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_CupSupplyModule" Id="{230ce747-e2e8-43a7-b34c-18a5e1c3cba7}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_CupSupplyModule
+VAR_INPUT
+	nLine						: INT;
+	timerCheckCylinder_Up		: REAL := 10;
+	timerCheckCylinder_Dw		: REAL := 10;
+	timerCylinder_Up_extend		: REAL;
+	timerCylinder_Suction		: REAL;
+	timerCylinder_Suction_extend: REAL;
+	timerCheckEmpty				: REAL := 10;
+	timerCheckStuck				: REAL := 10;
+	ttimerCylinder_val			: REAL;
+	timerCylinder_Suction_pick	: REAL;
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	// ===== CHILD COMPONENTS ======
+	fbCylinder_Up				: FB_Cylinder;
+	fbCylinder_Dw				: FB_Cylinder;
+	fbCylinder_Suction			: FB_Cylinder;
+	// ===== SIM COMPONENTS ======
+	fbCylinderSim_Up			: FB_Cylinder_Sim;
+	fbCylinderSim_Dw			: FB_Cylinder_Sim;
+	fbCylinderSim_Suction		: FB_Cylinder_Sim;
+	// ===== INTERFACES ======
+	iCylinder_Up				: I_Cylinder;
+	iCylinder_Dw				: I_Cylinder;
+	iCylinder_Suction			: I_Cylinder;
+	//===== Var IO ======
+	bCupEmpty AT %I*			: BOOL;
+	bCupDrop  AT %I*			: BOOL;
+	//===== Var Auto ====
+	//===== Var method
+	nState_DropCup				: INT;
+	nState_Enable				: INT;
+	nState_Check				: INT;
+	nState_siren				: INT;
+	nState_Reset				: INT;
+	tTimer_Enable1				: TON;
+	tTimer_Enable2				: TON;
+	tTimer_DropCup				: TON;
+	tTimer_CheckCup				: TON;
+	tTimer_Suction				: TON;
+	tTimer_Up					: ton;
+	tTimer_Dw					: TON;
+	tTimer_Reset				: TON;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF bSimMode THEN
+	iCylinder_Up := fbCylinderSim_Up;
+	fbCylinderSim_Up();
+	iCylinder_Dw := fbCylinderSim_Dw;
+	fbCylinderSim_Dw();
+	iCylinder_Suction := fbCylinderSim_Suction;
+	fbCylinderSim_Suction();
+ELSE
+	iCylinder_Up := fbCylinder_Up;
+	fbCylinder_Up(id := 1);
+	iCylinder_Dw := fbCylinder_Dw;
+	fbCylinder_Dw(id := 1);
+	iCylinder_Suction := fbCylinder_Suction;
+	fbCylinder_Suction(id := 1);
+END_IF
+]]></ST>
+    </Implementation>
+    <Method Name="CheckCup" Id="{62e1e519-0717-476c-a1c1-ac14117a4a53}">
+      <Declaration><![CDATA[METHOD CheckCup : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF NOT isCupEmpty THEN
+	CASE nState_Check OF
+		0:
+			IF nLine = 1 THEN
+				F_SetWarning(101,nLine := 1);
+			ELSIF nLine = 2 THEN
+				F_SetWarning(108,nLine := 2);
+			END_IF
+			nState_Check := 1;
+		1: 
+			tTimer_CheckCup(IN := TRUE, PT := REAL_TO_TIME(timerCheckEmpty)*1000);
+			IF tTimer_CheckCup.Q THEN
+				IF nLine = 1 THEN
+						F_SetError(1,nLine := 1);
+				ELSIF nLine = 2 THEN
+						F_SetError(23,nLine := 2);
+				END_IF
+			END_IF
+	END_CASE
+ELSE
+	tTimer_CheckCup(IN := FALSE);
+	nState_Check := 0;
+END_IF
+
+CASE nState_siren OF
+	0:
+		IF NOT isCupEmpty THEN
+			nState_siren := 1;
+		END_IF
+	1:
+		IF isCupEmpty THEN
+			IF nLine = 1 THEN
+				bWrn := FALSE;
+			ELSIF nLine = 2 THEN
+				bWrn2 := FALSE;
+			END_IF
+			bSirens := FALSE;
+			nState_siren := 0;
+		END_IF
+END_CASE]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="DropCup" Id="{6774c00e-a692-4ec9-b43e-49a63117a206}">
+      <Declaration><![CDATA[METHOD DropCup : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[CASE nState_DropCup OF
+	0: //init
+		DropCup := FALSE;
+		tTimer_DropCup(IN := FALSE);
+		tTimer_Suction(IN := FALSE);
+		nState_DropCup := 1;
+	1: //check CupEmpty
+		nState_DropCup := 2;
+	2: //cylinder_up extend to hold cup
+		iCylinder_Up.Extend();
+		iCylinder_Suction.Retract();
+		tTimer_Suction(IN := TRUE, PT := REAL_TO_TIME(timerCylinder_Suction_extend)*1000);
+		tTimer_DropCup(IN := TRUE, PT := REAL_TO_TIME(timerCylinder_Up_extend)*1000);
+		IF tTimer_DropCup.Q AND tTimer_Suction.Q THEN
+			nState_DropCup := 3;
+		END_IF
+	3: // cylinder_dw retract to dropcup
+		iCylinder_Up.Extend();
+		tTimer_Suction(IN := FALSE);
+		tTimer_DropCup(IN := FALSE);
+		iCylinder_Dw.Retract();
+		nState_DropCup := 33;
+	33:
+		iCylinder_Up.Extend();
+		iCylinder_Dw.Retract();
+		iCylinder_Suction.Retract();
+		tTimer_DropCup(IN := TRUE, PT := REAL_TO_TIME(timerCheckCylinder_Dw)*1000);
+		IF tTimer_DropCup.Q THEN
+			IF nLine = 1 THEN
+				F_SetError(4,nLine := 1);
+			ELSIF nLine = 2 THEN
+				F_SetError(26,nLine := 2);
+			END_IF
+		ELSIF iCylinder_Dw.bIsRetract THEN
+			tTimer_DropCup(IN := FALSE);
+			nState_DropCup := 34;
+		END_IF
+	34:
+		tTimer_DropCup(IN := TRUE, PT := REAL_TO_TIME(timerCylinder_Suction_pick)*1000);
+		IF tTimer_DropCup.Q THEN
+			nState_DropCup := 44;
+		END_IF
+	44:
+		tTimer_DropCup(IN := FALSE);
+		nState_DropCup := 4;
+	4: // check not isCupDrop
+		iCylinder_Up.Extend();
+		iCylinder_Dw.Retract();
+		iCylinder_Suction.Extend();
+		tTimer_Suction(IN := TRUE, PT := REAL_TO_TIME(timerCylinder_Suction)*1000);
+		IF NOT isCupDrop THEN //sensor NC
+			tTimer_DropCup(IN := FALSE);
+			nState_DropCup := 5;
+		ELSE
+			tTimer_DropCup(IN := TRUE, PT := REAL_TO_TIME(timerCheckStuck)*1000);
+			IF tTimer_DropCup.Q THEN
+				IF nLine = 1 THEN
+					F_SetError(2,nLine := 1);
+					nState_DropCup := 5;
+				ELSIF nLine = 2 THEN
+					F_SetError(24,nLine := 2);
+					nState_DropCup := 5;
+				END_IF
+			END_IF
+		END_IF
+	5:
+		tTimer_Dw(IN := TRUE, PT := REAL_TO_TIME(ttimerCylinder_val)*1000);
+		IF tTimer_Dw.Q THEN
+			iCylinder_Dw.Extend();
+		END_IF
+		IF iCylinder_Suction.bIsExtend THEN
+			tTimer_Suction(IN := FALSE);
+			nState_DropCup := 55;
+		ELSE
+			tTimer_Suction(IN := TRUE, PT := REAL_TO_TIME(timerCylinder_Suction)*1000);
+			IF tTimer_Suction.Q THEN
+				IF nLine = 1 THEN
+					F_SetError(60,nLine := 1);
+				ELSIF nLine = 2 THEN
+					F_SetError(61,nLine := 2);
+				END_IF
+			END_IF
+		END_IF
+	55:
+		tTimer_Dw(IN := false);
+		IF isCupDrop THEN
+			tTimer_DropCup(IN := FALSE);
+			nState_DropCup := 6;
+		ELSE
+			tTimer_DropCup(IN := TRUE, PT := REAL_TO_TIME(timerCheckStuck)*1000);
+			IF tTimer_DropCup.Q  THEN
+				IF nLine = 1 THEN
+					F_SetError(2,nLine := 1);
+				ELSIF nLine = 2 THEN
+					F_SetError(24,nLine := 2);
+				END_IF
+			END_IF
+		END_IF
+	6: //complete
+		iCylinder_Dw.Extend();
+		tTimer_DropCup(IN := TRUE, PT := REAL_TO_TIME(timerCheckCylinder_Dw)*1000);
+		IF tTimer_DropCup.Q THEN
+			IF nLine = 1 THEN
+				F_SetError(5,nLine := 1);
+			ELSIF nLine = 2 THEN
+				F_SetError(27,nLine := 2);
+			END_IF
+		ELSIF iCylinder_Dw.bIsExtend THEN
+			tTimer_DropCup(IN := FALSE);
+			nState_DropCup := 7;
+		END_IF
+	7:
+		iCylinder_Up.Retract();
+		tTimer_DropCup(IN := TRUE, PT := REAL_TO_TIME(timerCheckCylinder_Up)*1000);
+		IF tTimer_DropCup.Q THEN
+			IF nLine = 1 THEN
+				F_SetError(3,nLine := 1);
+			ELSIF nLine = 2 THEN
+				F_SetError(25,nLine := 2);
+			END_IF
+		ELSIF iCylinder_Up.bIsRetract THEN
+			DropCup := TRUE;
+			tTimer_DropCup(IN := FALSE);
+			nState_DropCup := 0;
+		END_IF
+END_CASE]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Enable" Id="{6071eec9-0c6b-4853-9e37-1c80cd49d6a5}">
+      <Declaration><![CDATA[METHOD Enable : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[CASE nState_Enable OF
+	0:
+		Enable := FALSE;
+		tTimer_Enable1(IN := FALSE);
+		tTimer_Enable2(IN := FALSE);
+		nState_Enable := 1;
+	1:
+		iCylinder_Up.Retract();
+		iCylinder_Dw.Extend();
+		nState_Enable := 2;
+	2:
+		tTimer_Enable1(IN := TRUE, PT := REAL_TO_TIME(timerCheckCylinder_Up));
+		tTimer_Enable2(IN := TRUE, PT := REAL_TO_TIME(timerCheckCylinder_Dw));
+		IF tTimer_Enable1.Q AND NOT iCylinder_Up.bIsRetract THEN
+			IF nLine = 1 THEN
+				F_SetError(3,nLine := 1);
+				nState_Enable := 99;//error
+			ELSIF nLine = 2 THEN
+				F_SetError(21,nLine := 2);
+				nState_Enable := 99;//error
+			END_IF
+		ELSIF tTimer_Enable2.Q AND NOT iCylinder_Dw.bIsExtend THEN
+			IF nLine = 1 THEN
+				F_SetError(4,nLine := 1);
+				nState_Enable := 99;//error
+			ELSIF nLine = 2 THEN
+				F_SetError(22,nLine := 2);
+				nState_Enable := 99;//error
+			END_IF
+		ELSIF iCylinder_Up.bIsRetract AND iCylinder_Dw.bIsExtend THEN
+			tTimer_Enable1(IN := FALSE);
+			tTimer_Enable2(IN := FALSE);
+			nState_Enable := 3;
+		END_IF
+	3:
+		Enable := TRUE;
+	99://Error
+END_CASE
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="HoldCup" Id="{0941d1b1-8d35-4e8c-ba14-c0db4edf046a}">
+      <Declaration><![CDATA[METHOD HoldCup : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[iCylinder_Up.Extend();
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Init" Id="{c46dd9e3-de07-47e3-8476-52c0fc538db4}">
+      <Declaration><![CDATA[METHOD Init : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[nState_DropCup				:= 0;
+nState_Enable				:= 0;]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="isCupDrop" Id="{200df08e-2d70-4fe0-b116-65878b9d6ca0}">
+      <Declaration><![CDATA[PROPERTY isCupDrop : BOOL]]></Declaration>
+      <Get Name="Get" Id="{ff92e2d5-e0ec-4b2e-b80d-885b1850e8f2}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[isCupDrop := bCupDrop;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Property Name="isCupEmpty" Id="{748df038-ec64-4660-8ebb-a15b372a6204}">
+      <Declaration><![CDATA[PROPERTY isCupEmpty : BOOL]]></Declaration>
+      <Get Name="Get" Id="{2e67a479-5418-4f78-aa57-17ce7f227f91}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[isCupEmpty := bCupEmpty;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Method Name="Manual" Id="{64ce3192-ada0-4203-a36b-e5948d3ff735}">
+      <Declaration><![CDATA[METHOD Manual : BOOL
+VAR_INPUT
+	bCylinder_up_extend 			: BOOL;
+	bCylinder_up_retract 			: BOOL;
+	bCylinder_dw_extend 			: BOOL;
+	bCylinder_dw_retract 			: BOOL;
+	bCylinder_suction_extend 		: BOOL;
+	bCylinder_suction_retract 		: BOOL;
+END_VAR
+
+VAR
+	re: INT;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF bCylinder_up_extend THEN
+	iCylinder_Up.Extend();
+END_IF
+
+IF bCylinder_up_retract THEN
+	iCylinder_Up.Retract();
+	tTimer_Up(IN := TRUE, PT := REAL_TO_TIME(timerCheckCylinder_Up)*1000);
+		IF tTimer_Up.Q THEN
+			IF nLine = 1 THEN
+				F_SetError(3,nLine := 1);
+			ELSIF nLine = 2 THEN
+				F_SetError(25,nLine := 2);
+			END_IF
+		ELSIF iCylinder_Up.bIsRetract THEN
+			tTimer_Up(IN := FALSE);
+		END_IF
+END_IF
+
+IF bCylinder_dw_extend THEN
+	iCylinder_Dw.Extend();
+	tTimer_Dw(IN := TRUE, PT := REAL_TO_TIME(timerCheckCylinder_Dw)*1000);
+		IF tTimer_Dw.Q THEN
+			IF nLine = 1 THEN
+				F_SetError(5,nLine := 1);
+			ELSIF nLine = 2 THEN
+				F_SetError(27,nLine := 2);
+			END_IF
+		ELSIF iCylinder_Dw.bIsExtend THEN
+			tTimer_Dw(IN := FALSE);
+		END_IF;
+END_IF
+
+IF bCylinder_dw_retract THEN
+	iCylinder_Dw.Retract();
+	tTimer_Dw(IN := TRUE, PT := REAL_TO_TIME(timerCheckCylinder_Dw)*1000);
+		IF tTimer_Dw.Q THEN
+			IF nLine = 1 THEN
+				F_SetError(4,nLine := 1);
+			ELSIF nLine = 2 THEN
+				F_SetError(26,nLine := 2);
+			END_IF
+		ELSIF iCylinder_Dw.bIsRetract THEN
+			tTimer_Dw(IN := FALSE);
+		END_IF;
+END_IF
+
+IF bCylinder_suction_retract THEN
+	iCylinder_Suction.Retract();
+END_IF
+
+IF bCylinder_suction_extend THEN
+	iCylinder_Suction.Extend();
+	tTimer_Suction(IN := TRUE, PT := REAL_TO_TIME(timerCylinder_Suction)*1000);
+		IF tTimer_Suction.Q THEN
+			IF nLine = 1 THEN
+				F_SetError(60,nLine := 1);
+			ELSIF nLine = 2 THEN
+				F_SetError(61,nLine := 2);
+			END_IF
+		ELSIF iCylinder_Suction.bIsExtend THEN
+			tTimer_Suction(IN := FALSE);
+		END_IF
+END_IF
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Reset" Id="{dfc6ebf6-8e14-4982-9e12-11f6e5e8b417}">
+      <Declaration><![CDATA[METHOD Reset : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[tTimer_DropCup(IN := FALSE);
+tTimer_Enable1(IN := FALSE);
+tTimer_Enable2(IN := FALSE);
+iCylinder_Suction.Extend();
+tTimer_Up(IN := FALSE);
+tTimer_Dw(IN := FALSE);
+tTimer_Suction(IN := FALSE);
+CASE nState_Reset OF
+	0:
+		tTimer_Reset(IN := TRUE, PT := T#300MS);
+		iCylinder_Dw.Extend();
+		IF tTimer_Reset.Q OR iCylinder_Dw.bIsExtend THEN
+			nState_Reset := 1;
+		END_IF
+	1:
+		tTimer_Reset(IN := FALSE);
+		iCylinder_Up.Retract();
+		nState_Reset := 0;
+END_CASE
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Stop" Id="{47c68cbb-60a2-4cd8-9a43-e4b7107cf7ff}">
+      <Declaration><![CDATA[METHOD Stop : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[tTimer_Enable1(IN := FALSE);
+tTimer_Enable2(IN := FALSE);
+tTimer_DropCup(IN := FALSE);
+tTimer_Up(IN := FALSE);
+tTimer_Dw(IN := FALSE);
+tTimer_Suction(IN := false);
+iCylinder_Dw.Extend();]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="FB_CupSupplyModule">
+      <LineId Id="9" Count="0" />
+      <LineId Id="58" Count="2" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="142" Count="1" />
+      <LineId Id="20" Count="1" />
+      <LineId Id="39" Count="0" />
+      <LineId Id="56" Count="1" />
+      <LineId Id="139" Count="1" />
+      <LineId Id="147" Count="0" />
+      <LineId Id="19" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_CupSupplyModule.CheckCup">
+      <LineId Id="6" Count="0" />
+      <LineId Id="30" Count="0" />
+      <LineId Id="52" Count="0" />
+      <LineId Id="34" Count="3" />
+      <LineId Id="33" Count="0" />
+      <LineId Id="38" Count="1" />
+      <LineId Id="41" Count="6" />
+      <LineId Id="40" Count="0" />
+      <LineId Id="32" Count="0" />
+      <LineId Id="20" Count="1" />
+      <LineId Id="48" Count="0" />
+      <LineId Id="23" Count="0" />
+      <LineId Id="53" Count="0" />
+      <LineId Id="5" Count="0" />
+      <LineId Id="54" Count="0" />
+      <LineId Id="56" Count="4" />
+      <LineId Id="65" Count="3" />
+      <LineId Id="64" Count="0" />
+      <LineId Id="61" Count="0" />
+      <LineId Id="63" Count="0" />
+      <LineId Id="62" Count="0" />
+      <LineId Id="55" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_CupSupplyModule.DropCup">
+      <LineId Id="5" Count="1" />
+      <LineId Id="42" Count="0" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="217" Count="0" />
+      <LineId Id="80" Count="0" />
+      <LineId Id="46" Count="0" />
+      <LineId Id="15" Count="0" />
+      <LineId Id="8" Count="0" />
+      <LineId Id="14" Count="0" />
+      <LineId Id="204" Count="1" />
+      <LineId Id="85" Count="1" />
+      <LineId Id="32" Count="1" />
+      <LineId Id="17" Count="0" />
+      <LineId Id="316" Count="0" />
+      <LineId Id="206" Count="0" />
+      <LineId Id="166" Count="0" />
+      <LineId Id="250" Count="0" />
+      <LineId Id="20" Count="0" />
+      <LineId Id="252" Count="0" />
+      <LineId Id="317" Count="0" />
+      <LineId Id="254" Count="0" />
+      <LineId Id="312" Count="0" />
+      <LineId Id="255" Count="9" />
+      <LineId Id="253" Count="0" />
+      <LineId Id="265" Count="7" />
+      <LineId Id="21" Count="0" />
+      <LineId Id="318" Count="0" />
+      <LineId Id="200" Count="0" />
+      <LineId Id="207" Count="1" />
+      <LineId Id="22" Count="0" />
+      <LineId Id="172" Count="0" />
+      <LineId Id="178" Count="0" />
+      <LineId Id="70" Count="2" />
+      <LineId Id="128" Count="1" />
+      <LineId Id="189" Count="0" />
+      <LineId Id="131" Count="1" />
+      <LineId Id="190" Count="0" />
+      <LineId Id="73" Count="0" />
+      <LineId Id="69" Count="0" />
+      <LineId Id="24" Count="0" />
+      <LineId Id="173" Count="0" />
+      <LineId Id="273" Count="0" />
+      <LineId Id="299" Count="2" />
+      <LineId Id="236" Count="11" />
+      <LineId Id="234" Count="0" />
+      <LineId Id="218" Count="0" />
+      <LineId Id="302" Count="0" />
+      <LineId Id="175" Count="2" />
+      <LineId Id="180" Count="8" />
+      <LineId Id="179" Count="0" />
+      <LineId Id="287" Count="11" />
+      <LineId Id="274" Count="0" />
+      <LineId Id="286" Count="0" />
+      <LineId Id="37" Count="0" />
+      <LineId Id="106" Count="1" />
+      <LineId Id="152" Count="1" />
+      <LineId Id="155" Count="1" />
+      <LineId Id="105" Count="0" />
+      <LineId Id="38" Count="0" />
+      <LineId Id="196" Count="0" />
+      <LineId Id="114" Count="0" />
+      <LineId Id="41" Count="0" />
+      <LineId Id="40" Count="0" />
+      <LineId Id="7" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_CupSupplyModule.Enable">
+      <LineId Id="10" Count="0" />
+      <LineId Id="12" Count="0" />
+      <LineId Id="14" Count="1" />
+      <LineId Id="23" Count="0" />
+      <LineId Id="16" Count="6" />
+      <LineId Id="24" Count="1" />
+      <LineId Id="47" Count="5" />
+      <LineId Id="32" Count="0" />
+      <LineId Id="26" Count="0" />
+      <LineId Id="39" Count="1" />
+      <LineId Id="44" Count="0" />
+      <LineId Id="42" Count="1" />
+      <LineId Id="45" Count="0" />
+      <LineId Id="41" Count="0" />
+      <LineId Id="28" Count="0" />
+      <LineId Id="37" Count="1" />
+      <LineId Id="29" Count="0" />
+      <LineId Id="27" Count="0" />
+      <LineId Id="34" Count="1" />
+      <LineId Id="46" Count="0" />
+      <LineId Id="13" Count="0" />
+      <LineId Id="6" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_CupSupplyModule.HoldCup">
+      <LineId Id="6" Count="0" />
+      <LineId Id="10" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_CupSupplyModule.Init">
+      <LineId Id="6" Count="0" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_CupSupplyModule.isCupDrop.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_CupSupplyModule.isCupEmpty.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_CupSupplyModule.Manual">
+      <LineId Id="5" Count="2" />
+      <LineId Id="9" Count="2" />
+      <LineId Id="68" Count="7" />
+      <LineId Id="77" Count="0" />
+      <LineId Id="67" Count="0" />
+      <LineId Id="8" Count="0" />
+      <LineId Id="13" Count="2" />
+      <LineId Id="58" Count="8" />
+      <LineId Id="52" Count="0" />
+      <LineId Id="16" Count="2" />
+      <LineId Id="44" Count="0" />
+      <LineId Id="79" Count="8" />
+      <LineId Id="78" Count="0" />
+      <LineId Id="12" Count="0" />
+      <LineId Id="98" Count="17" />
+      <LineId Id="97" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_CupSupplyModule.Reset">
+      <LineId Id="14" Count="0" />
+      <LineId Id="17" Count="0" />
+      <LineId Id="16" Count="0" />
+      <LineId Id="30" Count="0" />
+      <LineId Id="21" Count="1" />
+      <LineId Id="26" Count="0" />
+      <LineId Id="38" Count="1" />
+      <LineId Id="43" Count="0" />
+      <LineId Id="41" Count="1" />
+      <LineId Id="44" Count="5" />
+      <LineId Id="40" Count="0" />
+      <LineId Id="34" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_CupSupplyModule.Stop">
+      <LineId Id="8" Count="0" />
+      <LineId Id="7" Count="0" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="17" Count="0" />
+      <LineId Id="22" Count="0" />
+      <LineId Id="13" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

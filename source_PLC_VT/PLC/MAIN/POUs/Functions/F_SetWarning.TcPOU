@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="F_SetWarning" Id="{2b26f2d5-d0c6-429d-803a-56a467e14430}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION F_SetWarning : BOOL
+VAR_INPUT
+	nWrningID	: INT;
+	nLine		: INT;
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF nLine = 1 THEN
+	bWarning  := TRUE;
+ELSIF nLine = 2 THEN
+	bWarning2 := TRUE;
+END_IF
+nWarningID	:= nWrningID;]]></ST>
+    </Implementation>
+    <LineIds Name="F_SetWarning">
+      <LineId Id="27" Count="1" />
+      <LineId Id="30" Count="1" />
+      <LineId Id="29" Count="0" />
+      <LineId Id="9" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

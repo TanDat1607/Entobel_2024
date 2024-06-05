@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_Inverter_Sim" Id="{defff990-0e79-45e4-92d8-f76780ecb9c9}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Inverter_Sim IMPLEMENTS I_Inverter
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	TargetSpeed			: REAL;
+	fActualSpeed 		: REAL;
+	bBrake 		  		: BOOL;
+	nErrId				: INT;
+	bExecute 			: BOOL;
+	bStop				: BOOL;
+	bReset				: BOOL;
+	//Var sim
+	nState				: INT;
+	tTimer				: TON;
+	tDelay				: TIME := T#2000MS; //acceleration time of inverter
+	bStopInit			: BOOL := TRUE;
+	fTargetSpeed_re1	: REAL;
+	fTargetSpeed_re2	: REAL;
+	fActualSpeed_re		: REAL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[CASE nState OF
+	0: //init set stop inverter
+		IF bStopInit THEN
+			bStop := TRUE;
+			fActualSpeed := 0;
+			tTimer(IN := FALSE);
+		END_IF
+		nState := nState + 1;
+	1://Inv Stop
+		fActualSpeed := 0;
+		tTimer(IN := FALSE);
+		
+	10://Inv Run after bExecute = true and speed <> 0
+		tTimer(IN := TRUE,PT := tDelay);
+		fActualSpeed := fActualSpeed_re + (TIME_TO_REAL(tTimer.ET)*(fTargetSpeed_re1/TIME_TO_REAL(tDelay)));
+		fInvSpeed := fActualSpeed;
+		// check when change targetspeed
+		IF fTargetSpeed_re2 < fTargetSpeed OR fTargetSpeed_re2 > fTargetSpeed THEN
+			nState := 20;
+		END_IF
+	20:
+		fActualSpeed_re := fActualSpeed;
+		fTargetSpeed_re1 := fTargetSpeed - fActualSpeed;
+		fTargetSpeed_re2 := fTargetSpeed;
+		tTimer(IN := FALSE);
+		nState := 10;
+		
+END_CASE
+
+//check for signal
+IF bExecute AND (fTargetSpeed <> 0) AND (nState = 1) THEN
+	fTargetSpeed_re1 := fTargetSpeed;
+	fTargetSpeed_re2 := fTargetSpeed;
+	fActualSpeed_re := fActualSpeed;
+	tTimer(IN := FALSE);
+	nState := 10;//Inv run
+END_IF
+
+IF bStop THEN
+	fActualSpeed := 0;
+	nState := 1;//
+END_IF
+
+IF fActualSpeed = 0 THEN
+	bHaveLoad := FALSE;
+ELSE
+	bHaveLoad := TRUE;
+END_IF
+
+
+
+]]></ST>
+    </Implementation>
+    <Property Name="ActualSpeed" Id="{43e3d9a2-9d79-4976-a463-fa505267646b}">
+      <Declaration><![CDATA[PROPERTY ActualSpeed : REAL]]></Declaration>
+      <Get Name="Get" Id="{ed6323ac-0d4f-4356-85b4-e47aad09a4ac}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[ActualSpeed := fActualSpeed/100;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Property Name="bIsMove" Id="{bb52d2c6-1caf-4581-8604-f5b5a52b9a58}">
+      <Declaration><![CDATA[PROPERTY bIsMove : BOOL]]></Declaration>
+      <Get Name="Get" Id="{0ce38896-a388-4159-9bce-f8397caabb4d}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[IF ActualSpeed > 3 THEN
+	bIsMove := FALSE;
+ELSE
+	bIsMove := TRUE;
+END_IF]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Property Name="fTargetSpeed" Id="{589223b5-93a4-4695-8fa1-a94425e1dfdb}">
+      <Declaration><![CDATA[PROPERTY fTargetSpeed : REAL]]></Declaration>
+      <Get Name="Get" Id="{006632f1-4fd8-4298-888a-ec89b89edcce}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[fTargetSpeed := TargetSpeed;]]></ST>
+        </Implementation>
+      </Get>
+      <Set Name="Set" Id="{43691246-d78a-4ec3-8c20-673b043bf8a0}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[TargetSpeed := fTargetSpeed;]]></ST>
+        </Implementation>
+      </Set>
+    </Property>
+    <Method Name="Reset" Id="{69a1fd62-8424-4d9e-8633-8c5bfff97448}">
+      <Declaration><![CDATA[METHOD Reset : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[bExecute := FALSE;
+bStop	 := FALSE;
+bReset	 := TRUE;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Reverse" Id="{d78c5eaf-a0df-4ad9-bb14-98c385aaeb63}">
+      <Declaration><![CDATA[METHOD Reverse : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Start" Id="{3cdeaf80-1c64-42f4-8ca6-49981d396e36}">
+      <Declaration><![CDATA[METHOD Start : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[bExecute := TRUE;
+bStop	 := FALSE;
+bReset	 := FALSE;
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Stop" Id="{1f25b007-8c9d-4ffd-a5e2-fefa14b6d500}">
+      <Declaration><![CDATA[METHOD Stop : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[bExecute := FALSE;
+bStop	 := TRUE;
+bReset	 := FALSE;]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="FB_Inverter_Sim">
+      <LineId Id="91" Count="7" />
+      <LineId Id="165" Count="0" />
+      <LineId Id="167" Count="1" />
+      <LineId Id="166" Count="0" />
+      <LineId Id="99" Count="10" />
+      <LineId Id="125" Count="0" />
+      <LineId Id="110" Count="7" />
+      <LineId Id="124" Count="0" />
+      <LineId Id="118" Count="3" />
+      <LineId Id="127" Count="0" />
+      <LineId Id="126" Count="0" />
+      <LineId Id="128" Count="0" />
+      <LineId Id="130" Count="0" />
+      <LineId Id="129" Count="0" />
+      <LineId Id="137" Count="0" />
+      <LineId Id="136" Count="0" />
+      <LineId Id="140" Count="0" />
+      <LineId Id="138" Count="0" />
+      <LineId Id="141" Count="0" />
+      <LineId Id="139" Count="0" />
+      <LineId Id="132" Count="0" />
+      <LineId Id="134" Count="0" />
+      <LineId Id="122" Count="0" />
+      <LineId Id="40" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Inverter_Sim.ActualSpeed.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Inverter_Sim.bIsMove.Get">
+      <LineId Id="2" Count="0" />
+      <LineId Id="5" Count="0" />
+      <LineId Id="7" Count="1" />
+      <LineId Id="6" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Inverter_Sim.fTargetSpeed.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Inverter_Sim.fTargetSpeed.Set">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Inverter_Sim.Reset">
+      <LineId Id="6" Count="1" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Inverter_Sim.Reverse">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Inverter_Sim.Start">
+      <LineId Id="9" Count="2" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Inverter_Sim.Stop">
+      <LineId Id="9" Count="1" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

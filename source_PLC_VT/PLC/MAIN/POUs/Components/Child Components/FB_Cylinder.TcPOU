@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_Cylinder" Id="{ab010b65-5990-4cbd-8076-21ab8731ea05}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Cylinder IMPLEMENTS I_Cylinder
+VAR_INPUT
+	id	: INT;
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	bAtExtend 		AT %I*	: BOOL;
+	bAtRetract 		AT %I*	: BOOL;
+	bAtRetract_2	AT %I*	: BOOL;
+	bMoveExtend 	AT %Q*	: BOOL;
+	bMoveRetract 	AT %Q*	: BOOL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Property Name="bIsExtend" Id="{183076c0-a74e-46aa-8377-4ab639493447}">
+      <Declaration><![CDATA[PROPERTY bIsExtend : BOOL]]></Declaration>
+      <Get Name="Get" Id="{bf6f37c2-9c1f-4bd4-af28-9ae7e5a181f6}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[bIsExtend := bAtExtend;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Property Name="bIsRetract" Id="{f987a6d2-6fab-4f2f-89e8-c6c6c4438ea5}">
+      <Declaration><![CDATA[PROPERTY bIsRetract : BOOL]]></Declaration>
+      <Get Name="Get" Id="{4e534881-8dc9-446b-a0fb-f9c80fcfa625}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[bIsRetract := bAtRetract;
+]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Method Name="Extend" Id="{9e3700c7-40fa-46ec-bca0-619165ac8f87}">
+      <Declaration><![CDATA[METHOD Extend : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[bMoveExtend := TRUE;
+bMoveRetract := FALSE;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Retract" Id="{05ea6731-f516-40c5-9773-eb913b2316a9}">
+      <Declaration><![CDATA[METHOD Retract : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[bMoveExtend := FALSE;
+bMoveRetract := TRUE;]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="FB_Cylinder">
+      <LineId Id="9" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Cylinder.bIsExtend.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Cylinder.bIsRetract.Get">
+      <LineId Id="2" Count="0" />
+      <LineId Id="6" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Cylinder.Extend">
+      <LineId Id="5" Count="1" />
+    </LineIds>
+    <LineIds Name="FB_Cylinder.Retract">
+      <LineId Id="6" Count="0" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

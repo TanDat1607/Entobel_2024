@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_Interface_MbRtu" Id="{b83d9a67-33c8-4e92-84f1-2ed0fa6af340}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Interface_MbRtu
+VAR_INPUT
+	UnitID			: BYTE;
+	bExecute		: BOOL;
+	bStop			: BOOL;
+	bReset			: BOOL;
+	idDevice		: UINT;
+	fTargetSpeed	: REAL;
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	tmp				: WORD;
+	bFB_Stop		: BOOL;
+	Address1		: WORD;
+	Address2		: WORD;
+	Address3		: WORD;
+	WriteVal  		: WORD;
+	WriteVal2		: ARRAY [1..2] OF WORD;
+	nState			: INT;
+	fbTimer			: TON;
+	nStateAll		: INT;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[CASE nStateAll OF
+	0:
+		t := 1;
+		nStateAll := 1;
+	1:
+		IF UnitID = t THEN
+			IF idDevice = 1 THEN
+				IF WriteVal <> REAL_TO_WORD(fTargetSpeed*100) THEN
+					WriteVal := REAL_TO_WORD(fTargetSpeed*100);
+					nStateAll := 2;
+				ELSE 
+					nStateAll := 9;
+				END_IF
+			ELSIF idDevice = 2 THEN
+				IF WriteVal2[1] <> REAL_TO_WORD(fTargetSpeed) THEN
+					WriteVal2[1] := REAL_TO_WORD(fTargetSpeed);
+					nStateAll := 3;
+				ELSE
+					nStateAll := 9;
+				END_IF
+			END_IF
+		END_IF
+	2:
+		fbTimer(IN := TRUE, PT := T#100MS);
+		fbModbus.WriteRegs(
+						UnitID:= UnitID, 
+						Quantity:= 1, 
+						MBAddr:= 8193, 
+						cbLength:= SIZEOF(WriteVal), 
+						pMemoryAddr:=  ADR(WriteVal), 
+						Execute:= TRUE, 
+						Timeout:= T#1S, 
+						BUSY=> Busy[UnitID], 
+						Error=> Error[UnitID], 
+						ErrorId=> ErrorID[UnitID] , 
+						cbRead=> );
+		IF fbTimer.Q AND NOT Busy[UnitID] THEN
+			nStateAll := 9;
+		END_IF
+	3:
+		fbTimer(IN := TRUE, PT := T#100MS);
+		fbModbus.WriteRegs(
+						UnitID:= UnitID, 
+						Quantity:= 2, 
+						MBAddr:= 1034, 
+						cbLength:= SIZEOF(WriteVal2), 
+						pMemoryAddr:=  ADR(WriteVal2), 
+						Execute:= TRUE, 
+						Timeout:= T#1S, 
+						BUSY=> Busy[UnitID], 
+						Error=> Error[UnitID], 
+						ErrorId=> ErrorID[UnitID], 
+						cbRead=> );
+		IF fbTimer.Q AND NOT Busy[UnitID] THEN
+			nStateAll := 9;	
+		END_IF			
+	9:
+		fbTimer(IN := false);
+		fbModbus.WriteRegs(Execute := FALSE);
+		t := t + 1;
+		nStateAll := 11;
+	11:
+		IF t > 7 THEN
+			t := 1;
+			nStateAll := 1;
+		ELSE
+			nStateAll := 1;
+		END_IF	
+END_CASE
+
+]]></ST>
+    </Implementation>
+    <LineIds Name="FB_Interface_MbRtu">
+      <LineId Id="751" Count="0" />
+      <LineId Id="658" Count="0" />
+      <LineId Id="758" Count="1" />
+      <LineId Id="757" Count="0" />
+      <LineId Id="659" Count="1" />
+      <LineId Id="662" Count="0" />
+      <LineId Id="664" Count="0" />
+      <LineId Id="666" Count="2" />
+      <LineId Id="665" Count="0" />
+      <LineId Id="669" Count="1" />
+      <LineId Id="672" Count="0" />
+      <LineId Id="674" Count="2" />
+      <LineId Id="673" Count="0" />
+      <LineId Id="663" Count="0" />
+      <LineId Id="661" Count="0" />
+      <LineId Id="677" Count="0" />
+      <LineId Id="679" Count="12" />
+      <LineId Id="920" Count="2" />
+      <LineId Id="694" Count="0" />
+      <LineId Id="697" Count="1" />
+      <LineId Id="800" Count="9" />
+      <LineId Id="709" Count="0" />
+      <LineId Id="923" Count="2" />
+      <LineId Id="695" Count="0" />
+      <LineId Id="726" Count="0" />
+      <LineId Id="713" Count="0" />
+      <LineId Id="750" Count="0" />
+      <LineId Id="714" Count="0" />
+      <LineId Id="717" Count="0" />
+      <LineId Id="719" Count="0" />
+      <LineId Id="926" Count="0" />
+      <LineId Id="756" Count="0" />
+      <LineId Id="721" Count="1" />
+      <LineId Id="718" Count="0" />
+      <LineId Id="654" Count="0" />
+      <LineId Id="496" Count="0" />
+      <LineId Id="494" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

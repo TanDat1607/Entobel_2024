@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="F_SetError" Id="{da17f6ed-e803-4727-8e3a-d1159d5d78ba}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION F_SetError : BOOL
+VAR_INPUT
+	nErrID	: INT;
+	nLine	: INT;
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF nLine = 1 THEN
+	bError1		:= TRUE;
+ELSIF nLine = 2 THEN
+	bError2		:= TRUE;
+ELSIF nLine = 3 THEN
+	bError1		:= TRUE;
+	bError2		:= TRUE;
+END_IF
+nErrorID	:= nErrID;]]></ST>
+    </Implementation>
+    <LineIds Name="F_SetError">
+      <LineId Id="19" Count="1" />
+      <LineId Id="22" Count="1" />
+      <LineId Id="31" Count="0" />
+      <LineId Id="33" Count="0" />
+      <LineId Id="32" Count="0" />
+      <LineId Id="21" Count="0" />
+      <LineId Id="11" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

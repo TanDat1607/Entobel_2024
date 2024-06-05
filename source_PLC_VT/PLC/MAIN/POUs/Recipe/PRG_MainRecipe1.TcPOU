@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="PRG_MainRecipe1" Id="{7f28cbf5-3ac3-47b6-a166-82e57e5509a5}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM PRG_MainRecipe1
+VAR
+	fbrecipe		: RecipeManCommands;
+	NameSave		: STRING;
+	NameLoad		: STRING;
+	RecipeName		: STRING;
+	RecipeNameIdx	: INT;
+	r1				: INT;
+	dLen			: INT;
+	RecipeList 		: ARRAY[0..99] OF STRING;
+	tTimer			: TON;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[PRG_RecipeList1();
+
+FOR r1 := 0 TO 99 DO
+	dLen 			:= LEN(PRG_RecipeList1.filesList[r1].sFileName) - LEN('.Recipes_1.txtrecipe'); 
+	RecipeList[r1] 	:= MID(PRG_RecipeList1.filesList[r1].sFileName,dLen,1);
+END_FOR
+
+IF bSave1 THEN
+	fbRecipe.CreateRecipe('Recipes_1',NameSave);
+	PRG_RecipeList1.bFirst	:= TRUE;
+	bSave1 					:= FALSE;
+ELSIF bLoad1 THEN
+	RecipeName				:= RecipeList[RecipeNameIdx];
+	fbRecipe.WriteRecipe('Recipes_1', RecipeName);
+	PRG_RecipeList1.bFirst	:= TRUE;
+	bLoad1 					:= FALSE;
+ELSIF bDelete1 THEN
+	RecipeName				:= RecipeList[RecipeNameIdx];
+	fbRecipe.DeleteRecipe('Recipes_1', RecipeName);		
+	PRG_RecipeList1.bFirst	:= TRUE;
+	bDelete1 				:= FALSE;
+END_IF
+
+]]></ST>
+    </Implementation>
+    <LineIds Name="PRG_MainRecipe1">
+      <LineId Id="135" Count="1" />
+      <LineId Id="99" Count="6" />
+      <LineId Id="107" Count="0" />
+      <LineId Id="132" Count="0" />
+      <LineId Id="108" Count="2" />
+      <LineId Id="112" Count="0" />
+      <LineId Id="133" Count="0" />
+      <LineId Id="113" Count="2" />
+      <LineId Id="117" Count="0" />
+      <LineId Id="134" Count="0" />
+      <LineId Id="118" Count="1" />
+      <LineId Id="62" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

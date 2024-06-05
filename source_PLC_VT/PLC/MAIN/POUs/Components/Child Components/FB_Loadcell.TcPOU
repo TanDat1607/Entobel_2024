@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_Loadcell" Id="{eac700fd-516e-4b65-9e0d-da734dceffb1}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Loadcell IMPLEMENTS I_LoadCell
+VAR_INPUT
+	idDevice					: INT;// 1: mettler		,2: Laumas
+END_VAR
+VAR_OUTPUT
+	Error						: BOOL;
+END_VAR
+VAR
+	ondinh						: BOOL;
+	fbInterface					: FB_Interface_EtherCat;
+	nErrID						: INT;	
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[fbInterface(idDevice := idDevice,Error => Error);]]></ST>
+    </Implementation>
+    <Property Name="fActWeight" Id="{39c3a08a-5660-407b-8ef5-42f965139c39}">
+      <Declaration><![CDATA[PROPERTY fActWeight : REAL]]></Declaration>
+      <Get Name="Get" Id="{173c3f43-b986-44d7-85a7-e573e4ad3b09}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[fActWeight := fbInterface.fActWeight;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Method Name="NetMode" Id="{46589393-1d53-4dda-b644-734e3962c876}">
+      <Declaration><![CDATA[METHOD NetMode : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[fbInterface.NetMode();]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Set_Zero" Id="{ec782a9a-cbf8-48fe-bf1c-ccc1593dd634}">
+      <Declaration><![CDATA[METHOD Set_Zero : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[fbInterface.Set_Zero();]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="Status" Id="{cbb2df3e-a8fb-4d7c-9ed5-b965ae25b583}">
+      <Declaration><![CDATA[PROPERTY Status : REAL;]]></Declaration>
+      <Get Name="Get" Id="{092ba072-b294-46d9-8862-dc1c640858c4}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[Status := fbInterface.Status;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <LineIds Name="FB_Loadcell">
+      <LineId Id="84" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Loadcell.fActWeight.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Loadcell.NetMode">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Loadcell.Set_Zero">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_Loadcell.Status.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

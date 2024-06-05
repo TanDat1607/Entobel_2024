@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <Itf Name="I_Inverter" Id="{711f4871-830e-4f42-bbe7-312b12f12c0a}">
+    <Declaration><![CDATA[INTERFACE I_Inverter
+]]></Declaration>
+    <Property Name="ActualSpeed" Id="{6b5b5053-377a-439e-972f-55220ffdb6f5}">
+      <Declaration><![CDATA[PROPERTY ActualSpeed : REAL]]></Declaration>
+      <Get Name="Get" Id="{0a2198f7-ad7c-4d44-bef6-b6b1efa2a460}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
+    <Property Name="bIsMove" Id="{423ff018-b570-43fb-92c2-a73a6f6aea59}">
+      <Declaration><![CDATA[PROPERTY bIsMove : BOOL]]></Declaration>
+      <Get Name="Get" Id="{a0160f4e-2cd8-4808-8615-6c03659a2eb7}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+    </Property>
+    <Property Name="fTargetSpeed" Id="{b253edd2-271a-48b7-956e-e441ec9c010f}">
+      <Declaration><![CDATA[PROPERTY fTargetSpeed : REAL]]></Declaration>
+      <Get Name="Get" Id="{242c04aa-a6b1-4ab3-9553-ac653ceb0d80}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Get>
+      <Set Name="Set" Id="{63f34068-ab7e-4d84-ac8a-0aa642d38642}">
+        <Declaration><![CDATA[]]></Declaration>
+      </Set>
+    </Property>
+    <Method Name="Reset" Id="{1aefdc0a-91ff-4d60-845d-126182e6438d}">
+      <Declaration><![CDATA[METHOD Reset : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+    </Method>
+    <Method Name="Reverse" Id="{d73a2ad3-2974-4cfd-b416-64234b544bd8}">
+      <Declaration><![CDATA[METHOD Reverse : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+    </Method>
+    <Method Name="Start" Id="{de90ca9b-6b89-46c5-a0a6-54da42b4611c}">
+      <Declaration><![CDATA[METHOD Start : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+    </Method>
+    <Method Name="Stop" Id="{cce98897-420f-4d8a-a556-74aa88c6b77d}">
+      <Declaration><![CDATA[METHOD Stop : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+    </Method>
+  </Itf>
+</TcPlcObject>

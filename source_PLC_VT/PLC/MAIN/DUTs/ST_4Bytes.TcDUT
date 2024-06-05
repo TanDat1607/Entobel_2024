@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <DUT Name="ST_4Bytes" Id="{e02c2b4c-8ecc-4bc1-92f9-75027e9eae4a}">
+    <Declaration><![CDATA[TYPE ST_4Bytes :
+STRUCT
+	Byte1	: BYTE;
+	Byte2	: BYTE;
+	Byte3	: BYTE;
+	Byte4	: BYTE;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

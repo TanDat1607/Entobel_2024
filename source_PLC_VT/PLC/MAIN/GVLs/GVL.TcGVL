@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <GVL Name="GVL" Id="{2453c30b-5502-425f-8a85-aa4bc6645e28}">
+    <Declaration><![CDATA[VAR_GLOBAL
+	bSimMode			: BOOL;
+	// var sim Inverter with Loadcell
+	bHaveLoad			: BOOL; // run inverter = true
+	fInvSpeed			: REAL;
+	//Error system
+	bError1				: BOOL;
+	bError2				: BOOL;
+	nErrorID			: INT;
+	stErrorTxt			: WSTRING;
+	stErrorTxt1			: STRING;
+	stErrorTxt2			: WSTRING;
+	stErrorTxt3			: STRING;
+	bWarning			: BOOL;
+	bWarning2			: BOOL;
+	nWarningID			: INT;
+	stWarningTxt		: WSTRING;
+	stWarningTxt1		: STRING;
+	stWarningTxt2		: WSTRING;
+	StWarningTxt3		: STRING;
+	fbModbus			: ModbusRtuMaster_KL6x22B;
+	bStartLine1			: BOOL;
+	bStartLine2			: BOOL;
+	SystemTimeFull 		: STRING;
+	WritePSData			: WritePersistentData;
+	bWriteData			: BOOL;
+	t					: BYTE := 1;
+	bToDropcup1			: BOOL;
+	bToDropcup2			: BOOL;
+	Run_conveyor		: R_TRIG;
+	bRun				: BOOL;
+	bRunAuto			: BOOL;
+	bStopConv			: BOOL;
+	Stop_conveyor		: R_TRIG;
+	bResetmanual1		: BOOL;
+	bResetmanual2		: BOOL;
+	bResetAuto1			: BOOL;
+	bResetAuto2			: BOOL;
+	bfinish1			: BOOL;
+	bfinish2			: BOOL;
+	openstartpage		: BOOL;
+	getuser				: STRING;
+	GetLocalSystemTime 	: FB_LocalSystemTime;
+	bWrn				: BOOL;
+	bWrn2				: BOOL;
+	bAlarm_Iot			: BOOL;
+	bxoa				: BOOL;
+	bTo_alarm_side		: BOOL;
+	bTo_alarm_side2		: BOOL;
+	Onlyday				: STRING;
+	OnlyTime			: STRING;
+	bclearall			: BOOL;
+	button				: ARRAY [1..40] OF BOOL;
+	//change line 1
+	fFast_Speed_line1_change						: REAL;//FoodWeight
+	fSlow_Speed_1_line1_change						: REAL;
+	fSlow_Speed_2_line1_change						: REAL;
+	fDerisedWeight_Food_line1_change				: REAL;
+	fChangeMode_Food_1_line1_change					: REAL;
+	fChangeMode_Food_2_line1_change					: REAL;
+	fPerStop_Food_line1_change						: REAL;
+	fTimer_Check_Food_line1_change					: REAL;
+	fDelta_Food_line1_change						: REAL;
+	fFast_Speed_vibrating_funnel_line1_change		: REAL;//WormWeight
+	fSlow_Speed_vibrating_funnel_1_line1_change		: REAL;
+	fSlow_Speed_vibrating_funnel_2_line1_change		: REAL;
+	fDerisedWeight_Worm_line1_change				: REAL;
+	fChangeMode_Worm_1_line1_change					: REAL;
+	fChangeMode_Worm_2_line1_change					: REAL;
+	fPerStop_Worm_line1_change						: REAL;
+	fTimer_Check_Worm_line1_change					: REAL;
+	fDelta_Worm_line1_change						: REAL;
+	//change line 2
+	fFast_Speed_line2_change						: REAL;//FoodWeight
+	fSlow_Speed_1_line2_change						: REAL;
+	fSlow_Speed_2_line2_change						: REAL;
+	fDerisedWeight_Food_line2_change				: REAL;
+	fChangeMode_Food_1_line2_change					: REAL;
+	fChangeMode_Food_2_line2_change					: REAL;
+	fPerStop_Food_line2_change						: REAL;
+	fTimer_Check_Food_line2_change					: REAL;
+	fDelta_Food_line2_change						: REAL;
+	fFast_Speed_vibrating_funnel_line2_change		: REAL;//WormWeight
+	fSlow_Speed_vibrating_funnel_1_line2_change		: REAL;
+	fSlow_Speed_vibrating_funnel_2_line2_change		: REAL;
+	fDerisedWeight_Worm_line2_change				: REAL;
+	fChangeMode_Worm_1_line2_change					: REAL;
+	fChangeMode_Worm_2_line2_change					: REAL;
+	fPerStop_Worm_line2_change						: REAL;
+	fTimer_Check_Worm_line2_change					: REAL;
+	fDelta_Worm_line2_change						: REAL;
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

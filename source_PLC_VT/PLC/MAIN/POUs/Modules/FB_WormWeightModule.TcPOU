@@ -1,0 +1,829 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_WormWeightModule" Id="{f6cf92a1-91d2-4889-b4c7-3ef4d20be222}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_WormWeightModule
+VAR_INPUT
+	nLine							: INT;
+	UnitID							: BYTE;
+	fFast_Speed_vibrating_funnel	: REAL;
+	fSlow_Speed_vibrating_funnel_1	: REAL;
+	fSlow_Speed_vibrating_funnel_2	: REAL;
+	fDerisedWeight_Worm				: REAL;
+	fChangeMode_Worm_1				: REAL;
+	fChangeMode_Worm_2				: REAL;
+	fMaxWeight_Worm					: REAL;
+	fPerStop_Worm					: REAL;
+	fTimer_Worm						: REAL;
+	fTimer_Alarm_Worm				: REAL;
+	fTimer_Error_Worm				: REAL;
+	fTimer_Check_Worm				: REAL;
+	fTimer_Check_Cylinder			: REAL;
+	fDelta_Worm						: REAL;
+END_VAR
+VAR_OUTPUT
+	fProductLog						: ARRAY [1..5] OF REAL;
+	bStatus_Worm					: BOOL;
+	Time_start						: DT;
+	Time_Stop						: DT;
+	status							: STRING;
+	fweight_iot						: REAL;
+END_VAR
+VAR 
+	// ===== CHILD COMPONENTS ============
+	fbInverter 			: FB_Inverter;
+	fbCylinder			: FB_Cylinder;
+	fbLoadcell			: FB_Loadcell;
+	// ===== SIM COMPONENTS ==============
+	fbInverterSim		: FB_Inverter_Sim;
+	fbCylinderSim		: FB_Cylinder_Sim;
+	fbLoadcellSim		: FB_LoadCell_Sim;
+	// ===== INTERFACES ==================
+	iInverter			: I_Inverter;
+	iCylinder			: I_Cylinder;
+	iLoadcell			: I_LoadCell;
+	// ====== VAR IO =====================
+	bCupPresent 	AT %I*	: BOOL;
+	bError_Inverter AT %I* 	: BOOL;
+	//======= VAR METHOD =================
+	nState				: INT;
+	nStateWrn			: INT;
+	nStateEnable		: INT;
+	nStateErr			: INT;
+	fbTimer_Err			: TON;
+	fbTimer				: TON;
+	fbTimer1			: TON;
+	fbTimer_Alarm		: TON;	
+	fbTimer_Check		: TON;
+	fbTimer_Error		: TON;	
+	fFastWeight			: REAL;
+	fSlowWeight			: REAL;
+	fSlowWeight1		: REAL;
+	fChangemode_val		: REAL;
+	fChangemode_val1	: REAL;
+	fLowToleWeight		: REAL;
+	fHighToleWeight		: REAL;
+	fTareWeight			: REAL;
+	bDone				: BOOL;
+	p,k					: INT;
+	//========= VAR HMI Worm Weight Auto ============
+	fFlow_Worm						: REAL;
+	fWeight_Worm					: REAL;
+	fActDelta_Worm					: REAL;	
+	fSpeed_vibrating_funnel_Manual	: REAL := 30;
+	fTime							: REAL;
+	Error							: BOOL;
+	bStatus							: BOOL;
+	timestart						: DT;
+END_VAR
+
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF bSimMode THEN
+	iInverter	:= fbInverterSim;
+	fbInverterSim();
+	iCylinder	:= fbCylinderSim;
+	fbCylinderSim();
+	iLoadcell	:= fbLoadcellSim;
+	fbLoadcellSim();
+ELSE
+	iInverter	:= fbInverter;
+	fbInverter(UnitID := UnitID, id := 1);
+	iCylinder	:= fbCylinder;
+	fbCylinder(id := 1);
+	iLoadcell	:= fbLoadcell;
+	fbLoadcell(idDevice := nLine,Error=>Error);
+END_IF
+
+IF iLoadcell.fActWeight > fMaxWeight_Worm THEN
+	IF nLine = 1 THEN
+		F_SetError(57,nLine := 1);
+	ELSIF nLine = 2 THEN
+		F_SetError(59,nLine := 2);
+	END_IF
+END_IF
+
+IF Error THEN
+	IF nLine = 1 THEN
+		F_SetError(70,nLine := 1);
+	ELSIF nLine = 2 THEN
+		F_SetError(72,nLine := 2);
+	END_IF
+END_IF
+
+IF bIsError_Inverter THEN
+	IF nLine = 1 THEN
+		F_SetError(9,nLine := 1);
+	ELSIF nLine = 2 THEN
+		F_SetError(31,nLine := 2);
+	END_IF
+END_IF]]></ST>
+    </Implementation>
+    <Method Name="Auto" Id="{249906d4-130c-4676-9c5d-883c1b8a0013}">
+      <Declaration><![CDATA[METHOD Auto : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[GetLocalSystemTime(bEnable := 1);
+fbTimer(PT 						:= T#100S);
+fbTimer_Alarm(PT				:= REAL_TO_TIME(fTimer_Alarm_Worm)*1000);
+fbTimer_Check(PT				:= REAL_TO_TIME(fTimer_Check_Cylinder)*1000);
+CASE nState OF
+	0:// Init Value
+		Auto					:= FALSE;
+		fbTimer(IN := FALSE);
+		fbTimer1(IN := FALSE);
+		fbTimer_Alarm(IN := FALSE);
+		fbTimer_Check(IN := FALSE);
+		fbTimer_Error(IN := FALSE);
+		bDone					:= FALSE;	
+		nState 					:= 1;
+	1:// Init Value
+		fFastWeight				:= fFast_Speed_vibrating_funnel;
+		fSlowWeight				:= fSlow_Speed_vibrating_funnel_1;
+		fSlowWeight1			:= fSlow_Speed_vibrating_funnel_2;
+		fChangemode_val			:= fDerisedWeight_Worm*fChangeMode_Worm_1/100;
+		fChangemode_val1		:= (fDerisedWeight_Worm - fChangemode_val)*fChangeMode_Worm_2/100 + fChangemode_val;
+		fLowToleWeight			:= fDerisedWeight_Worm*(1-(fDelta_Worm/100));
+		fHighToleWeight			:= fDerisedWeight_Worm*(1+(fDelta_Worm/100));
+		bStatus_Worm			:= FALSE;
+		bStatus					:= FALSE;
+		fTime					:= 0;
+		nState					:= 2;
+	2:// Cup detection
+		iLoadcell.NetMode();
+		IF NOT bIsCupPresent THEN
+			fbTimer1(IN := TRUE, PT := REAL_TO_TIME(fTimer_Worm)*1000);
+			IF fbTimer1.Q  THEN
+				nState	:= 3;
+			END_IF
+		END_IF
+	3:// Tare weight
+		timestart := SYSTEMTIME_TO_DT(GetLocalSystemTime.systemTime);
+		fbTimer1(IN := FALSE);
+		fTareWeight 			:= iLoadcell.fActWeight;
+		fWeight_Worm			:= iLoadcell.fActWeight - fTareWeight;
+		nState					:= 4;
+	4:// Cylinder Retract
+		iCylinder.Retract();
+		fbTimer_Check(IN := TRUE);
+		nState				:= 5;
+	5:// Fast Weight
+		iCylinder.Retract();
+		IF iCylinder.bIsRetract THEN
+			fbTimer_Check(IN := FALSE);
+		ELSE
+			fbTimer_Check(IN := TRUE);
+			IF fbTimer_Check.Q THEN
+				IF nLine = 1 THEN
+					F_SetError(8,nLine := 1);
+				ELSIF nLine = 2 THEN
+					F_SetError(30,nLine := 2);
+				END_IF
+			END_IF
+		END_IF
+		fbTimer_Check(IN := FALSE);
+		fbTimer_Alarm(IN := TRUE);
+		iInverter.fTargetSpeed 	:= fFastWeight;
+		iInverter.Start();
+		fWeight_Worm			:= iLoadcell.fActWeight - fTareWeight;
+		fbTimer(IN := TRUE);
+		fTime := TIME_TO_REAL(fbTimer.ET)/1000;
+		fFlow_Worm				:= fWeight_Worm/((TIME_TO_REAL(fbTimer.ET)+0.00001)/1000);
+		IF fWeight_Worm >= fChangemode_val THEN
+			nState 				:= 6;
+		END_IF
+	6:// Slow 1 Weight
+		iCylinder.Retract();
+		iInverter.fTargetSpeed	:= fSlowWeight;
+		fbTimer_Alarm(IN := TRUE);
+		iInverter.Start();
+		fWeight_Worm			:= iLoadcell.fActWeight	- fTareWeight;
+		fbTimer(IN := TRUE);
+		fTime := TIME_TO_REAL(fbTimer.ET)/1000;
+		fFlow_Worm				:= fWeight_Worm/((TIME_TO_REAL(fbTimer.ET)+0.00001)/1000);
+		IF fWeight_Worm	>= fChangemode_val1 THEN
+			nState				:= 7;
+		END_IF
+	7:// Slow 2 Weight
+		iCylinder.Retract();
+		iInverter.fTargetSpeed	:= fSlowWeight1;
+		fbTimer_Alarm(IN := TRUE);
+		iInverter.Start();
+		fWeight_Worm			:= iLoadcell.fActWeight	- fTareWeight;
+		fbTimer(IN := TRUE);
+		fTime := TIME_TO_REAL(fbTimer.ET)/1000;
+		fFlow_Worm				:= fWeight_Worm/((TIME_TO_REAL(fbTimer.ET)+0.00001)/1000);
+		IF fWeight_Worm	>= fLowToleWeight*fPerStop_Worm/100 THEN
+			nState				:= 8;
+		END_IF
+	8:// Wait Stable Weight
+		iInverter.Stop();
+		iCylinder.Extend();
+		fbTimer(IN := TRUE);
+		fTime := TIME_TO_REAL(fbTimer.ET)/1000;
+		fWeight_Worm			:= iLoadcell.fActWeight	- fTareWeight;
+		fbTimer1(IN := TRUE, PT := REAL_TO_TIME(fTimer_Check_Worm)*1000);
+		IF fbTimer1.Q THEN
+			nState				:= 9;
+		END_IF
+	9:// Check Done
+		fbTimer1(IN := FALSE);
+		fbTimer_Alarm(IN := TRUE);
+		fWeight_Worm			:= iLoadcell.fActWeight	- fTareWeight;
+		IF fWeight_Worm < fLowToleWeight THEN
+			nState				:= 10;
+		ELSIF fWeight_Worm >= fLowToleWeight AND fWeight_Worm <= fHighToleWeight THEN
+			nState				:= 11;
+		ELSIF fWeight_Worm > fHighToleWeight THEN
+			nState				:= 12;	
+		END_IF
+	10:// No Enough Weight
+		fbTimer_Alarm(IN := TRUE);
+		iCylinder.Retract();
+		fWeight_Worm			:= iLoadcell.fActWeight - fTareWeight;
+		iInverter.fTargetSpeed	:= fSlowWeight1;
+		iInverter.Start();
+		IF fWeight_Worm	>= fLowToleWeight THEN
+			nState				:= 8;
+		END_IF
+	11:// Enough Weight
+		iCylinder.Extend();
+		fbTimer_Check(IN := TRUE);
+		fActDelta_Worm			:= (fWeight_Worm - fDerisedWeight_Worm)/fDerisedWeight_Worm*100;
+		fWeight_Worm			:= iLoadcell.fActWeight - fTareWeight;
+		fweight_iot				:= iLoadcell.fActWeight - fTareWeight;
+		Time_start				:= timestart;
+		bStatus_Worm			:= TRUE;
+		status					:= 'Pass';
+		fbTimer(IN := FALSE);
+		fbTimer_Alarm(IN := FALSE);
+		bDone					:= TRUE;
+		p						:= p + 1;
+		nState					:= 13;
+	12:// Overweight
+		iCylinder.Extend();
+		fbTimer_Check(IN := TRUE);
+		fActDelta_Worm			:= (fWeight_Worm - fDerisedWeight_Worm)/fDerisedWeight_Worm*100;
+		fWeight_Worm			:= iLoadcell.fActWeight - fTareWeight;
+		fweight_iot				:= iLoadcell.fActWeight - fTareWeight;
+		Time_start				:= timestart;
+		bStatus_Worm			:= FALSE;
+		status					:= 'Fail';
+		fbTimer_Alarm(IN := FALSE);
+		fbTimer_Error(IN := FALSE);
+		fbTimer(IN := FALSE);
+		bDone					:= TRUE;
+		p						:= p + 1;
+		IF nLine = 1 THEN
+			//F_SetWarning(106);
+			nState				:= 13;
+		ELSIF nLine = 2 THEN
+			//F_SetWarning(113);
+			nState				:= 13;
+		END_IF
+	13:// Done
+		Time_Stop	:= SYSTEMTIME_TO_DT(GetLocalSystemTime.systemTime);
+		bStatus					:= TRUE;
+		fbTimer_Check(IN := FALSE);
+		IF p > 5 THEN
+			p := 5;
+		END_IF
+		IF bDone THEN
+			IF p <> 1 THEN
+				FOR k := p TO 2 BY -1 DO
+					fProductLog[k] := fProductLog[k-1];
+				END_FOR
+			END_IF
+			fProductLog[1]	:= fWeight_Worm;
+			bDone 			:= FALSE;
+		END_IF
+		Auto					:= TRUE;
+		nState					:= 14;
+	14:
+		nState					:= 0;
+END_CASE
+
+//Check Timer WormWeight
+CASE nStateWrn OF
+	0:
+		IF fbTimer_Alarm.Q THEN
+			IF nLine = 1 THEN
+				F_SetWarning(105,nLine := 1);
+			ELSIF nLine = 2 THEN
+				F_SetWarning(112,nLine := 2);
+			END_IF
+			nStateWrn := 1;
+		END_IF
+	1: 
+		IF NOT fbTimer_Alarm.Q THEN
+			IF nLine = 1 THEN
+					bWrn := FALSE;
+			ELSIF nLine = 2 THEN
+					bWrn2 := FALSE;
+			END_IF
+			bSirens := FALSE;
+			nStateWrn := 0;
+		END_IF
+		fbTimer_Error(IN := TRUE, PT := REAL_TO_TIME(fTimer_Error_Worm*1000));
+		IF fbTimer_Error.Q THEN
+			IF nLine = 1 THEN
+				F_SetError(77,nLine := 1);
+			ELSIF nLine = 2 THEN
+				F_SetError(79,nLine := 2);
+			END_IF
+			fbTimer_Alarm(IN := FALSE);
+			nState := 12;
+			nStateWrn := 0;
+		END_IF
+END_CASE
+
+// Check Fault CupPresent
+IF nState > 2 AND nState < 99 THEN
+	IF bIsCupPresent THEN
+		IF nLine = 1 THEN
+			F_SetError(47,nLine := 1);
+			nState := 0;
+		ELSIF nLine = 2 THEN
+			F_SetError(48,nLine := 2);
+			nState := 0;
+		END_IF
+	END_IF
+END_IF
+
+// Write ProductLog
+]]></ST>
+      </Implementation>
+    </Method>
+    <Property Name="bIsCupPresent" Id="{12bdf6bb-f3c9-457a-ba19-05239c24f929}">
+      <Declaration><![CDATA[PROPERTY bIsCupPresent : BOOL]]></Declaration>
+      <Get Name="Get" Id="{c401f3a5-1c32-432b-92ac-51c5a00794e1}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[bIsCupPresent := bCupPresent;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Property Name="bIsError_Inverter" Id="{eb32a268-53c1-4e79-9e38-e173aaab0752}">
+      <Declaration><![CDATA[PROPERTY bIsError_Inverter : BOOL]]></Declaration>
+      <Get Name="Get" Id="{7912c06a-fcb4-4102-becb-48b6a016cdbb}">
+        <Declaration><![CDATA[VAR
+END_VAR
+]]></Declaration>
+        <Implementation>
+          <ST><![CDATA[bIsError_Inverter	:= bError_Inverter;]]></ST>
+        </Implementation>
+      </Get>
+    </Property>
+    <Method Name="Enable" Id="{7ad872be-0cf7-4de3-9252-492e133a14d7}">
+      <Declaration><![CDATA[METHOD Enable : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[fbTimer_Check(PT := REAL_TO_TIME(fTimer_Check_Cylinder));
+CASE nStateEnable OF
+	0: //int
+		Enable				:= FALSE;
+		fbTimer_Check(IN := FALSE);
+		nStateEnable 		:= 1;
+	1: // Cylinder Extend Block Worm
+		iLoadcell.NetMode();
+		iCylinder.Extend();
+		fbTimer_Check(IN := TRUE);
+		IF iCylinder.bIsExtend THEN
+			nStateEnable	:= 2;
+		ELSIF fbTimer_Check.Q THEN
+			nStateEnable	:= 3;
+		ELSIF bIsError_Inverter THEN
+			nStateEnable	:= 4;
+		END_IF
+	2: // Enable
+		fbTimer_Check(IN := FALSE);
+		Enable				:= TRUE;
+	3:// Error Cylinder
+		IF nLine = 1 THEN
+			F_SetError(8,nLine := 1);
+			nStateEnable	:= 99;
+		ELSIF nLine = 2 THEN
+			F_SetError(26,nLine := 2);
+			nStateEnable	:= 99;
+		END_IF
+	4:// Error Inverter
+		IF nLine = 1 THEN
+			F_SetError(9,nLine := 1);
+			nStateEnable	:= 99;
+		ELSIF nLine = 2 THEN
+			F_SetError(27,nLine := 2);
+			nStateEnable	:= 99;
+		END_IF
+	99:// Error
+		iInverter.fTargetSpeed	:= 0;
+		iInverter.Stop();
+END_CASE
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Init" Id="{f23bbeb6-3e71-49d0-9f10-08f0e0fc8a55}">
+      <Declaration><![CDATA[METHOD Init : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[nState := 0;
+nStateEnable := 0;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Manual" Id="{461f927a-f7e1-49bd-9b0e-00a257a24dad}">
+      <Declaration><![CDATA[METHOD Manual : BOOL
+VAR_INPUT
+	bUp_vibrating_funnel			: BOOL;
+	bDown_vibrating_funnel			: BOOL;
+	bZero_Loadcell_Worm				: BOOL;
+	bCylinder_Block_Worm_Extend		: BOOL;
+	bCylinder_Block_Worm_Retract	: BOOL;
+	bMotor_vibrating_funnel			: BOOL;	
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF bUp_vibrating_funnel THEN
+	fSpeed_vibrating_funnel_Manual	:= fSpeed_vibrating_funnel_Manual + 0.1;
+END_IF
+
+IF bDown_vibrating_funnel THEN
+	fSpeed_vibrating_funnel_Manual	:= fSpeed_vibrating_funnel_Manual - 0.1;
+END_IF
+
+IF bMotor_vibrating_funnel THEN
+	iInverter.Start();
+ELSE
+	iInverter.Stop();
+END_IF
+
+iInverter.fTargetSpeed	:= fSpeed_vibrating_funnel_Manual;
+
+IF bZero_Loadcell_Worm THEN
+	iLoadcell.Set_Zero();
+ELSE
+	iLoadcell.NetMode();
+END_IF
+
+fWeight_Worm := iLoadcell.fActWeight;
+
+IF bCylinder_Block_Worm_Extend THEN
+	iCylinder.Extend();
+	IF NOT iCylinder.bIsRetract THEN
+			fbTimer_Check(IN := FALSE);
+		ELSE
+			fbTimer_Check(IN := TRUE,PT	:= REAL_TO_TIME(fTimer_Check_Cylinder)*1000);
+			IF fbTimer_Check.Q THEN
+				IF nLine = 1 THEN
+					F_SetError(73,nLine := 1);
+				ELSIF nLine = 2 THEN
+					F_SetError(74,nLine := 2);
+				END_IF
+			END_IF
+	END_IF
+END_IF
+
+IF bCylinder_Block_Worm_Retract THEN
+	iCylinder.Retract();
+		IF iCylinder.bIsRetract THEN
+			fbTimer_Check(IN := FALSE);
+		ELSE
+			fbTimer_Check(IN := TRUE,PT	:= REAL_TO_TIME(fTimer_Check_Cylinder)*1000);
+			IF fbTimer_Check.Q THEN
+				IF nLine = 1 THEN
+					F_SetError(8,nLine := 1);
+				ELSIF nLine = 2 THEN
+					F_SetError(30,nLine := 2);
+				END_IF
+			END_IF
+	END_IF
+END_IF
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Reset" Id="{f6c5b864-f5d5-402f-bf36-60c61adbfd43}">
+      <Declaration><![CDATA[METHOD Reset : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[iInverter.Reset();
+iCylinder.Extend();
+fbTimer(IN := FALSE);			
+fbTimer1(IN	:= FALSE);
+fbTimer_Alarm(IN := FALSE);
+fbTimer_Check(IN := FALSE);
+fbTimer_Err(IN := FALSE);
+fbTimer_Error(IN := FALSE);]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="SetZero" Id="{24488c54-b3db-4ad8-b2e7-b1a9af1a1c14}">
+      <Declaration><![CDATA[METHOD SetZero : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[iLoadcell.Set_Zero();]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Stop" Id="{ab07d3e7-f2ae-4330-b053-b50bc7e357c1}">
+      <Declaration><![CDATA[METHOD Stop : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[iInverter.Stop();
+iCylinder.Extend();
+fbTimer(IN := FALSE);			
+fbTimer1(IN	:= FALSE);
+fbTimer_Alarm(IN := FALSE);
+fbTimer_Check(IN := FALSE);
+fbTimer_Err(IN := FALSE);
+fbTimer_Error(IN := FALSE);
+]]></ST>
+      </Implementation>
+    </Method>
+    <LineIds Name="FB_WormWeightModule">
+      <LineId Id="31" Count="2" />
+      <LineId Id="37" Count="3" />
+      <LineId Id="34" Count="2" />
+      <LineId Id="41" Count="3" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="110" Count="6" />
+      <LineId Id="109" Count="0" />
+      <LineId Id="186" Count="6" />
+      <LineId Id="185" Count="0" />
+      <LineId Id="194" Count="6" />
+      <LineId Id="193" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_WormWeightModule.Auto">
+      <LineId Id="422" Count="0" />
+      <LineId Id="167" Count="0" />
+      <LineId Id="172" Count="0" />
+      <LineId Id="253" Count="0" />
+      <LineId Id="5" Count="1" />
+      <LineId Id="8" Count="0" />
+      <LineId Id="12" Count="0" />
+      <LineId Id="171" Count="0" />
+      <LineId Id="70" Count="0" />
+      <LineId Id="254" Count="0" />
+      <LineId Id="545" Count="0" />
+      <LineId Id="184" Count="0" />
+      <LineId Id="11" Count="0" />
+      <LineId Id="174" Count="6" />
+      <LineId Id="173" Count="0" />
+      <LineId Id="506" Count="0" />
+      <LineId Id="471" Count="0" />
+      <LineId Id="406" Count="0" />
+      <LineId Id="182" Count="0" />
+      <LineId Id="13" Count="0" />
+      <LineId Id="211" Count="0" />
+      <LineId Id="22" Count="0" />
+      <LineId Id="168" Count="0" />
+      <LineId Id="29" Count="2" />
+      <LineId Id="24" Count="0" />
+      <LineId Id="32" Count="0" />
+      <LineId Id="420" Count="0" />
+      <LineId Id="33" Count="1" />
+      <LineId Id="36" Count="2" />
+      <LineId Id="40" Count="0" />
+      <LineId Id="252" Count="0" />
+      <LineId Id="43" Count="1" />
+      <LineId Id="413" Count="0" />
+      <LineId Id="487" Count="2" />
+      <LineId Id="495" Count="1" />
+      <LineId Id="499" Count="3" />
+      <LineId Id="497" Count="1" />
+      <LineId Id="485" Count="0" />
+      <LineId Id="257" Count="0" />
+      <LineId Id="52" Count="0" />
+      <LineId Id="45" Count="0" />
+      <LineId Id="59" Count="0" />
+      <LineId Id="50" Count="0" />
+      <LineId Id="165" Count="0" />
+      <LineId Id="409" Count="0" />
+      <LineId Id="53" Count="0" />
+      <LineId Id="55" Count="1" />
+      <LineId Id="54" Count="0" />
+      <LineId Id="57" Count="0" />
+      <LineId Id="414" Count="0" />
+      <LineId Id="60" Count="0" />
+      <LineId Id="351" Count="0" />
+      <LineId Id="349" Count="0" />
+      <LineId Id="61" Count="0" />
+      <LineId Id="364" Count="0" />
+      <LineId Id="408" Count="0" />
+      <LineId Id="62" Count="0" />
+      <LineId Id="66" Count="2" />
+      <LineId Id="99" Count="0" />
+      <LineId Id="415" Count="0" />
+      <LineId Id="102" Count="0" />
+      <LineId Id="352" Count="0" />
+      <LineId Id="350" Count="0" />
+      <LineId Id="103" Count="0" />
+      <LineId Id="365" Count="0" />
+      <LineId Id="407" Count="0" />
+      <LineId Id="101" Count="0" />
+      <LineId Id="100" Count="0" />
+      <LineId Id="104" Count="1" />
+      <LineId Id="88" Count="0" />
+      <LineId Id="427" Count="0" />
+      <LineId Id="481" Count="0" />
+      <LineId Id="428" Count="1" />
+      <LineId Id="95" Count="0" />
+      <LineId Id="91" Count="3" />
+      <LineId Id="69" Count="0" />
+      <LineId Id="112" Count="0" />
+      <LineId Id="404" Count="0" />
+      <LineId Id="72" Count="0" />
+      <LineId Id="71" Count="0" />
+      <LineId Id="74" Count="0" />
+      <LineId Id="76" Count="0" />
+      <LineId Id="78" Count="2" />
+      <LineId Id="75" Count="0" />
+      <LineId Id="51" Count="0" />
+      <LineId Id="353" Count="0" />
+      <LineId Id="416" Count="0" />
+      <LineId Id="83" Count="0" />
+      <LineId Id="97" Count="1" />
+      <LineId Id="84" Count="0" />
+      <LineId Id="86" Count="1" />
+      <LineId Id="82" Count="0" />
+      <LineId Id="163" Count="0" />
+      <LineId Id="262" Count="0" />
+      <LineId Id="106" Count="0" />
+      <LineId Id="512" Count="0" />
+      <LineId Id="562" Count="0" />
+      <LineId Id="564" Count="0" />
+      <LineId Id="108" Count="0" />
+      <LineId Id="507" Count="0" />
+      <LineId Id="109" Count="0" />
+      <LineId Id="151" Count="0" />
+      <LineId Id="229" Count="1" />
+      <LineId Id="260" Count="0" />
+      <LineId Id="120" Count="0" />
+      <LineId Id="164" Count="0" />
+      <LineId Id="265" Count="0" />
+      <LineId Id="121" Count="0" />
+      <LineId Id="513" Count="0" />
+      <LineId Id="563" Count="0" />
+      <LineId Id="565" Count="0" />
+      <LineId Id="122" Count="0" />
+      <LineId Id="508" Count="0" />
+      <LineId Id="123" Count="0" />
+      <LineId Id="544" Count="0" />
+      <LineId Id="152" Count="0" />
+      <LineId Id="204" Count="1" />
+      <LineId Id="232" Count="1" />
+      <LineId Id="238" Count="0" />
+      <LineId Id="235" Count="2" />
+      <LineId Id="234" Count="0" />
+      <LineId Id="158" Count="0" />
+      <LineId Id="421" Count="0" />
+      <LineId Id="472" Count="0" />
+      <LineId Id="264" Count="0" />
+      <LineId Id="557" Count="1" />
+      <LineId Id="556" Count="0" />
+      <LineId Id="518" Count="0" />
+      <LineId Id="522" Count="6" />
+      <LineId Id="517" Count="0" />
+      <LineId Id="529" Count="0" />
+      <LineId Id="161" Count="0" />
+      <LineId Id="476" Count="1" />
+      <LineId Id="7" Count="0" />
+      <LineId Id="248" Count="0" />
+      <LineId Id="219" Count="0" />
+      <LineId Id="444" Count="1" />
+      <LineId Id="448" Count="5" />
+      <LineId Id="455" Count="0" />
+      <LineId Id="454" Count="0" />
+      <LineId Id="447" Count="0" />
+      <LineId Id="464" Count="0" />
+      <LineId Id="459" Count="3" />
+      <LineId Id="458" Count="0" />
+      <LineId Id="456" Count="1" />
+      <LineId Id="465" Count="0" />
+      <LineId Id="536" Count="1" />
+      <LineId Id="540" Count="3" />
+      <LineId Id="538" Count="0" />
+      <LineId Id="550" Count="2" />
+      <LineId Id="539" Count="0" />
+      <LineId Id="446" Count="0" />
+      <LineId Id="189" Count="0" />
+      <LineId Id="322" Count="0" />
+      <LineId Id="321" Count="0" />
+      <LineId Id="323" Count="0" />
+      <LineId Id="325" Count="0" />
+      <LineId Id="331" Count="0" />
+      <LineId Id="469" Count="0" />
+      <LineId Id="327" Count="0" />
+      <LineId Id="329" Count="0" />
+      <LineId Id="470" Count="0" />
+      <LineId Id="328" Count="0" />
+      <LineId Id="326" Count="0" />
+      <LineId Id="324" Count="0" />
+      <LineId Id="377" Count="0" />
+      <LineId Id="247" Count="0" />
+      <LineId Id="530" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_WormWeightModule.bIsCupPresent.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_WormWeightModule.bIsError_Inverter.Get">
+      <LineId Id="2" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_WormWeightModule.Enable">
+      <LineId Id="23" Count="0" />
+      <LineId Id="10" Count="1" />
+      <LineId Id="13" Count="0" />
+      <LineId Id="15" Count="0" />
+      <LineId Id="17" Count="1" />
+      <LineId Id="29" Count="0" />
+      <LineId Id="19" Count="0" />
+      <LineId Id="21" Count="0" />
+      <LineId Id="20" Count="0" />
+      <LineId Id="24" Count="0" />
+      <LineId Id="26" Count="1" />
+      <LineId Id="39" Count="1" />
+      <LineId Id="25" Count="0" />
+      <LineId Id="16" Count="0" />
+      <LineId Id="49" Count="0" />
+      <LineId Id="28" Count="0" />
+      <LineId Id="30" Count="2" />
+      <LineId Id="34" Count="3" />
+      <LineId Id="33" Count="0" />
+      <LineId Id="41" Count="0" />
+      <LineId Id="43" Count="5" />
+      <LineId Id="42" Count="0" />
+      <LineId Id="38" Count="0" />
+      <LineId Id="50" Count="1" />
+      <LineId Id="12" Count="0" />
+      <LineId Id="6" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_WormWeightModule.Init">
+      <LineId Id="5" Count="1" />
+    </LineIds>
+    <LineIds Name="FB_WormWeightModule.Manual">
+      <LineId Id="5" Count="2" />
+      <LineId Id="10" Count="0" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="11" Count="1" />
+      <LineId Id="16" Count="0" />
+      <LineId Id="15" Count="0" />
+      <LineId Id="17" Count="0" />
+      <LineId Id="19" Count="1" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="112" Count="0" />
+      <LineId Id="111" Count="0" />
+      <LineId Id="22" Count="0" />
+      <LineId Id="21" Count="0" />
+      <LineId Id="23" Count="0" />
+      <LineId Id="25" Count="1" />
+      <LineId Id="24" Count="0" />
+      <LineId Id="124" Count="0" />
+      <LineId Id="29" Count="0" />
+      <LineId Id="123" Count="0" />
+      <LineId Id="27" Count="0" />
+      <LineId Id="30" Count="0" />
+      <LineId Id="225" Count="10" />
+      <LineId Id="224" Count="0" />
+      <LineId Id="31" Count="0" />
+      <LineId Id="49" Count="0" />
+      <LineId Id="43" Count="0" />
+      <LineId Id="66" Count="0" />
+      <LineId Id="202" Count="0" />
+      <LineId Id="210" Count="2" />
+      <LineId Id="215" Count="1" />
+      <LineId Id="221" Count="2" />
+      <LineId Id="220" Count="0" />
+      <LineId Id="214" Count="0" />
+      <LineId Id="213" Count="0" />
+      <LineId Id="42" Count="0" />
+      <LineId Id="135" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_WormWeightModule.Reset">
+      <LineId Id="6" Count="0" />
+      <LineId Id="24" Count="0" />
+      <LineId Id="18" Count="2" />
+      <LineId Id="14" Count="0" />
+      <LineId Id="28" Count="0" />
+      <LineId Id="32" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_WormWeightModule.SetZero">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+    <LineIds Name="FB_WormWeightModule.Stop">
+      <LineId Id="8" Count="0" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="10" Count="2" />
+      <LineId Id="9" Count="0" />
+      <LineId Id="14" Count="0" />
+      <LineId Id="22" Count="1" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
