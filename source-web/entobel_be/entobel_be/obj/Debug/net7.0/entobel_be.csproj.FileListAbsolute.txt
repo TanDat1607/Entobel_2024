@@ -1,0 +1,146 @@
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\bin\Debug\net7.0\appsettings.Development.json
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\bin\Debug\net7.0\appsettings.json
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\bin\Debug\net7.0\entobel_be.exe
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\bin\Debug\net7.0\Logs\log.txt
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\bin\Debug\net7.0\Settings\netid.txt
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\bin\Debug\net7.0\Settings\port.txt
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\bin\Debug\net7.0\entobel_be.deps.json
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\bin\Debug\net7.0\entobel_be.runtimeconfig.json
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\bin\Debug\net7.0\entobel_be.dll
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\bin\Debug\net7.0\entobel_be.pdb
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\bin\Debug\net7.0\BCrypt.Net-Next.dll
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\bin\Debug\net7.0\TwinCAT.Ads.dll
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\bin\Debug\net7.0\TwinCAT.Ads.Abstractions.dll
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\bin\Debug\net7.0\TwinCAT.Ads.Server.dll
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\bin\Debug\net7.0\CsvHelper.dll
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\bin\Debug\net7.0\DnsClient.dll
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\bin\Debug\net7.0\MailKit.dll
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\bin\Debug\net7.0\Microsoft.IdentityModel.Abstractions.dll
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\bin\Debug\net7.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\bin\Debug\net7.0\Microsoft.IdentityModel.Logging.dll
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\bin\Debug\net7.0\Microsoft.Win32.SystemEvents.dll
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\bin\Debug\net7.0\MimeKit.dll
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\bin\Debug\net7.0\MongoDB.Bson.dll
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\bin\Debug\net7.0\MongoDB.Driver.dll
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\bin\Debug\net7.0\MongoDB.Driver.Core.dll
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\bin\Debug\net7.0\MongoDB.Libmongocrypt.dll
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\bin\Debug\net7.0\BouncyCastle.Crypto.dll
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\bin\Debug\net7.0\SharpCompress.dll
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\bin\Debug\net7.0\System.ComponentModel.Composition.dll
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\bin\Debug\net7.0\System.Configuration.ConfigurationManager.dll
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\bin\Debug\net7.0\System.Drawing.Common.dll
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\bin\Debug\net7.0\System.Reactive.dll
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\bin\Debug\net7.0\System.Security.Cryptography.ProtectedData.dll
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\bin\Debug\net7.0\System.Security.Permissions.dll
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\bin\Debug\net7.0\System.Windows.Extensions.dll
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\bin\Debug\net7.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\bin\Debug\net7.0\runtimes\linux\native\libsnappy64.so
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\bin\Debug\net7.0\runtimes\linux\native\libzstd.so
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\bin\Debug\net7.0\runtimes\osx\native\libsnappy64.dylib
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\bin\Debug\net7.0\runtimes\osx\native\libzstd.dylib
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\bin\Debug\net7.0\runtimes\win\native\libzstd.dll
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\bin\Debug\net7.0\runtimes\win\native\snappy32.dll
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\bin\Debug\net7.0\runtimes\win\native\snappy64.dll
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\bin\Debug\net7.0\runtimes\linux\native\libmongocrypt.so
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\bin\Debug\net7.0\runtimes\osx\native\libmongocrypt.dylib
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\bin\Debug\net7.0\runtimes\win\native\mongocrypt.dll
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\bin\Debug\net7.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\obj\Debug\net7.0\entobel_be.csproj.AssemblyReference.cache
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\obj\Debug\net7.0\Interop.TcEventLoggerAdsProxyLib.dll
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\obj\Debug\net7.0\entobel_be.csproj.ResolveComReference.cache
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\obj\Debug\net7.0\entobel_be.GeneratedMSBuildEditorConfig.editorconfig
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\obj\Debug\net7.0\entobel_be.AssemblyInfoInputs.cache
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\obj\Debug\net7.0\entobel_be.AssemblyInfo.cs
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\obj\Debug\net7.0\entobel_be.csproj.CoreCompileInputs.cache
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\obj\Debug\net7.0\staticwebassets\msbuild.entobel_be.Microsoft.AspNetCore.StaticWebAssets.props
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\obj\Debug\net7.0\staticwebassets\msbuild.build.entobel_be.props
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.entobel_be.props
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.entobel_be.props
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\obj\Debug\net7.0\staticwebassets.pack.json
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\obj\Debug\net7.0\staticwebassets.build.json
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\obj\Debug\net7.0\staticwebassets.development.json
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\obj\Debug\net7.0\scopedcss\bundle\entobel_be.styles.css
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\obj\Debug\net7.0\entobel_be.csproj.CopyComplete
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\obj\Debug\net7.0\entobel_be.dll
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\obj\Debug\net7.0\refint\entobel_be.dll
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\obj\Debug\net7.0\entobel_be.pdb
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\obj\Debug\net7.0\entobel_be.genruntimeconfig.cache
+D:\OneDrive - S4M Engineering Co. Ltd.,\01. Technical\05. Projects\2023\PRO_202308_Entobel_Larvae Weighing\source-plc\entobel_be\entobel_be\obj\Debug\net7.0\ref\entobel_be.dll
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\bin\Debug\net7.0\appsettings.Development.json
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\bin\Debug\net7.0\appsettings.json
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\bin\Debug\net7.0\entobel_be.exe
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\bin\Debug\net7.0\Logs\log.txt
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\bin\Debug\net7.0\Settings\netid.txt
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\bin\Debug\net7.0\Settings\port.txt
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\bin\Debug\net7.0\entobel_be.deps.json
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\bin\Debug\net7.0\entobel_be.runtimeconfig.json
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\bin\Debug\net7.0\entobel_be.dll
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\bin\Debug\net7.0\entobel_be.pdb
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\bin\Debug\net7.0\BCrypt.Net-Next.dll
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\bin\Debug\net7.0\TwinCAT.Ads.dll
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\bin\Debug\net7.0\TwinCAT.Ads.Abstractions.dll
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\bin\Debug\net7.0\TwinCAT.Ads.Server.dll
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\bin\Debug\net7.0\CsvHelper.dll
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\bin\Debug\net7.0\DnsClient.dll
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\bin\Debug\net7.0\MailKit.dll
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\bin\Debug\net7.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\bin\Debug\net7.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\bin\Debug\net7.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\bin\Debug\net7.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\bin\Debug\net7.0\MimeKit.dll
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\bin\Debug\net7.0\MongoDB.Bson.dll
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\bin\Debug\net7.0\MongoDB.Driver.dll
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\bin\Debug\net7.0\MongoDB.Driver.Core.dll
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\bin\Debug\net7.0\MongoDB.Libmongocrypt.dll
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\bin\Debug\net7.0\BouncyCastle.Crypto.dll
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\bin\Debug\net7.0\SharpCompress.dll
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\bin\Debug\net7.0\System.ComponentModel.Composition.dll
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\bin\Debug\net7.0\System.Configuration.ConfigurationManager.dll
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\bin\Debug\net7.0\System.Drawing.Common.dll
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\bin\Debug\net7.0\System.Reactive.dll
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\bin\Debug\net7.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\bin\Debug\net7.0\System.Security.Permissions.dll
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\bin\Debug\net7.0\System.Windows.Extensions.dll
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\bin\Debug\net7.0\runtimes\win\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\bin\Debug\net7.0\runtimes\linux\native\libsnappy64.so
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\bin\Debug\net7.0\runtimes\linux\native\libzstd.so
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\bin\Debug\net7.0\runtimes\osx\native\libsnappy64.dylib
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\bin\Debug\net7.0\runtimes\osx\native\libzstd.dylib
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\bin\Debug\net7.0\runtimes\win\native\libzstd.dll
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\bin\Debug\net7.0\runtimes\win\native\snappy32.dll
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\bin\Debug\net7.0\runtimes\win\native\snappy64.dll
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\bin\Debug\net7.0\runtimes\linux\native\libmongocrypt.so
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\bin\Debug\net7.0\runtimes\osx\native\libmongocrypt.dylib
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\bin\Debug\net7.0\runtimes\win\native\mongocrypt.dll
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\bin\Debug\net7.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\obj\Debug\net7.0\entobel_be.csproj.AssemblyReference.cache
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\obj\Debug\net7.0\Interop.TcEventLoggerAdsProxyLib.dll
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\obj\Debug\net7.0\entobel_be.csproj.ResolveComReference.cache
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\obj\Debug\net7.0\entobel_be.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\obj\Debug\net7.0\entobel_be.AssemblyInfoInputs.cache
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\obj\Debug\net7.0\entobel_be.AssemblyInfo.cs
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\obj\Debug\net7.0\entobel_be.csproj.CoreCompileInputs.cache
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\obj\Debug\net7.0\staticwebassets.build.json
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\obj\Debug\net7.0\staticwebassets.development.json
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\obj\Debug\net7.0\staticwebassets\msbuild.entobel_be.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\obj\Debug\net7.0\staticwebassets\msbuild.build.entobel_be.props
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.entobel_be.props
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.entobel_be.props
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\obj\Debug\net7.0\staticwebassets.pack.json
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\obj\Debug\net7.0\scopedcss\bundle\entobel_be.styles.css
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\obj\Debug\net7.0\entobel_be.csproj.Up2Date
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\obj\Debug\net7.0\entobel_be.dll
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\obj\Debug\net7.0\refint\entobel_be.dll
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\obj\Debug\net7.0\entobel_be.pdb
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\obj\Debug\net7.0\entobel_be.genruntimeconfig.cache
+C:\Users\DatNguyenTan\OneDrive - CONG TY TNHH KY THUAT S4M\Project\2023\Entobel_2023\source-web\entobel_be\entobel_be\obj\Debug\net7.0\ref\entobel_be.dll

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33723.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "entobel_be", "entobel_be\entobel_be.csproj", "{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}.Release|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {36714DAE-3116-4A2C-8C1F-23C48A25C8F6}
+	EndGlobalSection
+EndGlobal
