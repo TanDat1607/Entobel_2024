@@ -44,10 +44,6 @@ namespace entobel_be
             services.AddSingleton<BgService>();
             services.AddSingleton<IHostedService, BgService>(
                 serviceProvider => serviceProvider.GetService<BgService>());
-            //service2
-            services.AddSingleton<BgService2>();
-            services.AddSingleton<IHostedService, BgService2>(
-                serviceProvider => serviceProvider.GetService<BgService2>());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

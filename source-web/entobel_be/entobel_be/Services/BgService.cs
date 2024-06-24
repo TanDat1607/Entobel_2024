@@ -16,6 +16,8 @@ using System.Reactive;
 using static entobel_be.Services.ReportService;
 using SharpCompress.Common;
 using TwinCAT.Ads;
+using System.Diagnostics;
+using System.Reactive.Concurrency;
 
 namespace entobel_be.Services
 {
@@ -145,8 +147,10 @@ namespace entobel_be.Services
         // monitor cup data
         private async Task MonitorCups(int delay, CancellationToken token)
         {
+            Stopwatch stopwatch = new Stopwatch();
             while (!cts.IsCancellationRequested)
             {
+                stopwatch.Start();
                 //_adsService.AdsConnect(amsNetId, port);
                 //var x = (double)_adsService.AdsRead(_adsService.tcAdsClient, "GVL_IoT.fWeight_Food_line1", typeof(double));
                 //System.Diagnostics.Debug.WriteLine(x);
@@ -163,8 +167,8 @@ namespace entobel_be.Services
                     // monitor ads connection
                     MonitorAdsConnection(adsConnect);
                     // read eventlogger
-                    //events = new List<AdsEvent>();
-                    //events = _adsService.AdsReadEvents(20);
+                    events = new List<AdsEvent>();
+                    events = _adsService.AdsReadEvents(3);
                     // get live production data
                     var timenow = DateTime.UtcNow;
                     var cups = _dbService.ListCup(timenow.AddHours(-1), timenow);
@@ -337,6 +341,9 @@ namespace entobel_be.Services
                     }
                     // disconnect ADS
                     _adsService.AdsDisconnect();
+                    stopwatch.Stop();
+                    Trace.WriteLine("Time for FirstSection: " + stopwatch.ElapsedMilliseconds + " ms");
+                    stopwatch.Reset();
                 }
                 else
                 {
