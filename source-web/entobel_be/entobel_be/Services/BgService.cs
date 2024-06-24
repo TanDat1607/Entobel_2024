@@ -57,7 +57,7 @@ namespace entobel_be.Services
                     // ADS connection monitoring
                     //Task t0 = MonitorAdsConnection(5000, cts.Token);
                     // Cup Monitoring task
-                    Task t1 = MonitorCups(1000, cts.Token);
+                    Task t1 = MonitorCups(100, cts.Token);
                     // Report Monitoring task
                     Task t2 = MonitorReport(1000 * 30, cts.Token);
                     // FFT & RMS logging task
@@ -163,8 +163,8 @@ namespace entobel_be.Services
                     // monitor ads connection
                     MonitorAdsConnection(adsConnect);
                     // read eventlogger
-                    events = new List<AdsEvent>();
-                    events = _adsService.AdsReadEvents(20);
+                    //events = new List<AdsEvent>();
+                    //events = _adsService.AdsReadEvents(20);
                     // get live production data
                     var timenow = DateTime.UtcNow;
                     var cups = _dbService.ListCup(timenow.AddHours(-1), timenow);

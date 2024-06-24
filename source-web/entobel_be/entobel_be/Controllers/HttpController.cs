@@ -23,8 +23,9 @@ namespace entobel_be.Controllers
         private readonly ReportService _rpService;
         private readonly MailService _maService;
         private readonly BgService _bgService;
+        private readonly BgService _bgService2;
 
-        public HttpController(UserService userService, DbService dbService, AdsService adsService, ReportService rpService, MailService maService, BgService bgService)
+        public HttpController(UserService userService, DbService dbService, AdsService adsService, ReportService rpService, MailService maService, BgService bgService, BgService bgService2)
         {
             _userService = userService;
             _dbService = dbService;
@@ -32,6 +33,7 @@ namespace entobel_be.Controllers
             _rpService = rpService;
             _maService = maService;
             _bgService = bgService;
+            _bgService2 = bgService2;
         }
 
         // ----- READ COMMAND -----
@@ -215,7 +217,7 @@ namespace entobel_be.Controllers
             //_adsService.AdsConnect(_bgService.amsNetId, _bgService.port);
             //var results = _adsService.AdsReadEvents(10);
             //_adsService.AdsDisconnect();
-            return _bgService.events;
+            return _bgService2.events;
         }
             
 
