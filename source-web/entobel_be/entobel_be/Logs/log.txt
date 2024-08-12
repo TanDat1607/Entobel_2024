@@ -23,3 +23,773 @@
 16/09/2023 15:01:54: { "_id" : null, "station" : 1, "user" : "", "type" : "Larvae", "timestamp" : ISODate("2023-01-01T00:01:00Z"), "timeStart" : ISODate("2023-01-01T00:01:05Z"), "timeWeight" : 5.0, "weight" : 0.0, "weightCmd" : 0.0, "delta" : 0.0, "status" : false }
 16/09/2023 15:01:54: { "_id" : null, "station" : 2, "user" : "", "type" : "Food", "timestamp" : ISODate("2023-01-01T00:02:00Z"), "timeStart" : ISODate("2023-01-01T00:02:05Z"), "timeWeight" : 5.0, "weight" : 0.0, "weightCmd" : 0.0, "delta" : 0.0, "status" : false }
 16/09/2023 15:01:54: { "_id" : null, "station" : 2, "user" : "", "type" : "Larvae", "timestamp" : ISODate("2023-01-01T00:03:00Z"), "timeStart" : ISODate("2023-01-01T00:03:05Z"), "timeWeight" : 5.0, "weight" : 0.0, "weightCmd" : 0.0, "delta" : 0.0, "status" : false }
+01/07/2024 09:24:14: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:24:16: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:24:18: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:24:20: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:24:22: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:24:24: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:24:26: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:24:28: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:24:30: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:24:32: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:24:34: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:24:36: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:24:38: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:24:40: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:24:42: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:27:05: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:27:07: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:27:09: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:27:11: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:31:52: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:31:55: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:31:58: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:32:01: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:32:42: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:32:45: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:32:48: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:32:51: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:32:54: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:32:57: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:33:00: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:33:03: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:33:06: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:33:09: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:33:12: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:33:15: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:33:18: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:33:21: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:33:24: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:33:27: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:33:30: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:33:33: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:33:36: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:33:39: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:33:43: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:33:46: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:33:49: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:33:52: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:33:55: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:33:58: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:34:01: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:34:04: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:34:07: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:34:10: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:34:13: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:34:16: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:34:19: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:34:22: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:34:25: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:34:28: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:34:31: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:34:34: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:34:54: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:34:58: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:35:01: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:35:04: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:35:14: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:35:17: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:35:20: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:42:35: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:42:38: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:42:41: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:42:44: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:42:47: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:42:50: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:42:53: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:42:56: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:42:59: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:43:02: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:43:05: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:43:08: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:43:11: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:43:14: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:43:17: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:43:21: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:43:24: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:43:27: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:43:30: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:43:33: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:43:36: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:43:39: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:43:42: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:43:45: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:43:48: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:43:51: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:43:54: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:43:57: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:44:00: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:44:03: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:44:06: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:44:09: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:44:12: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:44:15: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:44:18: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:44:21: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:44:24: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:44:27: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:44:30: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:44:33: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:44:36: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:44:39: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:44:42: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:44:45: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:44:48: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:44:51: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:44:54: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:44:57: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:45:00: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:45:03: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:45:07: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:45:10: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:45:13: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:45:16: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:45:19: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:45:22: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:45:25: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:45:28: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:45:31: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:45:34: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:45:37: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:45:40: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:45:43: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:45:46: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:45:49: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:45:52: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:45:55: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:45:58: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:47:01: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:47:37: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:47:37: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:47:37: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:47:40: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:47:43: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:47:43: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:47:47: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:47:50: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:47:50: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:47:53: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:47:56: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:47:59: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:47:59: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:48:02: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:48:05: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:48:05: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:48:08: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:48:11: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:48:11: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:48:14: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:48:17: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:48:20: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:48:20: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:48:23: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:48:26: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:48:26: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:48:29: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:48:32: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:48:32: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:48:35: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:48:38: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:48:38: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:48:41: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:48:44: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:48:47: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:48:47: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:48:50: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:48:53: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:48:53: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:48:56: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:48:59: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:48:59: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:49:02: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:49:05: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:49:08: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:49:08: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:49:11: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:49:14: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:49:14: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:49:17: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:49:20: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:49:20: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:49:23: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:49:29: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:49:29: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:49:29: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:49:32: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:49:35: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:49:35: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:49:38: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:49:41: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:49:41: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:49:44: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:49:47: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:49:47: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:49:50: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:49:53: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:49:56: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:49:56: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:49:59: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:50:02: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:50:02: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:50:05: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:50:08: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:50:08: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:50:11: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:50:14: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:50:17: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:50:17: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:50:20: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:50:23: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:50:23: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:50:26: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:50:29: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:50:29: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:50:32: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:50:35: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:50:35: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:50:38: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:50:41: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:50:44: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:50:44: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:50:47: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:50:50: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:50:50: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:50:53: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:50:56: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:50:56: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:50:59: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:51:02: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:51:05: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:51:06: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:51:09: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:51:12: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:51:12: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:51:15: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:51:18: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:51:18: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:51:21: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:51:24: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:51:27: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:51:27: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:51:30: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:51:33: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:51:33: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:51:36: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:51:39: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:51:39: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:51:42: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:51:45: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:51:45: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:51:48: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:51:51: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:51:54: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:51:54: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:51:57: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:52:00: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:52:00: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:52:03: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:52:06: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:52:06: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:52:09: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:52:12: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:52:15: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:52:15: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:52:18: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:52:21: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:52:21: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:52:24: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:52:27: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:52:27: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:52:30: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 09:52:33: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 10:02:59: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 10:02:59: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 10:02:59: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 10:02:59: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 10:02:59: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 10:02:59: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 10:02:59: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 10:02:59: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 10:02:59: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 10:02:59: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 10:02:59: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 10:02:59: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 10:02:59: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 10:03:02: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 10:03:05: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 10:03:05: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 10:03:08: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 10:03:11: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 10:03:11: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 10:03:14: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 10:03:17: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 10:03:17: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 10:03:20: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 10:03:23: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 10:03:26: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 10:03:26: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 10:03:29: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 10:03:32: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 10:03:32: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 10:03:35: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 10:03:38: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 10:03:38: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 10:03:41: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 10:03:44: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 10:03:47: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:36:13: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:36:13: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:36:16: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:36:47: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:36:47: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:36:47: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:36:47: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:36:47: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:36:47: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:36:47: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:36:47: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:36:47: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:36:47: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:36:47: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:36:47: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:36:47: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:36:47: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:36:47: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:36:50: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:36:53: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:36:53: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:36:56: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:36:59: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:36:59: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:37:02: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:37:05: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:37:05: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:37:08: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:37:14: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:37:14: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:37:14: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:37:17: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:37:20: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:37:20: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:37:23: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:37:26: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:37:26: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:37:29: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:37:32: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:37:32: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:37:35: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:37:38: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:37:41: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:37:44: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:37:44: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:37:47: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:37:50: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:37:50: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:37:53: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:37:56: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:37:59: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:37:59: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:38:02: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:38:05: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:38:05: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:38:08: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:38:11: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:38:11: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:38:14: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:38:21: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:38:21: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:38:21: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:38:24: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:38:27: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:38:27: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:38:30: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:38:33: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:38:33: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:38:36: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:38:39: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:38:39: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:38:42: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:38:45: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:38:48: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:38:48: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:38:51: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:38:54: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:38:54: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:38:57: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:39:00: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:39:00: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:39:03: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:39:09: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:39:09: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:39:09: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:39:12: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:39:15: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:39:15: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:39:18: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:39:21: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:39:21: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:39:24: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:39:27: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:39:27: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:39:30: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:39:33: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:39:36: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:39:36: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:39:39: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:39:42: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:39:42: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:39:45: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:39:48: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:39:48: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:39:51: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:39:54: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:39:57: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:39:57: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:39:57: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:40:00: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:40:03: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:40:03: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:40:06: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:40:09: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:40:09: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:40:12: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:40:15: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:40:18: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:40:21: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:40:21: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:40:24: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:40:27: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:40:27: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:40:30: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:40:33: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:40:33: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:40:36: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:40:39: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:40:42: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:40:42: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:40:45: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:40:48: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:40:48: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:40:51: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:40:54: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:40:54: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:40:57: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:41:00: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:41:00: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:41:03: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:41:07: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:41:10: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:41:10: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:41:13: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:41:16: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:41:16: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:41:19: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:41:22: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:41:22: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:41:25: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:41:28: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:41:31: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:41:31: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:41:34: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:41:37: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:41:37: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:41:40: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:41:43: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:41:43: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:41:46: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:41:49: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:41:49: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:41:52: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:41:55: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:41:58: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:41:58: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:42:01: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:42:04: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:42:04: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:42:07: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:42:10: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:42:10: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:42:13: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:42:16: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:42:19: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:42:19: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:42:22: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:42:25: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:42:25: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:42:28: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:42:31: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:42:31: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:42:34: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:42:37: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:42:37: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:42:40: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:42:43: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:42:46: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:42:46: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:42:49: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:42:52: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:42:52: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:42:55: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:42:58: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:42:58: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:43:01: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:43:04: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:43:07: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:43:07: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:43:10: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:43:13: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:43:13: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:43:19: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:43:22: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:43:22: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:43:25: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:43:28: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:43:28: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:43:31: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:43:34: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:43:34: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:43:38: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:43:41: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:43:41: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:43:44: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:43:47: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:43:50: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:43:50: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:43:53: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:43:56: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:43:56: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:43:59: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:44:02: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:44:02: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:44:05: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:44:08: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:44:11: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:44:11: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:44:14: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:44:17: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:44:17: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:44:20: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:44:23: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:44:23: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:44:26: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:44:29: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:44:29: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:44:32: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:44:35: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:44:38: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:44:38: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:44:41: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:44:44: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:44:44: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:44:47: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:44:50: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:44:50: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:44:53: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:44:56: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:44:59: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:44:59: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:45:02: { "status" : "Run", "weight" : 0.0, "capacity" : 0, "user" : "tuan" }
+01/07/2024 11:56:28: { "_id" : ObjectId("668236fb1c5ae7d17152de18"), "station" : 1, "user" : "buong", "type" : "Food", "timestamp" : ISODate("2024-06-27T04:13:30Z"), "timeStart" : ISODate("2024-06-27T04:13:00Z"), "timeWeight" : 30.0, "weight" : 15.0, "weightCmd" : 17.0, "delta" : 5.0, "deltaCmd" : 25.0, "status" : "pass" }
+01/07/2024 11:56:28: { "_id" : ObjectId("668236fc1c5ae7d17152de19"), "station" : 1, "user" : "buong", "type" : "Food", "timestamp" : ISODate("2024-06-27T04:13:30Z"), "timeStart" : ISODate("2024-06-27T04:13:00Z"), "timeWeight" : 30.0, "weight" : 15.0, "weightCmd" : 17.0, "delta" : 5.0, "deltaCmd" : 25.0, "status" : "pass" }
+01/07/2024 11:56:28: { "_id" : ObjectId("668236fc1c5ae7d17152de1a"), "station" : 1, "user" : "tuan", "type" : "Food", "timestamp" : ISODate("1969-12-31T17:00:00Z"), "timeStart" : ISODate("1969-12-31T17:00:00Z"), "timeWeight" : 5.0, "weight" : 15.0, "weightCmd" : 17.0, "delta" : 5.0, "deltaCmd" : 25.0, "status" : "Run" }
+01/07/2024 11:56:28: { "_id" : ObjectId("668236fc1c5ae7d17152de1b"), "station" : 1, "user" : "tuan", "type" : "Food", "timestamp" : ISODate("2024-07-01T04:43:06Z"), "timeStart" : ISODate("2024-07-01T04:43:01Z"), "timeWeight" : 5.0, "weight" : 15.0, "weightCmd" : 17.0, "delta" : 5.0, "deltaCmd" : 25.0, "status" : "Run" }
+01/07/2024 11:56:28: { "_id" : ObjectId("668236fc1c5ae7d17152de1c"), "station" : 1, "user" : "tuan", "type" : "Food", "timestamp" : ISODate("2024-07-01T04:43:06Z"), "timeStart" : ISODate("2024-07-01T04:43:01Z"), "timeWeight" : 5.0, "weight" : 15.0, "weightCmd" : 17.0, "delta" : 5.0, "deltaCmd" : 25.0, "status" : "Run" }
+01/07/2024 11:56:28: { "_id" : ObjectId("668236fc1c5ae7d17152de1d"), "station" : 1, "user" : "tuan", "type" : "Food", "timestamp" : ISODate("2024-07-01T04:43:06Z"), "timeStart" : ISODate("2024-07-01T04:43:01Z"), "timeWeight" : 5.0, "weight" : 15.0, "weightCmd" : 17.0, "delta" : 5.0, "deltaCmd" : 25.0, "status" : "Run" }
+01/07/2024 11:56:28: { "_id" : ObjectId("668236fc1c5ae7d17152de1e"), "station" : 1, "user" : "tuan", "type" : "Food", "timestamp" : ISODate("2024-07-01T04:43:06Z"), "timeStart" : ISODate("2024-07-01T04:43:01Z"), "timeWeight" : 5.0, "weight" : 15.0, "weightCmd" : 17.0, "delta" : 5.0, "deltaCmd" : 25.0, "status" : "Run" }
+01/07/2024 11:56:28: { "_id" : ObjectId("668236fc1c5ae7d17152de1f"), "station" : 1, "user" : "tuan", "type" : "Food", "timestamp" : ISODate("2024-07-01T04:43:06Z"), "timeStart" : ISODate("2024-07-01T04:43:01Z"), "timeWeight" : 5.0, "weight" : 15.0, "weightCmd" : 17.0, "delta" : 5.0, "deltaCmd" : 25.0, "status" : "Run" }
+01/07/2024 11:56:56: { "_id" : ObjectId("668237181c5ae7d17152de20"), "station" : 1, "user" : "tuan", "type" : "Food", "timestamp" : ISODate("2024-07-01T04:43:06Z"), "timeStart" : ISODate("2024-07-01T04:43:01Z"), "timeWeight" : 5.0, "weight" : 15.0, "weightCmd" : 17.0, "delta" : 5.0, "deltaCmd" : 25.0, "status" : "Run" }
+01/07/2024 11:57:20: { "_id" : ObjectId("668237301c5ae7d17152de21"), "station" : 1, "user" : "tuan", "type" : "Food", "timestamp" : ISODate("2024-07-01T04:43:06Z"), "timeStart" : ISODate("2024-07-01T04:43:01Z"), "timeWeight" : 5.0, "weight" : 15.0, "weightCmd" : 17.0, "delta" : 5.0, "deltaCmd" : 25.0, "status" : "Run" }
+01/07/2024 13:57:53: { "_id" : ObjectId("668253710d0687f9488d6948"), "station" : 1, "user" : "buong", "type" : "Food", "timestamp" : ISODate("2024-06-27T04:13:30Z"), "timeStart" : ISODate("2024-06-27T04:13:00Z"), "timeWeight" : 30.0, "weight" : 15.0, "weightCmd" : 17.0, "delta" : 5.0, "deltaCmd" : 25.0, "status" : "pass" }
+01/07/2024 13:57:53: { "_id" : ObjectId("668253710d0687f9488d6949"), "station" : 1, "user" : "buong", "type" : "Food", "timestamp" : ISODate("2024-06-27T04:13:30Z"), "timeStart" : ISODate("2024-06-27T04:13:00Z"), "timeWeight" : 30.0, "weight" : 15.0, "weightCmd" : 17.0, "delta" : 5.0, "deltaCmd" : 25.0, "status" : "pass" }
+01/07/2024 13:57:53: { "_id" : ObjectId("668253710d0687f9488d694a"), "station" : 1, "user" : "tuan", "type" : "Food", "timestamp" : ISODate("1969-12-31T17:00:00Z"), "timeStart" : ISODate("1969-12-31T17:00:00Z"), "timeWeight" : 5.0, "weight" : 15.0, "weightCmd" : 17.0, "delta" : 5.0, "deltaCmd" : 25.0, "status" : "Run" }
+01/07/2024 13:57:53: { "_id" : ObjectId("668253710d0687f9488d694b"), "station" : 1, "user" : "tuan", "type" : "Food", "timestamp" : ISODate("2024-07-01T04:43:06Z"), "timeStart" : ISODate("2024-07-01T04:43:01Z"), "timeWeight" : 5.0, "weight" : 15.0, "weightCmd" : 17.0, "delta" : 5.0, "deltaCmd" : 25.0, "status" : "Run" }
+01/07/2024 13:57:53: { "_id" : ObjectId("668253710d0687f9488d694c"), "station" : 1, "user" : "tuan", "type" : "Food", "timestamp" : ISODate("2024-07-01T04:43:06Z"), "timeStart" : ISODate("2024-07-01T04:43:01Z"), "timeWeight" : 5.0, "weight" : 15.0, "weightCmd" : 17.0, "delta" : 5.0, "deltaCmd" : 25.0, "status" : "Run" }
+01/07/2024 13:57:53: { "_id" : ObjectId("668253710d0687f9488d694d"), "station" : 1, "user" : "tuan", "type" : "Food", "timestamp" : ISODate("2024-07-01T04:43:06Z"), "timeStart" : ISODate("2024-07-01T04:43:01Z"), "timeWeight" : 5.0, "weight" : 15.0, "weightCmd" : 17.0, "delta" : 5.0, "deltaCmd" : 25.0, "status" : "Run" }
+01/07/2024 13:57:53: { "_id" : ObjectId("668253710d0687f9488d694e"), "station" : 1, "user" : "tuan", "type" : "Food", "timestamp" : ISODate("2024-07-01T04:43:06Z"), "timeStart" : ISODate("2024-07-01T04:43:01Z"), "timeWeight" : 5.0, "weight" : 15.0, "weightCmd" : 17.0, "delta" : 5.0, "deltaCmd" : 25.0, "status" : "Run" }
+01/07/2024 13:57:53: { "_id" : ObjectId("668253710d0687f9488d694f"), "station" : 1, "user" : "tuan", "type" : "Food", "timestamp" : ISODate("2024-07-01T04:43:06Z"), "timeStart" : ISODate("2024-07-01T04:43:01Z"), "timeWeight" : 5.0, "weight" : 15.0, "weightCmd" : 17.0, "delta" : 5.0, "deltaCmd" : 25.0, "status" : "Run" }
+01/07/2024 13:57:53: { "_id" : ObjectId("668253710d0687f9488d6950"), "station" : 1, "user" : "tuan", "type" : "Food", "timestamp" : ISODate("2024-07-01T04:43:06Z"), "timeStart" : ISODate("2024-07-01T04:43:01Z"), "timeWeight" : 5.0, "weight" : 15.0, "weightCmd" : 17.0, "delta" : 5.0, "deltaCmd" : 25.0, "status" : "Run" }
+01/07/2024 13:57:53: { "_id" : ObjectId("668253710d0687f9488d6951"), "station" : 1, "user" : "tuan", "type" : "Food", "timestamp" : ISODate("2024-07-01T04:43:06Z"), "timeStart" : ISODate("2024-07-01T04:43:01Z"), "timeWeight" : 5.0, "weight" : 15.0, "weightCmd" : 17.0, "delta" : 5.0, "deltaCmd" : 25.0, "status" : "Run" }
+01/07/2024 13:57:53: { "_id" : ObjectId("668253710d0687f9488d6952"), "station" : 1, "user" : "tuan", "type" : "Food", "timestamp" : ISODate("1969-12-31T17:00:00Z"), "timeStart" : ISODate("1969-12-31T17:00:00Z"), "timeWeight" : 5.0, "weight" : 15.0, "weightCmd" : 17.0, "delta" : 5.0, "deltaCmd" : 25.0, "status" : "Run" }
+01/07/2024 14:01:20: { "_id" : ObjectId("668254400d0687f9488d6953"), "station" : 1, "user" : "tuan", "type" : "Food", "timestamp" : ISODate("1969-12-31T17:00:00Z"), "timeStart" : ISODate("1969-12-31T17:00:00Z"), "timeWeight" : 5.0, "weight" : 15.0, "weightCmd" : 17.0, "delta" : 5.0, "deltaCmd" : 25.0, "status" : "Run" }
+01/07/2024 14:03:10: { "_id" : ObjectId("668254ae0d0687f9488d6954"), "station" : 1, "user" : "tuan", "type" : "Food", "timestamp" : ISODate("1969-12-31T17:00:00Z"), "timeStart" : ISODate("1969-12-31T17:00:00Z"), "timeWeight" : 5.0, "weight" : 15.0, "weightCmd" : 17.0, "delta" : 5.0, "deltaCmd" : 25.0, "status" : "Run" }
+01/07/2024 14:03:22: { "_id" : ObjectId("668254ba0d0687f9488d6955"), "station" : 1, "user" : "tuan", "type" : "Food", "timestamp" : ISODate("1969-12-31T17:00:00Z"), "timeStart" : ISODate("1969-12-31T17:00:00Z"), "timeWeight" : 5.0, "weight" : 15.0, "weightCmd" : 17.0, "delta" : 5.0, "deltaCmd" : 25.0, "status" : "Run" }
+01/07/2024 14:12:52: { "_id" : ObjectId("668256f4dc30623ee471a897"), "station" : 1, "user" : "buong", "type" : "Food", "timestamp" : ISODate("2024-06-27T04:13:30Z"), "timeStart" : ISODate("2024-06-27T04:13:00Z"), "timeWeight" : 30.0, "weight" : 15.0, "weightCmd" : 17.0, "delta" : 5.0, "deltaCmd" : 25.0, "status" : "pass" }
+01/07/2024 14:12:52: { "_id" : ObjectId("668256f4dc30623ee471a898"), "station" : 1, "user" : "buong", "type" : "Food", "timestamp" : ISODate("2024-06-27T04:13:30Z"), "timeStart" : ISODate("2024-06-27T04:13:00Z"), "timeWeight" : 30.0, "weight" : 15.0, "weightCmd" : 17.0, "delta" : 5.0, "deltaCmd" : 25.0, "status" : "pass" }
+01/07/2024 14:12:52: { "_id" : ObjectId("668256f4dc30623ee471a899"), "station" : 1, "user" : "tuan", "type" : "Food", "timestamp" : ISODate("1969-12-31T17:00:00Z"), "timeStart" : ISODate("1969-12-31T17:00:00Z"), "timeWeight" : 5.0, "weight" : 15.0, "weightCmd" : 17.0, "delta" : 5.0, "deltaCmd" : 25.0, "status" : "Run" }
+01/07/2024 14:12:52: { "_id" : ObjectId("668256f4dc30623ee471a89a"), "station" : 1, "user" : "tuan", "type" : "Food", "timestamp" : ISODate("2024-07-01T04:43:06Z"), "timeStart" : ISODate("2024-07-01T04:43:01Z"), "timeWeight" : 5.0, "weight" : 15.0, "weightCmd" : 17.0, "delta" : 5.0, "deltaCmd" : 25.0, "status" : "Run" }
+01/07/2024 14:12:52: { "_id" : ObjectId("668256f4dc30623ee471a89b"), "station" : 1, "user" : "tuan", "type" : "Food", "timestamp" : ISODate("2024-07-01T04:43:06Z"), "timeStart" : ISODate("2024-07-01T04:43:01Z"), "timeWeight" : 5.0, "weight" : 15.0, "weightCmd" : 17.0, "delta" : 5.0, "deltaCmd" : 25.0, "status" : "Run" }
+01/07/2024 14:12:52: { "_id" : ObjectId("668256f4dc30623ee471a89c"), "station" : 1, "user" : "tuan", "type" : "Food", "timestamp" : ISODate("2024-07-01T04:43:06Z"), "timeStart" : ISODate("2024-07-01T04:43:01Z"), "timeWeight" : 5.0, "weight" : 15.0, "weightCmd" : 17.0, "delta" : 5.0, "deltaCmd" : 25.0, "status" : "Run" }
+01/07/2024 14:12:52: { "_id" : ObjectId("668256f4dc30623ee471a89d"), "station" : 1, "user" : "tuan", "type" : "Food", "timestamp" : ISODate("2024-07-01T04:43:06Z"), "timeStart" : ISODate("2024-07-01T04:43:01Z"), "timeWeight" : 5.0, "weight" : 15.0, "weightCmd" : 17.0, "delta" : 5.0, "deltaCmd" : 25.0, "status" : "Run" }
+01/07/2024 14:12:52: { "_id" : ObjectId("668256f4dc30623ee471a89e"), "station" : 1, "user" : "tuan", "type" : "Food", "timestamp" : ISODate("2024-07-01T04:43:06Z"), "timeStart" : ISODate("2024-07-01T04:43:01Z"), "timeWeight" : 5.0, "weight" : 15.0, "weightCmd" : 17.0, "delta" : 5.0, "deltaCmd" : 25.0, "status" : "Run" }
+01/07/2024 14:12:52: { "_id" : ObjectId("668256f4dc30623ee471a89f"), "station" : 1, "user" : "tuan", "type" : "Food", "timestamp" : ISODate("2024-07-01T04:43:06Z"), "timeStart" : ISODate("2024-07-01T04:43:01Z"), "timeWeight" : 5.0, "weight" : 15.0, "weightCmd" : 17.0, "delta" : 5.0, "deltaCmd" : 25.0, "status" : "Run" }
+01/07/2024 14:12:52: { "_id" : ObjectId("668256f4dc30623ee471a8a0"), "station" : 1, "user" : "tuan", "type" : "Food", "timestamp" : ISODate("2024-07-01T04:43:06Z"), "timeStart" : ISODate("2024-07-01T04:43:01Z"), "timeWeight" : 5.0, "weight" : 15.0, "weightCmd" : 17.0, "delta" : 5.0, "deltaCmd" : 25.0, "status" : "Run" }
+01/07/2024 14:12:52: { "_id" : ObjectId("668256f4dc30623ee471a8a1"), "station" : 1, "user" : "tuan", "type" : "Food", "timestamp" : ISODate("1969-12-31T17:00:00Z"), "timeStart" : ISODate("1969-12-31T17:00:00Z"), "timeWeight" : 5.0, "weight" : 15.0, "weightCmd" : 17.0, "delta" : 5.0, "deltaCmd" : 25.0, "status" : "Run" }
+01/07/2024 14:12:52: { "_id" : ObjectId("668256f4dc30623ee471a8a2"), "station" : 1, "user" : "tuan", "type" : "Food", "timestamp" : ISODate("1969-12-31T17:00:00Z"), "timeStart" : ISODate("1969-12-31T17:00:00Z"), "timeWeight" : 5.0, "weight" : 15.0, "weightCmd" : 17.0, "delta" : 5.0, "deltaCmd" : 25.0, "status" : "Run" }
+01/07/2024 14:12:52: { "_id" : ObjectId("668256f4dc30623ee471a8a3"), "station" : 1, "user" : "tuan", "type" : "Food", "timestamp" : ISODate("1969-12-31T17:00:00Z"), "timeStart" : ISODate("1969-12-31T17:00:00Z"), "timeWeight" : 5.0, "weight" : 15.0, "weightCmd" : 17.0, "delta" : 5.0, "deltaCmd" : 25.0, "status" : "Run" }
+01/07/2024 14:12:52: { "_id" : ObjectId("668256f4dc30623ee471a8a4"), "station" : 1, "user" : "tuan", "type" : "Food", "timestamp" : ISODate("1969-12-31T17:00:00Z"), "timeStart" : ISODate("1969-12-31T17:00:00Z"), "timeWeight" : 5.0, "weight" : 15.0, "weightCmd" : 17.0, "delta" : 5.0, "deltaCmd" : 25.0, "status" : "Run" }
+01/07/2024 14:12:52: { "_id" : ObjectId("668256f4dc30623ee471a8a5"), "station" : 1, "user" : "tuan", "type" : "Food", "timestamp" : ISODate("1969-12-31T17:00:00Z"), "timeStart" : ISODate("1969-12-31T17:00:00Z"), "timeWeight" : 5.0, "weight" : 15.0, "weightCmd" : 17.0, "delta" : 5.0, "deltaCmd" : 25.0, "status" : "Run" }
+29/07/2024 12:13:04: Running
+29/07/2024 12:13:19: Running
+29/07/2024 12:13:34: Running
+29/07/2024 12:13:49: Running
+29/07/2024 12:14:54: Running
+29/07/2024 12:15:09: Running
+29/07/2024 12:15:24: Running
+29/07/2024 12:15:39: Running
+29/07/2024 12:15:39: add data
+29/07/2024 12:15:39: entobel_be.Models.ProductionData
+29/07/2024 12:15:54: Running
+29/07/2024 12:16:09: Running
+29/07/2024 12:16:24: Running
+29/07/2024 12:16:39: Running
+29/07/2024 12:16:40: add data
+29/07/2024 12:16:40: entobel_be.Models.ProductionData
+29/07/2024 12:16:55: Running
+29/07/2024 12:16:55: add data
+29/07/2024 12:16:55: entobel_be.Models.ProductionData
+29/07/2024 12:23:09: Running
+29/07/2024 12:23:09: read1
+29/07/2024 12:23:24: Running
+29/07/2024 12:23:24: read1
+29/07/2024 12:23:24: add data
+29/07/2024 12:23:24: read2
+29/07/2024 12:23:24: entobel_be.Models.ProductionData
+29/07/2024 12:23:39: Running
+29/07/2024 12:23:39: read1
+29/07/2024 12:23:54: Running
+29/07/2024 12:23:54: read1
+29/07/2024 12:24:09: Running
+29/07/2024 12:24:09: read1
+29/07/2024 12:24:24: Running
+29/07/2024 12:24:24: read1
+29/07/2024 12:24:39: Running
+29/07/2024 12:24:39: read1
+29/07/2024 12:24:54: Running
+29/07/2024 12:24:54: read1
+29/07/2024 12:25:09: Running
+29/07/2024 12:25:09: read1
+29/07/2024 12:25:24: Running
+29/07/2024 12:25:24: read1
+29/07/2024 12:25:39: Running
+29/07/2024 12:25:39: read1
+29/07/2024 12:25:54: Running
+29/07/2024 12:25:54: read1
+29/07/2024 12:26:09: Running
+29/07/2024 12:26:09: read1
+29/07/2024 12:26:24: Running
+29/07/2024 12:26:24: read1
+29/07/2024 12:26:39: Running
+29/07/2024 12:26:39: read1
+29/07/2024 12:26:54: Running
+29/07/2024 12:26:54: read1
+29/07/2024 12:27:09: Running
+29/07/2024 12:27:09: read1
+09/08/2024 10:28:08: Running
+09/08/2024 10:28:24: Running
+09/08/2024 10:28:40: Running
+09/08/2024 10:28:56: Running
+09/08/2024 10:29:12: Running
+09/08/2024 10:29:28: Running
+09/08/2024 10:29:44: Running
+09/08/2024 10:30:00: Running
+09/08/2024 10:30:15: Running
+09/08/2024 10:30:31: Running
+09/08/2024 10:30:47: Running
+09/08/2024 10:31:03: Running
+09/08/2024 10:31:19: Running
+09/08/2024 10:31:35: Running
+09/08/2024 10:31:51: Running
+09/08/2024 10:32:07: Running
+09/08/2024 10:32:23: Running
+09/08/2024 10:32:39: Running
+09/08/2024 10:32:55: Running
+09/08/2024 10:33:16: Running
+09/08/2024 10:33:33: Running
+09/08/2024 10:42:12: Running
+09/08/2024 10:42:29: Running
+09/08/2024 10:42:45: Running
+09/08/2024 10:43:01: Running
+09/08/2024 10:43:17: Running
+09/08/2024 10:43:33: Running
+09/08/2024 10:43:49: Running
+09/08/2024 10:44:19: Running
+09/08/2024 10:44:35: Running
+09/08/2024 10:45:06: Running
+09/08/2024 10:45:23: Running
+09/08/2024 10:50:48: Running
+09/08/2024 10:51:05: Running
+09/08/2024 10:51:21: Running
+09/08/2024 10:51:37: Running
+09/08/2024 10:51:53: Running
+09/08/2024 10:52:09: Running
+09/08/2024 10:52:25: Running
+09/08/2024 10:52:41: Running
+09/08/2024 10:52:57: Running
+09/08/2024 10:53:13: Running
+09/08/2024 10:53:29: Running
+09/08/2024 10:53:47: Running
+09/08/2024 10:54:03: Running
+09/08/2024 10:54:19: Running
+09/08/2024 10:54:35: Running
+09/08/2024 10:54:51: Running
+09/08/2024 10:55:07: Running
+09/08/2024 10:55:23: Running
+09/08/2024 10:58:03: Running
+09/08/2024 10:58:19: Running
+09/08/2024 10:58:35: Running
+09/08/2024 10:58:51: Running
+09/08/2024 10:59:07: Running
+09/08/2024 10:59:23: Running
+09/08/2024 10:59:38: Running
+09/08/2024 10:59:55: Running
+09/08/2024 11:00:11: Running
+09/08/2024 11:00:26: Running
+09/08/2024 11:00:43: Running
+09/08/2024 11:00:58: Running
+09/08/2024 11:01:15: Running
+09/08/2024 11:01:30: Running
+09/08/2024 11:01:46: Running
+09/08/2024 11:02:03: Running
+09/08/2024 11:02:18: Running
+09/08/2024 11:02:34: Running
+09/08/2024 11:03:05: Running
+09/08/2024 11:03:21: Running
+09/08/2024 11:03:37: Running
+09/08/2024 11:03:53: Running
+09/08/2024 11:04:09: Running
+09/08/2024 11:04:25: Running
+09/08/2024 11:04:42: Running
+09/08/2024 11:04:58: Running
+09/08/2024 11:05:14: Running
+09/08/2024 11:05:30: Running
+09/08/2024 11:05:46: Running
+09/08/2024 11:06:02: Running
+09/08/2024 11:06:18: Running
+09/08/2024 11:06:34: Running
+09/08/2024 11:06:50: Running
+09/08/2024 11:07:12: Running
+09/08/2024 11:07:28: Running
+09/08/2024 11:07:44: Running
+09/08/2024 11:08:01: Running
+09/08/2024 11:08:17: Running
+09/08/2024 11:08:33: Running
+09/08/2024 11:08:49: Running
+09/08/2024 11:09:05: Running
+09/08/2024 11:09:21: Running
+09/08/2024 11:09:37: Running
+09/08/2024 11:09:53: Running
+09/08/2024 11:10:09: Running
+09/08/2024 11:10:25: Running
+09/08/2024 11:10:41: Running
+09/08/2024 11:10:58: Running
+09/08/2024 11:11:14: Running
+09/08/2024 11:11:30: Running
+09/08/2024 11:11:46: Running
+09/08/2024 11:12:02: Running
+09/08/2024 11:12:18: Running
+09/08/2024 11:12:34: Running
+09/08/2024 11:12:50: Running
+09/08/2024 11:15:28: Running
+09/08/2024 11:15:44: Running
+12/08/2024 09:31:13: Running

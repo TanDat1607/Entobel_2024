@@ -54,13 +54,13 @@ namespace entobel_be.Services
                     tcAdsClient.Connect(AmsNetId, port);
                     // open connection to logger
                     tcEventLogger.Connect(AmsNetId);
-                    System.Diagnostics.Debug.WriteLine("ADS connected");
+                    //System.Diagnostics.Debug.WriteLine("ADS connected");
                     return true;
                 }
                 catch (Exception err)
                 {
-                    System.Diagnostics.Debug.WriteLine(err.Message);
-                    System.Diagnostics.Debug.WriteLine("ADS not connected");
+                    //System.Diagnostics.Debug.WriteLine(err.Message);
+                    //System.Diagnostics.Debug.WriteLine("ADS not connected");
                     return false;
                 }
             }
@@ -76,12 +76,12 @@ namespace entobel_be.Services
                 try
                 {
                     tcAdsClient.Disconnect();
-                    System.Diagnostics.Debug.WriteLine("ADS disconnected");
+                    //System.Diagnostics.Debug.WriteLine("ADS disconnected");
                 }
                 catch (Exception err)
                 {
-                    System.Diagnostics.Debug.WriteLine(err.Message);
-                    System.Diagnostics.Debug.WriteLine("ADS disconnection failed");
+                    //System.Diagnostics.Debug.WriteLine(err.Message);
+                    //System.Diagnostics.Debug.WriteLine("ADS disconnection failed");
                 }
             }
         }
@@ -95,7 +95,7 @@ namespace entobel_be.Services
             }
             catch (Exception err)
             {
-                System.Diagnostics.Debug.WriteLine(err.Message);
+                //System.Diagnostics.Debug.WriteLine(err.Message);
                 return false;
             }
         }
@@ -122,7 +122,7 @@ namespace entobel_be.Services
                 }
                 catch (Exception err)
                 {
-                    System.Diagnostics.Debug.WriteLine(err.Message);
+                    //System.Diagnostics.Debug.WriteLine(err.Message);
                 }
             }
             //else return "0"; // var in PLC always return numbers, therefore must return 0 if no data read
@@ -159,7 +159,7 @@ namespace entobel_be.Services
                 }
                 catch (Exception err)
                 {
-                    System.Diagnostics.Debug.WriteLine(err.Message);
+                    //System.Diagnostics.Debug.WriteLine(err.Message);
                 }
             }
         }
@@ -193,7 +193,7 @@ namespace entobel_be.Services
                 }
                 catch (Exception err)
                 {
-                    System.Diagnostics.Debug.WriteLine(err.Message);
+                    //System.Diagnostics.Debug.WriteLine(err.Message);
                     return null;
                 }
             }

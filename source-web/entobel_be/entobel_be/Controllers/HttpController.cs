@@ -23,8 +23,8 @@ namespace entobel_be.Controllers
         private readonly ReportService _rpService;
         private readonly MailService _maService;
         private readonly BgService _bgService;
-
-        public HttpController(UserService userService, DbService dbService, AdsService adsService, ReportService rpService, MailService maService, BgService bgService)
+        //private readonly BgServiceFood1 _bgServiceFood1;
+        public HttpController(UserService userService, DbService dbService, AdsService adsService, ReportService rpService, MailService maService,BgService bgService)
         {
             _userService = userService;
             _dbService = dbService;
@@ -32,6 +32,7 @@ namespace entobel_be.Controllers
             _rpService = rpService;
             _maService = maService;
             _bgService = bgService;
+            //_bgServiceFood1 = bgServiceFood1;
         }
 
         // ----- READ COMMAND -----
@@ -209,14 +210,14 @@ namespace entobel_be.Controllers
         }
 
         // read ADS events
-        [HttpGet("ReadLoggedEvents")]
-        public ActionResult<List<AdsEvent>> ReadLoggedEvents()
-        {
-            //_adsService.AdsConnect(_bgService.amsNetId, _bgService.port);
-            //var results = _adsService.AdsReadEvents(10);
-            //_adsService.AdsDisconnect();
-            return _bgService.events;
-        }
+        //[HttpGet("ReadLoggedEvents")]
+        //public ActionResult<List<AdsEvent>> ReadLoggedEvents()
+        //{
+        //    //_adsService.AdsConnect(_bgService.amsNetId, _bgService.port);
+        //    //var results = _adsService.AdsReadEvents(10);
+        //    //_adsService.AdsDisconnect();
+        //    return _bgService.events;
+        //}
             
 
         // export report csv

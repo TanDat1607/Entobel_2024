@@ -1,18 +1,110 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\DatNguyenTan\\OneDrive - CONG TY TNHH KY THUAT S4M\\Project\\2023\\Entobel_2023\\source-web\\entobel_be\\",
+  "WorkspaceRootPath": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|c:\\users\\datnguyentan\\onedrive - cong ty tnhh ky thuat s4m\\project\\2023\\entobel_2023\\source-web\\entobel_be\\entobel_be\\services\\dbservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|c:\\users\\tuantrananh\\onedrive - cong ty tnhh ky thuat s4m\\job\\entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\services\\dbservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|solutionrelative:entobel_be\\services\\dbservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|c:\\users\\datnguyentan\\onedrive - cong ty tnhh ky thuat s4m\\project\\2023\\entobel_2023\\source-web\\entobel_be\\entobel_be\\services\\adsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|c:\\users\\tuantrananh\\onedrive - cong ty tnhh ky thuat s4m\\job\\entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\services\\bgservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|solutionrelative:entobel_be\\services\\bgservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|c:\\users\\tuantrananh\\onedrive - cong ty tnhh ky thuat s4m\\job\\entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\models\\cup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|solutionrelative:entobel_be\\models\\cup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|c:\\users\\tuantrananh\\onedrive - cong ty tnhh ky thuat s4m\\job\\entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\services\\mailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|solutionrelative:entobel_be\\services\\mailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|c:\\users\\tuantrananh\\onedrive - cong ty tnhh ky thuat s4m\\job\\entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|solutionrelative:entobel_be\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|c:\\users\\tuantrananh\\onedrive - cong ty tnhh ky thuat s4m\\job\\entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\services\\reportservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|solutionrelative:entobel_be\\services\\reportservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|c:\\users\\tuantrananh\\onedrive - cong ty tnhh ky thuat s4m\\job\\entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\models\\summary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|solutionrelative:entobel_be\\models\\summary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|c:\\users\\tuantrananh\\onedrive - cong ty tnhh ky thuat s4m\\job\\entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\models\\reporthistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|solutionrelative:entobel_be\\models\\reporthistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|c:\\users\\tuantrananh\\onedrive - cong ty tnhh ky thuat s4m\\job\\entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\settings\\productdata.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|solutionrelative:entobel_be\\settings\\productdata.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|c:\\users\\tuantrananh\\onedrive - cong ty tnhh ky thuat s4m\\job\\entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\logs\\log.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|solutionrelative:entobel_be\\logs\\log.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|c:\\users\\tuantrananh\\onedrive - cong ty tnhh ky thuat s4m\\job\\entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\models\\productiondata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|solutionrelative:entobel_be\\models\\productiondata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|c:\\users\\tuantrananh\\onedrive - cong ty tnhh ky thuat s4m\\job\\entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\services\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|solutionrelative:entobel_be\\services\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|c:\\users\\tuantrananh\\onedrive - cong ty tnhh ky thuat s4m\\job\\entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\entobel_be.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|solutionrelative:entobel_be\\entobel_be.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|c:\\users\\tuantrananh\\onedrive - cong ty tnhh ky thuat s4m\\job\\entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\controllers\\httpcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|solutionrelative:entobel_be\\controllers\\httpcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|c:\\users\\tuantrananh\\onedrive - cong ty tnhh ky thuat s4m\\job\\entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|solutionrelative:entobel_be\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|c:\\users\\tuantrananh\\onedrive - cong ty tnhh ky thuat s4m\\job\\entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\services\\adsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|solutionrelative:entobel_be\\services\\adsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|c:\\users\\datnguyentan\\onedrive - cong ty tnhh ky thuat s4m\\project\\2023\\entobel_2023\\source-web\\entobel_be\\entobel_be\\services\\bgservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|solutionrelative:entobel_be\\services\\bgservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|c:\\users\\tuantrananh\\onedrive - cong ty tnhh ky thuat s4m\\job\\entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\settings\\food1.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|solutionrelative:entobel_be\\settings\\food1.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|c:\\users\\tuantrananh\\onedrive - cong ty tnhh ky thuat s4m\\job\\entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\settings\\food2.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|solutionrelative:entobel_be\\settings\\food2.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|c:\\users\\tuantrananh\\onedrive - cong ty tnhh ky thuat s4m\\job\\entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\settings\\larvea2.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|solutionrelative:entobel_be\\settings\\larvea2.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|c:\\users\\tuantrananh\\onedrive - cong ty tnhh ky thuat s4m\\job\\entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\settings\\larvea1.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|solutionrelative:entobel_be\\settings\\larvea1.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|c:\\users\\tuantrananh\\onedrive - cong ty tnhh ky thuat s4m\\job\\entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\settings\\port.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|solutionrelative:entobel_be\\settings\\port.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|c:\\users\\tuantrananh\\onedrive - cong ty tnhh ky thuat s4m\\job\\entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|solutionrelative:entobel_be\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|c:\\users\\tuantrananh\\onedrive - cong ty tnhh ky thuat s4m\\job\\entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|solutionrelative:entobel_be\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|c:\\users\\tuantrananh\\onedrive - cong ty tnhh ky thuat s4m\\job\\entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|solutionrelative:entobel_be\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|c:\\users\\tuantrananh\\onedrive - cong ty tnhh ky thuat s4m\\job\\entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\settings\\netid.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|solutionrelative:entobel_be\\settings\\netid.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|c:\\users\\tuantrananh\\onedrive - cong ty tnhh ky thuat s4m\\job\\entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\models\\adsevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3FFF00D0-6CD0-4A55-B5B1-EF2B2664473A}|entobel_be\\entobel_be.csproj|solutionrelative:entobel_be\\models\\adsevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,46 +114,328 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 8,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "DbService.cs",
-              "DocumentMoniker": "C:\\Users\\DatNguyenTan\\OneDrive - CONG TY TNHH KY THUAT S4M\\Project\\2023\\Entobel_2023\\source-web\\entobel_be\\entobel_be\\Services\\DbService.cs",
-              "RelativeDocumentMoniker": "entobel_be\\Services\\DbService.cs",
-              "ToolTip": "C:\\Users\\DatNguyenTan\\OneDrive - CONG TY TNHH KY THUAT S4M\\Project\\2023\\Entobel_2023\\source-web\\entobel_be\\entobel_be\\Services\\DbService.cs",
-              "RelativeToolTip": "entobel_be\\Services\\DbService.cs",
-              "ViewState": "AQIAAK8AAAAAAAAAAAAwwAAAAAAAAAAA",
+              "DocumentIndex": 7,
+              "Title": "ReportHistory.cs",
+              "DocumentMoniker": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\Models\\ReportHistory.cs",
+              "RelativeDocumentMoniker": "entobel_be\\Models\\ReportHistory.cs",
+              "ToolTip": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\Models\\ReportHistory.cs",
+              "RelativeToolTip": "entobel_be\\Models\\ReportHistory.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-05T02:27:05.342Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-09T02:56:22.397Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ReportService.cs",
+              "DocumentMoniker": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\Services\\ReportService.cs",
+              "RelativeDocumentMoniker": "entobel_be\\Services\\ReportService.cs",
+              "ToolTip": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\Services\\ReportService.cs",
+              "RelativeToolTip": "entobel_be\\Services\\ReportService.cs",
+              "ViewState": "AQIAABwAAAAAAAAAAAAkwFwAAAA0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-09T02:46:01.804Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "AdsService.cs",
-              "DocumentMoniker": "C:\\Users\\DatNguyenTan\\OneDrive - CONG TY TNHH KY THUAT S4M\\Project\\2023\\Entobel_2023\\source-web\\entobel_be\\entobel_be\\Services\\AdsService.cs",
-              "RelativeDocumentMoniker": "entobel_be\\Services\\AdsService.cs",
-              "ToolTip": "C:\\Users\\DatNguyenTan\\OneDrive - CONG TY TNHH KY THUAT S4M\\Project\\2023\\Entobel_2023\\source-web\\entobel_be\\entobel_be\\Services\\AdsService.cs",
-              "RelativeToolTip": "entobel_be\\Services\\AdsService.cs",
-              "ViewState": "AQIAAJEAAAAAAAAAAAAwwJ0AAAA9AAAA",
+              "Title": "BgService.cs",
+              "DocumentMoniker": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\Services\\BgService.cs",
+              "RelativeDocumentMoniker": "entobel_be\\Services\\BgService.cs",
+              "ToolTip": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\Services\\BgService.cs",
+              "RelativeToolTip": "entobel_be\\Services\\BgService.cs",
+              "ViewState": "AQIAAIwAAAAAAAAAAAAgwKQAAAA5AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-05T01:46:08.391Z",
+              "WhenOpened": "2024-06-27T09:18:56.468Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "ProductionData.cs",
+              "DocumentMoniker": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\Models\\ProductionData.cs",
+              "RelativeDocumentMoniker": "entobel_be\\Models\\ProductionData.cs",
+              "ToolTip": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\Models\\ProductionData.cs",
+              "RelativeToolTip": "entobel_be\\Models\\ProductionData.cs",
+              "ViewState": "AQIAAAcAAAAAAAAAAAAMwAkAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-29T03:08:54.507Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "log.txt",
+              "DocumentMoniker": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\Logs\\log.txt",
+              "RelativeDocumentMoniker": "entobel_be\\Logs\\log.txt",
+              "ToolTip": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\Logs\\log.txt",
+              "RelativeToolTip": "entobel_be\\Logs\\log.txt",
+              "ViewState": "AQIAAHUCAAAAAAAAAAAAAJACAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2024-07-01T02:06:53.491Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ProductData.txt",
+              "DocumentMoniker": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\Settings\\ProductData.txt",
+              "RelativeDocumentMoniker": "entobel_be\\Settings\\ProductData.txt",
+              "ToolTip": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\Settings\\ProductData.txt",
+              "RelativeToolTip": "entobel_be\\Settings\\ProductData.txt",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2024-07-01T08:57:38.011Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DbService.cs",
+              "DocumentMoniker": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\Services\\DbService.cs",
+              "RelativeDocumentMoniker": "entobel_be\\Services\\DbService.cs",
+              "ToolTip": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\Services\\DbService.cs",
+              "RelativeToolTip": "entobel_be\\Services\\DbService.cs",
+              "ViewState": "AQIAAIsAAAAAAAAAAAAYwJ4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-29T15:05:22.113Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "BgService.cs",
-              "DocumentMoniker": "C:\\Users\\DatNguyenTan\\OneDrive - CONG TY TNHH KY THUAT S4M\\Project\\2023\\Entobel_2023\\source-web\\entobel_be\\entobel_be\\Services\\BgService.cs",
-              "RelativeDocumentMoniker": "entobel_be\\Services\\BgService.cs",
-              "ToolTip": "C:\\Users\\DatNguyenTan\\OneDrive - CONG TY TNHH KY THUAT S4M\\Project\\2023\\Entobel_2023\\source-web\\entobel_be\\entobel_be\\Services\\BgService.cs",
-              "RelativeToolTip": "entobel_be\\Services\\BgService.cs",
-              "ViewState": "AQIAAKAAAAAAAAAAAAAkwK8AAABbAAAA",
+              "Title": "Cup.cs",
+              "DocumentMoniker": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\Models\\Cup.cs",
+              "RelativeDocumentMoniker": "entobel_be\\Models\\Cup.cs",
+              "ToolTip": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\Models\\Cup.cs",
+              "RelativeToolTip": "entobel_be\\Models\\Cup.cs",
+              "ViewState": "AQIAAAoAAAAAAAAAAIAwwBgAAAAiAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-05T01:46:08.394Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-22T04:14:38.483Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MailService.cs",
+              "DocumentMoniker": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\Services\\MailService.cs",
+              "RelativeDocumentMoniker": "entobel_be\\Services\\MailService.cs",
+              "ToolTip": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\Services\\MailService.cs",
+              "RelativeToolTip": "entobel_be\\Services\\MailService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-09T03:39:27.738Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\Services\\UserService.cs",
+              "RelativeDocumentMoniker": "entobel_be\\Services\\UserService.cs",
+              "ToolTip": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\Services\\UserService.cs",
+              "RelativeToolTip": "entobel_be\\Services\\UserService.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABAAAAA+AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-02T01:59:45.108Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Summary.cs",
+              "DocumentMoniker": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\Models\\Summary.cs",
+              "RelativeDocumentMoniker": "entobel_be\\Models\\Summary.cs",
+              "ToolTip": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\Models\\Summary.cs",
+              "RelativeToolTip": "entobel_be\\Models\\Summary.cs",
+              "ViewState": "AQIAACIAAAAAAAAAAAAwwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-09T02:56:25.732Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "entobel_be.csproj",
+              "DocumentMoniker": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\entobel_be.csproj",
+              "RelativeDocumentMoniker": "entobel_be\\entobel_be.csproj",
+              "ToolTip": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\entobel_be.csproj",
+              "RelativeToolTip": "entobel_be\\entobel_be.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAA8AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-07-29T05:03:46.753Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "JwtService.cs",
+              "DocumentMoniker": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\Services\\JwtService.cs",
+              "RelativeDocumentMoniker": "entobel_be\\Services\\JwtService.cs",
+              "ToolTip": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\Services\\JwtService.cs",
+              "RelativeToolTip": "entobel_be\\Services\\JwtService.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAAAQAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-12T06:43:45.134Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "HttpController.cs",
+              "DocumentMoniker": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\Controllers\\HttpController.cs",
+              "RelativeDocumentMoniker": "entobel_be\\Controllers\\HttpController.cs",
+              "ToolTip": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\Controllers\\HttpController.cs",
+              "RelativeToolTip": "entobel_be\\Controllers\\HttpController.cs",
+              "ViewState": "AQIAAGUAAAAAAAAAAAAMwHEAAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-29T08:30:27.273Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Larvea2.txt",
+              "DocumentMoniker": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\Settings\\Larvea2.txt",
+              "RelativeDocumentMoniker": "entobel_be\\Settings\\Larvea2.txt",
+              "ToolTip": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\Settings\\Larvea2.txt",
+              "RelativeToolTip": "entobel_be\\Settings\\Larvea2.txt",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2024-07-02T08:33:09.911Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "AdsService.cs",
+              "DocumentMoniker": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\Services\\AdsService.cs",
+              "RelativeDocumentMoniker": "entobel_be\\Services\\AdsService.cs",
+              "ToolTip": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\Services\\AdsService.cs",
+              "RelativeToolTip": "entobel_be\\Services\\AdsService.cs",
+              "ViewState": "AQIAAHIAAAAAAAAAAAAowFAAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-29T15:05:29.708Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Startup.cs",
+              "DocumentMoniker": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\Startup.cs",
+              "RelativeDocumentMoniker": "entobel_be\\Startup.cs",
+              "ToolTip": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\Startup.cs",
+              "RelativeToolTip": "entobel_be\\Startup.cs",
+              "ViewState": "AQIAABoAAAAAAAAAAAAgwCYAAABMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-01T02:56:19.828Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Larvea1.txt",
+              "DocumentMoniker": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\Settings\\Larvea1.txt",
+              "RelativeDocumentMoniker": "entobel_be\\Settings\\Larvea1.txt",
+              "ToolTip": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\Settings\\Larvea1.txt",
+              "RelativeToolTip": "entobel_be\\Settings\\Larvea1.txt",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAA1AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2024-07-02T08:32:30.447Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Food1.txt",
+              "DocumentMoniker": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\Settings\\Food1.txt",
+              "RelativeDocumentMoniker": "entobel_be\\Settings\\Food1.txt",
+              "ToolTip": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\Settings\\Food1.txt",
+              "RelativeToolTip": "entobel_be\\Settings\\Food1.txt",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAzAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2024-07-01T09:21:37.42Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "Food2.txt",
+              "DocumentMoniker": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\Settings\\Food2.txt",
+              "RelativeDocumentMoniker": "entobel_be\\Settings\\Food2.txt",
+              "ToolTip": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\Settings\\Food2.txt",
+              "RelativeToolTip": "entobel_be\\Settings\\Food2.txt",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAzAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2024-07-02T08:32:16.43Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "port.txt",
+              "DocumentMoniker": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\Settings\\port.txt",
+              "RelativeDocumentMoniker": "entobel_be\\Settings\\port.txt",
+              "ToolTip": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\Settings\\port.txt",
+              "RelativeToolTip": "entobel_be\\Settings\\port.txt",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2024-07-22T03:15:12.351Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\Program.cs",
+              "RelativeDocumentMoniker": "entobel_be\\Program.cs",
+              "ToolTip": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\Program.cs",
+              "RelativeToolTip": "entobel_be\\Program.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAAQwA8AAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-01T02:56:17.235Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\appsettings.json",
+              "RelativeDocumentMoniker": "entobel_be\\appsettings.json",
+              "ToolTip": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\appsettings.json",
+              "RelativeToolTip": "entobel_be\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-07-01T02:56:46.618Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "entobel_be\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\Properties\\launchSettings.json",
+              "RelativeToolTip": "entobel_be\\Properties\\launchSettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-07-12T06:45:32.103Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "netid.txt",
+              "DocumentMoniker": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\Settings\\netid.txt",
+              "RelativeDocumentMoniker": "entobel_be\\Settings\\netid.txt",
+              "ToolTip": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\Settings\\netid.txt",
+              "RelativeToolTip": "entobel_be\\Settings\\netid.txt",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2024-07-01T09:48:33.955Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "AdsEvent.cs",
+              "DocumentMoniker": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\Models\\AdsEvent.cs",
+              "RelativeDocumentMoniker": "entobel_be\\Models\\AdsEvent.cs",
+              "ToolTip": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\Models\\AdsEvent.cs",
+              "RelativeToolTip": "entobel_be\\Models\\AdsEvent.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-29T15:05:07.592Z"
             }
           ]
         }

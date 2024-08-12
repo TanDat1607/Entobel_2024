@@ -4,20 +4,11 @@ using System.Linq;
 using System.IO;
 using System.Threading.Tasks;
 using System.Threading;
-using System.Net.NetworkInformation;
 using Microsoft.Extensions.Hosting;
-using MongoDB.Bson;
 using MongoDB.Driver;
 
 using entobel_be.Models;
-using static System.Collections.Specialized.BitVector32;
-using static entobel_be.Models.Summary;
-using System.Reactive;
-using static entobel_be.Services.ReportService;
-using SharpCompress.Common;
-using TwinCAT.Ads;
-using System.Diagnostics;
-using System.Reactive.Concurrency;
+using System.Globalization;
 
 namespace entobel_be.Services
 {
@@ -42,11 +33,19 @@ namespace entobel_be.Services
         public ProductionData prodData;
         public List<AdsEvent> events = new List<AdsEvent>();
 
-        public BgService(DbService dbService, AdsService adsService, MailService maService)
+        public bool startInit1 = true;
+        public bool startInit2 = true;
+        public bool startInit3 = true;
+        public bool startInit4 = true;
+
+        private static long lastReadPosition1;
+        private static long lastReadPosition2;
+        private static long lastReadPosition3;
+        private static long lastReadPosition4;
+
+        public BgService(DbService dbService)
         {
             _dbService = dbService;
-            _adsService = adsService;
-            _maService = maService;
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -56,22 +55,12 @@ namespace entobel_be.Services
             {
                 try
                 {
-                    // ADS connection monitoring
-                    //Task t0 = MonitorAdsConnection(5000, cts.Token);
-                    // Cup Monitoring task
-                    Task t1 = MonitorCups(100, cts.Token);
-                    // Report Monitoring task
-                    Task t2 = MonitorReport(1000 * 30, cts.Token);
-                    // FFT & RMS logging task
-                    //Task t2 = LogVibrationData(loggingInterval, cts.Token); //30 mins
-                    // Power monitoring task
-                    //Task t3 = MonitorElectricData(monitoringInterval, cts.Token);
-                    //await Task.WhenAll(new[] { t0, t1, t2, t3 });
+                    Task t1 = MonitorCups1(15000, cts.Token);
                     await Task.WhenAll(new[] { t1 });
                 }
                 catch (TaskCanceledException ex)
                 {
-                    Console.WriteLine(ex.ToString());
+                    //Console.WriteLine(ex.ToString());
                 }
             }
         }
@@ -145,244 +134,329 @@ namespace entobel_be.Services
         }
 
         // monitor cup data
-        private async Task MonitorCups(int delay, CancellationToken token)
+
+        private async Task MonitorCups1(int delay, CancellationToken token)
         {
-            Stopwatch stopwatch = new Stopwatch();
-            while (!cts.IsCancellationRequested)
+            string fileName = @"Settings/ProductData.txt"; // Tên tệp cần giám sát
+            Logger.LogFile(logFile, "Running");
+            try
             {
-                stopwatch.Start();
-                //_adsService.AdsConnect(amsNetId, port);
-                //var x = (double)_adsService.AdsRead(_adsService.tcAdsClient, "GVL_IoT.fWeight_Food_line1", typeof(double));
-                //System.Diagnostics.Debug.WriteLine(x);
-                //_adsService.AdsDisconnect();
-                // process every interval
-                await Task.Delay(delay, token);
-
-                //Logger.LogFile(logFile, "Hello");
-                // connect ADS
-                var adsConnect = _adsService.AdsConnect(amsNetId, port);
-                //_adsService.AdsDisconnect();
-                if (adsConnect)
+                var timenow = DateTime.UtcNow;
+                var cups = _dbService.ListCup(timenow.AddHours(-1), timenow);
+                var weight = _dbService.ListTotalWeight(timenow.AddHours(-1), timenow);
+                if (!File.Exists(fileName))
                 {
-                    // monitor ads connection
-                    MonitorAdsConnection(adsConnect);
-                    // read eventlogger
-                    events = new List<AdsEvent>();
-                    events = _adsService.AdsReadEvents(3);
-                    // get live production data
-                    var timenow = DateTime.UtcNow;
-                    var cups = _dbService.ListCup(timenow.AddHours(-1), timenow);
-                    var weight = _dbService.ListTotalWeight(timenow.AddHours(-1), timenow);
+                    Logger.LogFile(logFile, "File does not exist.");
+                    return;
+                }
 
-                    // ============ INFORM PLC CONNECTION ============
+                // Sử dụng List để lưu trữ các dòng đọc được từ tệp
+                List<string> lines = new List<string>();
+                // Đọc dữ liệu từ tệp
+                using (FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                {
+                    using (var reader = new StreamReader(fs))
+                    {  string data;
+                        while ((data = reader.ReadLine()) != null)
+                        {
+                            lines.Add(data);
+                            MonitorAdsConnection(true);
+                            var values = data.Split(',');
+                            prodData = new ProductionData
+                            {
+                                Status = values[0],
+                                Weight = (double)weight.weight,
+                                Capacity = (uint)cups.Count(),
+                                User = values[1]
+                            };
+                        }
+                    }
+                }
+                // Kiểm tra nếu dữ liệu khác null hoặc không trống
+                if (lines.Count > 0 && lines.Any(line => !string.IsNullOrWhiteSpace(line)))
+                {
+
+                    // Xóa nội dung của tệp
                     try
                     {
-                        _adsService.AdsWrite(_adsService.tcAdsClient, "GVL_IoT.bAlarm", true);
-                    }
-                    catch (Exception err)
-                    {
-                        System.Diagnostics.Debug.WriteLine(err.Message);
-                        Logger.LogFile(logFile, err.Message);
-                    }
-
-                    // ============ PRODUCTION DATA ============
-                    try
-                    {
-                        prodData = new ProductionData
+                        using (FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Write, FileShare.ReadWrite))
                         {
-                            Status = (string)_adsService.AdsRead(_adsService.tcAdsClient, "GVL_IoT.status", typeof(string)),
-                            Weight = (double)weight.weight,
-                            //Weight = 0.0f,
-                            Capacity = (uint)cups.Count(),
-                            //Power = (double)_adsService.AdsRead(_adsService.tcAdsClient, "GVL_Retain.DesiredWeight", typeof(double)),
-                            User = (string)_adsService.AdsRead(_adsService.tcAdsClient, "GVL_IoT.username", typeof(string))
-                        };
-                        //Logger.LogFile(logFile, prodData.ToJson());
-                    }
-                    catch (Exception err)
-                    {
-                        prodData = new ProductionData { Status = "Offline", Weight = 0, Capacity = 0, User = "Unknown" };
-                        System.Diagnostics.Debug.WriteLine(err.Message);
-                        //Logger.LogFile(logFile, err.Message);
-                    }
-
-
-                    // ============ LINE 1 - FOOD ============
-                    // read local timestamp
-                    var timeStopF1 = (DateTime)_adsService.AdsRead(_adsService.tcAdsClient, "GVL_IoT.Time_Stop_Food_line1", typeof(DateTime));
-                    // read start measuring time
-                    var timeStartF1 = (DateTime)_adsService.AdsRead(_adsService.tcAdsClient, "GVL_IoT.Time_Start_Food_line1", typeof(DateTime));
-                    // check time of last cup, if new data detected then push to DB
-                    if (timeCupF1 < timeStopF1 && timeStopF1 != new DateTime(1970, 01, 01, 0, 0, 0))
-                    {
-                        // get data of cup
-                        var cup = new Models.Cup
-                        {
-                            Station = 1,
-                            User = (string)_adsService.AdsRead(_adsService.tcAdsClient, "GVL_IoT.username", typeof(string)),
-                            Type = "Food",
-                            Timestamp = timeStartF1.AddHours(7),
-                            TimeStart = timeStopF1.AddHours(7),
-                            TimeWeight = (timeStopF1 - timeStartF1).TotalSeconds,
-                            Weight = (double)_adsService.AdsRead(_adsService.tcAdsClient, "GVL_IoT.fWeight_Food_line1", typeof(double)),
-                            WeightCmd = (double)_adsService.AdsRead(_adsService.tcAdsClient, "GVL_IoT.fDerisedWeight_Food_line1", typeof(double)),
-                            Delta = (double)_adsService.AdsRead(_adsService.tcAdsClient, "GVL_IoT.fActDelta_Food_line1", typeof(double)),
-                            DeltaCmd = (double)_adsService.AdsRead(_adsService.tcAdsClient, "GVL_IoT.fDelta_Food_line1", typeof(double)),
-                            Status = (string)_adsService.AdsRead(_adsService.tcAdsClient, "GVL_IoT.bStatus_Food_line1", typeof(string)),
-                        };
-                        System.Diagnostics.Debug.WriteLine(cup.ToJson());
-                        Logger.LogFile(logFile, cup.ToJson());
-                        // push to DB
-                        if (cup.TimeWeight > 0 && cup.Weight > 0)
-                        {
-                            _dbService.InsertCup(cup);
+                            fs.SetLength(0); // Đặt độ dài của tệp về 0 để xóa nội dung
+                            //System.Diagnostics.Debug.WriteLine($"Content of the file {fileName} has been cleared.");
                         }
-                        // update time of last cup
-                        timeCupF1 = timeStopF1;
                     }
-                    // ============ LINE 1 - LARVAE ============
-                    // read local timestamp
-                    var timeStopL1 = (DateTime)_adsService.AdsRead(_adsService.tcAdsClient, "GVL_IoT.Time_Stop_Worm_line1", typeof(DateTime));
-                    // read start measuring time
-                    var timeStartL1 = (DateTime)_adsService.AdsRead(_adsService.tcAdsClient, "GVL_IoT.Time_Start_Worm_line1", typeof(DateTime));
-                    // check time of last cup, if new data detected then push to DB
-                    if (timeCupL1 < timeStopL1 && timeStopL1 != new DateTime(1970, 01, 01, 0, 0, 0))
+                    catch (Exception ex)
                     {
-                        // get data of cup
-                        var cup = new Models.Cup
-                        {
-                            Station = 1,
-                            User = (string)_adsService.AdsRead(_adsService.tcAdsClient, "GVL_IoT.username", typeof(string)),
-                            Type = "Larvae",
-                            Timestamp = timeStartL1.AddHours(7),
-                            TimeStart = timeStopL1.AddHours(7),
-                            TimeWeight = (timeStopL1 - timeStartL1).TotalSeconds,
-                            Weight = (double)_adsService.AdsRead(_adsService.tcAdsClient, "GVL_IoT.fWeight_Worm_line1", typeof(double)),
-                            WeightCmd = (double)_adsService.AdsRead(_adsService.tcAdsClient, "GVL_IoT.fDerisedWeight_Worm_line1", typeof(double)),
-                            Delta = (double)_adsService.AdsRead(_adsService.tcAdsClient, "GVL_IoT.fActDelta_Worm_line1", typeof(double)),
-                            DeltaCmd = (double)_adsService.AdsRead(_adsService.tcAdsClient, "GVL_IoT.fDelta_Worm_line1", typeof(double)),
-                            Status = (string)_adsService.AdsRead(_adsService.tcAdsClient, "GVL_IoT.bStatus_Worm_line1", typeof(string)),
-                        };
-                        System.Diagnostics.Debug.WriteLine(cup.ToJson());
-                        Logger.LogFile(logFile, cup.ToJson());
-                        // push to DB
-                        if (cup.TimeWeight > 0 && cup.Weight > 0)
-                        {
-                            _dbService.InsertCup(cup);
-                        }
-                        // update time of last cup
-                        timeCupL1 = timeStopL1;
+                       // System.Diagnostics.Debug.WriteLine($"Error clearing file content: {ex.Message}");
                     }
-                    // ============ LINE 2 - FOOD ============
-                    // read local timestamp
-                    var timeStopF2 = (DateTime)_adsService.AdsRead(_adsService.tcAdsClient, "GVL_IoT.Time_Stop_Food_line2", typeof(DateTime));
-                    // read start measuring time
-                    var timeStartF2 = (DateTime)_adsService.AdsRead(_adsService.tcAdsClient, "GVL_IoT.Time_Start_Food_line2", typeof(DateTime));
-                    // check time of last cup, if new data detected then push to DB
-                    if (timeCupF2 < timeStopF2 && timeStopF2 != new DateTime(1970, 01, 01, 0, 0, 0))
-                    {
-                        // get data of cup
-                        var cup = new Models.Cup
-                        {
-                            Station = 2,
-                            User = (string)_adsService.AdsRead(_adsService.tcAdsClient, "GVL_IoT.username", typeof(string)),
-                            Type = "Food",
-                            Timestamp = timeStartF2.AddHours(7),
-                            TimeStart = timeStopF2.AddHours(7),
-                            TimeWeight = (timeStopF2 - timeStartF2).TotalSeconds,
-                            Weight = (double)_adsService.AdsRead(_adsService.tcAdsClient, "GVL_IoT.fWeight_Food_line2", typeof(double)),
-                            WeightCmd = (double)_adsService.AdsRead(_adsService.tcAdsClient, "GVL_IoT.fDerisedWeight_Food_line2", typeof(double)),
-                            Delta = (double)_adsService.AdsRead(_adsService.tcAdsClient, "GVL_IoT.fActDelta_Food_line2", typeof(double)),
-                            DeltaCmd = (double)_adsService.AdsRead(_adsService.tcAdsClient, "GVL_IoT.fDelta_Food_line2", typeof(double)),
-                            Status = (string)_adsService.AdsRead(_adsService.tcAdsClient, "GVL_IoT.bStatus_Food_line2", typeof(string)),
-                        };
-                        System.Diagnostics.Debug.WriteLine(cup.ToJson());
-                        Logger.LogFile(logFile, cup.ToJson());
-                        // push to DB
-                        if (cup.TimeWeight > 0 && cup.Weight > 0)
-                        {
-                            _dbService.InsertCup(cup);
-                        }
-                        // update time of last cup
-                        timeCupF2 = timeStopF2;
-                    }
-                    // ============ LINE 2 - LARVAE ============
-                    // read local timestamp
-                    var timeStopL2 = (DateTime)_adsService.AdsRead(_adsService.tcAdsClient, "GVL_IoT.Time_Stop_Worm_line2", typeof(DateTime));
-                    // read start measuring time
-                    var timeStartL2 = (DateTime)_adsService.AdsRead(_adsService.tcAdsClient, "GVL_IoT.Time_Start_Worm_line2", typeof(DateTime));
-                    // check time of last cup, if new data detected then push to DB
-                    if (timeCupL2 < timeStopL2 && timeStopL2 != new DateTime(1970, 01, 01, 0, 0, 0))
-                    {
-                        // get data of cup
-                        var cup = new Models.Cup
-                        {
-                            Station = 2,
-                            User = (string)_adsService.AdsRead(_adsService.tcAdsClient, "GVL_IoT.username", typeof(string)),
-                            Type = "Larvae",
-                            Timestamp = timeStartL2.AddHours(7),
-                            TimeStart = timeStopL2.AddHours(7),
-                            TimeWeight = (timeStopL2 - timeStartL2).TotalSeconds,
-                            Weight = (double)_adsService.AdsRead(_adsService.tcAdsClient, "GVL_IoT.fWeight_Worm_line2", typeof(double)),
-                            WeightCmd = (double)_adsService.AdsRead(_adsService.tcAdsClient, "GVL_IoT.fDerisedWeight_Worm_line2", typeof(double)),
-                            Delta = (double)_adsService.AdsRead(_adsService.tcAdsClient, "GVL_IoT.fActDelta_Worm_line2", typeof(double)),
-                            DeltaCmd = (double)_adsService.AdsRead(_adsService.tcAdsClient, "GVL_IoT.fDelta_Worm_line2", typeof(double)),
-                            Status = (string)_adsService.AdsRead(_adsService.tcAdsClient, "GVL_IoT.bStatus_Worm_line2", typeof(string)),
-                        };
-                        System.Diagnostics.Debug.WriteLine(cup.ToJson());
-                        Logger.LogFile(logFile, cup.ToJson());
-                        // push to DB
-                        if (cup.TimeWeight > 0 && cup.Weight > 0)
-                        {
-                            _dbService.InsertCup(cup);
-                        }
-                        // update time of last cup
-                        timeCupL2 = timeStopL2;
-                    }
-                    // disconnect ADS
-                    _adsService.AdsDisconnect();
-                    stopwatch.Stop();
-                    Trace.WriteLine("Time for FirstSection: " + stopwatch.ElapsedMilliseconds + " ms");
-                    stopwatch.Reset();
                 }
                 else
                 {
                     prodData = new ProductionData { Status = "Offline", Weight = 0, Capacity = 0, User = "Unknown" };
                 }
-                
-            }
-        }
 
-        // monitor sending report
-        private async Task MonitorReport(int delay, CancellationToken token)
-        {
-            while (!cts.IsCancellationRequested)
+                //add data=========================================================
+                string fileName1 = @"Settings/Food1.txt"; // Tên tệp cần giám sát
+                using (var fs1 = new FileStream(fileName1, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                {
+                    if (startInit1)
+                    {
+                        // Di chuyển con trỏ tệp tin đến cuối tệp tin lần đầu tiên
+                        fs1.Seek(0, SeekOrigin.End);
+                        lastReadPosition1 = fs1.Position;
+                        startInit1 = false; // Đặt cờ để biết rằng đã khởi động lần đầu
+                    }
+                    else
+                    {
+                        fs1.Seek(lastReadPosition1, SeekOrigin.Begin);
+
+                        using (var reader = new StreamReader(fs1))
+                        {
+                            string line;
+                            while ((line = reader.ReadLine()) != null)
+                            {
+                                // Xử lý dòng dữ liệu mới được thêm
+                                //System.Diagnostics.Debug.WriteLine(line);
+
+                                // Ví dụ: phân tích cú pháp và chuyển đổi sang đối tượng Cup
+                                var values = line.Split(',');
+                                var cup = new Models.Cup
+                                {
+                                    Station = int.Parse(values[0]),
+                                    User = values[1],
+                                    Type = values[2],
+                                    Timestamp = DateTime.ParseExact(values[3].Replace("DT#", ""), "yyyy-MM-dd-HH:mm:ss", CultureInfo.InvariantCulture).AddHours(7),
+                                    TimeStart = DateTime.ParseExact(values[4].Replace("DT#", ""), "yyyy-MM-dd-HH:mm:ss", CultureInfo.InvariantCulture).AddHours(7),
+                                    TimeWeight = double.Parse(values[5]),
+                                    Weight = double.Parse(values[6]),
+                                    WeightCmd = double.Parse(values[7]),
+                                    Delta = double.Parse(values[8]),
+                                    DeltaCmd = double.Parse(values[9]),
+                                    Status = values[10]
+                                };
+
+                                // Lưu vào cơ sở dữ liệu
+                                if (cup.TimeWeight > 0 && cup.Weight > 0)
+                                {
+                                    _dbService.InsertCup(cup);
+                                }
+                            }
+                            // Cập nhật vị trí đã đọc cuối cùng
+                            lastReadPosition1 = fs1.Position;
+                        }
+                    }
+                }
+                //food2
+                string fileName2 = @"Settings/Food2.txt"; // Tên tệp cần giám sát
+                using (var fs2 = new FileStream(fileName2, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                {
+                    if (startInit2)
+                    {
+                        // Di chuyển con trỏ tệp tin đến cuối tệp tin lần đầu tiên
+                        fs2.Seek(0, SeekOrigin.End);
+                        lastReadPosition2 = fs2.Position;
+                        startInit2 = false; // Đặt cờ để biết rằng đã khởi động lần đầu
+                    }
+                    else
+                    {
+                        fs2.Seek(lastReadPosition2, SeekOrigin.Begin);
+
+                        using (var reader = new StreamReader(fs2))
+                        {
+                            string line;
+                            while ((line = reader.ReadLine()) != null)
+                            {
+                                // Xử lý dòng dữ liệu mới được thêm
+                                // System.Diagnostics.Debug.WriteLine(line);
+
+                                // Ví dụ: phân tích cú pháp và chuyển đổi sang đối tượng Cup
+                                var values = line.Split(',');
+                                var cup = new Models.Cup
+                                {
+                                    Station = int.Parse(values[0]),
+                                    User = values[1],
+                                    Type = values[2],
+                                    Timestamp = DateTime.ParseExact(values[3].Replace("DT#", ""), "yyyy-MM-dd-HH:mm:ss", CultureInfo.InvariantCulture).AddHours(7),
+                                    TimeStart = DateTime.ParseExact(values[4].Replace("DT#", ""), "yyyy-MM-dd-HH:mm:ss", CultureInfo.InvariantCulture).AddHours(7),
+                                    TimeWeight = double.Parse(values[5]),
+                                    Weight = double.Parse(values[6]),
+                                    WeightCmd = double.Parse(values[7]),
+                                    Delta = double.Parse(values[8]),
+                                    DeltaCmd = double.Parse(values[9]),
+                                    Status = values[10]
+                                };
+
+                                // Lưu vào cơ sở dữ liệu
+                                if (cup.TimeWeight > 0 && cup.Weight > 0)
+                                {
+                                    _dbService.InsertCup(cup);
+                                }
+                            }
+
+                            // Cập nhật vị trí đã đọc cuối cùng
+                            lastReadPosition2 = fs2.Position;
+                        }
+                    }
+                }
+                //larvea1
+                string fileName3 = @"Settings/Larvea1.txt"; // Tên tệp cần giám sát
+                using (var fs3 = new FileStream(fileName3, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                {
+                    if (startInit3)
+                    {
+                        // Di chuyển con trỏ tệp tin đến cuối tệp tin lần đầu tiên
+                        fs3.Seek(0, SeekOrigin.End);
+                        lastReadPosition3 = fs3.Position;
+                        startInit3 = false; // Đặt cờ để biết rằng đã khởi động lần đầu
+                    }
+                    else
+                    {
+                        fs3.Seek(lastReadPosition3, SeekOrigin.Begin);
+
+                        using (var reader = new StreamReader(fs3))
+                        {
+                            string line;
+                            while ((line = reader.ReadLine()) != null)
+                            {
+                                // Xử lý dòng dữ liệu mới được thêm
+                                //  System.Diagnostics.Debug.WriteLine(line);
+
+                                // Ví dụ: phân tích cú pháp và chuyển đổi sang đối tượng Cup
+                                var values = line.Split(',');
+                                var cup = new Models.Cup
+                                {
+                                    Station = int.Parse(values[0]),
+                                    User = values[1],
+                                    Type = values[2],
+                                    Timestamp = DateTime.ParseExact(values[3].Replace("DT#", ""), "yyyy-MM-dd-HH:mm:ss", CultureInfo.InvariantCulture).AddHours(7),
+                                    TimeStart = DateTime.ParseExact(values[4].Replace("DT#", ""), "yyyy-MM-dd-HH:mm:ss", CultureInfo.InvariantCulture).AddHours(7),
+                                    TimeWeight = double.Parse(values[5]),
+                                    Weight = double.Parse(values[6]),
+                                    WeightCmd = double.Parse(values[7]),
+                                    Delta = double.Parse(values[8]),
+                                    DeltaCmd = double.Parse(values[9]),
+                                    Status = values[10]
+                                };
+
+                                // Lưu vào cơ sở dữ liệu
+                                if (cup.TimeWeight > 0 && cup.Weight > 0)
+                                {
+                                    _dbService.InsertCup(cup);
+                                }
+                            }
+                            // Cập nhật vị trí đã đọc cuối cùng
+                            lastReadPosition3 = fs3.Position;
+                        }
+                    }
+                }
+                //larvea2
+                string fileName4 = @"Settings/Larvea2.txt"; // Tên tệp cần giám sát
+                using (var fs4 = new FileStream(fileName4, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                {
+                    if (startInit4)
+                    {
+                        // Di chuyển con trỏ tệp tin đến cuối tệp tin lần đầu tiên
+                        fs4.Seek(0, SeekOrigin.End);
+                        lastReadPosition4 = fs4.Position;
+                        startInit4 = false; // Đặt cờ để biết rằng đã khởi động lần đầu
+                    }
+                    else
+                    {
+                        fs4.Seek(lastReadPosition4, SeekOrigin.Begin);
+
+                        using (var reader = new StreamReader(fs4))
+                        {
+                            string line;
+                            while ((line = reader.ReadLine()) != null)
+                            {
+                                // Xử lý dòng dữ liệu mới được thêm
+                                // System.Diagnostics.Debug.WriteLine(line);
+
+                                // Ví dụ: phân tích cú pháp và chuyển đổi sang đối tượng Cup
+                                var values = line.Split(',');
+                                var cup = new Models.Cup
+                                {
+                                    Station = int.Parse(values[0]),
+                                    User = values[1],
+                                    Type = values[2],
+                                    Timestamp = DateTime.ParseExact(values[3].Replace("DT#", ""), "yyyy-MM-dd-HH:mm:ss", CultureInfo.InvariantCulture).AddHours(7),
+                                    TimeStart = DateTime.ParseExact(values[4].Replace("DT#", ""), "yyyy-MM-dd-HH:mm:ss", CultureInfo.InvariantCulture).AddHours(7),
+                                    TimeWeight = double.Parse(values[5]),
+                                    Weight = double.Parse(values[6]),
+                                    WeightCmd = double.Parse(values[7]),
+                                    Delta = double.Parse(values[8]),
+                                    DeltaCmd = double.Parse(values[9]),
+                                    Status = values[10]
+                                };
+
+                                // Lưu vào cơ sở dữ liệu
+                                if (cup.TimeWeight > 0 && cup.Weight > 0)
+                                {
+                                    _dbService.InsertCup(cup);
+                                }
+                            }
+                            // Cập nhật vị trí đã đọc cuối cùng
+                            lastReadPosition4 = fs4.Position;
+                        }
+                    }
+                }
+                //delete
+                string fileF1 = @"Settings/Food1.txt";
+                string fileF2 = @"Settings/Food2.txt";
+                string fileL1 = @"Settings/Larvea1.txt";
+                string fileL2 = @"Settings/Larvea2.txt";
+
+                // Lấy thời gian hiện tại
+                DateTime now = DateTime.Now;
+
+                // Tạo đối tượng DateTime đại diện cho 0h sáng của ngày hiện tại
+                DateTime startOfDay = new DateTime(now.Year, now.Month, now.Day, 0, 0, 0);
+
+                // Tạo đối tượng DateTime đại diện cho 0h01 sáng của ngày hiện tại
+                DateTime endOfWindow = startOfDay.AddMinutes(1);
+
+                // Kiểm tra nếu giờ hiện tại nằm trong khoảng 0h đến 0h05 sáng
+                if (now >= startOfDay && now <= endOfWindow)
+                {
+                    DeleteFile(fileF1);
+                    DeleteFile(fileF2);
+                    DeleteFile(fileL1);
+                    DeleteFile(fileL2);
+                    startInit1 = true;
+                    startInit2 = true;
+                    startInit3 = true;
+                    startInit4 = true;
+                }
+            }
+            catch (Exception ex)
             {
-                // process every interval
-                await Task.Delay(delay, token);
-                // Check for internet connection
-                //if (NetworkInterface.GetIsNetworkAvailable())
-                //{
-                //    // read last report
-                //    var rp = _dbService.FindLastReport();
-                //    // check last report . current time
-                //    DateTime dt = DateTime.Now.AddHours(7);
-                //    var startofMonth = new DateTime(dt.Year, dt.Month, 1, 0, 0, 0);
+                // System.Diagnostics.Debug.WriteLine($"Error processing file: {ex.Message}");
+                Logger.LogFile(logFile, $"Error processing file: {ex.Message}");
+            }
 
-                //    if (rp == null || rp.Timestamp < startofMonth)
-                //    {
-                //        if (_maService.SendMailReport())
-                //        {
-                //            var rpHist = new ReportHistory
-                //            {
-                //                Timestamp = DateTime.Now.AddHours(7)
-                //            };
-                //            _dbService.InsertReportHistory(rpHist);
-                //        }
-                //    }
-                //}
+            // Đợi một khoảng thời gian trước khi kiểm tra lại
+            await Task.Delay(delay, token);
+        }
+
+        private static bool DeleteFile(string fileName)
+        {
+            // Xóa nội dung của tệp
+            try
+            {
+                using (FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Write, FileShare.ReadWrite))
+                {
+                    fs.SetLength(0); // Đặt độ dài của tệp về 0 để xóa nội dung
+                    //System.Diagnostics.Debug.WriteLine($"Content of the file {fileName} has been cleared.");
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                //System.Diagnostics.Debug.WriteLine($"Error clearing file content: {ex.Message}");
+                return false;
             }
         }
+
 
         public async void ResetTask()
         {

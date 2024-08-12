@@ -64,8 +64,8 @@ namespace entobel_be.Services
         {
             var builder = Builders<Cup>.Filter;
             var filter = builder.Eq(cup => cup.Type, "Larvae") & 
-                         builder.Gte(cup => cup.Timestamp, startDate) & 
-                         builder.Lt(cup => cup.Timestamp, endDate.AddDays(1));
+                         builder.Gte(cup => cup.Timestamp, startDate.AddHours(7)) & 
+                         builder.Lt(cup => cup.Timestamp, endDate.AddDays(1).AddHours(7));
             var result = _cup.Aggregate()
                     .Match(filter)
                     .Group(new BsonDocument { { "_id", 0 }, { "weight", new BsonDocument("$sum", "$weight") } })
@@ -98,8 +98,8 @@ namespace entobel_be.Services
             System.Diagnostics.Debug.WriteLine("EWRGERGREGERG:"+station+startDate+endDate+timeRange+weightCmd);
             var builder = Builders<Cup>.Filter;
             var filter = builder.Eq(cup => cup.Station, station) &
-                         builder.Gte(cup => cup.Timestamp, startDate) &
-                         builder.Lt(cup => cup.Timestamp, endDate.AddDays(1)) &
+                         builder.Gte(cup => cup.Timestamp, startDate.AddHours(7)) &
+                         builder.Lt(cup => cup.Timestamp, endDate.AddDays(1).AddHours(7)) &
                          builder.Eq(cup => cup.WeightCmd, weightCmd);
                          //builder.Eq(cup => cup.Status, true);
             var group = new BsonDocument();
@@ -143,10 +143,55 @@ namespace entobel_be.Services
                     .Group(new BsonDocument { { "_id", group }, { "count", new BsonDocument("$sum", 1) } })
                     .Sort("{_id: 1}")
                     .ToListAsync().Result;
-            System.Diagnostics.Debug.WriteLine("Result: " + result.ToJson());
-            return BsonSerializer.Deserialize<List<Summary.Cup>>(result.ToJson());
+
+            var allTimeRanges = GenerateTimeRanges(startDate, endDate, timeRange);
+
+            // Merge the results with the full range
+            var resultDictionary = result.ToDictionary(r => r["_id"].AsString, r => r["count"].AsInt32);
+            var finalResults = allTimeRanges.Select(tr =>
+            {
+                return new Summary.Cup
+                {
+                    Id = tr.Id,
+                    count = resultDictionary.ContainsKey(tr.Id) ? resultDictionary[tr.Id] : 0
+                };
+            }).ToList();
+
+            //System.Diagnostics.Debug.WriteLine("Result: " + result.ToJson());
+            //return BsonSerializer.Deserialize<List<Summary.Cup>>(result.ToJson());
+            return finalResults;
+
         }
-        
+
+
+        private List<Summary.Cup> GenerateTimeRanges(DateTime startDate, DateTime endDate, string timeRange)
+        {
+            var timeRanges = new List<Summary.Cup>();
+
+            switch (timeRange)
+            {
+                case "Day":
+                    for (DateTime dt = startDate.Date; dt <= endDate.Date; dt = dt.AddDays(1))
+                    {
+                        timeRanges.Add(new Summary.Cup
+                        {
+                            Id = dt.ToString("yyyy-MM-dd")
+                        });
+                    }
+                    break;
+
+                case "Month":
+                    for (DateTime dt = new DateTime(startDate.Year, startDate.Month, 1); dt <= new DateTime(endDate.Year, endDate.Month, 1); dt = dt.AddMonths(1))
+                    {
+                        timeRanges.Add(new Summary.Cup
+                        {
+                            Id = dt.ToString("yyyy-MM")
+                        });
+                    }
+                    break;
+            }
+            return timeRanges;
+        }
 
         // list capacity of weight by time range
         public List<Summary.Weight> ListWeight(int station, string type, DateTime startDate, DateTime endDate, string timeRange, double weightCmd)
@@ -154,8 +199,8 @@ namespace entobel_be.Services
             var builder = Builders<Cup>.Filter;
             var filter = builder.Eq(cup => cup.Station, station) &
                          builder.Eq(cup => cup.Type, type) &
-                         builder.Gte(cup => cup.Timestamp, startDate) & 
-                         builder.Lt(cup => cup.Timestamp, endDate.AddDays(1)) & 
+                         builder.Gte(cup => cup.Timestamp, startDate.AddHours(7)) & 
+                         builder.Lt(cup => cup.Timestamp, endDate.AddDays(1).AddHours(7)) & 
                          builder.Eq(cup => cup.WeightCmd, weightCmd);
             var group = new BsonDocument();
             // assign group query based on timeRange option
@@ -221,7 +266,7 @@ namespace entobel_be.Services
         public List<Summary.OpTime> ListOptime(DateTime startDate, DateTime endDate, string timeRange)
         {
             var builder = Builders<OpTime>.Filter;
-            var filter = builder.Gte(optime => optime.TimeStart, startDate) & builder.Lt(optime => optime.TimeStop, endDate.AddDays(1));
+            var filter = builder.Gte(optime => optime.TimeStart, startDate.AddHours(7)) & builder.Lt(optime => optime.TimeStop, endDate.AddDays(1).AddHours(7));
             var group = new BsonDocument();
             // assign group query based on timeRange option
             switch (timeRange)
@@ -320,8 +365,8 @@ namespace entobel_be.Services
         public List<Summary.SingleProduction> ListProduction(DateTime startDate, DateTime endDate)
         {
             var builder = Builders<Cup>.Filter;
-            var filter = builder.Gte(cup => cup.Timestamp, startDate) &
-                         builder.Lt(cup => cup.Timestamp, endDate.AddDays(1));
+            var filter = builder.Gte(cup => cup.Timestamp, startDate.AddHours(7)) &
+                         builder.Lt(cup => cup.Timestamp, endDate.AddDays(1).AddHours(7));
             // aggregate query
             var result = _cup.Find(filter)
                          .Project(new BsonDocument {
@@ -354,8 +399,8 @@ namespace entobel_be.Services
         public List<Summary.Production> ListProduction(DateTime startDate, DateTime endDate, string timeRange)
         {
             var builder = Builders<Cup>.Filter;
-            var filter = builder.Gte(cup => cup.Timestamp, startDate) &
-                         builder.Lt(cup => cup.Timestamp, endDate.AddDays(1));
+            var filter = builder.Gte(cup => cup.Timestamp, startDate.AddHours(7)) &
+                         builder.Lt(cup => cup.Timestamp, endDate.AddDays(1).AddHours(7));
             var group = new BsonDocument();
             // assign group query based on timeRange option
             switch (timeRange)

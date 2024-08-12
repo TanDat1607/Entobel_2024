@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\DatNguyenTan\\OneDrive - CONG TY TNHH KY THUAT S4M\\Project\\2023\\Entobel_2023\\source-web\\entobel_be\\entobel_be\\entobel_be.csproj": {}
+    "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\entobel_be.csproj": {}
   },
   "projects": {
-    "C:\\Users\\DatNguyenTan\\OneDrive - CONG TY TNHH KY THUAT S4M\\Project\\2023\\Entobel_2023\\source-web\\entobel_be\\entobel_be\\entobel_be.csproj": {
+    "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\entobel_be.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\DatNguyenTan\\OneDrive - CONG TY TNHH KY THUAT S4M\\Project\\2023\\Entobel_2023\\source-web\\entobel_be\\entobel_be\\entobel_be.csproj",
+        "projectUniqueName": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\entobel_be.csproj",
         "projectName": "entobel_be",
-        "projectPath": "C:\\Users\\DatNguyenTan\\OneDrive - CONG TY TNHH KY THUAT S4M\\Project\\2023\\Entobel_2023\\source-web\\entobel_be\\entobel_be\\entobel_be.csproj",
-        "packagesPath": "C:\\Users\\DatNguyenTan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\DatNguyenTan\\OneDrive - CONG TY TNHH KY THUAT S4M\\Project\\2023\\Entobel_2023\\source-web\\entobel_be\\entobel_be\\obj\\",
+        "projectPath": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\entobel_be.csproj",
+        "packagesPath": "C:\\Users\\TuanTranAnh\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\TuanTranAnh\\OneDrive - CONG TY TNHH KY THUAT S4M\\Job\\Entobel_2023\\source_git\\source-web\\entobel_be\\entobel_be\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\DatNguyenTan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\TuanTranAnh\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -37,6 +37,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -61,15 +66,15 @@
             },
             "Microsoft.IdentityModel.Tokens": {
               "target": "Package",
-              "version": "[6.32.1, )"
+              "version": "[8.0.1, )"
             },
             "MongoDB.Driver": {
               "target": "Package",
-              "version": "[2.16.1, )"
+              "version": "[2.28.0, )"
             },
             "System.IdentityModel.Tokens.Jwt": {
               "target": "Package",
-              "version": "[6.32.1, )"
+              "version": "[8.0.1, )"
             }
           },
           "imports": [
