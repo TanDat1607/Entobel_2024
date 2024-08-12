@@ -156,14 +156,11 @@ namespace entobel_be.Services
                     count = resultDictionary.ContainsKey(tr.Id) ? resultDictionary[tr.Id] : 0
                 };
             }).ToList();
-
             //System.Diagnostics.Debug.WriteLine("Result: " + result.ToJson());
             //return BsonSerializer.Deserialize<List<Summary.Cup>>(result.ToJson());
             return finalResults;
-
         }
-
-
+        
         private List<Summary.Cup> GenerateTimeRanges(DateTime startDate, DateTime endDate, string timeRange)
         {
             var timeRanges = new List<Summary.Cup>();
@@ -249,7 +246,19 @@ namespace entobel_be.Services
                     .Group(new BsonDocument { { "_id", group }, { "weight", new BsonDocument("$sum", "$weight") } })
                     .Sort("{_id: 1}")
                     .ToListAsync().Result;
-            return BsonSerializer.Deserialize<List<Summary.Weight>>(result.ToJson());
+            var allTimeRanges = GenerateTimeRanges(startDate, endDate, timeRange);
+
+            // Merge the results with the full range
+            var resultDictionary = result.ToDictionary(r => r["_id"].AsString, r => r["weight"].AsDouble);
+            var finalResults = allTimeRanges.Select(tr =>
+            {
+                return new Summary.Weight
+                {
+                    Id = tr.Id,
+                    weight = resultDictionary.ContainsKey(tr.Id) ? resultDictionary[tr.Id] : 0
+                };
+            }).ToList();
+            return finalResults;
         }
 
         // find latest optime record
@@ -316,7 +325,18 @@ namespace entobel_be.Services
                         { "optime", new BsonDocument("$sum", "$timeWindow") } })
                     .Sort("{_id: 1}")
                     .ToListAsync().Result;
-            return BsonSerializer.Deserialize<List<Summary.OpTime>>(result.ToJson());
+            var allTimeRanges = GenerateTimeRanges(startDate, endDate, timeRange);
+            // Merge the results with the full range
+            var resultDictionary = result.ToDictionary(r => r["_id"].AsString, r => r["optime"].AsDouble);
+            var finalResults = allTimeRanges.Select(tr =>
+            {
+                return new Summary.OpTime
+                {
+                    Id = tr.Id,
+                    optime = resultDictionary.ContainsKey(tr.Id) ? resultDictionary[tr.Id] : 0
+                };
+            }).ToList();
+            return finalResults;
         }
 
         // list optime by time range
@@ -334,7 +354,7 @@ namespace entobel_be.Services
                         downtime = new Summary.OpTime
                         {
                             Id = optime[i].Id,
-                            optime = 24 - optime[i].optime
+                            optime = ((optime[i].optime) < 24)? (24 - optime[i].optime) : 0
                         };
                         listDowntime.Add(downtime);
                         break;
@@ -343,7 +363,7 @@ namespace entobel_be.Services
                         downtime = new Summary.OpTime
                         {
                             Id = optime[i].Id,
-                            optime = 24*30 - optime[i].optime
+                            optime = (optime[i].optime < 24*30)? (24*30 - optime[i].optime) : 0
                         };
                         listDowntime.Add(downtime);
                         break;

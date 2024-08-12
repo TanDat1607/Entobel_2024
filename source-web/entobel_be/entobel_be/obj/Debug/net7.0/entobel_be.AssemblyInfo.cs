@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("entobel_be")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6b5006f58faca3c149d8b207a7f9ed5fc7086c92")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6b87ff4b2b65bbde88cedc317acb2a529243e3d1")]
 [assembly: System.Reflection.AssemblyProductAttribute("entobel_be")]
 [assembly: System.Reflection.AssemblyTitleAttribute("entobel_be")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

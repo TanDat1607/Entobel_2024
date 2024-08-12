@@ -110,30 +110,6 @@ namespace entobel_be.Controllers
         public ActionResult<ProductionData> GetProductionData()
         {
             return _bgService.prodData;
-            //// calculate capacity from DB
-            //var timenow = DateTime.UtcNow;
-            //var cups = _dbService.ListCup(timenow.AddHours(-1), timenow);
-            //var weight = _dbService.ListTotalWeight(timenow.AddHours(-1), timenow);
-            //// read from ADS
-            //_adsService.AdsConnect(_bgService.amsNetId, _bgService.port);
-            //if (_adsService.AdsCheckConnection())
-            //{
-            //    var prodData = new ProductionData
-            //    {
-            //        Status = (string)_adsService.AdsRead(_adsService.tcAdsClient, "GVL_IoT.status", typeof(string)),
-            //        Weight = (double)weight.weight,
-            //        Capacity = (uint)cups.Count(),
-            //        //Power = (double)_adsService.AdsRead(_adsService.tcAdsClient, "GVL_Retain.DesiredWeight", typeof(double)),
-            //        User = (string)_adsService.AdsRead(_adsService.tcAdsClient, "GVL_IoT.username", typeof(string))
-            //    };
-            //    // close connection
-            //    _adsService.AdsDisconnect();
-            //    return prodData;
-            //}
-            //else
-            //{
-            //    return new ProductionData { Status = "Offline", Weight = 0, Capacity = 0, User = "Unknown" };
-            //}
         }
 
         // get capacity history of cups data from db
@@ -148,18 +124,6 @@ namespace entobel_be.Controllers
             }
             return result;
         }
-
-        //// get capacity history of cups rejected data from db
-        //[HttpGet("ListCupReject")]
-        //public ActionResult<List<Summary.Cup>> ListCupReject(DateTime startDate, DateTime endDate, string timeRange, double weightCmd)
-        //{
-        //    var result = _dbService.ListCupReject(startDate, endDate, timeRange, weightCmd);
-        //    if (result == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    return result;
-        //}
 
         // get capacity history of weight data from db
         [HttpGet("ListWeight/{station}")]
@@ -208,18 +172,7 @@ namespace entobel_be.Controllers
             }
             return result;
         }
-
-        // read ADS events
-        //[HttpGet("ReadLoggedEvents")]
-        //public ActionResult<List<AdsEvent>> ReadLoggedEvents()
-        //{
-        //    //_adsService.AdsConnect(_bgService.amsNetId, _bgService.port);
-        //    //var results = _adsService.AdsReadEvents(10);
-        //    //_adsService.AdsDisconnect();
-        //    return _bgService.events;
-        //}
-            
-
+        
         // export report csv
         [HttpGet("DownloadReport")]
         public FileStreamResult DownloadReport(DateTime startDate, DateTime endDate, string timeRange, string type)
